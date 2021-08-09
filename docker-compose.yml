@@ -1,0 +1,33 @@
+version: '2'
+
+services:
+  web:
+    container_name: plusteam-odoo-localization-web
+    build:
+      context: .
+      dockerfile: Dockerfile
+    depends_on:
+      - db
+    ports:
+      - "8069:8069"
+    volumes:
+      - odoo-web-data-localization:/var/lib/odoo
+      - ./config:/etc/odoo
+      - ./addons:/mnt/extra-addons
+      - ./src:/home/odoo/src
+    command: --dev all
+  db:
+    container_name: plusteam-odoo-localization-db
+    image: postgres:13
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_PASSWORD=odoo
+      - POSTGRES_USER=odoo
+      - PGDATA=/var/lib/postgresql/data/pgdata
+    volumes:
+      - odoo-db-data-localization:/var/lib/postgresql/data/pgdata
+volumes:
+  odoo-web-data-localization:
+  odoo-db-data-localization:
