@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="conceptos_ISLR" model="ir.ui.view">
+        <field name="name">conceptos.islr.view</field>
+        <field name="model">conceptos.islr</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <form>
+              <sheet>
+                  <group modifiers="{}">
+                      <field name="code" string="Codigo"/>
+                      <field name="name"/>
+                       <field name="namelarge"/>
+                  </group>
+                   <group>
+                        <group>
+                         <field name="numeral" />
+
+                        </group>
+                       <group>
+                      <field name="literal"/>
+
+                      </group>
+
+                  </group>
+              </sheet>
+            </form>
+        </field>
+    </record>
+
+     <record id="view_tax_tree" model="ir.ui.view">
+            <field name="name">conceptos.islr.tree</field>
+            <field name="model">conceptos.islr</field>
+            <field name="arch" type="xml">
+                <tree string="Conceptos ISLR">
+                    <field name="code" widget="handle"/>
+                    <field name="name"/>
+                    <field name="namelarge"/>
+                    <field name="literal"/>
+                    <field name="numeral"/>
+                </tree>
+            </field>
+        </record>
+
+    <record model="ir.actions.act_window" id="conceptos_islr_action">
+      <field name="name">Conceptos ISLR</field>
+      <field name="res_model">conceptos.islr</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+
+</odoo>
