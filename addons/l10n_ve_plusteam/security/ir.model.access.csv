@@ -1,3 +1,6 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 access_conceptos_islr_manager,conceptos.islr,model_conceptos_islr,account.group_account_manager,1,1,1,1
 access_conceptos_islr_readonly,conceptos.islr,model_conceptos_islr,account.group_account_readonly,1,0,0,0
+access_tipo_persona_manager,tipo.personas,model_tipo_personas,account.group_account_manager,1,1,1,1
+access_tipo_persona_readonly,tipo.personas,model_tipo_personas,account.group_account_readonly,1,0,0,0
+

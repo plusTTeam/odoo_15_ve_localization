@@ -6,15 +6,21 @@ from odoo import models, fields, api
 class TipoPersonas(models.Model):
     _name = "tipo.personas"
 
-    id = fields.Char(string="Codigo", translate=True)
-    name = fields.Char(string="Descripcion", translate=True)
+    id = fields.Char(string="Codigo")
+    name = fields.Char(string="Descripcion", translate=True, required=True)
+    tabulador = fields.One2many("tabulador.islr", "tipo_persona_id", string="Tabulador")
+
 
 class TabuladorISLR(models.Model):
     _name = "tabulador.islr"
 
-    conceptos = fields.Many2one('conceptos.islr', 'code', string="Conceptos")
-    tip_person = fields.Char(string="Persona")
-    porcentaje1 = fields.Float(string="Por1",
+
+    concept_id = fields.Many2one('conceptos.islr', string="Concepts",  required=True)
+    code_concept = fields.Char(string="Code", related="concept_id.code")
+    percentage_base = fields.Float(string="Percentage base",
                                default=0.0)
-    porcentaje2 = fields.Float(string="Por2",
+    percentage_reten = fields.Float(string="Percentage Retention",
                                default=0.0)
+    subtracting = fields.Float(string="Sustraendo",
+                               default=0.0)
+    tipo_persona_id = fields.Many2one("tipo.personas", string=" ", readonly=True)
