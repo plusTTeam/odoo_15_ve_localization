@@ -25,6 +25,7 @@
     # always loaded
     'data': [
         'security/ir.model.access.csv',
+        'data/conceptos.xml',
         'views/res_partner_view.xml',
         'views/conceptos_ISLR_view.xml',
         'views/menu_localizacion_views.xml',
