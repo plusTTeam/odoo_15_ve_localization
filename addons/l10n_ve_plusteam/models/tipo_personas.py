@@ -14,12 +14,11 @@ class TipoPersonas(models.Model):
 class TabuladorISLR(models.Model):
     _name = "tabulador.islr"
 
-
     concept_id = fields.Many2one('conceptos.islr', string="Concepts",  required=True)
     code_concept = fields.Char(string="Code", related="concept_id.code")
-    percentage_base = fields.Float(string="Percentage base",
+    percentage_base = fields.Float(string="% Base Imp.",
                                default=0.0)
-    percentage_reten = fields.Float(string="Percentage Retention",
+    percentage_reten = fields.Float(string="% Retention",
                                default=0.0)
     subtracting = fields.Float(string="Sustraendo",
                                default=0.0)
