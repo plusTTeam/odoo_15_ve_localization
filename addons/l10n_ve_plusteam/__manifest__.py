@@ -26,6 +26,7 @@
     'data': [
         'security/ir.model.access.csv',
         'data/conceptos.xml',
+        'data/personas.xml',
         'views/res_partner_view.xml',
         'views/conceptos_ISLR_view.xml',
         'views/tipo_persona_view.xml',

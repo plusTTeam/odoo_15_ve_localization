@@ -20,9 +20,9 @@
                     <field name="tabulador" widget="section_and_note_one2many" >
                         <tree>
                             <field name="concept_id" />
-                            <field name="percentage_base" />
+                            <field name="percentage_base" string="% Base Imp." />
                             <field name="percentage_reten" string="% Retention" />
-                            <field name="subtracting"/>
+                            <field name="subtracting" string="Subtracting"/>
                         </tree>
                     </field>
                 </sheet>

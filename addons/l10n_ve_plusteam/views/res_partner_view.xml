@@ -17,7 +17,7 @@
         <field name="inherit_id" ref="base.view_partner_tree"/>
         <field name="arch" type="xml">
             <xpath expr="//field[@name='display_name']" position="after">
-                <xpath expr="//field[@name='vat']" position="move" optional="show" />
+                <xpath expr="//field[@name='vat']" optional="show" position="move" />
             </xpath>
             <xpath expr="//field[@name='email']" position="after">
                 <field name="person_tips"/>
