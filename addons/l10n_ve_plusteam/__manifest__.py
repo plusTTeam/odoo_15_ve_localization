@@ -20,7 +20,7 @@
     'version': '0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['base', 'sale'],
+    'depends': ['base', 'contacts'],
 
     # always loaded
     'data': [
@@ -29,7 +29,6 @@
         'views/conceptos_ISLR_view.xml',
         'views/tipo_persona_view.xml',
         'views/menu_localizacion_views.xml',
-
     ],
     # only loaded in demonstration mode
     'demo': [
