@@ -8,7 +8,7 @@ import re
 class ResPartner(models.Model):
     _inherit = 'res.partner'
 
-    person_tips = fields.Many2one('tipo.personas', string="Person Type")
+    person_type = fields.Many2one('tipo.personas', string="Person Type")
 
     @api.constrains('vat')
     def _check_rif_field(self):
