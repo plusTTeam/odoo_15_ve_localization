@@ -32,7 +32,6 @@
         'views/tipo_persona_view.xml',
         'views/unidad_tributaria_view.xml',
         'views/menu_localizacion_views.xml',
-        
     ],
     # only loaded in demonstration mode
     'demo': [

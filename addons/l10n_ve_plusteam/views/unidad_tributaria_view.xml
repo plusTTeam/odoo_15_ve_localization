@@ -8,11 +8,16 @@
             <form>
                 <sheet>
                     <group>
-                        <field name="code"/>
+                        <group>
+                           <field name="date_day"/>
+                        </group>
+                        <group>
+                           <field name="code"/>
+                        </group>
                     </group>
                     <group>
                         <group>
-                            <field name="date_publica"/>
+                            <field name="date_publication"/>
                         </group>
                         <group>
                             <field name="value"/>
@@ -28,9 +33,9 @@
         <field name="model">unidad.tributaria</field>
         <field name="arch" type="xml">
             <tree string="Unidades Tributarias">
+                <field name="date_day"/>
                 <field name="code"/>
-                <field name="date_dia"/>
-                <field name="date_publica"/>
+                <field name="date_publication"/>
                 <field name="value"/>
             </tree>
         </field>

@@ -1,15 +1,15 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
 # 	* base
-# 	* contacts
 # 	* l10n_ve_plusteam
+# 	* contacts
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 14.0-20210809\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-08-16 15:34+0000\n"
-"PO-Revision-Date: 2021-08-16 15:34+0000\n"
+"POT-Creation-Date: 2021-08-16 16:30+0000\n"
+"PO-Revision-Date: 2021-08-16 16:30+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -9378,6 +9378,7 @@ msgstr "Nombre completo"
 
 #. module: l10n_ve_plusteam
 #: model:ir.model.fields,field_description:l10n_ve_plusteam.field_conceptos_islr__complete_name_with_code
+#: model:ir.model.fields,field_description:l10n_ve_plusteam.field_unidad_tributaria__complete_name_with_code
 msgid "Complete Name with Code"
 msgstr ""
 
@@ -10036,6 +10037,7 @@ msgstr "Vistas creadas"
 #: model:ir.model.fields,field_description:l10n_ve_plusteam.field_conceptos_islr__create_uid
 #: model:ir.model.fields,field_description:l10n_ve_plusteam.field_tabulador_islr__create_uid
 #: model:ir.model.fields,field_description:l10n_ve_plusteam.field_tipo_personas__create_uid
+#: model:ir.model.fields,field_description:l10n_ve_plusteam.field_unidad_tributaria__create_uid
 #: model_terms:ir.ui.view,arch_db:base.view_attachment_search
 msgid "Created by"
 msgstr "Creado por"
@@ -10119,6 +10121,7 @@ msgstr "Creado por"
 #: model:ir.model.fields,field_description:l10n_ve_plusteam.field_conceptos_islr__create_date
 #: model:ir.model.fields,field_description:l10n_ve_plusteam.field_tabulador_islr__create_date
 #: model:ir.model.fields,field_description:l10n_ve_plusteam.field_tipo_personas__create_date
+#: model:ir.model.fields,field_description:l10n_ve_plusteam.field_unidad_tributaria__create_date
 msgid "Created on"
 msgstr "Creado en"
 
@@ -10543,6 +10546,11 @@ msgstr ""
 msgid "DateTime"
 msgstr "Fecha y hora"
 
+#. module: l10n_ve_plusteam
+#: model:ir.model.fields,field_description:l10n_ve_plusteam.field_unidad_tributaria__date_day
+msgid "Day date"
+msgstr "Fecha"
+
 #. module: base
 #: model:ir.model.fields.selection,name:base.selection__ir_cron__interval_type__days
 msgid "Days"
@@ -10887,7 +10895,7 @@ msgstr "Conversaciones"
 msgid "Display"
 msgstr "Mostrar en pantalla"
 
-#. modules: base, contacts, l10n_ve_plusteam
+#. modules: contacts, base, l10n_ve_plusteam
 #: model:ir.model.fields,field_description:base.field__unknown__display_name
 #: model:ir.model.fields,field_description:base.field_base__display_name
 #: model:ir.model.fields,field_description:base.field_base_language_export__display_name
@@ -10999,6 +11007,7 @@ msgstr "Mostrar en pantalla"
 #: model:ir.model.fields,field_description:l10n_ve_plusteam.field_res_partner__display_name
 #: model:ir.model.fields,field_description:l10n_ve_plusteam.field_tabulador_islr__display_name
 #: model:ir.model.fields,field_description:l10n_ve_plusteam.field_tipo_personas__display_name
+#: model:ir.model.fields,field_description:l10n_ve_plusteam.field_unidad_tributaria__display_name
 msgid "Display Name"
 msgstr "Mostrar nombre"
 
@@ -12813,6 +12822,11 @@ msgstr ""
 msgid "Gabon"
 msgstr "Gabón"
 
+#. module: l10n_ve_plusteam
+#: model:ir.model.fields,field_description:l10n_ve_plusteam.field_unidad_tributaria__code
+msgid "Gaceta"
+msgstr ""
+
 #. module: base
 #: model:res.country,name:base.gm
 msgid "Gambia"
@@ -13557,7 +13571,7 @@ msgstr ""
 msgid "IBAN Bank Accounts"
 msgstr "Cuentas bancarias IBAN"
 
-#. modules: base, contacts, l10n_ve_plusteam
+#. modules: contacts, base, l10n_ve_plusteam
 #: model:ir.model.fields,field_description:base.field__unknown__id
 #: model:ir.model.fields,field_description:base.field_base__id
 #: model:ir.model.fields,field_description:base.field_base_language_export__id
@@ -13669,6 +13683,7 @@ msgstr "Cuentas bancarias IBAN"
 #: model:ir.model.fields,field_description:l10n_ve_plusteam.field_res_partner__id
 #: model:ir.model.fields,field_description:l10n_ve_plusteam.field_tabulador_islr__id
 #: model:ir.model.fields,field_description:l10n_ve_plusteam.field_tipo_personas__id
+#: model:ir.model.fields,field_description:l10n_ve_plusteam.field_unidad_tributaria__id
 msgid "ID"
 msgstr "Identificación"
 
@@ -15013,7 +15028,7 @@ msgstr ""
 msgid "Last Execution Date"
 msgstr "Última fecha de ejecución"
 
-#. modules: base, contacts, l10n_ve_plusteam
+#. modules: contacts, base, l10n_ve_plusteam
 #: model:ir.model.fields,field_description:base.field__unknown____last_update
 #: model:ir.model.fields,field_description:base.field_base____last_update
 #: model:ir.model.fields,field_description:base.field_base_language_export____last_update
@@ -15125,6 +15140,7 @@ msgstr "Última fecha de ejecución"
 #: model:ir.model.fields,field_description:l10n_ve_plusteam.field_res_partner____last_update
 #: model:ir.model.fields,field_description:l10n_ve_plusteam.field_tabulador_islr____last_update
 #: model:ir.model.fields,field_description:l10n_ve_plusteam.field_tipo_personas____last_update
+#: model:ir.model.fields,field_description:l10n_ve_plusteam.field_unidad_tributaria____last_update
 msgid "Last Modified on"
 msgstr "Modificada por última vez"
 
@@ -15209,6 +15225,7 @@ msgstr "Modificada por última vez"
 #: model:ir.model.fields,field_description:l10n_ve_plusteam.field_conceptos_islr__write_uid
 #: model:ir.model.fields,field_description:l10n_ve_plusteam.field_tabulador_islr__write_uid
 #: model:ir.model.fields,field_description:l10n_ve_plusteam.field_tipo_personas__write_uid
+#: model:ir.model.fields,field_description:l10n_ve_plusteam.field_unidad_tributaria__write_uid
 msgid "Last Updated by"
 msgstr "Última actualización realizada por"
 
@@ -15291,6 +15308,7 @@ msgstr "Última actualización realizada por"
 #: model:ir.model.fields,field_description:l10n_ve_plusteam.field_conceptos_islr__write_date
 #: model:ir.model.fields,field_description:l10n_ve_plusteam.field_tabulador_islr__write_date
 #: model:ir.model.fields,field_description:l10n_ve_plusteam.field_tipo_personas__write_date
+#: model:ir.model.fields,field_description:l10n_ve_plusteam.field_unidad_tributaria__write_date
 msgid "Last Updated on"
 msgstr "Ultima actualizacion en"
 
@@ -15564,7 +15582,7 @@ msgstr "Cargar datos de prueba"
 msgid "Locale Code"
 msgstr "Código local"
 
-#. modules: base, contacts, l10n_ve_plusteam
+#. modules: base, l10n_ve_plusteam, contacts
 #: model:ir.module.category,name:base.module_category_accounting_localizations
 #: model:ir.module.category,name:base.module_category_localization
 #: model:ir.ui.menu,name:contacts.menu_localisation
@@ -20976,6 +20994,11 @@ msgstr ""
 "Los usuarios anónimos tienen permisos específicos (como reglas de registro y menús restringidos).\n"
 "Normalmente no pertenecen a los grupos usuales de Odoo."
 
+#. module: l10n_ve_plusteam
+#: model:ir.model.fields,field_description:l10n_ve_plusteam.field_unidad_tributaria__date_publication
+msgid "Publication Date"
+msgstr "Fecha Publicación"
+
 #. module: base
 #: model:ir.module.module,summary:base.module_website_blog
 msgid "Publish blog posts, announces, news"
@@ -24941,6 +24964,18 @@ msgstr ""
 msgid "Uncategorized"
 msgstr ""
 
+#. module: l10n_ve_plusteam
+#: model:ir.model,name:l10n_ve_plusteam.model_unidad_tributaria
+#: model:ir.ui.menu,name:l10n_ve_plusteam.menu_unidad_tributaria
+msgid "Unidad Tributaria"
+msgstr ""
+
+#. module: l10n_ve_plusteam
+#: model:ir.actions.act_window,name:l10n_ve_plusteam.unidad_tributaria_action
+#: model_terms:ir.ui.view,arch_db:l10n_ve_plusteam.view_tax_tree
+msgid "Unidades Tributarias"
+msgstr ""
+
 #. module: base
 #: code:addons/base/models/ir_module.py:0
 #: model_terms:ir.ui.view,arch_db:base.module_form
@@ -25450,10 +25485,11 @@ msgstr "Validación de número de IVA"
 msgid "Validate and format phone numbers"
 msgstr "Validar y formatear los números de teléfono"
 
-#. module: base
+#. modules: base, l10n_ve_plusteam
 #: model:ir.model.fields,field_description:base.field_ir_config_parameter__value
 #: model:ir.model.fields,field_description:base.field_ir_model_fields_selection__value
 #: model:ir.model.fields,field_description:base.field_ir_server_object_lines__value
+#: model:ir.model.fields,field_description:l10n_ve_plusteam.field_unidad_tributaria__value
 #: model:ir.model.fields.selection,name:base.selection__ir_server_object_lines__evaluation_type__value
 #: model_terms:ir.ui.view,arch_db:base.ir_property_view
 msgid "Value"

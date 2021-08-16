@@ -8,9 +8,9 @@ class UnidadTributaria(models.Model):
     _description = "Unidad Tributaria"
     _rec_name = "complete_name_with_code"
 
+    date_day = fields.Date(string="Day date", required=True)
     code = fields.Char(string="Gaceta", required=True, index=True)
-    date_dia = fields.Date(string="Day date", required=True)
-    date_publica = fields.Date(string="Publication Date", required=True)
+    date_publication = fields.Date(string="Publication Date", required=True)
     value = fields.Float(string="Value", default=0.00)
 
     complete_name_with_code = fields.Char(
