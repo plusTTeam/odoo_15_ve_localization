@@ -18,7 +18,13 @@
             action="l10n_ve_plusteam.conceptos_islr_action"
             parent="menu_localizacion_root"
             sequence="2"
-
+    />
+     <menuitem
+            id="menu_unidad_tributaria"
+            name="Unidad Tributaria"
+            action="l10n_ve_plusteam.unidad_tributaria_action"
+            parent="menu_localizacion_root"
+            sequence="3"
     />
 
 </odoo>

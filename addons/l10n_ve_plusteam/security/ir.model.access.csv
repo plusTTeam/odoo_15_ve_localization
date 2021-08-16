@@ -5,4 +5,5 @@ access_tipo_persona_manager,tipo.personas,model_tipo_personas,account.group_acco
 access_tipo_persona_readonly,tipo.personas,model_tipo_personas,account.group_account_readonly,1,0,0,0
 access_tabulador_islr_manager,tabulador.islr,model_tabulador_islr,account.group_account_manager,1,1,1,1
 access_tabulador_islr_readonly,tabulador.islr,model_tabulador_islr,account.group_account_readonly,1,0,0,0
-
+access_unidad_tributaria_manager,unidad.tributaria,model_unidad_tributaria,account.group_account_manager,1,1,1,1
+access_unidad_tributaria_readonly,unidad.tributaria,model_unidad_tributaria,account.group_account_readonly,1,0,0,0
