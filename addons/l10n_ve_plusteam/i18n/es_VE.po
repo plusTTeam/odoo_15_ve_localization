@@ -5467,6 +5467,11 @@ msgstr ""
 " Agrega un botón de estadísticas en la vista del formulario de cliente "
 "potencial para acceder a sus sesiones de chat en vivo."
 
+#. module: l10n_ve_plusteam
+#: model:ir.model.fields,field_description:l10n_ve_plusteam.field_tabulador_islr__concept_id
+msgid " ISRL Concepts"
+msgstr "Concepto ISLR"
+
 #. module: base
 #: model:ir.module.module,description:base.module_l10n_hk
 msgid ""
@@ -5506,6 +5511,18 @@ msgstr "# Grupos"
 #: model:ir.model.fields,field_description:base.field_res_users__rules_count
 msgid "# Record Rules"
 msgstr "# Reglas de registro"
+
+#. module: l10n_ve_plusteam
+#: model:ir.model.fields,field_description:l10n_ve_plusteam.field_tabulador_islr__percentage_base
+#: model_terms:ir.ui.view,arch_db:l10n_ve_plusteam.tipo_personas
+msgid "% Base Imp."
+msgstr ""
+
+#. module: l10n_ve_plusteam
+#: model:ir.model.fields,field_description:l10n_ve_plusteam.field_tabulador_islr__percentage_reten
+#: model_terms:ir.ui.view,arch_db:l10n_ve_plusteam.tipo_personas
+msgid "% Retention"
+msgstr "% Retención"
 
 #. module: base
 #: code:addons/base/models/ir_ui_view.py:0
@@ -5640,7 +5657,7 @@ msgstr "&amp; Cerrar"
 #. module: base
 #: model_terms:ir.ui.view,arch_db:base.module_view_kanban
 msgid "&amp;nbsp;"
-msgstr ""
+msgstr " "
 
 #. module: base
 #: code:addons/base/models/ir_fields.py:0
@@ -5665,6 +5682,16 @@ msgstr "'%s' no parece una fecha valida para el campo '%%(field)s'"
 #, python-format
 msgid "'%s' does not seem to be an integer for field '%%(field)s'"
 msgstr "'%s' no parece ser un entero para el campo '%%(field)s'"
+
+#. module: l10n_ve_plusteam
+#: model:tipo.personas,name:l10n_ve_plusteam.persona_1
+msgid "(PNNR)Persona Natural No Residente"
+msgstr ""
+
+#. module: l10n_ve_plusteam
+#: model:tipo.personas,name:l10n_ve_plusteam.persona_0
+msgid "(PNRE)Persona Natural Residente"
+msgstr ""
 
 #. module: base
 #: code:addons/fields.py:0
@@ -6442,6 +6469,46 @@ msgstr "A8 12 52 x 74 mm"
 msgid "A9  13  37 x 52 mm"
 msgstr "A9 13 37 x 52 mm"
 
+#. module: l10n_ve_plusteam
+#: model:conceptos.islr,name:l10n_ve_plusteam.concepto_3
+msgid "ACT PROF NO MERCANTILES(PJD)"
+msgstr ""
+
+#. module: l10n_ve_plusteam
+#: model:conceptos.islr,name:l10n_ve_plusteam.concepto_4
+msgid "ACT PROF NO MERCANTILES(PJND)"
+msgstr ""
+
+#. module: l10n_ve_plusteam
+#: model:conceptos.islr,name:l10n_ve_plusteam.concepto_2
+msgid "ACT PROF NO MERCANTILES(PNNR)"
+msgstr ""
+
+#. module: l10n_ve_plusteam
+#: model:conceptos.islr,name:l10n_ve_plusteam.concepto_1
+msgid "ACT PROF NO MERCANTILES(PNR)"
+msgstr ""
+
+#. module: l10n_ve_plusteam
+#: model:conceptos.islr,description:l10n_ve_plusteam.concepto_3
+msgid "ACTIVIDADES PROFESIONALES NO MERCANTILES(PJD)"
+msgstr ""
+
+#. module: l10n_ve_plusteam
+#: model:conceptos.islr,description:l10n_ve_plusteam.concepto_4
+msgid "ACTIVIDADES PROFESIONALES NO MERCANTILES(PJND)"
+msgstr ""
+
+#. module: l10n_ve_plusteam
+#: model:conceptos.islr,description:l10n_ve_plusteam.concepto_2
+msgid "ACTIVIDADES PROFESIONALES NO MERCANTILES(PNNR)"
+msgstr ""
+
+#. module: l10n_ve_plusteam
+#: model:conceptos.islr,description:l10n_ve_plusteam.concepto_1
+msgid "ACTIVIDADES PROFESIONALES NO MERCANTILES(PNR)"
+msgstr ""
+
 #. module: base
 #: model:ir.actions.act_window,name:base.action_res_users_keys_description
 msgid "API Key: description input wizard"
@@ -6798,7 +6865,7 @@ msgstr "Activar y Traducir"
 #: model_terms:ir.ui.view,arch_db:base.view_currency_search
 #: model_terms:ir.ui.view,arch_db:base.view_view_search
 msgid "Active"
-msgstr "Activo"
+msgstr "Activar"
 
 #. module: base
 #: model:ir.model.fields,field_description:base.field_res_partner__active_lang_count
@@ -7940,10 +8007,12 @@ msgstr ""
 msgid "Bank"
 msgstr "Banco"
 
-#. module: base
+#. modules: contacts, base
 #: model:ir.actions.act_window,name:base.action_res_partner_bank_account_form
 #: model:ir.model,name:base.model_res_partner_bank
 #: model:ir.model.fields,field_description:base.field_res_company__bank_ids
+#: model:ir.ui.menu,name:contacts.menu_action_res_partner_bank_form
+#: model:ir.ui.menu,name:contacts.menu_config_bank_accounts
 #: model_terms:ir.ui.view,arch_db:base.res_partner_view_form_private
 #: model_terms:ir.ui.view,arch_db:base.view_partner_bank_search
 #: model_terms:ir.ui.view,arch_db:base.view_partner_bank_tree
@@ -7983,10 +8052,11 @@ msgstr ""
 msgid "Bank accounts related to this company"
 msgstr "Cuentas bancarias de esta empresa"
 
-#. module: base
+#. modules: contacts, base
 #: model:ir.actions.act_window,name:base.action_res_bank_form
 #: model:ir.model.fields,field_description:base.field_res_partner__bank_ids
 #: model:ir.model.fields,field_description:base.field_res_users__bank_ids
+#: model:ir.ui.menu,name:contacts.menu_action_res_bank_form
 #: model_terms:ir.ui.view,arch_db:base.view_res_bank_tree
 msgid "Banks"
 msgstr "Bancos"
@@ -8437,6 +8507,94 @@ msgstr "C. FABRICACIÓN"
 msgid "C5E 24  163 x 229 mm"
 msgstr "C5E 24 163 x 229 mm"
 
+#. module: l10n_ve_plusteam
+#: model:conceptos.islr,name:l10n_ve_plusteam.concepto_80
+msgid "CANT Q SE PAG P ADQ D FONDOS D COM SITUADOS EN EL PAIS (PJD)"
+msgstr ""
+
+#. module: l10n_ve_plusteam
+#: model:conceptos.islr,name:l10n_ve_plusteam.concepto_78
+msgid "CANT Q SE PAG P ADQ D FONDOS D COM SITUADOS EN EL PAIS (PNR)"
+msgstr ""
+
+#. module: l10n_ve_plusteam
+#: model:conceptos.islr,name:l10n_ve_plusteam.concepto_81
+msgid "CANT Q SE PAG P ADQ D FONDOS D COM SITUADOS EN EL PAIS(PJND)"
+msgstr ""
+
+#. module: l10n_ve_plusteam
+#: model:conceptos.islr,name:l10n_ve_plusteam.concepto_79
+msgid "CANT Q SE PAG P ADQ D FONDOS D COM SITUADOS EN EL PAIS(PNNR)"
+msgstr ""
+
+#. module: l10n_ve_plusteam
+#: model:conceptos.islr,description:l10n_ve_plusteam.concepto_80
+msgid ""
+"CANTIDADES QUE SE PAGUEN POR ADQUISICIÓN DE FONDOS DE COMERCIO SITUADOS EN "
+"EL PAÍS (PJD)"
+msgstr ""
+
+#. module: l10n_ve_plusteam
+#: model:conceptos.islr,description:l10n_ve_plusteam.concepto_81
+msgid ""
+"CANTIDADES QUE SE PAGUEN POR ADQUISICIÓN DE FONDOS DE COMERCIO SITUADOS EN "
+"EL PAÍS (PJND)"
+msgstr ""
+
+#. module: l10n_ve_plusteam
+#: model:conceptos.islr,description:l10n_ve_plusteam.concepto_79
+msgid ""
+"CANTIDADES QUE SE PAGUEN POR ADQUISICIÓN DE FONDOS DE COMERCIO SITUADOS EN "
+"EL PAÍS (PNNR)"
+msgstr ""
+
+#. module: l10n_ve_plusteam
+#: model:conceptos.islr,description:l10n_ve_plusteam.concepto_78
+msgid ""
+"CANTIDADES QUE SE PAGUEN POR ADQUISICIÓN DE FONDOS DE COMERCIO SITUADOS EN "
+"EL PAÍS (PNR)"
+msgstr ""
+
+#. module: l10n_ve_plusteam
+#: model:conceptos.islr,name:l10n_ve_plusteam.concepto_15
+msgid "COM PAG POR LA VENTA DE BIENES INMUEBLES (PJD)"
+msgstr ""
+
+#. module: l10n_ve_plusteam
+#: model:conceptos.islr,name:l10n_ve_plusteam.concepto_16
+msgid "COM PAG POR LA VENTA DE BIENES INMUEBLES (PJND)"
+msgstr ""
+
+#. module: l10n_ve_plusteam
+#: model:conceptos.islr,name:l10n_ve_plusteam.concepto_14
+msgid "COM PAG POR LA VENTA DE BIENES INMUEBLES (PNNR)"
+msgstr ""
+
+#. module: l10n_ve_plusteam
+#: model:conceptos.islr,name:l10n_ve_plusteam.concepto_13
+msgid "COM PAG POR LA VENTA DE BIENES INMUEBLES (PNR)"
+msgstr ""
+
+#. module: l10n_ve_plusteam
+#: model:conceptos.islr,description:l10n_ve_plusteam.concepto_15
+msgid "COMISIONES PAGADAS POR LA VENTA DE BIENES INMUEBLES (PJD)"
+msgstr ""
+
+#. module: l10n_ve_plusteam
+#: model:conceptos.islr,description:l10n_ve_plusteam.concepto_16
+msgid "COMISIONES PAGADAS POR LA VENTA DE BIENES INMUEBLES (PJND)"
+msgstr ""
+
+#. module: l10n_ve_plusteam
+#: model:conceptos.islr,description:l10n_ve_plusteam.concepto_14
+msgid "COMISIONES PAGADAS POR LA VENTA DE BIENES INMUEBLES (PNNR)"
+msgstr ""
+
+#. module: l10n_ve_plusteam
+#: model:conceptos.islr,description:l10n_ve_plusteam.concepto_13
+msgid "COMISIONES PAGADAS POR LA VENTA DE BIENES INMUEBLES (PNR)"
+msgstr ""
+
 #. module: base
 #: model:ir.module.category,name:base.module_category_sales_crm
 #: model:ir.module.module,shortdesc:base.module_crm
@@ -8466,6 +8624,54 @@ msgid ""
 msgstr ""
 "Formato CSV: puede editarla directamente en su programa de hoja de cálculo "
 "favorito, la columna de más a la derecha contiene las traducciones"
+
+#. module: l10n_ve_plusteam
+#: model:conceptos.islr,name:l10n_ve_plusteam.concepto_19
+msgid "CUALQUIER OTRA COM D A REM ACC D L SDOS, SAL Y DEMAS (PJD)"
+msgstr ""
+
+#. module: l10n_ve_plusteam
+#: model:conceptos.islr,name:l10n_ve_plusteam.concepto_20
+msgid "CUALQUIER OTRA COM D A REM ACC D L SDOS, SAL Y DEMAS (PJND)"
+msgstr ""
+
+#. module: l10n_ve_plusteam
+#: model:conceptos.islr,name:l10n_ve_plusteam.concepto_18
+msgid "CUALQUIER OTRA COM D A REM ACC D L SDOS, SAL Y DEMAS (PNNR)"
+msgstr ""
+
+#. module: l10n_ve_plusteam
+#: model:conceptos.islr,name:l10n_ve_plusteam.concepto_17
+msgid "CUALQUIER OTRA COM D A REM ACC D L SDOS, SAL Y DEMAS (PNR)"
+msgstr ""
+
+#. module: l10n_ve_plusteam
+#: model:conceptos.islr,description:l10n_ve_plusteam.concepto_19
+msgid ""
+"CUALQUIER OTRA COMISIÓN DISTINTA A REMUNERACIONES ACCESORIAS DE LOS SUELDOS,"
+" SALARIOS Y DEMÁS REMUNERACIONES SIMILARES (PJD)"
+msgstr ""
+
+#. module: l10n_ve_plusteam
+#: model:conceptos.islr,description:l10n_ve_plusteam.concepto_20
+msgid ""
+"CUALQUIER OTRA COMISIÓN DISTINTA A REMUNERACIONES ACCESORIAS DE LOS SUELDOS,"
+" SALARIOS Y DEMÁS REMUNERACIONES SIMILARES (PJND)"
+msgstr ""
+
+#. module: l10n_ve_plusteam
+#: model:conceptos.islr,description:l10n_ve_plusteam.concepto_18
+msgid ""
+"CUALQUIER OTRA COMISIÓN DISTINTA A REMUNERACIONES ACCESORIAS DE LOS SUELDOS,"
+" SALARIOS Y DEMÁS REMUNERACIONES SIMILARES (PNNR)"
+msgstr ""
+
+#. module: l10n_ve_plusteam
+#: model:conceptos.islr,description:l10n_ve_plusteam.concepto_17
+msgid ""
+"CUALQUIER OTRA COMISIÓN DISTINTA A REMUNERACIONES ACCESORIAS DE LOS SUELDOS,"
+" SALARIOS Y DEMÁS REMUNERACIONES SIMILARES (PNR)"
+msgstr ""
 
 #. module: base
 #: model:res.country,vat_label:base.ar
@@ -8932,9 +9138,12 @@ msgstr ""
 msgid "Cocos (Keeling) Islands"
 msgstr "Islas Cocos (Keeling)"
 
-#. module: base
+#. modules: l10n_ve_plusteam, base
+#: model:ir.model.fields,field_description:l10n_ve_plusteam.field_conceptos_islr__code
+#: model:ir.model.fields,field_description:l10n_ve_plusteam.field_tabulador_islr__code_concept
 #: model:ir.model.fields.selection,name:base.selection__ir_translation__type__code
 #: model_terms:ir.ui.view,arch_db:base.view_base_import_language
+#: model_terms:ir.ui.view,arch_db:l10n_ve_plusteam.conceptos_ISLR
 msgid "Code"
 msgstr "Código"
 
@@ -9181,6 +9390,12 @@ msgstr "Id. completo"
 msgid "Complete Name"
 msgstr "Nombre completo"
 
+#. module: l10n_ve_plusteam
+#: model:ir.model.fields,field_description:l10n_ve_plusteam.field_conceptos_islr__complete_name_with_code
+#: model:ir.model.fields,field_description:l10n_ve_plusteam.field_unidad_tributaria__complete_name_with_code
+msgid "Complete Name with Code"
+msgstr ""
+
 #. module: base
 #: model:ir.model.fields,field_description:base.field_ir_model_fields__compute
 msgid "Compute"
@@ -9240,8 +9455,9 @@ msgstr "Pasos de los asistentes de configuración"
 msgid "Config: Run Remaining Action Todo"
 msgstr "Config.: Ejecutar las acciones que quedan por hacer"
 
-#. module: base
+#. modules: contacts, base
 #: model:ir.ui.menu,name:base.menu_reporting_config
+#: model:ir.ui.menu,name:contacts.res_partner_menu_config
 #: model_terms:ir.ui.view,arch_db:base.res_config_view_base
 msgid "Configuration"
 msgstr "Configuración"
@@ -9381,14 +9597,16 @@ msgstr "Nombre del contacto"
 msgid "Contact Tag"
 msgstr "Etiqueta de contacto"
 
-#. module: base
+#. modules: contacts, base
 #: model:ir.actions.act_window,name:base.action_partner_category_form
+#: model:ir.ui.menu,name:contacts.menu_partner_category_form
 #: model_terms:ir.ui.view,arch_db:base.view_partner_category_list
 msgid "Contact Tags"
 msgstr "Etiquetas de contacto"
 
-#. module: base
+#. modules: contacts, base
 #: model:ir.actions.act_window,name:base.action_partner_title_contact
+#: model:ir.ui.menu,name:contacts.menu_partner_title_contact
 msgid "Contact Titles"
 msgstr "Títulos de contacto"
 
@@ -9404,9 +9622,12 @@ msgid "Contact your administrator to request access if necessary."
 msgstr ""
 "Ponte en contacto con tu administrador para pedirle acceso si es necesario"
 
-#. module: base
+#. modules: contacts, base
+#: model:ir.actions.act_window,name:contacts.action_contacts
 #: model:ir.model.fields,field_description:base.field_base_partner_merge_automatic_wizard__partner_ids
 #: model:ir.module.module,shortdesc:base.module_contacts
+#: model:ir.ui.menu,name:contacts.menu_contacts
+#: model:ir.ui.menu,name:contacts.res_partner_menu_contacts
 #: model_terms:ir.ui.view,arch_db:base.view_partner_tree
 msgid "Contacts"
 msgstr "Contactos"
@@ -9507,9 +9728,10 @@ msgstr "¡No se puede crear un contacto sin dirección de correo electrónico!"
 msgid "Count (Incl. Archived)"
 msgstr "Recuento (incluyendo los archivados)"
 
-#. module: base
+#. modules: contacts, base
 #: model:ir.actions.act_window,name:base.action_country
 #: model:ir.model.fields,field_description:base.field_res_country_group__country_ids
+#: model:ir.ui.menu,name:contacts.menu_country_partner
 msgid "Countries"
 msgstr "Países"
 
@@ -9541,9 +9763,10 @@ msgstr "Código de llamada del país"
 msgid "Country Code"
 msgstr "Código de país"
 
-#. module: base
+#. modules: contacts, base
 #: model:ir.actions.act_window,name:base.action_country_group
 #: model:ir.model,name:base.model_res_country_group
+#: model:ir.ui.menu,name:contacts.menu_country_group
 #: model_terms:ir.ui.view,arch_db:base.view_country_group_form
 #: model_terms:ir.ui.view,arch_db:base.view_country_group_tree
 msgid "Country Group"
@@ -9632,6 +9855,11 @@ msgstr "Crear un menú"
 msgid "Create a bank account"
 msgstr "Crear una cuenta bancaria"
 
+#. module: contacts
+#: model_terms:ir.actions.act_window,help:contacts.action_contacts
+msgid "Create a contact in your address book"
+msgstr "Clic para agregar un contacto en tu directorio."
+
 #. module: base
 #: model_terms:ir.actions.act_window,help:base.action_ui_view_custom
 msgid "Create a customized view"
@@ -9661,7 +9889,7 @@ msgstr "Crear etiqueta de contacto"
 #: model_terms:ir.actions.act_window,help:base.action_partner_customer_form
 #: model_terms:ir.actions.act_window,help:base.action_partner_form
 msgid "Create a new customer in your address book"
-msgstr "Cree un nuevo cliente en su libro de direcciones"
+msgstr "Crear un nuevo cliente en tu libro de direcciones"
 
 #. module: base
 #: model_terms:ir.actions.act_window,help:base.res_partner_industry_action
@@ -10140,6 +10368,46 @@ msgstr ""
 msgid "Czech Republic"
 msgstr "República Checa"
 
+#. module: l10n_ve_plusteam
+#: model:conceptos.islr,name:l10n_ve_plusteam.concepto_62
+msgid "CÁNONES D ARREND D BIENES MUEBLES SIT EN EL PAIS (PJD)"
+msgstr ""
+
+#. module: l10n_ve_plusteam
+#: model:conceptos.islr,name:l10n_ve_plusteam.concepto_63
+msgid "CÁNONES D ARREND D BIENES MUEBLES SIT EN EL PAIS (PJND)"
+msgstr ""
+
+#. module: l10n_ve_plusteam
+#: model:conceptos.islr,name:l10n_ve_plusteam.concepto_61
+msgid "CÁNONES D ARREND D BIENES MUEBLES SIT EN EL PAIS (PNNR)"
+msgstr ""
+
+#. module: l10n_ve_plusteam
+#: model:conceptos.islr,name:l10n_ve_plusteam.concepto_60
+msgid "CÁNONES D ARREND D BIENES MUEBLES SIT EN EL PAIS (PNR)"
+msgstr ""
+
+#. module: l10n_ve_plusteam
+#: model:conceptos.islr,description:l10n_ve_plusteam.concepto_62
+msgid "CÁNONES DE ARRENDAMIENTOS DE BIENES MUEBLES SITUADOS EN EL PAÍS (PJD)"
+msgstr ""
+
+#. module: l10n_ve_plusteam
+#: model:conceptos.islr,description:l10n_ve_plusteam.concepto_63
+msgid "CÁNONES DE ARRENDAMIENTOS DE BIENES MUEBLES SITUADOS EN EL PAÍS (PJND)"
+msgstr ""
+
+#. module: l10n_ve_plusteam
+#: model:conceptos.islr,description:l10n_ve_plusteam.concepto_61
+msgid "CÁNONES DE ARRENDAMIENTOS DE BIENES MUEBLES SITUADOS EN EL PAÍS (PNNR)"
+msgstr ""
+
+#. module: l10n_ve_plusteam
+#: model:conceptos.islr,description:l10n_ve_plusteam.concepto_60
+msgid "CÁNONES DE ARRENDAMIENTOS DE BIENES MUEBLES SITUADOS EN EL PAÍS (PNR)"
+msgstr ""
+
 #. module: base
 #: model:res.country,name:base.ci
 msgid "Côte d'Ivoire"
@@ -10504,13 +10772,25 @@ msgstr ""
 #: model:ir.model.fields,field_description:base.field_res_users_apikeys__name
 #: model:ir.model.fields,field_description:base.field_res_users_apikeys_description__name
 #: model_terms:ir.ui.view,arch_db:base.view_attachment_form
+#: model_terms:ir.ui.view,arch_db:l10n_ve_plusteam.conceptos_ISLR
 msgid "Description"
 msgstr "Descripción"
+
+#. module: l10n_ve_plusteam
+#: model:ir.model.fields,field_description:l10n_ve_plusteam.field_conceptos_islr__description
+#: model:ir.model.fields,field_description:l10n_ve_plusteam.field_unidad_tributaria__date_publica
+msgid "Description Complete"
+msgstr "Descripción Ampliada"
 
 #. module: base
 #: model:ir.model.fields,field_description:base.field_ir_module_module__description_html
 msgid "Description HTML"
 msgstr "Descripción HTML"
+
+#. module: l10n_ve_plusteam
+#: model_terms:ir.ui.view,arch_db:l10n_ve_plusteam.tipo_personas
+msgid "Description person type"
+msgstr "Descripción Tipo de Persona"
 
 #. module: base
 #: model:ir.module.module,description:base.module_sale_quotation_builder
@@ -10725,7 +11005,6 @@ msgstr "Mostrar en pantalla"
 #: model:ir.model.fields,field_description:base.field_res_partner_category__display_name
 #: model:ir.model.fields,field_description:base.field_res_partner_industry__display_name
 #: model:ir.model.fields,field_description:base.field_res_partner_title__display_name
-#: model:ir.model.fields,field_description:base.field_res_users__display_name
 #: model:ir.model.fields,field_description:base.field_res_users_apikeys__display_name
 #: model:ir.model.fields,field_description:base.field_res_users_apikeys_description__display_name
 #: model:ir.model.fields,field_description:base.field_res_users_apikeys_show__display_name
@@ -11022,6 +11301,148 @@ msgstr ""
 #. module: base
 #: model:res.country,vat_label:base.us
 msgid "EIN"
+msgstr ""
+
+#. module: l10n_ve_plusteam
+#: model:conceptos.islr,name:l10n_ve_plusteam.concepto_32
+msgid "ENR NET D EXHIBICIÓN DE PELICULAS CINE O LA TV (PJND)"
+msgstr ""
+
+#. module: l10n_ve_plusteam
+#: model:conceptos.islr,name:l10n_ve_plusteam.concepto_31
+msgid "ENR NET D EXHIBICIÓN DE PELICULAS CINE O LA TV (PNNR)"
+msgstr ""
+
+#. module: l10n_ve_plusteam
+#: model:conceptos.islr,name:l10n_ve_plusteam.concepto_29
+#: model:conceptos.islr,name:l10n_ve_plusteam.concepto_30
+msgid "ENR NET D GAS D TRANSP CONF P FLT PAG A AGEN O EMP DE TRANSP"
+msgstr ""
+
+#. module: l10n_ve_plusteam
+#: model:conceptos.islr,name:l10n_ve_plusteam.concepto_28
+msgid "ENR NET D L AGEN INTRN  CUAN EL PAGR SEA UNA PERS JUR O COM"
+msgstr ""
+
+#. module: l10n_ve_plusteam
+#: model:conceptos.islr,name:l10n_ve_plusteam.concepto_39
+msgid "ENR NET DERIVADOS D L PRIMAS D SEGUROS Y REASEGUROS"
+msgstr ""
+
+#. module: l10n_ve_plusteam
+#: model:conceptos.islr,name:l10n_ve_plusteam.concepto_34
+msgid "ENR OBT P CONCP DE REGALIAS Y DEMAS PARTC ANÁLOGAS (PJND)"
+msgstr ""
+
+#. module: l10n_ve_plusteam
+#: model:conceptos.islr,name:l10n_ve_plusteam.concepto_33
+msgid "ENR OBT P CONCP DE REGALIAS Y DEMAS PARTC ANÁLOGAS (PNNR)"
+msgstr ""
+
+#. module: l10n_ve_plusteam
+#: model:conceptos.islr,name:l10n_ve_plusteam.concepto_35
+msgid "ENR OBT P L REMU, HON Y PAG ANÁLOGOS P ASIS TEC (PNNR)"
+msgstr ""
+
+#. module: l10n_ve_plusteam
+#: model:conceptos.islr,name:l10n_ve_plusteam.concepto_36
+msgid "ENR OBT P L REMU, HON Y PAG ANÁLOGOS P ASIS TEC(PJND)"
+msgstr ""
+
+#. module: l10n_ve_plusteam
+#: model:conceptos.islr,name:l10n_ve_plusteam.concepto_38
+msgid "ENR OBT P SER TECNLGI UTI EN EL PAIS O CEDIDOS A TER(PJND)"
+msgstr ""
+
+#. module: l10n_ve_plusteam
+#: model:conceptos.islr,name:l10n_ve_plusteam.concepto_37
+msgid "ENR OBT P SER TECNLGI UTI EN EL PAIS O CEDIDOS A TER(PNNR)"
+msgstr ""
+
+#. module: l10n_ve_plusteam
+#: model:conceptos.islr,description:l10n_ve_plusteam.concepto_32
+msgid ""
+"ENRIQUECIMIENTOS NETOS DE EXHIBICIÓN DE PELÍCULAS, CINE O LA TELEVISIÓN "
+"(PJND)"
+msgstr ""
+
+#. module: l10n_ve_plusteam
+#: model:conceptos.islr,description:l10n_ve_plusteam.concepto_31
+msgid ""
+"ENRIQUECIMIENTOS NETOS DE EXHIBICIÓN DE PELÍCULAS, CINE O LA TELEVISIÓN "
+"(PNNR)"
+msgstr ""
+
+#. module: l10n_ve_plusteam
+#: model:conceptos.islr,description:l10n_ve_plusteam.concepto_30
+msgid ""
+"ENRIQUECIMIENTOS NETOS DE GASTOS DE TRANSPORTE CONFORMADOS POR FLETES "
+"PAGADOS A AGENCIAS O EMPRESAS DE TRANSPORTE INTERNACIONAL CONSTITUIDAS Y "
+"DOMICILIADAS EN EL EXTERIOR (PJND)"
+msgstr ""
+
+#. module: l10n_ve_plusteam
+#: model:conceptos.islr,description:l10n_ve_plusteam.concepto_29
+msgid ""
+"ENRIQUECIMIENTOS NETOS DE GASTOS DE TRANSPORTE CONFORMADOS POR FLETES "
+"PAGADOS A AGENCIAS O EMPRESAS DE TRANSPORTE INTERNACIONAL CONSTITUIDAS Y "
+"DOMICILIADAS EN EL EXTERIOR (PNNR)"
+msgstr ""
+
+#. module: l10n_ve_plusteam
+#: model:conceptos.islr,description:l10n_ve_plusteam.concepto_28
+msgid ""
+"ENRIQUECIMIENTOS NETOS DE LAS AGENCIAS INTERNACIONALES CUANDO EL PAGADOR SEA"
+" UNA PERSONA JURÍDICA O COMUNIDAD DOMICILIADA EN EL PAÍS (PJND)"
+msgstr ""
+
+#. module: l10n_ve_plusteam
+#: model:conceptos.islr,description:l10n_ve_plusteam.concepto_39
+msgid ""
+"ENRIQUECIMIENTOS NETOS DERIVADOS DE LAS PRIMAS DE SEGUROS Y REASEGUROS "
+"(PJND)"
+msgstr ""
+
+#. module: l10n_ve_plusteam
+#: model:conceptos.islr,description:l10n_ve_plusteam.concepto_34
+msgid ""
+"ENRIQUECIMIENTOS OBTENIDOS POR CONCEPTO DE REGALÍAS Y DEMÁS PARTICIPACIONES "
+"ANÁLOGAS (PJND)"
+msgstr ""
+
+#. module: l10n_ve_plusteam
+#: model:conceptos.islr,description:l10n_ve_plusteam.concepto_33
+msgid ""
+"ENRIQUECIMIENTOS OBTENIDOS POR CONCEPTO DE REGALÍAS Y DEMÁS PARTICIPACIONES "
+"ANÁLOGAS (PNNR)"
+msgstr ""
+
+#. module: l10n_ve_plusteam
+#: model:conceptos.islr,description:l10n_ve_plusteam.concepto_36
+msgid ""
+"ENRIQUECIMIENTOS OBTENIDOS POR LAS REMUNERACIONES, HONORARIOS Y PAGOS "
+"ANÁLOGOS POR ASISTENCIA TÉCNICA (PJND)"
+msgstr ""
+
+#. module: l10n_ve_plusteam
+#: model:conceptos.islr,description:l10n_ve_plusteam.concepto_35
+msgid ""
+"ENRIQUECIMIENTOS OBTENIDOS POR LAS REMUNERACIONES, HONORARIOS Y PAGOS "
+"ANÁLOGOS POR ASISTENCIA TÉCNICA (PNNR)"
+msgstr ""
+
+#. module: l10n_ve_plusteam
+#: model:conceptos.islr,description:l10n_ve_plusteam.concepto_38
+msgid ""
+"ENRIQUECIMIENTOS OBTENIDOS POR SERVICIOS TECNOLÓGICOS UTILIZADOS EN EL PAÍS "
+"O CEDIDOS A TERCEROS (PJND)"
+msgstr ""
+
+#. module: l10n_ve_plusteam
+#: model:conceptos.islr,description:l10n_ve_plusteam.concepto_37
+msgid ""
+"ENRIQUECIMIENTOS OBTENIDOS POR SERVICIOS TECNOLÓGICOS UTILIZADOS EN EL PAÍS "
+"O CEDIDOS A TERCEROS (PNNR)"
 msgstr ""
 
 #. module: base
@@ -11646,8 +12067,9 @@ msgstr ""
 msgid "Fed. State"
 msgstr "Provincia"
 
-#. module: base
+#. modules: contacts, base
 #: model:ir.actions.act_window,name:base.action_country_state
+#: model:ir.ui.menu,name:contacts.menu_country_state_partner
 msgid "Fed. States"
 msgstr "Provincias"
 
@@ -12269,6 +12691,86 @@ msgstr ""
 "G. COMERCIO AL POR MAYOR Y AL POR MENOR; REPARACIÓN DE VEHÍCULOS DE MOTOR Y "
 "MOTOCICLETAS"
 
+#. module: l10n_ve_plusteam
+#: model:conceptos.islr,name:l10n_ve_plusteam.concepto_42
+msgid "GAN OBT P JUEGOS Y APUESTAS (PJD)"
+msgstr ""
+
+#. module: l10n_ve_plusteam
+#: model:conceptos.islr,name:l10n_ve_plusteam.concepto_43
+msgid "GAN OBT P JUEGOS Y APUESTAS (PJND)"
+msgstr ""
+
+#. module: l10n_ve_plusteam
+#: model:conceptos.islr,name:l10n_ve_plusteam.concepto_41
+msgid "GAN OBT P JUEGOS Y APUESTAS (PNNR)"
+msgstr ""
+
+#. module: l10n_ve_plusteam
+#: model:conceptos.islr,name:l10n_ve_plusteam.concepto_40
+msgid "GAN OBT P JUEGOS Y APUESTAS (PNR)"
+msgstr ""
+
+#. module: l10n_ve_plusteam
+#: model:conceptos.islr,name:l10n_ve_plusteam.concepto_46
+msgid "GAN OBT P PREMIOS D LOTERIAS Y D HIPODROMOS (PJD)"
+msgstr ""
+
+#. module: l10n_ve_plusteam
+#: model:conceptos.islr,name:l10n_ve_plusteam.concepto_47
+msgid "GAN OBT P PREMIOS D LOTERIAS Y D HIPODROMOS (PJND)"
+msgstr ""
+
+#. module: l10n_ve_plusteam
+#: model:conceptos.islr,name:l10n_ve_plusteam.concepto_45
+msgid "GAN OBT P PREMIOS D LOTERIAS Y D HIPODROMOS (PNNR)"
+msgstr ""
+
+#. module: l10n_ve_plusteam
+#: model:conceptos.islr,name:l10n_ve_plusteam.concepto_44
+msgid "GAN OBT P PREMIOS D LOTERIAS Y D HIPODROMOS (PNR)"
+msgstr ""
+
+#. module: l10n_ve_plusteam
+#: model:conceptos.islr,description:l10n_ve_plusteam.concepto_42
+msgid "GANANCIAS OBTENIDAS POR JUEGOS Y APUESTAS (PJD)"
+msgstr ""
+
+#. module: l10n_ve_plusteam
+#: model:conceptos.islr,description:l10n_ve_plusteam.concepto_43
+msgid "GANANCIAS OBTENIDAS POR JUEGOS Y APUESTAS (PJND)"
+msgstr ""
+
+#. module: l10n_ve_plusteam
+#: model:conceptos.islr,description:l10n_ve_plusteam.concepto_41
+msgid "GANANCIAS OBTENIDAS POR JUEGOS Y APUESTAS (PNNR)"
+msgstr ""
+
+#. module: l10n_ve_plusteam
+#: model:conceptos.islr,description:l10n_ve_plusteam.concepto_40
+msgid "GANANCIAS OBTENIDAS POR JUEGOS Y APUESTAS (PNR)"
+msgstr ""
+
+#. module: l10n_ve_plusteam
+#: model:conceptos.islr,description:l10n_ve_plusteam.concepto_46
+msgid "GANANCIAS OBTENIDAS POR PREMIOS DE LOTERÍAS Y DE HIPÓDROMOS (PJD)"
+msgstr ""
+
+#. module: l10n_ve_plusteam
+#: model:conceptos.islr,description:l10n_ve_plusteam.concepto_47
+msgid "GANANCIAS OBTENIDAS POR PREMIOS DE LOTERÍAS Y DE HIPÓDROMOS (PJND)"
+msgstr ""
+
+#. module: l10n_ve_plusteam
+#: model:conceptos.islr,description:l10n_ve_plusteam.concepto_45
+msgid "GANANCIAS OBTENIDAS POR PREMIOS DE LOTERÍAS Y DE HIPÓDROMOS (PNNR)"
+msgstr ""
+
+#. module: l10n_ve_plusteam
+#: model:conceptos.islr,description:l10n_ve_plusteam.concepto_44
+msgid "GANANCIAS OBTENIDAS POR PREMIOS DE LOTERÍAS Y DE HIPÓDROMOS (PNR)"
+msgstr ""
+
 #. module: base
 #: model:ir.model.fields.selection,name:base.selection__ir_module_module__license__gpl-2
 msgid "GPL Version 2"
@@ -12323,6 +12825,11 @@ msgstr ""
 #: model:res.country,name:base.ga
 msgid "Gabon"
 msgstr "Gabón"
+
+#. module: l10n_ve_plusteam
+#: model:ir.model.fields,field_description:l10n_ve_plusteam.field_unidad_tributaria__code
+msgid "Gaceta"
+msgstr ""
 
 #. module: base
 #: model:res.country,name:base.gm
@@ -12492,7 +12999,7 @@ msgstr ""
 #: code:addons/base/models/res_config.py:0
 #, python-format
 msgid "Go to the configuration panel"
-msgstr "Ir al panel de configuración"
+msgstr ""
 
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_google_calendar
@@ -13060,7 +13567,6 @@ msgstr "Cuentas bancarias IBAN"
 #: model:ir.model.fields,field_description:base.field_res_partner_category__id
 #: model:ir.model.fields,field_description:base.field_res_partner_industry__id
 #: model:ir.model.fields,field_description:base.field_res_partner_title__id
-#: model:ir.model.fields,field_description:base.field_res_users__id
 #: model:ir.model.fields,field_description:base.field_res_users_apikeys__id
 #: model:ir.model.fields,field_description:base.field_res_users_apikeys_description__id
 #: model:ir.model.fields,field_description:base.field_res_users_apikeys_show__id
@@ -13071,7 +13577,7 @@ msgstr "Cuentas bancarias IBAN"
 #: model:ir.model.fields,field_description:l10n_ve_plusteam.field_res_partner__id
 #: model:ir.model.fields,field_description:l10n_ve_plusteam.field_tipo_personas__id
 msgid "ID"
-msgstr ""
+msgstr "Identificación"
 
 #. module: base
 #: model:ir.model.fields,help:base.field_ir_model_data__res_id
@@ -13087,6 +13593,91 @@ msgstr "ID de la vista definida en el archivo xml"
 #: model:ir.module.module,shortdesc:base.module_bus
 msgid "IM Bus"
 msgstr "Bus IM"
+
+#. module: l10n_ve_plusteam
+#: model:conceptos.islr,name:l10n_ve_plusteam.concepto_22
+msgid "INT D CAP TOM EN PRES E INVRT EN LA PROD D L RENTA (PJND)"
+msgstr ""
+
+#. module: l10n_ve_plusteam
+#: model:conceptos.islr,name:l10n_ve_plusteam.concepto_21
+msgid "INT D CAP TOM EN PRES E INVRT EN LA PROD D L RENTA (PNNR)"
+msgstr ""
+
+#. module: l10n_ve_plusteam
+#: model:conceptos.islr,name:l10n_ve_plusteam.concepto_26
+msgid "INT PAG P L PERS JUR O COM A CUAL OTRA PERS NAT, JUR (PJD)"
+msgstr ""
+
+#. module: l10n_ve_plusteam
+#: model:conceptos.islr,name:l10n_ve_plusteam.concepto_27
+msgid "INT PAG P L PERS JUR O COM A CUAL OTRA PERS NAT, JUR (PJND)"
+msgstr ""
+
+#. module: l10n_ve_plusteam
+#: model:conceptos.islr,name:l10n_ve_plusteam.concepto_25
+msgid "INT PAG P L PERS JUR O COM A CUAL OTRA PERS NAT, JUR (PNNR)"
+msgstr ""
+
+#. module: l10n_ve_plusteam
+#: model:conceptos.islr,name:l10n_ve_plusteam.concepto_24
+msgid "INT PAG P L PERS JUR O COM A CUAL OTRA PERS NAT, JUR (PNR)"
+msgstr ""
+
+#. module: l10n_ve_plusteam
+#: model:conceptos.islr,name:l10n_ve_plusteam.concepto_23
+msgid "INT PROV D PRES Y OTROS CRE PGDRS A INTT FIN CONST EN EXT"
+msgstr ""
+
+#. module: l10n_ve_plusteam
+#: model:conceptos.islr,description:l10n_ve_plusteam.concepto_22
+msgid ""
+"INTERESES DE CAPITALES TOMADOS EN PRÉSTAMO E INVERTIDOS EN LA PRODUCCION DE "
+"LA RENTA (PJND)"
+msgstr ""
+
+#. module: l10n_ve_plusteam
+#: model:conceptos.islr,description:l10n_ve_plusteam.concepto_21
+msgid ""
+"INTERESES DE CAPITALES TOMADOS EN PRÉSTAMO E INVERTIDOS EN LA PRODUCCION DE "
+"LA RENTA (PNNR)"
+msgstr ""
+
+#. module: l10n_ve_plusteam
+#: model:conceptos.islr,description:l10n_ve_plusteam.concepto_26
+msgid ""
+"INTERESES PAGADOS POR LAS PERSONAS JURÍDICAS O COMUNIDADES A CUALQUIER OTRA "
+"PERSONA NATURAL, JURÍDICA O COMUNIDAD (PJD)"
+msgstr ""
+
+#. module: l10n_ve_plusteam
+#: model:conceptos.islr,description:l10n_ve_plusteam.concepto_27
+msgid ""
+"INTERESES PAGADOS POR LAS PERSONAS JURÍDICAS O COMUNIDADES A CUALQUIER OTRA "
+"PERSONA NATURAL, JURÍDICA O COMUNIDAD (PJND)"
+msgstr ""
+
+#. module: l10n_ve_plusteam
+#: model:conceptos.islr,description:l10n_ve_plusteam.concepto_25
+msgid ""
+"INTERESES PAGADOS POR LAS PERSONAS JURÍDICAS O COMUNIDADES A CUALQUIER OTRA "
+"PERSONA NATURAL, JURÍDICA O COMUNIDAD (PNNR)"
+msgstr ""
+
+#. module: l10n_ve_plusteam
+#: model:conceptos.islr,description:l10n_ve_plusteam.concepto_24
+msgid ""
+"INTERESES PAGADOS POR LAS PERSONAS JURÍDICAS O COMUNIDADES A CUALQUIER OTRA "
+"PERSONA NATURAL, JURÍDICA O COMUNIDAD (PNR)"
+msgstr ""
+
+#. module: l10n_ve_plusteam
+#: model:conceptos.islr,description:l10n_ve_plusteam.concepto_23
+msgid ""
+"INTERESES PROVENIENTES DE PRÉSTAMOS Y OTROS CRÉDITOS PAGADEROS A "
+"INSTITUCIONES FINANCIERAS CONSTITUIDAS EN EL  EXTERIOR Y NO DOMICILIADAS EN "
+"EL PAÍS (PJND)"
+msgstr ""
 
 #. module: base
 #: model:ir.model.fields,field_description:base.field_base_language_import__code
@@ -13526,8 +14117,9 @@ msgstr "E-faktur Indonesia"
 msgid "Indonesian - Accounting"
 msgstr "Indonesia - Contabilidad"
 
-#. module: base
+#. modules: contacts, base
 #: model:ir.actions.act_window,name:base.res_partner_industry_action
+#: model:ir.ui.menu,name:contacts.res_partner_industry_menu
 msgid "Industries"
 msgstr "Industrias"
 
@@ -13933,7 +14525,7 @@ msgstr "Inventario, logística, valoración, contabilidad"
 #. module: base
 #: model_terms:ir.ui.view,arch_db:base.view_partner_form
 msgid "Invoice"
-msgstr "Facturas de clientes"
+msgstr "Factura"
 
 #. module: base
 #: model:ir.model.fields,help:base.field_res_partner__type
@@ -14422,7 +15014,6 @@ msgstr "Última fecha de ejecución"
 #: model:ir.model.fields,field_description:base.field_res_partner_category____last_update
 #: model:ir.model.fields,field_description:base.field_res_partner_industry____last_update
 #: model:ir.model.fields,field_description:base.field_res_partner_title____last_update
-#: model:ir.model.fields,field_description:base.field_res_users____last_update
 #: model:ir.model.fields,field_description:base.field_res_users_apikeys____last_update
 #: model:ir.model.fields,field_description:base.field_res_users_apikeys_description____last_update
 #: model:ir.model.fields,field_description:base.field_res_users_apikeys_show____last_update
@@ -14826,6 +15417,11 @@ msgstr "Lista de módulos en los que se ha definido el campo"
 msgid "List of modules in which the object is defined or inherited"
 msgstr "Lista de módulos en los que se ha definido o heredado el objeto"
 
+#. module: l10n_ve_plusteam
+#: model:ir.model.fields,field_description:l10n_ve_plusteam.field_conceptos_islr__literal
+msgid "Literal"
+msgstr ""
+
 #. module: base
 #: model:res.country,name:base.lt
 msgid "Lithuania"
@@ -14870,6 +15466,7 @@ msgstr ""
 #. module: base
 #: model:ir.module.category,name:base.module_category_accounting_localizations
 #: model:ir.module.category,name:base.module_category_localization
+#: model:ir.ui.menu,name:contacts.menu_localisation
 #: model_terms:ir.ui.view,arch_db:base.view_users_form
 msgid "Localization"
 msgstr "Localización"
@@ -16553,6 +17150,11 @@ msgstr "Número de módulos actualizados"
 msgid "Number of record rules that apply to the current user"
 msgstr "Número de reglas de registro que se aplican al usuario actual"
 
+#. module: l10n_ve_plusteam
+#: model:ir.model.fields,field_description:l10n_ve_plusteam.field_conceptos_islr__numeral
+msgid "Numeral"
+msgstr ""
+
 #. module: base
 #: model:res.country,vat_label:base.pf
 msgid "N° Tahiti"
@@ -18221,7 +18823,7 @@ msgstr ""
 #: model_terms:ir.actions.act_window,help:base.action_partner_form
 msgid "Odoo helps you easily track all activities related to a customer."
 msgstr ""
-"Odoo le ayuda a rastrear fácilmente todas las actividades relacionadas con "
+"Odoo te ayuda a rastrear fácilmente todas las actividades relacionadas con "
 "un cliente."
 
 #. module: base
@@ -18230,6 +18832,13 @@ msgid "Odoo helps you easily track all activities related to a vendor."
 msgstr ""
 "Odoo le ayuda a rastrear fácilmente todas las actividades relacionadas con "
 "un proveedor."
+
+#. module: contacts
+#: model_terms:ir.actions.act_window,help:contacts.action_contacts
+msgid "Odoo helps you to easily track all activities related to a customer."
+msgstr ""
+"Odoo te ayuda a llevar el manejo de todas tus actividades relacionadas a un "
+"contacto."
 
 #. module: base
 #: code:addons/base/models/ir_module.py:0
@@ -18990,6 +19599,319 @@ msgstr "Propietario"
 msgid "P EDUCATION"
 msgstr "P. EDUCACIÓN"
 
+#. module: l10n_ve_plusteam
+#: model:conceptos.islr,name:l10n_ve_plusteam.concepto_52
+#: model:conceptos.islr,name:l10n_ve_plusteam.concepto_53
+#: model:conceptos.islr,name:l10n_ve_plusteam.concepto_54
+#: model:conceptos.islr,name:l10n_ve_plusteam.concepto_55
+msgid "PAG A EMP CONT O SUBCON DOM O NO EN EL PAIS, P L EJE D OBRAS"
+msgstr ""
+
+#. module: l10n_ve_plusteam
+#: model:conceptos.islr,name:l10n_ve_plusteam.concepto_58
+msgid "PAG A L ARREND D L BIENES INMU (PJD)"
+msgstr ""
+
+#. module: l10n_ve_plusteam
+#: model:conceptos.islr,name:l10n_ve_plusteam.concepto_59
+msgid "PAG A L ARREND D L BIENES INMU (PJND)"
+msgstr ""
+
+#. module: l10n_ve_plusteam
+#: model:conceptos.islr,name:l10n_ve_plusteam.concepto_57
+msgid "PAG A L ARREND D L BIENES INMU (PNNR)"
+msgstr ""
+
+#. module: l10n_ve_plusteam
+#: model:conceptos.islr,name:l10n_ve_plusteam.concepto_56
+msgid "PAG A L ARREND D L BIENES INMU (PNR)"
+msgstr ""
+
+#. module: l10n_ve_plusteam
+#: model:conceptos.islr,name:l10n_ve_plusteam.concepto_50
+msgid "PAG A PROP D ANIM D CARR P CONCEP D PREMIOS (PJD)"
+msgstr ""
+
+#. module: l10n_ve_plusteam
+#: model:conceptos.islr,name:l10n_ve_plusteam.concepto_51
+msgid "PAG A PROP D ANIM D CARR P CONCEP D PREMIOS (PJND)"
+msgstr ""
+
+#. module: l10n_ve_plusteam
+#: model:conceptos.islr,name:l10n_ve_plusteam.concepto_49
+msgid "PAG A PROP D ANIM D CARR P CONCEP D PREMIOS (PNNR)"
+msgstr ""
+
+#. module: l10n_ve_plusteam
+#: model:conceptos.islr,name:l10n_ve_plusteam.concepto_48
+msgid "PAG A PROP D ANIM D CARR P CONCEP D PREMIOS (PNR)"
+msgstr ""
+
+#. module: l10n_ve_plusteam
+#: model:conceptos.islr,name:l10n_ve_plusteam.concepto_76
+#: model:conceptos.islr,name:l10n_ve_plusteam.concepto_77
+msgid "PAG D L EMPR D SEGUROS A CLI, HOSP CS P L ATENC MED A SUS AS"
+msgstr ""
+
+#. module: l10n_ve_plusteam
+#: model:conceptos.islr,name:l10n_ve_plusteam.concepto_74
+#: model:conceptos.islr,name:l10n_ve_plusteam.concepto_75
+msgid "PAG D L EMPR D SEGUROS A SUS CONTR P L REP D DAÑOS SUFRIDOS"
+msgstr ""
+
+#. module: l10n_ve_plusteam
+#: model:conceptos.islr,name:l10n_ve_plusteam.concepto_72
+#: model:conceptos.islr,name:l10n_ve_plusteam.concepto_73
+msgid "PAG D L EMPR D SEGUROS, L SOC D CORRET D SEGUROS Y LAS EMPR"
+msgstr ""
+
+#. module: l10n_ve_plusteam
+#: model:conceptos.islr,name:l10n_ve_plusteam.concepto_66
+msgid "PAG D L EMPR EMI D TARJ D CRED O CONS P L VTA D BIENES(PJD)"
+msgstr ""
+
+#. module: l10n_ve_plusteam
+#: model:conceptos.islr,name:l10n_ve_plusteam.concepto_67
+msgid "PAG D L EMPR EMI D TARJ D CRED O CONS P L VTA D BIENES(PJND)"
+msgstr ""
+
+#. module: l10n_ve_plusteam
+#: model:conceptos.islr,name:l10n_ve_plusteam.concepto_65
+msgid "PAG D L EMPR EMI D TARJ D CRED O CONS P L VTA D BIENES(PNNR)"
+msgstr ""
+
+#. module: l10n_ve_plusteam
+#: model:conceptos.islr,name:l10n_ve_plusteam.concepto_64
+msgid "PAG D L EMPR EMI D TARJ D CRED O CONS P L VTA D BIENES(PNR)"
+msgstr ""
+
+#. module: l10n_ve_plusteam
+#: model:conceptos.islr,name:l10n_ve_plusteam.concepto_68
+#: model:conceptos.islr,name:l10n_ve_plusteam.concepto_69
+msgid "PAG D L EMPR EMI D TARJ D CRED P L VTA D GASO E EST D SERVI"
+msgstr ""
+
+#. module: l10n_ve_plusteam
+#: model:conceptos.islr,name:l10n_ve_plusteam.concepto_71
+msgid "PAG P GASTOS D TRANSP CONFOR P FLETES (PJD"
+msgstr ""
+
+#. module: l10n_ve_plusteam
+#: model:conceptos.islr,name:l10n_ve_plusteam.concepto_70
+msgid "PAG P GASTOS D TRANSP CONFOR P FLETES (PNR)"
+msgstr ""
+
+#. module: l10n_ve_plusteam
+#: model:conceptos.islr,name:l10n_ve_plusteam.concepto_82
+#: model:conceptos.islr,name:l10n_ve_plusteam.concepto_83
+#: model:conceptos.islr,name:l10n_ve_plusteam.concepto_84
+#: model:conceptos.islr,name:l10n_ve_plusteam.concepto_85
+msgid "PAG P SERVICIOS D PUBLICIDAD Y PROPAGANDA Y L CESIÓN DE VTA"
+msgstr ""
+
+#. module: l10n_ve_plusteam
+#: model:conceptos.islr,description:l10n_ve_plusteam.concepto_55
+msgid ""
+"PAGOS A EMPRESAS CONTRATISTAS O SUBCONTRATISTAS DOMICILIADAS O NO EN EL "
+"PAÍS, POR LA EJECUCIÓN DE OBRAS O DE LA PRESTACIÓN DE SERVICIOS EN BASE A "
+"VALUACIONES Y ORDENES DE PAGO (PJND)"
+msgstr ""
+
+#. module: l10n_ve_plusteam
+#: model:conceptos.islr,description:l10n_ve_plusteam.concepto_53
+msgid ""
+"PAGOS A EMPRESAS CONTRATISTAS O SUBCONTRATISTAS DOMICILIADAS O NO EN EL "
+"PAÍS, POR LA EJECUCIÓN DE OBRAS O DE LA PRESTACIÓN DE SERVICIOS EN BASE A "
+"VALUACIONES Y ORDENES DE PAGO (PNNR)"
+msgstr ""
+
+#. module: l10n_ve_plusteam
+#: model:conceptos.islr,description:l10n_ve_plusteam.concepto_52
+msgid ""
+"PAGOS A EMPRESAS CONTRATISTAS O SUBCONTRATISTAS DOMICILIADAS O NO EN EL "
+"PAÍS, POR LA EJECUCIÓN DE OBRAS O DE LA PRESTACIÓN DE SERVICIOS EN BASE A "
+"VALUACIONES Y ORDENES DE PAGO (PNR)"
+msgstr ""
+
+#. module: l10n_ve_plusteam
+#: model:conceptos.islr,description:l10n_ve_plusteam.concepto_54
+msgid ""
+"PAGOS A EMPRESAS CONTRATISTAS O SUBCONTRATISTAS, POR LA EJECUCIÓN DE OBRAS O"
+" DE LA PRESTACIÓN DE SERVICIOS. (PJD)"
+msgstr ""
+
+#. module: l10n_ve_plusteam
+#: model:conceptos.islr,description:l10n_ve_plusteam.concepto_58
+msgid ""
+"PAGOS A LOS ARRENDADORES DE LOS BIENES INMUEBLES SITUADOS EN EL PAÍS (PJD)"
+msgstr ""
+
+#. module: l10n_ve_plusteam
+#: model:conceptos.islr,description:l10n_ve_plusteam.concepto_59
+msgid ""
+"PAGOS A LOS ARRENDADORES DE LOS BIENES INMUEBLES SITUADOS EN EL PAÍS (PJND)"
+msgstr ""
+
+#. module: l10n_ve_plusteam
+#: model:conceptos.islr,description:l10n_ve_plusteam.concepto_57
+msgid ""
+"PAGOS A LOS ARRENDADORES DE LOS BIENES INMUEBLES SITUADOS EN EL PAÍS (PNNR)"
+msgstr ""
+
+#. module: l10n_ve_plusteam
+#: model:conceptos.islr,description:l10n_ve_plusteam.concepto_56
+msgid ""
+"PAGOS A LOS ARRENDADORES DE LOS BIENES INMUEBLES SITUADOS EN EL PAÍS (PNR)"
+msgstr ""
+
+#. module: l10n_ve_plusteam
+#: model:conceptos.islr,description:l10n_ve_plusteam.concepto_50
+msgid ""
+"PAGOS A PROPIETARIOS DE ANIMALES DE CARRERA POR CONCEPTO DE PREMIOS (PJD)"
+msgstr ""
+
+#. module: l10n_ve_plusteam
+#: model:conceptos.islr,description:l10n_ve_plusteam.concepto_51
+msgid ""
+"PAGOS A PROPIETARIOS DE ANIMALES DE CARRERA POR CONCEPTO DE PREMIOS (PJND)"
+msgstr ""
+
+#. module: l10n_ve_plusteam
+#: model:conceptos.islr,description:l10n_ve_plusteam.concepto_49
+msgid ""
+"PAGOS A PROPIETARIOS DE ANIMALES DE CARRERA POR CONCEPTO DE PREMIOS (PNNR)"
+msgstr ""
+
+#. module: l10n_ve_plusteam
+#: model:conceptos.islr,description:l10n_ve_plusteam.concepto_48
+msgid ""
+"PAGOS A PROPIETARIOS DE ANIMALES DE CARRERA POR CONCEPTO DE PREMIOS (PNR)"
+msgstr ""
+
+#. module: l10n_ve_plusteam
+#: model:conceptos.islr,description:l10n_ve_plusteam.concepto_75
+msgid ""
+"PAGOS DE LAS EMPRESAS DE SEGURO A SUS CONTRATISTAS POR LA REPARACIÓN DE "
+"DAÑOS SUFRIDOS DE SUS ASEGURADOS (PJD)"
+msgstr ""
+
+#. module: l10n_ve_plusteam
+#: model:conceptos.islr,description:l10n_ve_plusteam.concepto_74
+msgid ""
+"PAGOS DE LAS EMPRESAS DE SEGURO A SUS CONTRATISTAS POR LA REPARACIÓN DE "
+"DAÑOS SUFRIDOS DE SUS ASEGURADOS (PNR)"
+msgstr ""
+
+#. module: l10n_ve_plusteam
+#: model:conceptos.islr,description:l10n_ve_plusteam.concepto_73
+msgid ""
+"PAGOS DE LAS EMPRESAS DE SEGURO, LAS SOCIEDADES DE CORRETAJE DE SEGUROS Y "
+"LAS EMPRESAS DE REASEGUROS POR LAS PRESTACIONES DE SERVICIOS QUE LE SON "
+"PROPIOS (PJD)"
+msgstr ""
+
+#. module: l10n_ve_plusteam
+#: model:conceptos.islr,description:l10n_ve_plusteam.concepto_72
+msgid ""
+"PAGOS DE LAS EMPRESAS DE SEGURO, LAS SOCIEDADES DE CORRETAJE DE SEGUROS Y "
+"LAS EMPRESAS DE REASEGUROS POR LAS PRESTACIONES DE SERVICIOS QUE LE SON "
+"PROPIOS (PNR)"
+msgstr ""
+
+#. module: l10n_ve_plusteam
+#: model:conceptos.islr,description:l10n_ve_plusteam.concepto_77
+msgid ""
+"PAGOS DE LAS EMPRESAS DE SEGUROS A CLÍNICAS Y/O CENTROS DE SALUD POR LA "
+"ATENCIÓN MEDICA A SUS ASEGURADOS (PJD)"
+msgstr ""
+
+#. module: l10n_ve_plusteam
+#: model:conceptos.islr,description:l10n_ve_plusteam.concepto_76
+msgid ""
+"PAGOS DE LAS EMPRESAS DE SEGUROS A CLÍNICAS Y/O CENTROS DE SALUD POR LA "
+"ATENCIÓN MEDICA A SUS ASEGURADOS (PNR)"
+msgstr ""
+
+#. module: l10n_ve_plusteam
+#: model:conceptos.islr,description:l10n_ve_plusteam.concepto_66
+msgid ""
+"PAGOS DE LAS EMPRESAS EMISORAS DE TARJETAS DE CRÉDITO O CONSUMO POR LA VENTA"
+" DE BIENES Y SERVICIOS, O CUALQUIER OTRO CONCEPTO (PJD)"
+msgstr ""
+
+#. module: l10n_ve_plusteam
+#: model:conceptos.islr,description:l10n_ve_plusteam.concepto_67
+msgid ""
+"PAGOS DE LAS EMPRESAS EMISORAS DE TARJETAS DE CRÉDITO O CONSUMO POR LA VENTA"
+" DE BIENES Y SERVICIOS, O CUALQUIER OTRO CONCEPTO (PJND)"
+msgstr ""
+
+#. module: l10n_ve_plusteam
+#: model:conceptos.islr,description:l10n_ve_plusteam.concepto_65
+msgid ""
+"PAGOS DE LAS EMPRESAS EMISORAS DE TARJETAS DE CRÉDITO O CONSUMO POR LA VENTA"
+" DE BIENES Y SERVICIOS, O CUALQUIER OTRO CONCEPTO (PNNR)"
+msgstr ""
+
+#. module: l10n_ve_plusteam
+#: model:conceptos.islr,description:l10n_ve_plusteam.concepto_64
+msgid ""
+"PAGOS DE LAS EMPRESAS EMISORAS DE TARJETAS DE CRÉDITO O CONSUMO POR LA VENTA"
+" DE BIENES Y SERVICIOS, O CUALQUIER OTRO CONCEPTO (PNR)"
+msgstr ""
+
+#. module: l10n_ve_plusteam
+#: model:conceptos.islr,description:l10n_ve_plusteam.concepto_69
+msgid ""
+"PAGOS DE LAS EMPRESAS EMISORAS DE TARJETAS DE CRÉDITO POR LA VENTA DE "
+"GASOLINA EN ESTACIONES DE SERVICIOS (PJD)"
+msgstr ""
+
+#. module: l10n_ve_plusteam
+#: model:conceptos.islr,description:l10n_ve_plusteam.concepto_68
+msgid ""
+"PAGOS DE LAS EMPRESAS EMISORAS DE TARJETAS DE CRÉDITO POR LA VENTA DE "
+"GASOLINA EN ESTACIONES DE SERVICIOS (PNR)"
+msgstr ""
+
+#. module: l10n_ve_plusteam
+#: model:conceptos.islr,description:l10n_ve_plusteam.concepto_71
+msgid "PAGOS POR GASTOS DE TRANSPORTE CONFORMADOS POR FLETES (PJD)"
+msgstr ""
+
+#. module: l10n_ve_plusteam
+#: model:conceptos.islr,description:l10n_ve_plusteam.concepto_70
+msgid "PAGOS POR GASTOS DE TRANSPORTE CONFORMADOS POR FLETES (PNR)"
+msgstr ""
+
+#. module: l10n_ve_plusteam
+#: model:conceptos.islr,description:l10n_ve_plusteam.concepto_83
+msgid ""
+"PAGOS POR SERVICIOS DE PUBLICIDAD Y PROPAGANDA Y LA CESIÓN DE VENTA DE "
+"ESPACIOS PARA TALES FINES (PJD)"
+msgstr ""
+
+#. module: l10n_ve_plusteam
+#: model:conceptos.islr,description:l10n_ve_plusteam.concepto_84
+msgid ""
+"PAGOS POR SERVICIOS DE PUBLICIDAD Y PROPAGANDA Y LA CESIÓN DE VENTA DE "
+"ESPACIOS PARA TALES FINES (PJND)"
+msgstr ""
+
+#. module: l10n_ve_plusteam
+#: model:conceptos.islr,description:l10n_ve_plusteam.concepto_82
+msgid ""
+"PAGOS POR SERVICIOS DE PUBLICIDAD Y PROPAGANDA Y LA CESIÓN DE VENTA DE "
+"ESPACIOS PARA TALES FINES (PNR)"
+msgstr ""
+
+#. module: l10n_ve_plusteam
+#: model:conceptos.islr,description:l10n_ve_plusteam.concepto_85
+msgid ""
+"PAGOS POR SERVICIOS DE PUBLICIDAD Y PROPAGANDA Y LA CESIÓN DE VENTA DE "
+"ESPACIOS PARA TALES FINES A EMISORAS DE RADIO (PJD)"
+msgstr ""
+
 #. module: base
 #: model:ir.module.module,summary:base.module_l10n_pe
 msgid "PCGE Simplified"
@@ -19385,6 +20307,12 @@ msgstr "Medio de pago PayuMoney"
 #: model:ir.module.module,description:base.module_payment_payulatam
 msgid "Payulatam payment acquirer"
 msgstr "Método de pago Payulatam"
+
+#. module: l10n_ve_plusteam
+#: model:ir.model.fields,field_description:l10n_ve_plusteam.field_res_partner__person_tips
+#: model:ir.model.fields,field_description:l10n_ve_plusteam.field_res_users__person_tips
+msgid "Person Type"
+msgstr "Tipo de Persona"
 
 #. module: base
 #: model:ir.module.category,name:base.module_category_theme_personal
@@ -20317,7 +21245,7 @@ msgstr "Reglas de registro"
 #: code:addons/models.py:0 code:addons/models.py:0
 #, python-format
 msgid "Records:"
-msgstr "Registros:"
+msgstr ""
 
 #. module: base
 #: code:addons/base/models/ir_rule.py:0
@@ -20500,7 +21428,7 @@ msgstr "Repetir cada x."
 #: model_terms:ir.ui.view,arch_db:base.act_report_xml_search_view
 #: model_terms:ir.ui.view,arch_db:base.act_report_xml_view
 msgid "Report"
-msgstr "Informe"
+msgstr "Reporte"
 
 #. module: base
 #: model:ir.model,name:base.model_ir_actions_report
@@ -20841,6 +21769,12 @@ msgstr ""
 msgid "SSL/TLS"
 msgstr ""
 
+#. module: l10n_ve_plusteam
+#: model:conceptos.islr,description:l10n_ve_plusteam.concepto_0
+#: model:conceptos.islr,name:l10n_ve_plusteam.concepto_0
+msgid "SUELDOS Y SALARIOS"
+msgstr ""
+
 #. module: base
 #: model:res.country,name:base.bl
 msgid "Saint Barthélémy"
@@ -20982,7 +21916,7 @@ msgstr "Maquinaria interna de ventas"
 #: model:ir.model.fields,field_description:base.field_res_users__user_id
 #: model_terms:ir.ui.view,arch_db:base.view_res_partner_filter
 msgid "Salesperson"
-msgstr "Comercial"
+msgstr "Vendedor"
 
 #. module: base
 #: model:res.country,name:base.ws
@@ -20997,7 +21931,7 @@ msgstr ""
 #. module: base
 #: model:ir.model.fields,field_description:base.field_res_partner_bank__sanitized_acc_number
 msgid "Sanitized Account Number"
-msgstr "Número de Cuenta Bancaria"
+msgstr "Número de cuenta limpia"
 
 #. module: base
 #: model:ir.model.fields.selection,name:base.selection__res_lang__week_start__6
@@ -21991,6 +22925,11 @@ msgstr "Suscripciones"
 msgid "Subsequences"
 msgstr "Subsecuencias"
 
+#. module: l10n_ve_plusteam
+#: model_terms:ir.ui.view,arch_db:l10n_ve_plusteam.tipo_personas
+msgid "Subtracting"
+msgstr "Sustraendo"
+
 #. module: base
 #: model:res.country,name:base.sd
 msgid "Sudan"
@@ -22042,6 +22981,11 @@ msgstr "Surinam"
 #: model:ir.module.module,summary:base.module_hr_recruitment_survey
 msgid "Surveys"
 msgstr "Encuestas"
+
+#. module: l10n_ve_plusteam
+#: model:ir.model.fields,field_description:l10n_ve_plusteam.field_tabulador_islr__subtracting
+msgid "Sustraendo"
+msgstr ""
 
 #. module: base
 #: model:res.country,name:base.sj
@@ -22165,6 +23109,11 @@ msgstr ""
 #: model:ir.model.fields.selection,name:base.selection__report_paperformat__format__tabloid
 msgid "Tabloid 29 279.4 x 431.8 mm"
 msgstr "Tabloide 29 279,4 x 431,8 mm"
+
+#. module: l10n_ve_plusteam
+#: model:ir.model.fields,field_description:l10n_ve_plusteam.field_tipo_personas__tabulador
+msgid "Tabulador"
+msgstr ""
 
 #. module: base
 #: model_terms:ir.ui.view,arch_db:base.view_res_partner_filter
@@ -22419,7 +23368,7 @@ msgid ""
 "You can use this field for quick search."
 msgstr ""
 "EL código ISO del país en dos caracteres.\n"
-"Puede utilizar este campo para la búsqueda rápida."
+"Puedes utilizar este campo para una búsqueda rápida."
 
 #. module: base
 #: model:ir.model.fields,help:base.field_res_lang__url_code
@@ -23328,7 +24277,7 @@ msgstr "Título"
 #. module: base
 #: model:ir.model.fields,field_description:base.field_ir_sequence_date_range__date_to
 msgid "To"
-msgstr "Hasta"
+msgstr "A"
 
 #. module: base
 #: model:ir.model.fields.selection,name:base.selection__ir_actions_todo__state__open
@@ -23876,6 +24825,11 @@ msgstr ""
 msgid "Uncategorized"
 msgstr ""
 
+#. module: l10n_ve_plusteam
+#: model:ir.model,name:l10n_ve_plusteam.model_unidad_tributaria
+msgid "Unidad Tributaria"
+msgstr ""
+
 #. module: base
 #: code:addons/base/models/ir_module.py:0
 #: model_terms:ir.ui.view,arch_db:base.module_form
@@ -24288,7 +25242,7 @@ msgstr "Interfaz de PdV amigable para usuarios para tiendas y restaurantes"
 #: code:addons/models.py:0 code:addons/models.py:0
 #, python-format
 msgid "User:"
-msgstr "Usuario:"
+msgstr ""
 
 #. module: base
 #: code:addons/base/models/ir_rule.py:0
@@ -24301,9 +25255,9 @@ msgstr "Usuario: %s"
 msgid "Username"
 msgstr "Nombre de usuario"
 
-#. module: base
+#. modules: contacts, base
 #: model:ir.actions.act_window,name:base.action_res_users
-#: model:ir.model,name:base.model_res_users
+#: model:ir.model,name:contacts.model_res_users
 #: model:ir.model.fields,field_description:base.field_change_password_wizard__user_ids
 #: model:ir.model.fields,field_description:base.field_res_groups__users
 #: model:ir.model.fields,field_description:base.field_res_partner__user_ids
@@ -24645,7 +25599,7 @@ msgstr "Gestión de inventarios: Transferencias por lotes"
 #: code:addons/base/models/res_partner.py:0 code:addons/models.py:0
 #, python-format
 msgid "Warning"
-msgstr ""
+msgstr "Advertencia"
 
 #. module: base
 #: code:addons/base/models/res_config.py:0
@@ -24657,7 +25611,7 @@ msgstr "¡Alerta!"
 #: code:addons/models.py:0
 #, python-format
 msgid "Warnings"
-msgstr "Avisos"
+msgstr "Advertencias"
 
 #. module: base
 #: model:res.partner.industry,name:base.res_partner_industry_E
@@ -25721,6 +26675,11 @@ msgstr "Selección"
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_snailmail_account
 msgid "snailmail_account"
+msgstr ""
+
+#. module: l10n_ve_plusteam
+#: model:ir.model,name:l10n_ve_plusteam.model_tabulador_islr
+msgid "tabulador.islr"
 msgstr ""
 
 #. module: base

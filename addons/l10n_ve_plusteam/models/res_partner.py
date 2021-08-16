@@ -8,7 +8,7 @@ import re
 class ResPartner(models.Model):
     _inherit = 'res.partner'
 
-    # vat = fields.Char(_sql_constraints = [('chequeo', 'check(*^(V,J,E,G,P,v,j,e,g,p)+[0-9]+$)', 'error en el formato')])
+    person_tips = fields.Many2one('tipo.personas', string="Person Type")
 
     sale_tips = fields.Many2one('tipo.personas', string="Tipo de Persona")
     taxpayer = fields.Boolean(
@@ -18,8 +18,7 @@ class ResPartner(models.Model):
     )
 
     @api.constrains('vat')
-    def _check_something(self):
+    def _check_rif_field(self):
         for record in self:
             if re.match(r"^[V|E|J|P][0-9]{7,9}$", record.vat) is None:
-                raise ValidationError("Error en el formato del RIF")
-
+                raise ValidationError("Formato RIF/Cédula Invalido. Debe comenzar con una letra (V,J,E,P) seguido de 7 o 9 números")
