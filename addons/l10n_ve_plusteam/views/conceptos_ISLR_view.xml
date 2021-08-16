@@ -35,7 +35,7 @@
         </field>
     </record>
 
-    <record id="view_tax_tree" model="ir.ui.view">
+    <record id="view_conceptos_tree" model="ir.ui.view">
         <field name="name">conceptos.islr.tree</field>
         <field name="model">conceptos.islr</field>
         <field name="arch" type="xml">
