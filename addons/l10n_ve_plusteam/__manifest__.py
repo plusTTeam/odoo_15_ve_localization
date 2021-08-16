@@ -25,8 +25,9 @@
     # always loaded
     'data': [
         'views/res_partner_view.xml',
-
+        'views/conf_cta_contables_rete_view.xml',
     ],
+    
     # only loaded in demonstration mode
     'demo': [
         'demo/demo.xml',
