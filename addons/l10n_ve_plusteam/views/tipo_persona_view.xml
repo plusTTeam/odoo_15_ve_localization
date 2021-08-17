@@ -21,7 +21,7 @@
                         <tree>
                             <field name="concept_id" />
                             <field name="percentage_base" string="% Base Imp." />
-                            <field name="percentage_reten" string="% Retention" />
+                            <field name="percentage_retention" string="% Retention" />
                             <field name="subtracting" string="Subtracting"/>
                         </tree>
                     </field>
