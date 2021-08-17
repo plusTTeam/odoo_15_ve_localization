@@ -21,6 +21,11 @@ class ResPartner(models.Model):
         default=False,
         help=_("It is used to know if the person is a taxpayer or not and to apply withholding.")
     )
+    retention_percentage = fields.Float(
+        string="Retention Percentage",
+        digits="2",
+        help=_("Retention percentage applied to the supplier")
+    )
 
     @api.onchange("taxpayer")
     def _onchange_taxpayer_field(self):
