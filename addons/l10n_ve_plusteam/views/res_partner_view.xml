@@ -14,7 +14,7 @@
                     <group>
                         <group>
                             <field name="taxpayer" widget="checkbox"/>
-                            <field name="special_taxpayer" widget="checkbox" attrs="{'readonly': [('taxpayer', '=', False)]}"/>
+                            <field name="special_taxpayer" widget="checkbox" attrs="{'invisible': [('taxpayer', '=', False)]}"/>
                         </group>
                     </group>
                 </page>
