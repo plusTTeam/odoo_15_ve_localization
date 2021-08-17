@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 14.0-20210809\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-08-17 16:11+0000\n"
-"PO-Revision-Date: 2021-08-17 16:11+0000\n"
+"POT-Creation-Date: 2021-08-17 17:09+0000\n"
+"PO-Revision-Date: 2021-08-17 17:09+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -9134,7 +9134,7 @@ msgstr ""
 msgid "Cocos (Keeling) Islands"
 msgstr "Islas Cocos (Keeling)"
 
-#. modules: l10n_ve_plusteam, base
+#. modules: base, l10n_ve_plusteam
 #: model:ir.model.fields,field_description:l10n_ve_plusteam.field_conceptos_islr__code
 #: model:ir.model.fields,field_description:l10n_ve_plusteam.field_tabulador_islr__code_concept
 #: model:ir.model.fields.selection,name:base.selection__ir_translation__type__code
@@ -9560,7 +9560,7 @@ msgstr "Las restricciones con el mismo nombre son únicas por módulo."
 msgid "Construction"
 msgstr "Construcción"
 
-#. modules: l10n_ve_plusteam, base
+#. modules: base, l10n_ve_plusteam
 #: model:ir.model,name:l10n_ve_plusteam.model_res_partner
 #: model:ir.model.fields,field_description:base.field_res_partner__child_ids
 #: model:ir.model.fields,field_description:base.field_res_users__child_ids
@@ -9966,7 +9966,7 @@ msgstr "Menús creados"
 msgid "Created Views"
 msgstr "Vistas creadas"
 
-#. modules: l10n_ve_plusteam, base
+#. modules: base, l10n_ve_plusteam
 #: model:ir.model.fields,field_description:base.field_base_language_export__create_uid
 #: model:ir.model.fields,field_description:base.field_base_language_import__create_uid
 #: model:ir.model.fields,field_description:base.field_base_language_install__create_uid
@@ -10051,7 +10051,7 @@ msgstr "Vistas creadas"
 msgid "Created by"
 msgstr "Creado por"
 
-#. modules: l10n_ve_plusteam, base
+#. modules: base, l10n_ve_plusteam
 #: model:ir.model.fields,field_description:base.field_base_language_export__create_date
 #: model:ir.model.fields,field_description:base.field_base_language_import__create_date
 #: model:ir.model.fields,field_description:base.field_base_language_install__create_date
@@ -10761,7 +10761,7 @@ msgstr "Dependencia"
 msgid "Descripcion tipo persona"
 msgstr ""
 
-#. modules: l10n_ve_plusteam, base
+#. modules: base, l10n_ve_plusteam
 #: model:ir.model.fields,field_description:base.field_ir_attachment__description
 #: model:ir.model.fields,field_description:base.field_ir_mail_server__name
 #: model:ir.model.fields,field_description:base.field_ir_module_category__description
@@ -10903,7 +10903,7 @@ msgstr "Conversaciones"
 msgid "Display"
 msgstr "Mostrar en pantalla"
 
-#. modules: l10n_ve_plusteam, contacts, base
+#. modules: contacts, base, l10n_ve_plusteam
 #: model:ir.model.fields,field_description:base.field__unknown__display_name
 #: model:ir.model.fields,field_description:base.field_base__display_name
 #: model:ir.model.fields,field_description:base.field_base_language_export__display_name
@@ -13568,7 +13568,7 @@ msgstr ""
 msgid "IBAN Bank Accounts"
 msgstr "Cuentas bancarias IBAN"
 
-#. modules: l10n_ve_plusteam, contacts, base
+#. modules: contacts, base, l10n_ve_plusteam
 #: model:ir.model.fields,field_description:base.field__unknown__id
 #: model:ir.model.fields,field_description:base.field_base__id
 #: model:ir.model.fields,field_description:base.field_base_language_export__id
@@ -13802,6 +13802,12 @@ msgstr "Código ISO"
 #: model:res.partner.industry,name:base.res_partner_industry_J
 msgid "IT/Communication"
 msgstr "Informática/ Comunicación"
+
+#. module: l10n_ve_plusteam
+#: model:ir.model.fields,field_description:l10n_ve_plusteam.field_res_partner__IVA_retention_percentage
+#: model:ir.model.fields,field_description:l10n_ve_plusteam.field_res_users__IVA_retention_percentage
+msgid "IVA Retention Percentage"
+msgstr "Porcentaje de retención de IVA"
 
 #. module: base
 #: model:res.country,name:base.is
@@ -15039,7 +15045,7 @@ msgstr ""
 msgid "Last Execution Date"
 msgstr "Última fecha de ejecución"
 
-#. modules: l10n_ve_plusteam, contacts, base
+#. modules: contacts, base, l10n_ve_plusteam
 #: model:ir.model.fields,field_description:base.field__unknown____last_update
 #: model:ir.model.fields,field_description:base.field_base____last_update
 #: model:ir.model.fields,field_description:base.field_base_language_export____last_update
@@ -15154,7 +15160,7 @@ msgstr "Última fecha de ejecución"
 msgid "Last Modified on"
 msgstr "Modificada por última vez"
 
-#. modules: l10n_ve_plusteam, base
+#. modules: base, l10n_ve_plusteam
 #: model:ir.model.fields,field_description:base.field_base_language_export__write_uid
 #: model:ir.model.fields,field_description:base.field_base_language_import__write_uid
 #: model:ir.model.fields,field_description:base.field_base_language_install__write_uid
@@ -15238,7 +15244,7 @@ msgstr "Modificada por última vez"
 msgid "Last Updated by"
 msgstr "Última actualización realizada por"
 
-#. modules: l10n_ve_plusteam, base
+#. modules: base, l10n_ve_plusteam
 #: model:ir.model.fields,field_description:base.field_base_language_export__write_date
 #: model:ir.model.fields,field_description:base.field_base_language_import__write_date
 #: model:ir.model.fields,field_description:base.field_base_language_install__write_date
@@ -23958,6 +23964,16 @@ msgstr ""
 "Ususario: %(user)s\n"
 "Campos:\n"
 "%(fields_list)s"
+
+#. module: l10n_ve_plusteam
+#: code:addons/l10n_ve_plusteam/models/res_partner.py:0
+#, python-format
+msgid ""
+"The retention percentage must be between the the values 0 and 100, please "
+"verify that the value is in this range"
+msgstr ""
+"El Porcentaje de retención debe estar entre los valores 0 y 100, "
+"por favor verifica que el valor se encuentra en este intervalo"
 
 #. module: base
 #: model:ir.model.constraint,message:base.constraint_res_currency_rounding_gt_zero

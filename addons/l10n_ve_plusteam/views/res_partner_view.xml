@@ -15,6 +15,11 @@
                         <group>
                             <field name="taxpayer" widget="checkbox"/>
                             <field name="special_taxpayer" widget="checkbox" attrs="{'readonly': [('taxpayer', '=', False)]}"/>
+                            <label for="IVA_retention_percentage"/>
+                            <div>
+                                <field name="IVA_retention_percentage" class="oe_inline" attrs="{'readonly': [('taxpayer', '=', False)]}"/>
+                                <span class="o_form_label oe_inline">%</span>
+                            </div>
                         </group>
                     </group>
                 </page>

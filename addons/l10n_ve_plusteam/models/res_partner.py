@@ -37,4 +37,14 @@ class ResPartner(models.Model):
     def _check_rif_field(self):
         for record in self:
             if re.match(r"^[V|E|J|P][0-9]{7,9}$", record.vat) is None:
-                raise ValidationError("Formato RIF/Cédula Invalido. Debe comenzar con una letra (V,J,E,P) seguido de 7 o 9 números")
+                raise ValidationError(
+                    "Formato RIF/Cédula Invalido. Debe comenzar con una letra (V,J,E,P) seguido de 7 o 9 números")
+
+    @api.constrains("IVA_retention_percentage")
+    def _check_iva_retention_percentage(self):
+        for record in self:
+            if record.IVA_retention_percentage < 0 or record.IVA_retention_percentage > 100:
+                raise ValidationError(
+                    _("The retention percentage must be between the the values 0 and 100, "
+                      "please verify that the value is in this range")
+                )
