@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 14.0-20210809\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-08-16 15:34+0000\n"
-"PO-Revision-Date: 2021-08-16 15:34+0000\n"
+"POT-Creation-Date: 2021-08-17 20:58+0000\n"
+"PO-Revision-Date: 2021-08-17 20:58+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -5500,7 +5500,7 @@ msgid "% Base Imp."
 msgstr ""
 
 #. module: l10n_ve_plusteam
-#: model:ir.model.fields,field_description:l10n_ve_plusteam.field_tabulador_islr__percentage_reten
+#: model:ir.model.fields,field_description:l10n_ve_plusteam.field_tabulador_islr__percentage_retention
 #: model_terms:ir.ui.view,arch_db:l10n_ve_plusteam.tipo_personas
 msgid "% Retention"
 msgstr "% Retención"
@@ -8100,6 +8100,16 @@ msgstr "Automatización básica: asegura la solidez del flujo"
 #: model:ir.model.fields.selection,name:base.selection__ir_model_fields__state__base
 msgid "Base Field"
 msgstr "Campo base"
+
+#. module: l10n_ve_plusteam
+#: model:ir.model.fields,help:l10n_ve_plusteam.field_tabulador_islr__percentage_base
+msgid ""
+"Base Imp. percentage: This percentage is applied to the amount of the "
+"service according to the concept or type of person to determine the tax "
+"base."
+msgstr ""
+"Porcentaje base: Este porcentaje se aplica al monto del servicio de acuerdo "
+"al concepto o tipo persona para determinar la base imponible."
 
 #. module: base
 #: code:addons/base/models/res_lang.py:0
@@ -21728,6 +21738,15 @@ msgstr "Restringir"
 msgid "Retail"
 msgstr ""
 
+#. module: l10n_ve_plusteam
+#: model:ir.model.fields,help:l10n_ve_plusteam.field_tabulador_islr__percentage_retention
+msgid ""
+"Retention percentage: it is the percentage that is applied to the tax base "
+"to calculate the withholding according to the concept and type of person."
+msgstr ""
+"Porcentaje de retención: es el porcentaje que se le aplica a la base imponible "
+"para el calculo de la retención de acuerdo al concepto y tipo de persona."
+
 #. module: base
 #: model:ir.model.fields,field_description:base.field_report_paperformat__margin_right
 msgid "Right Margin (mm)"
@@ -23056,6 +23075,18 @@ msgstr "Subsecuencias"
 #: model_terms:ir.ui.view,arch_db:l10n_ve_plusteam.tipo_personas
 msgid "Subtracting"
 msgstr "Sustraendo"
+
+#. module: l10n_ve_plusteam
+#: model:ir.model.fields,help:l10n_ve_plusteam.field_tabulador_islr__subtracting
+msgid ""
+"Subtracting:This is the amount that is calculated from the resident natural "
+"persons as an exempt amount of tax, that is to say that this amount is "
+"subtracted from the withholding calculated to obtain the withholding for "
+"resident natural persons."
+msgstr ""
+"Sustraendo: El es monto que se le calcula a las personas naturales residentes "
+"como monto execto de impuesto, es decir que a la retenciòn calculada se le resta"
+" este monto para obtener la retención para personas naturales residentes."
 
 #. module: base
 #: model:res.country,name:base.sd
@@ -25722,7 +25753,7 @@ msgstr "Advertencia"
 #: code:addons/base/models/res_config.py:0
 #, python-format
 msgid "Warning!"
-msgstr "¡Advertencia!"
+msgstr ""
 
 #. module: base
 #: code:addons/models.py:0
