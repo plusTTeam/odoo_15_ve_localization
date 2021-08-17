@@ -9134,7 +9134,7 @@ msgstr ""
 msgid "Cocos (Keeling) Islands"
 msgstr "Islas Cocos (Keeling)"
 
-#. modules: base, l10n_ve_plusteam
+#. modules: l10n_ve_plusteam, base
 #: model:ir.model.fields,field_description:l10n_ve_plusteam.field_conceptos_islr__code
 #: model:ir.model.fields,field_description:l10n_ve_plusteam.field_tabulador_islr__code_concept
 #: model:ir.model.fields.selection,name:base.selection__ir_translation__type__code
@@ -9560,7 +9560,7 @@ msgstr "Las restricciones con el mismo nombre son únicas por módulo."
 msgid "Construction"
 msgstr "Construcción"
 
-#. modules: base, l10n_ve_plusteam
+#. modules: l10n_ve_plusteam, base
 #: model:ir.model,name:l10n_ve_plusteam.model_res_partner
 #: model:ir.model.fields,field_description:base.field_res_partner__child_ids
 #: model:ir.model.fields,field_description:base.field_res_users__child_ids
@@ -9966,7 +9966,7 @@ msgstr "Menús creados"
 msgid "Created Views"
 msgstr "Vistas creadas"
 
-#. modules: base, l10n_ve_plusteam
+#. modules: l10n_ve_plusteam, base
 #: model:ir.model.fields,field_description:base.field_base_language_export__create_uid
 #: model:ir.model.fields,field_description:base.field_base_language_import__create_uid
 #: model:ir.model.fields,field_description:base.field_base_language_install__create_uid
@@ -10051,7 +10051,7 @@ msgstr "Vistas creadas"
 msgid "Created by"
 msgstr "Creado por"
 
-#. modules: base, l10n_ve_plusteam
+#. modules: l10n_ve_plusteam, base
 #: model:ir.model.fields,field_description:base.field_base_language_export__create_date
 #: model:ir.model.fields,field_description:base.field_base_language_import__create_date
 #: model:ir.model.fields,field_description:base.field_base_language_install__create_date
@@ -10761,7 +10761,7 @@ msgstr "Dependencia"
 msgid "Descripcion tipo persona"
 msgstr ""
 
-#. modules: base, l10n_ve_plusteam
+#. modules: l10n_ve_plusteam, base
 #: model:ir.model.fields,field_description:base.field_ir_attachment__description
 #: model:ir.model.fields,field_description:base.field_ir_mail_server__name
 #: model:ir.model.fields,field_description:base.field_ir_module_category__description
@@ -15160,7 +15160,7 @@ msgstr "Última fecha de ejecución"
 msgid "Last Modified on"
 msgstr "Modificada por última vez"
 
-#. modules: base, l10n_ve_plusteam
+#. modules: l10n_ve_plusteam, base
 #: model:ir.model.fields,field_description:base.field_base_language_export__write_uid
 #: model:ir.model.fields,field_description:base.field_base_language_import__write_uid
 #: model:ir.model.fields,field_description:base.field_base_language_install__write_uid
@@ -15244,7 +15244,7 @@ msgstr "Modificada por última vez"
 msgid "Last Updated by"
 msgstr "Última actualización realizada por"
 
-#. modules: base, l10n_ve_plusteam
+#. modules: l10n_ve_plusteam, base
 #: model:ir.model.fields,field_description:base.field_base_language_export__write_date
 #: model:ir.model.fields,field_description:base.field_base_language_import__write_date
 #: model:ir.model.fields,field_description:base.field_base_language_install__write_date
