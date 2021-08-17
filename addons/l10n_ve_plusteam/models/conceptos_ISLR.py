@@ -8,8 +8,6 @@ class ConceptosISLR(models.Model):
     _description = "Conceptos ISLR"
     _rec_name = "complete_name_with_code"
 
-    # _sql_constraints = [('code_unique', 'unique(code)', 'Name should be unique')]
-
     code = fields.Char(string="Code", required=True, index=True)
     name = fields.Char(string="Description", translate=True, required=True)
     description = fields.Char(string="Description Complete", translate=True)
