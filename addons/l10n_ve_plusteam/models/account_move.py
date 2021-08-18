@@ -9,7 +9,7 @@ import re
 class AccountMove(models.Model):
     _inherit = 'account.move'
 
-    number_control = fields.Char(string="Control Number", required=True)
+    number_control = fields.Char(string="Control Number")
 
     @api.constrains('number_control')
     def _check_number_control(self):
