@@ -5,11 +5,13 @@
         <field name="model">res.partner</field>
         <field name="inherit_id" ref="base.view_partner_form"/>
         <field name="arch" type="xml">
-            <form>
+            <xpath expr="//sheet" position="before">
                 <header>
-                    <button role="link" string="Seniat" onclick="javascript:window.open(http://contribuyente.seniat.gob.ve/BuscaRif/BuscaRif.jsp);" class="oe_highlight"/>
+                    <button role="link" string="Seniat" title="Allows the consultation of the RIF on the Seniat page"
+                            onclick="javascript:window.open('http://contribuyente.seniat.gob.ve/BuscaRif/BuscaRif.jsp','_blank');"
+                            class="oe_highlight"/>
                 </header>
-            </form>
+            </xpath>
         </field>
     </record>
 
