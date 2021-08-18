@@ -4,11 +4,12 @@
         <field name="name">res.partner.form</field>
         <field name="model">res.partner</field>
         <field name="inherit_id" ref="base.view_partner_form"/>
-        <field name="priority">20</field>
         <field name="arch" type="xml">
-            <field name="vat" position="attributes">
-                <attribute name="string">RIF</attribute>
-            </field>
+            <form>
+                <header>
+                    <button role="link" string="Seniat" onclick="javascript:window.open(http://contribuyente.seniat.gob.ve/BuscaRif/BuscaRif.jsp);" class="oe_highlight"/>
+                </header>
+            </form>
         </field>
     </record>
 
