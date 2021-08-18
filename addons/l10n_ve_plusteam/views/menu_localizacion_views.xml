@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <menuitem sequence="0" name="Localización" id="menu_localizacion_root"
+              parent="account.menu_finance_configuration"/>
+
+    <menuitem
+            id="menu_localizacion_conceptos"
+            name="Conceptos ISLR"
+            action="l10n_ve_plusteam.conceptos_islr_action"
+            parent="menu_localizacion_root"
+            sequence="2"
+
+    />
+
+
+</odoo>
