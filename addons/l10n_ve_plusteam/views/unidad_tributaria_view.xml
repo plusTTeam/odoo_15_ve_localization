@@ -42,7 +42,7 @@
     </record>
 
     <record model="ir.actions.act_window" id="unidad_tributaria_action">
-        <field name="name">Unidades Tributarias</field>
+        <field name="name">Unidad Tributaria</field>
         <field name="res_model">unidad.tributaria</field>
         <field name="view_mode">tree,form</field>
     </record>
