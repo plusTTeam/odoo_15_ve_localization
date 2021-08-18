@@ -10,33 +10,34 @@
                       <h2>Retention Accounting Accounts</h2>
                        <div class="row mt16 o_settings_container" >
                           <div class="col-12 col-lg-6 o_setting_box"
-                                id="account_settings_localization_iva"
-                                title="Cuentas para retención del IVA">
+                                id="account_settings_localization_iva">
                                 <div class="o_setting_left_pane"/>
                                 <div class="o_setting_right_pane">
                                     <span class="o_form_label">Accounting accounts for VAT retention</span>
                                     <div class="content-group">
-                                        <div class="row mt16">
+                                        <div class="row mt16"
+                                             title="Accounting accounts for VAT retention purchase">
                                             <label string="Purchase IVA" for="purchase_account_iva_id" class="col-lg-3 o_light_label"/>
                                             <field name="purchase_account_iva_id" />
                                         </div>
-                                        <div class="row">
+                                        <div class="row"
+                                             title="Accounting accounts for VAT retention Sale">
                                             <label string="Sale IVA" for="sale_account_iva_id" class="col-lg-3 o_light_label"/>
                                             <field name="sale_account_iva_id" />
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-12 col-lg-6 o_setting_box" id="account_settings_localization_islr" title="Cuentas para retención del ISLR">
+                            <div class="col-12 col-lg-6 o_setting_box" id="account_settings_localization_islr" >
                                 <div class="o_setting_left_pane"/>
                                 <div class="o_setting_right_pane">
                                     <span class="o_form_label">Accounting accounts for ISLR retention</span>
                                     <div class="content-group">
-                                        <div class="row mt16">
+                                        <div class="row mt16" title="Accounting accounts for ISLR retention Purchase">
                                             <label string="Purchase ISLR" for="purchase_account_islr_id" class="col-lg-3 o_light_label"/>
                                             <field name="purchase_account_islr_id" />
                                         </div>
-                                        <div class="row">
+                                        <div class="row" title="Accounting accounts for ISLR retention Sale">
                                             <label string="Sale ISLR" for="sale_account_islr_id" class="col-lg-3 o_light_label"/>
                                             <field name="sale_account_islr_id" />
                                         </div>
