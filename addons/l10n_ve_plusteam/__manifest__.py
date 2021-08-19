@@ -25,12 +25,12 @@
     # always loaded
     'data': [
         'security/ir.model.access.csv',
-        'data/conceptos.xml',
-        'data/personas.xml',
-        'views/res_partner_view.xml',
-        'views/conceptos_ISLR_view.xml',
-        'views/tipo_persona_view.xml',
-        'views/menu_localizacion_views.xml',
+        'data/islr_concepts_data.xml',
+        'data/person_type_data.xml',
+        'views/res_partner_views.xml',
+        'views/islr_concepts_views.xml',
+        'views/person_type_views.xml',
+        'views/menu_views.xml'
     ],
     # only loaded in demonstration mode
     'demo': [

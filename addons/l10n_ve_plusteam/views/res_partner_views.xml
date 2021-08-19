@@ -7,14 +7,14 @@
         <field name="priority">20</field>
         <field name="arch" type="xml">
             <field name="vat" position="after">
-                <field name="person_tips"/>
+                <field name="person_type"/>
             </field>
             <page name="internal_notes" position="after">
                 <page name="basic_retention_data" string="Basic Retention Data">
                     <group>
                         <group>
                             <field name="taxpayer" widget="checkbox"/>
-                            <field name="special_taxpayer" widget="checkbox" attrs="{'readonly': [('taxpayer', '=', False)]}"/>
+                            <field name="special_taxpayer" widget="checkbox" attrs="{'invisible': [('taxpayer', '=', False)]}"/>
                             <label for="IVA_retention_percentage"/>
                             <div>
                                 <field name="IVA_retention_percentage" class="oe_inline" attrs="{'readonly': [('taxpayer', '=', False)]}"/>
@@ -36,9 +36,8 @@
                 <xpath expr="//field[@name='vat']" optional="show" position="move" />
             </xpath>
             <xpath expr="//field[@name='email']" position="after">
-                <field name="person_tips"/>
+                <field name="person_type" optional="show"/>
             </xpath>
         </field>
     </record>
-
 </odoo>
