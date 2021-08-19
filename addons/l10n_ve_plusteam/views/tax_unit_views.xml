@@ -9,15 +9,15 @@
                 <sheet>
                     <group>
                         <group>
-                           <field name="date_day"/>
+                           <field name="date"/>
                         </group>
                         <group>
-                           <field name="code"/>
+                           <field name="gazette"/>
                         </group>
                     </group>
                     <group>
                         <group>
-                            <field name="date_publication"/>
+                            <field name="publication_date"/>
                         </group>
                         <group>
                             <field name="value"/>
@@ -33,9 +33,9 @@
         <field name="model">tax.unit</field>
         <field name="arch" type="xml">
             <tree string="Tax Unit">
-                <field name="date_day"/>
-                <field name="code"/>
-                <field name="date_publication"/>
+                <field name="date"/>
+                <field name="gazette"/>
+                <field name="publication_date"/>
                 <field name="value"/>
             </tree>
         </field>
