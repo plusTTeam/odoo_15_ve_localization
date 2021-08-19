@@ -9,7 +9,6 @@ class ResPartner(models.Model):
     _inherit = 'res.partner'
 
     person_type = fields.Many2one('person.type', string="Person Type")
-
     taxpayer = fields.Boolean(
         string="Taxpayer",
         default=True,
@@ -20,7 +19,7 @@ class ResPartner(models.Model):
         default=False,
         help=_("It is used to know if the person is a taxpayer or not and to apply withholding.")
     )
-    IVA_retention_percentage = fields.Float(
+    iva_retention_percentage = fields.Float(
         string="IVA Retention Percentage",
         digits="2",
         help=_("Retention percentage applied to the supplier")
@@ -31,6 +30,7 @@ class ResPartner(models.Model):
         for record in self:
             if record.taxpayer is False:
                 record.special_taxpayer = False
+                record.iva_retention_percentage = 0
 
     @api.constrains('vat')
     def _check_rif_field(self):
@@ -39,10 +39,10 @@ class ResPartner(models.Model):
                 raise ValidationError(_("The RIF/Identification Card format is invalid. "
                                         "Must start with a letter (V, J, E, P) followed by 7 or 9 numbers"))
 
-    @api.constrains("IVA_retention_percentage")
+    @api.constrains("iva_retention_percentage")
     def _check_iva_retention_percentage(self):
         for record in self:
-            if record.IVA_retention_percentage < 0 or record.IVA_retention_percentage > 100:
+            if record.iva_retention_percentage < 0 or record.iva_retention_percentage > 100:
                 raise ValidationError(
                     _("The retention percentage must be between the the values 0 and 100, "
                       "please verify that the value is in this range")
