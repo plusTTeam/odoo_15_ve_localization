@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <record id="conceptos_ISLR" model="ir.ui.view">
-        <field name="name">conceptos.islr.view</field>
-        <field name="model">conceptos.islr</field>
+    <record id="islr_concepts_view_form" model="ir.ui.view">
+        <field name="name">islr.concepts.form</field>
+        <field name="model">islr.concepts</field>
         <field name="type">form</field>
         <field name="arch" type="xml">
             <form>
@@ -15,7 +15,7 @@
                             <field name="code" placeholder="Code" class="oe_inline oe_edit_only" nolabel="1"
                                    style="width: 80px !important"/>
                             <field name="code" placeholder="Code" class="oe_inline oe_read_only" nolabel="1"/>
-                            <span>]</span>
+                            <span>] </span>
                             <field name="name" placeholder="Description" class="oe_inline"/>
                         </h1>
                     </div>
@@ -35,11 +35,11 @@
         </field>
     </record>
 
-    <record id="view_conceptos_tree" model="ir.ui.view">
-        <field name="name">conceptos.islr.tree</field>
-        <field name="model">conceptos.islr</field>
+    <record id="islr_concetps_view_tree" model="ir.ui.view">
+        <field name="name">islr.concepts.tree</field>
+        <field name="model">islr.concepts</field>
         <field name="arch" type="xml">
-            <tree string="Conceptos ISLR">
+            <tree>
                 <field name="code"/>
                 <field name="name"/>
                 <field name="description"/>
@@ -49,9 +49,9 @@
         </field>
     </record>
 
-    <record model="ir.actions.act_window" id="conceptos_islr_action">
-        <field name="name">Conceptos ISLR</field>
-        <field name="res_model">conceptos.islr</field>
+    <record model="ir.actions.act_window" id="islr_concepts_action">
+        <field name="name">ISLR Concepts</field>
+        <field name="res_model">islr.concepts</field>
         <field name="view_mode">tree,form</field>
     </record>
 </odoo>
