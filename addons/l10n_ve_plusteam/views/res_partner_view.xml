@@ -7,8 +7,8 @@
         <field name="arch" type="xml">
             <xpath expr="//sheet" position="before">
                 <header>
-                    <button role="link" string="Seniat" title="Allows the consultation of the RIF on the Seniat page"
-                            onclick="javascript:window.open('http://contribuyente.seniat.gob.ve/BuscaRif/BuscaRif.jsp','_blank');"
+                    <button role="link" string="Seniat" title="Allows consulting company information using RIF number on SENIAT site"
+                            onclick="javascript:window.open('http://contribuyente.seniat.gob.ve/BuscaRif/BuscaRif.jsp','_blank','noreferrer');"
                             class="oe_highlight"/>
                 </header>
             </xpath>
