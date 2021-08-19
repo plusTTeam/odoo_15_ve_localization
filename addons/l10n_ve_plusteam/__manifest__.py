@@ -30,7 +30,7 @@
         'views/res_partner_view.xml',
         'views/conceptos_ISLR_view.xml',
         'views/tipo_persona_view.xml',
-        'views/unidad_tributaria_view.xml',
+        'views/tax_unit_views.xml',
         'views/menu_localizacion_views.xml',
     ],
     # only loaded in demonstration mode

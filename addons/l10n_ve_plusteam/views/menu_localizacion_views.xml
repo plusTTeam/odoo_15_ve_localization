@@ -20,9 +20,9 @@
             sequence="2"
     />
      <menuitem
-            id="menu_unidad_tributaria"
-            name="Unidad Tributaria"
-            action="l10n_ve_plusteam.unidad_tributaria_action"
+            id="tax_unit_menu"
+            name="Tax Unit"
+            action="l10n_ve_plusteam.tax_unit_action"
             parent="menu_localizacion_root"
             sequence="3"
     />
