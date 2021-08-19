@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="person_type_view_form" model="ir.ui.view">
+        <field name="name">person.type.form</field>
+        <field name="model">person.type</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <div class="oe_title">
+                            <label class="oe_edit_only" for="code" style="width: 100px !important"/>
+                            <label class="oe_edit_only" for="name" />
+                            <h1>
+                                <span>[</span>
+                                <field name="code" class="oe_inline oe_edit_only" nolabel="1"
+                                       style="width: 80px !important"/>
+                                <field name="code" class="oe_inline oe_read_only" nolabel="1"/>
+                                <span>] </span>
+                                <field name="name" placeholder="Person Type Description" class="oe_inline"/>
+                            </h1>
+                        </div>
+                    </group>
+                    <field name="tabulador" widget="section_and_note_one2many">
+                        <tree>
+                            <field name="concept_id" />
+                            <field name="percentage_base" />
+                            <field name="percentage_retention" />
+                            <field name="subtracting" />
+                        </tree>
+                    </field>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="person_type_view_tree" model="ir.ui.view">
+        <field name="name">person.type.tree</field>
+        <field name="model">person.type</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="code"/>
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="person_type_action">
+        <field name="name">Person Type</field>
+        <field name="res_model">person.type</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+</odoo>
