@@ -21,9 +21,9 @@
                             </h1>
                         </div>
                     </group>
-                    <field name="tabulador" widget="section_and_note_one2many">
-                        <tree>
-                            <field name="concept_id" />
+                    <field name="islr_tab_ids">
+                        <tree editable="bottom">
+                            <field name="concept_id"/>
                             <field name="percentage_base" />
                             <field name="percentage_retention" />
                             <field name="subtracting" />

@@ -3,5 +3,5 @@ access_islr_concepts_manager,islr.concepts,model_islr_concepts,account.group_acc
 access_islr_concepts_readonly,islr.concepts,model_islr_concepts,account.group_account_readonly,1,0,0,0
 access_person_type_manager,person.type,model_person_type,account.group_account_manager,1,1,1,1
 access_person_type_readonly,person.type,model_person_type,account.group_account_readonly,1,0,0,0
-access_tabulador_islr_manager,tabulador.islr,model_tabulador_islr,account.group_account_manager,1,1,1,1
-access_tabulador_islr_readonly,tabulador.islr,model_tabulador_islr,account.group_account_readonly,1,0,0,0
+access_islr_tab_manager,islr.tab,model_islr_tab,account.group_account_manager,1,1,1,1
+access_islr_tab_readonly,islr.tab,model_islr_tab,account.group_account_readonly,1,0,0,0
