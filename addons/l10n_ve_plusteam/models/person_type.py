@@ -12,7 +12,7 @@ class PersonType(models.Model):
     islr_tab_ids = fields.One2many("islr.tab", "person_type_id", string="ISLR Tab")
 
 
-class TabuladorISLR(models.Model):
+class ISLRTab(models.Model):
     _name = "islr.tab"
     _description = "ISLR Tab"
 
