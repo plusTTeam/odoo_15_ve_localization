@@ -9,6 +9,15 @@
             <field name="vat" position="after">
                 <field name="person_type"/>
             </field>
+            <page name="internal_notes" position="after">
+                <page name="basic_retention_data" string="Basic Retention Data">
+                    <group>
+                        <group>
+                            <field name="taxpayer" widget="checkbox"/>
+                        </group>
+                    </group>
+                </page>
+            </page>
         </field>
     </record>
 

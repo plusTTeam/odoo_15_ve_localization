@@ -10,6 +10,13 @@ class ResPartner(models.Model):
 
     person_type = fields.Many2one('person.type', string="Person Type")
 
+    sale_tips = fields.Many2one('tipo.personas', string="Tipo de Persona")
+    taxpayer = fields.Boolean(
+        string="Taxpayer",
+        default=True,
+        help=_("It is used to filter the contributors for the sales book report")
+    )
+
     @api.constrains('vat')
     def _check_rif_field(self):
         for record in self:
