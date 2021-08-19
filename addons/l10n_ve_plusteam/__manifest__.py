@@ -25,8 +25,7 @@
     # always loaded
     'data': [
         'views/res_partner_view.xml',
-        'views/account_move_view.xml'
-
+        'views/account_move_views.xml'
     ],
     # only loaded in demonstration mode
     'demo': [

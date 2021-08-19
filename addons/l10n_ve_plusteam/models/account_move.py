@@ -10,6 +10,9 @@ class AccountMove(models.Model):
     _inherit = 'account.move'
 
     number_control = fields.Char(string="Control Number")
+    form_number = fields.Char(string="form number", help="Import form number C-80 o C-81", defaul="  ")
+    file_number = fields.Char(string="file number", help="Import file number", defaul="  ")
+    import_doc = fields.Boolean(string="Import")
 
     @api.constrains('number_control')
     def _check_number_control(self):

@@ -9,6 +9,15 @@
             <xpath expr="//field[@name='payment_reference']" position="after">
                 <field name="number_control"/>
             </xpath>
+            <xpath expr="//div[@class='d-flex']" position="after">
+                <field name="import_doc" attrs="{'invisible': [('move_type', 'not in', ('in_invoice', 'in_refund', 'in_receipt'))]}" />
+            </xpath>
+            <xpath expr="//field[@name='import_doc']" position="after">
+                <field name="form_number" attrs="{'invisible':[('import_doc','=',False)]}"/>
+            </xpath>
+            <xpath expr="//field[@name='form_number']" position="after">
+                <field name="file_number" attrs="{'invisible':[('import_doc','=',False)]}"/>
+            </xpath>
         </field>
     </record>
 
@@ -20,6 +29,7 @@
             <xpath expr="//field[@name='name']" position="after">
                  <field name="number_control" optional="Hide"/>
             </xpath>
+           
         </field>
     </record>
 
