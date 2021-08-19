@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <menuitem sequence="0" name="Localization" id="localization_menu"
+              parent="account.menu_finance_configuration"/>
+
+    <menuitem
+            id="person_type_menu"
+            name="Person Type"
+            action="l10n_ve_plusteam.person_type_action"
+            parent="localization_menu"
+            sequence="1"
+    />
+
+    <menuitem
+            id="islr_concepts_menu"
+            name="ISLR Concepts"
+            action="l10n_ve_plusteam.islr_concepts_action"
+            parent="localization_menu"
+            sequence="2"
+    />
+</odoo>
