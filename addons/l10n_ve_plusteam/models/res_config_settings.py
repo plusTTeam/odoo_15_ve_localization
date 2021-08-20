@@ -1,17 +1,16 @@
 # -*- coding: utf-8 -*-
 
 from odoo import models, fields, api
+from ..tools.constants import ACCOUNT_MODEL
 
 
 class ResConfigSettings(models.TransientModel):
     _inherit = "res.config.settings"
-    ACCOUNT_MODEL = "account.account"
 
     iva_account_purchase_id = fields.Many2one(ACCOUNT_MODEL, string="VAT accounting account for suppliers")
     iva_account_sale_id = fields.Many2one(ACCOUNT_MODEL, string="VAT accounting account for customer")
     islr_account_purchase_id = fields.Many2one(ACCOUNT_MODEL, string="ISLR accounting account for suppliers")
     islr_account_sale_id = fields.Many2one(ACCOUNT_MODEL, string="ISLR accounting account for customer")
-
 
     def set_values(self):
         super(ResConfigSettings, self).set_values()

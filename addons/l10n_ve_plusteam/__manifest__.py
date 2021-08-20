@@ -30,7 +30,7 @@
         'views/res_partner_views.xml',
         'views/islr_concepts_views.xml',
         'views/person_type_views.xml',
-        'views/conf_cta_contables_rete_view.xml',
+        'views/res_config_settings_views.xml',
         'views/menu_views.xml'
     ],
     
