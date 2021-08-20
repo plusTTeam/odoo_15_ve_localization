@@ -11,7 +11,8 @@ class TaxUnit(models.Model):
     date = fields.Date(string="Date", required=True)
     gazette = fields.Char(string="Gazette", required=True, index=True)
     publication_date = fields.Date(string="Publication Date", required=True)
-    value = fields.Float(string="Value", default=0.00, required=True)
+    currency_id = fields.Many2one('res.currency', string='Currency')
+    value = fields.Monetary(string="Value", default=0.00, required=True, currency_field='currency_id')
 
     complete_name_with_code = fields.Char(
         "Complete Name with Code",
@@ -22,4 +23,4 @@ class TaxUnit(models.Model):
     @api.depends("value", "gazette")
     def _compute_complete_name_with_code(self):
         for tax in self:
-            tax.complete_name_with_code = f'[{tax.gazette}] {tax.value}'
+            tax.complete_name_with_code = f"{'Gaceta Nro'} {tax.gazette} "
