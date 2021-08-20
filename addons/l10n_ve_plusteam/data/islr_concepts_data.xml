@@ -1,7 +1,7 @@
 <?xml version="1.0" ?>
 <odoo>
     <data noupdate="1">
-        <record id="concepto_0" model="conceptos.islr">
+        <record id="concept_0" model="islr.concepts">
 	        <field name="code">1</field>
 	        <field name="name">SUELDOS Y SALARIOS</field>
 	        <field name="description">SUELDOS Y SALARIOS</field>
@@ -9,7 +9,7 @@
 	        <field name="literal">A</field>
 	    </record>
 
-        <record id="concepto_1" model="conceptos.islr">
+        <record id="concept_1" model="islr.concepts">
 	        <field name="code">2</field>
 	        <field name="name">ACT PROF NO MERCANTILES(PNR)</field>
 	        <field name="description">ACTIVIDADES PROFESIONALES NO MERCANTILES(PNR)</field>
@@ -17,7 +17,7 @@
 	        <field name="literal">B</field>
 	    </record>
 
-        <record id="concepto_2" model="conceptos.islr">
+        <record id="concept_2" model="islr.concepts">
 	        <field name="code">3</field>
 	        <field name="name">ACT PROF NO MERCANTILES(PNNR)</field>
 	        <field name="description">ACTIVIDADES PROFESIONALES NO MERCANTILES(PNNR)</field>
@@ -25,7 +25,7 @@
 	        <field name="literal">C</field>
 	    </record>
 
-        <record id="concepto_3" model="conceptos.islr">
+        <record id="concept_3" model="islr.concepts">
 	        <field name="code">4</field>
 	        <field name="name">ACT PROF NO MERCANTILES(PJD)</field>
 	        <field name="description">ACTIVIDADES PROFESIONALES NO MERCANTILES(PJD)</field>
@@ -33,7 +33,7 @@
 	        <field name="literal">D</field>
 	    </record>
 
-        <record id="concepto_4" model="conceptos.islr">
+        <record id="concept_4" model="islr.concepts">
 	        <field name="code">5</field>
 	        <field name="name">ACT PROF NO MERCANTILES(PJND)</field>
 	        <field name="description">ACTIVIDADES PROFESIONALES NO MERCANTILES(PJND)</field>
@@ -41,7 +41,7 @@
 	        <field name="literal">A</field>
 	    </record>
 
-        <record id="concepto_5" model="conceptos.islr">
+        <record id="concept_5" model="islr.concepts">
 	        <field name="code">6</field>
 	        <field name="name">HON PROF MANCOMUNADAS NO MERCANTILES (PNR)</field>
 	        <field name="description">HONORARIOS PROFESIONALES MANCOMUNADOS NO MERCANTILES (PNR)</field>
@@ -49,7 +49,7 @@
 	        <field name="literal">B</field>
 	    </record>
 
-        <record id="concepto_6" model="conceptos.islr">
+        <record id="concept_6" model="islr.concepts">
 	        <field name="code">7</field>
 	        <field name="name">HON PROF MANCOMUNADAS NO MERCANTILES (PNNR)</field>
 	        <field name="description">HONORARIOS PROFESIONALES MANCOMUNADOS NO MERCANTILES (PNNR)</field>
@@ -57,7 +57,7 @@
 	        <field name="literal">A</field>
 	    </record>
 
-        <record id="concepto_7" model="conceptos.islr">
+        <record id="concept_7" model="islr.concepts">
 	        <field name="code">8</field>
 	        <field name="name">HON PROF MANCOMUNADAS NO MERCANTILES (PJD)</field>
 	        <field name="description">HONORARIOS PROFESIONALES MANCOMUNADOS NO MERCANTILES (PJD)</field>
@@ -65,7 +65,7 @@
 	        <field name="literal">B</field>
 	    </record>
 
-        <record id="concepto_8" model="conceptos.islr">
+        <record id="concept_8" model="islr.concepts">
 	        <field name="code">9</field>
 	        <field name="name">HON PROF MANCOMUNADAS NO MERCANTILES (PJND)</field>
 	        <field name="description">HONORARIOS PROFESIONALES MANCOMUNADOS NO MERCANTILES (PJND)</field>
@@ -73,7 +73,7 @@
 	        <field name="literal">C</field>
 	    </record>
 
-        <record id="concepto_9" model="conceptos.islr">
+        <record id="concept_9" model="islr.concepts">
 	        <field name="code">10</field>
 	        <field name="name">HON PROF PAG A JINT, VET, PREP O ENT (PNR)</field>
 	        <field name="description">HONORARIOS PROFESIONALES PAGADOS A JINETES, VETERINARIOS, PREPARADORES O ENTRENADORES (PNR)</field>
@@ -81,7 +81,7 @@
 	        <field name="literal"></field>
 	    </record>
 
-        <record id="concepto_10" model="conceptos.islr">
+        <record id="concept_10" model="islr.concepts">
 	        <field name="code">11</field>
 	        <field name="name">HON PROF PAG A JINT, VET, PREP O ENT (PNNR)</field>
 	        <field name="description">HONORARIOS PROFESIONALES PAGADOS A JINETES, VETERINARIOS, PREPARADORES O ENTRENADORES (PNNR)</field>
@@ -89,7 +89,7 @@
 	        <field name="literal"></field>
 	    </record>
 
-        <record id="concepto_11" model="conceptos.islr">
+        <record id="concept_11" model="islr.concepts">
 	        <field name="code">12</field>
 	        <field name="name">HON PROF PAG POR CLI, HOSP NO MERCANTILES A PROF SIN  RELACI</field>
 	        <field name="description">HONORARIOS PROFESIONALES PAGADOS POR CLÍNICAS, HOSPITALES, CENTROS DE SALUD, BUFETES, ESCRITORIOS, OFICINAS, COLEGIOS PROFESIONALES U OTRA INSTITUCIÓN PROFESIONALES NO MERCANTILES A PROFESIONALES SIN  RELACIÓN DE DEPENDENCIA (PNR)</field>
@@ -97,7 +97,7 @@
 	        <field name="literal"></field>
 	    </record>
 
-        <record id="concepto_12" model="conceptos.islr">
+        <record id="concept_12" model="islr.concepts">
 	        <field name="code">13</field>
 	        <field name="name">HON PROF PAG POR CLI, HOSP NO MERCANTILES A PROF SIN  RELACI</field>
 	        <field name="description">HONORARIOS PROFESIONALES PAGADOS POR CLÍNICAS, HOSPITALES, CENTROS DE SALUD, BUFETES, ESCRITORIOS, OFICINAS, COLEGIOS PROFESIONALES U OTRA INSTITUCIÓN PROFESIONALES NO MERCANTILES A PROFESIONALES SIN  RELACIÓN DE DEPENDENCIA (PNNR)</field>
@@ -105,7 +105,7 @@
 	        <field name="literal">1</field>
 	    </record>
 
-        <record id="concepto_13" model="conceptos.islr">
+        <record id="concept_13" model="islr.concepts">
 	        <field name="code">14</field>
 	        <field name="name">COM PAG POR LA VENTA DE BIENES INMUEBLES (PNR)</field>
 	        <field name="description">COMISIONES PAGADAS POR LA VENTA DE BIENES INMUEBLES (PNR)</field>
@@ -113,7 +113,7 @@
 	        <field name="literal">2</field>
 	    </record>
 
-        <record id="concepto_14" model="conceptos.islr">
+        <record id="concept_14" model="islr.concepts">
 	        <field name="code">15</field>
 	        <field name="name">COM PAG POR LA VENTA DE BIENES INMUEBLES (PNNR)</field>
 	        <field name="description">COMISIONES PAGADAS POR LA VENTA DE BIENES INMUEBLES (PNNR)</field>
@@ -121,7 +121,7 @@
 	        <field name="literal">3</field>
 	    </record>
 
-        <record id="concepto_15" model="conceptos.islr">
+        <record id="concept_15" model="islr.concepts">
 	        <field name="code">16</field>
 	        <field name="name">COM PAG POR LA VENTA DE BIENES INMUEBLES (PJD)</field>
 	        <field name="description">COMISIONES PAGADAS POR LA VENTA DE BIENES INMUEBLES (PJD)</field>
@@ -129,7 +129,7 @@
 	        <field name="literal"></field>
 	    </record>
 
-        <record id="concepto_16" model="conceptos.islr">
+        <record id="concept_16" model="islr.concepts">
 	        <field name="code">17</field>
 	        <field name="name">COM PAG POR LA VENTA DE BIENES INMUEBLES (PJND)</field>
 	        <field name="description">COMISIONES PAGADAS POR LA VENTA DE BIENES INMUEBLES (PJND)</field>
@@ -137,7 +137,7 @@
 	        <field name="literal">1</field>
 	    </record>
 
-        <record id="concepto_17" model="conceptos.islr">
+        <record id="concept_17" model="islr.concepts">
 	        <field name="code">18</field>
 	        <field name="name">CUALQUIER OTRA COM D A REM ACC D L SDOS, SAL Y DEMAS (PNR)</field>
 	        <field name="description">CUALQUIER OTRA COMISIÓN DISTINTA A REMUNERACIONES ACCESORIAS DE LOS SUELDOS, SALARIOS Y DEMÁS REMUNERACIONES SIMILARES (PNR)</field>
@@ -145,7 +145,7 @@
 	        <field name="literal">2</field>
 	    </record>
 
-        <record id="concepto_18" model="conceptos.islr">
+        <record id="concept_18" model="islr.concepts">
 	        <field name="code">19</field>
 	        <field name="name">CUALQUIER OTRA COM D A REM ACC D L SDOS, SAL Y DEMAS (PNNR)</field>
 	        <field name="description">CUALQUIER OTRA COMISIÓN DISTINTA A REMUNERACIONES ACCESORIAS DE LOS SUELDOS, SALARIOS Y DEMÁS REMUNERACIONES SIMILARES (PNNR)</field>
@@ -153,7 +153,7 @@
 	        <field name="literal"></field>
 	    </record>
 
-        <record id="concepto_19" model="conceptos.islr">
+        <record id="concept_19" model="islr.concepts">
 	        <field name="code">20</field>
 	        <field name="name">CUALQUIER OTRA COM D A REM ACC D L SDOS, SAL Y DEMAS (PJD)</field>
 	        <field name="description">CUALQUIER OTRA COMISIÓN DISTINTA A REMUNERACIONES ACCESORIAS DE LOS SUELDOS, SALARIOS Y DEMÁS REMUNERACIONES SIMILARES (PJD)</field>
@@ -161,7 +161,7 @@
 	        <field name="literal"></field>
 	    </record>
 
-        <record id="concepto_20" model="conceptos.islr">
+        <record id="concept_20" model="islr.concepts">
 	        <field name="code">21</field>
 	        <field name="name">CUALQUIER OTRA COM D A REM ACC D L SDOS, SAL Y DEMAS (PJND)</field>
 	        <field name="description">CUALQUIER OTRA COMISIÓN DISTINTA A REMUNERACIONES ACCESORIAS DE LOS SUELDOS, SALARIOS Y DEMÁS REMUNERACIONES SIMILARES (PJND)</field>
@@ -169,7 +169,7 @@
 	        <field name="literal"></field>
 	    </record>
 
-        <record id="concepto_21" model="conceptos.islr">
+        <record id="concept_21" model="islr.concepts">
 	        <field name="code">22</field>
 	        <field name="name">INT D CAP TOM EN PRES E INVRT EN LA PROD D L RENTA (PNNR)</field>
 	        <field name="description">INTERESES DE CAPITALES TOMADOS EN PRÉSTAMO E INVERTIDOS EN LA PRODUCCION DE LA RENTA (PNNR)</field>
@@ -177,7 +177,7 @@
 	        <field name="literal"></field>
 	    </record>
 
-        <record id="concepto_22" model="conceptos.islr">
+        <record id="concept_22" model="islr.concepts">
 	        <field name="code">23</field>
 	        <field name="name">INT D CAP TOM EN PRES E INVRT EN LA PROD D L RENTA (PJND)</field>
 	        <field name="description">INTERESES DE CAPITALES TOMADOS EN PRÉSTAMO E INVERTIDOS EN LA PRODUCCION DE LA RENTA (PJND)</field>
@@ -185,7 +185,7 @@
 	        <field name="literal">1</field>
 	    </record>
 
-        <record id="concepto_23" model="conceptos.islr">
+        <record id="concept_23" model="islr.concepts">
 	        <field name="code">24</field>
 	        <field name="name">INT PROV D PRES Y OTROS CRE PGDRS A INTT FIN CONST EN EXT</field>
 	        <field name="description">INTERESES PROVENIENTES DE PRÉSTAMOS Y OTROS CRÉDITOS PAGADEROS A INSTITUCIONES FINANCIERAS CONSTITUIDAS EN EL  EXTERIOR Y NO DOMICILIADAS EN EL PAÍS (PJND)</field>
@@ -193,7 +193,7 @@
 	        <field name="literal">2</field>
 	    </record>
 
-        <record id="concepto_24" model="conceptos.islr">
+        <record id="concept_24" model="islr.concepts">
 	        <field name="code">25</field>
 	        <field name="name">INT PAG P L PERS JUR O COM A CUAL OTRA PERS NAT, JUR (PNR)</field>
 	        <field name="description">INTERESES PAGADOS POR LAS PERSONAS JURÍDICAS O COMUNIDADES A CUALQUIER OTRA PERSONA NATURAL, JURÍDICA O COMUNIDAD (PNR)</field>
@@ -201,7 +201,7 @@
 	        <field name="literal"></field>
 	    </record>
 
-        <record id="concepto_25" model="conceptos.islr">
+        <record id="concept_25" model="islr.concepts">
 	        <field name="code">26</field>
 	        <field name="name">INT PAG P L PERS JUR O COM A CUAL OTRA PERS NAT, JUR (PNNR)</field>
 	        <field name="description">INTERESES PAGADOS POR LAS PERSONAS JURÍDICAS O COMUNIDADES A CUALQUIER OTRA PERSONA NATURAL, JURÍDICA O COMUNIDAD (PNNR)</field>
@@ -209,7 +209,7 @@
 	        <field name="literal"></field>
 	    </record>
 
-        <record id="concepto_26" model="conceptos.islr">
+        <record id="concept_26" model="islr.concepts">
 	        <field name="code">27</field>
 	        <field name="name">INT PAG P L PERS JUR O COM A CUAL OTRA PERS NAT, JUR (PJD)</field>
 	        <field name="description">INTERESES PAGADOS POR LAS PERSONAS JURÍDICAS O COMUNIDADES A CUALQUIER OTRA PERSONA NATURAL, JURÍDICA O COMUNIDAD (PJD)</field>
@@ -217,7 +217,7 @@
 	        <field name="literal"></field>
 	    </record>
 
-        <record id="concepto_27" model="conceptos.islr">
+        <record id="concept_27" model="islr.concepts">
 	        <field name="code">28</field>
 	        <field name="name">INT PAG P L PERS JUR O COM A CUAL OTRA PERS NAT, JUR (PJND)</field>
 	        <field name="description">INTERESES PAGADOS POR LAS PERSONAS JURÍDICAS O COMUNIDADES A CUALQUIER OTRA PERSONA NATURAL, JURÍDICA O COMUNIDAD (PJND)</field>
@@ -225,7 +225,7 @@
 	        <field name="literal"></field>
 	    </record>
 
-        <record id="concepto_28" model="conceptos.islr">
+        <record id="concept_28" model="islr.concepts">
 	        <field name="code">29</field>
 	        <field name="name">ENR NET D L AGEN INTRN  CUAN EL PAGR SEA UNA PERS JUR O COM</field>
 	        <field name="description">ENRIQUECIMIENTOS NETOS DE LAS AGENCIAS INTERNACIONALES CUANDO EL PAGADOR SEA UNA PERSONA JURÍDICA O COMUNIDAD DOMICILIADA EN EL PAÍS (PJND)</field>
@@ -233,7 +233,7 @@
 	        <field name="literal">2</field>
 	    </record>
 
-        <record id="concepto_29" model="conceptos.islr">
+        <record id="concept_29" model="islr.concepts">
 	        <field name="code">30</field>
 	        <field name="name">ENR NET D GAS D TRANSP CONF P FLT PAG A AGEN O EMP DE TRANSP</field>
 	        <field name="description">ENRIQUECIMIENTOS NETOS DE GASTOS DE TRANSPORTE CONFORMADOS POR FLETES PAGADOS A AGENCIAS O EMPRESAS DE TRANSPORTE INTERNACIONAL CONSTITUIDAS Y DOMICILIADAS EN EL EXTERIOR (PNNR)</field>
@@ -241,7 +241,7 @@
 	        <field name="literal">1</field>
 	    </record>
 
-        <record id="concepto_30" model="conceptos.islr">
+        <record id="concept_30" model="islr.concepts">
 	        <field name="code">31</field>
 	        <field name="name">ENR NET D GAS D TRANSP CONF P FLT PAG A AGEN O EMP DE TRANSP</field>
 	        <field name="description">ENRIQUECIMIENTOS NETOS DE GASTOS DE TRANSPORTE CONFORMADOS POR FLETES PAGADOS A AGENCIAS O EMPRESAS DE TRANSPORTE INTERNACIONAL CONSTITUIDAS Y DOMICILIADAS EN EL EXTERIOR (PJND)</field>
@@ -249,7 +249,7 @@
 	        <field name="literal"></field>
 	    </record>
 
-        <record id="concepto_31" model="conceptos.islr">
+        <record id="concept_31" model="islr.concepts">
 	        <field name="code">32</field>
 	        <field name="name">ENR NET D EXHIBICIÓN DE PELICULAS CINE O LA TV (PNNR)</field>
 	        <field name="description">ENRIQUECIMIENTOS NETOS DE EXHIBICIÓN DE PELÍCULAS, CINE O LA TELEVISIÓN (PNNR)</field>
@@ -257,7 +257,7 @@
 	        <field name="literal"></field>
 	    </record>
 
-        <record id="concepto_32" model="conceptos.islr">
+        <record id="concept_32" model="islr.concepts">
 	        <field name="code">33</field>
 	        <field name="name">ENR NET D EXHIBICIÓN DE PELICULAS CINE O LA TV (PJND)</field>
 	        <field name="description">ENRIQUECIMIENTOS NETOS DE EXHIBICIÓN DE PELÍCULAS, CINE O LA TELEVISIÓN (PJND)</field>
@@ -265,7 +265,7 @@
 	        <field name="literal">A</field>
 	    </record>
 
-        <record id="concepto_33" model="conceptos.islr">
+        <record id="concept_33" model="islr.concepts">
 	        <field name="code">34</field>
 	        <field name="name">ENR OBT P CONCP DE REGALIAS Y DEMAS PARTC ANÁLOGAS (PNNR)</field>
 	        <field name="description">ENRIQUECIMIENTOS OBTENIDOS POR CONCEPTO DE REGALÍAS Y DEMÁS PARTICIPACIONES ANÁLOGAS (PNNR)</field>
@@ -273,7 +273,7 @@
 	        <field name="literal">B</field>
 	    </record>
 
-        <record id="concepto_34" model="conceptos.islr">
+        <record id="concept_34" model="islr.concepts">
 	        <field name="code">35</field>
 	        <field name="name">ENR OBT P CONCP DE REGALIAS Y DEMAS PARTC ANÁLOGAS (PJND)</field>
 	        <field name="description">ENRIQUECIMIENTOS OBTENIDOS POR CONCEPTO DE REGALÍAS Y DEMÁS PARTICIPACIONES ANÁLOGAS (PJND)</field>
@@ -281,7 +281,7 @@
 	        <field name="literal">C</field>
 	    </record>
 
-        <record id="concepto_35" model="conceptos.islr">
+        <record id="concept_35" model="islr.concepts">
 	        <field name="code">36</field>
 	        <field name="name">ENR OBT P L REMU, HON Y PAG ANÁLOGOS P ASIS TEC (PNNR)</field>
 	        <field name="description">ENRIQUECIMIENTOS OBTENIDOS POR LAS REMUNERACIONES, HONORARIOS Y PAGOS ANÁLOGOS POR ASISTENCIA TÉCNICA (PNNR)</field>
@@ -289,7 +289,7 @@
 	        <field name="literal">D</field>
 	    </record>
 
-        <record id="concepto_36" model="conceptos.islr">
+        <record id="concept_36" model="islr.concepts">
 	        <field name="code">37</field>
 	        <field name="name">ENR OBT P L REMU, HON Y PAG ANÁLOGOS P ASIS TEC(PJND)</field>
 	        <field name="description">ENRIQUECIMIENTOS OBTENIDOS POR LAS REMUNERACIONES, HONORARIOS Y PAGOS ANÁLOGOS POR ASISTENCIA TÉCNICA (PJND)</field>
@@ -297,7 +297,7 @@
 	        <field name="literal">A</field>
 	    </record>
 
-        <record id="concepto_37" model="conceptos.islr">
+        <record id="concept_37" model="islr.concepts">
 	        <field name="code">38</field>
 	        <field name="name">ENR OBT P SER TECNLGI UTI EN EL PAIS O CEDIDOS A TER(PNNR)</field>
 	        <field name="description">ENRIQUECIMIENTOS OBTENIDOS POR SERVICIOS TECNOLÓGICOS UTILIZADOS EN EL PAÍS O CEDIDOS A TERCEROS (PNNR)</field>
@@ -305,7 +305,7 @@
 	        <field name="literal">B</field>
 	    </record>
 
-        <record id="concepto_38" model="conceptos.islr">
+        <record id="concept_38" model="islr.concepts">
 	        <field name="code">39</field>
 	        <field name="name">ENR OBT P SER TECNLGI UTI EN EL PAIS O CEDIDOS A TER(PJND)</field>
 	        <field name="description">ENRIQUECIMIENTOS OBTENIDOS POR SERVICIOS TECNOLÓGICOS UTILIZADOS EN EL PAÍS O CEDIDOS A TERCEROS (PJND)</field>
@@ -313,7 +313,7 @@
 	        <field name="literal">A</field>
 	    </record>
 
-        <record id="concepto_39" model="conceptos.islr">
+        <record id="concept_39" model="islr.concepts">
 	        <field name="code">40</field>
 	        <field name="name">ENR NET DERIVADOS D L PRIMAS D SEGUROS Y REASEGUROS</field>
 	        <field name="description">ENRIQUECIMIENTOS NETOS DERIVADOS DE LAS PRIMAS DE SEGUROS Y REASEGUROS (PJND)</field>
@@ -321,7 +321,7 @@
 	        <field name="literal">B</field>
 	    </record>
 
-        <record id="concepto_40" model="conceptos.islr">
+        <record id="concept_40" model="islr.concepts">
 	        <field name="code">41</field>
 	        <field name="name">GAN OBT P JUEGOS Y APUESTAS (PNR)</field>
 	        <field name="description">GANANCIAS OBTENIDAS POR JUEGOS Y APUESTAS (PNR)</field>
@@ -329,7 +329,7 @@
 	        <field name="literal">C</field>
 	    </record>
 
-        <record id="concepto_41" model="conceptos.islr">
+        <record id="concept_41" model="islr.concepts">
 	        <field name="code">42</field>
 	        <field name="name">GAN OBT P JUEGOS Y APUESTAS (PNNR)</field>
 	        <field name="description">GANANCIAS OBTENIDAS POR JUEGOS Y APUESTAS (PNNR)</field>
@@ -337,7 +337,7 @@
 	        <field name="literal"></field>
 	    </record>
 
-        <record id="concepto_42" model="conceptos.islr">
+        <record id="concept_42" model="islr.concepts">
 	        <field name="code">43</field>
 	        <field name="name">GAN OBT P JUEGOS Y APUESTAS (PJD)</field>
 	        <field name="description">GANANCIAS OBTENIDAS POR JUEGOS Y APUESTAS (PJD)</field>
@@ -345,7 +345,7 @@
 	        <field name="literal"></field>
 	    </record>
 
-        <record id="concepto_43" model="conceptos.islr">
+        <record id="concept_43" model="islr.concepts">
 	        <field name="code">44</field>
 	        <field name="name">GAN OBT P JUEGOS Y APUESTAS (PJND)</field>
 	        <field name="description">GANANCIAS OBTENIDAS POR JUEGOS Y APUESTAS (PJND)</field>
@@ -353,7 +353,7 @@
 	        <field name="literal"></field>
 	    </record>
 
-        <record id="concepto_44" model="conceptos.islr">
+        <record id="concept_44" model="islr.concepts">
 	        <field name="code">45</field>
 	        <field name="name">GAN OBT P PREMIOS D LOTERIAS Y D HIPODROMOS (PNR)</field>
 	        <field name="description">GANANCIAS OBTENIDAS POR PREMIOS DE LOTERÍAS Y DE HIPÓDROMOS (PNR)</field>
@@ -361,7 +361,7 @@
 	        <field name="literal">1</field>
 	    </record>
 
-        <record id="concepto_45" model="conceptos.islr">
+        <record id="concept_45" model="islr.concepts">
 	        <field name="code">46</field>
 	        <field name="name">GAN OBT P PREMIOS D LOTERIAS Y D HIPODROMOS (PNNR)</field>
 	        <field name="description">GANANCIAS OBTENIDAS POR PREMIOS DE LOTERÍAS Y DE HIPÓDROMOS (PNNR)</field>
@@ -369,7 +369,7 @@
 	        <field name="literal">2</field>
 	    </record>
 
-        <record id="concepto_46" model="conceptos.islr">
+        <record id="concept_46" model="islr.concepts">
 	        <field name="code">47</field>
 	        <field name="name">GAN OBT P PREMIOS D LOTERIAS Y D HIPODROMOS (PJD)</field>
 	        <field name="description">GANANCIAS OBTENIDAS POR PREMIOS DE LOTERÍAS Y DE HIPÓDROMOS (PJD)</field>
@@ -377,7 +377,7 @@
 	        <field name="literal">3</field>
 	    </record>
 
-        <record id="concepto_47" model="conceptos.islr">
+        <record id="concept_47" model="islr.concepts">
 	        <field name="code">48</field>
 	        <field name="name">GAN OBT P PREMIOS D LOTERIAS Y D HIPODROMOS (PJND)</field>
 	        <field name="description">GANANCIAS OBTENIDAS POR PREMIOS DE LOTERÍAS Y DE HIPÓDROMOS (PJND)</field>
@@ -385,7 +385,7 @@
 	        <field name="literal"></field>
 	    </record>
 
-        <record id="concepto_48" model="conceptos.islr">
+        <record id="concept_48" model="islr.concepts">
 	        <field name="code">49</field>
 	        <field name="name">PAG A PROP D ANIM D CARR P CONCEP D PREMIOS (PNR)</field>
 	        <field name="description">PAGOS A PROPIETARIOS DE ANIMALES DE CARRERA POR CONCEPTO DE PREMIOS (PNR)</field>
@@ -393,7 +393,7 @@
 	        <field name="literal">1</field>
 	    </record>
 
-        <record id="concepto_49" model="conceptos.islr">
+        <record id="concept_49" model="islr.concepts">
 	        <field name="code">50</field>
 	        <field name="name">PAG A PROP D ANIM D CARR P CONCEP D PREMIOS (PNNR)</field>
 	        <field name="description">PAGOS A PROPIETARIOS DE ANIMALES DE CARRERA POR CONCEPTO DE PREMIOS (PNNR)</field>
@@ -401,7 +401,7 @@
 	        <field name="literal">2</field>
 	    </record>
 
-        <record id="concepto_50" model="conceptos.islr">
+        <record id="concept_50" model="islr.concepts">
 	        <field name="code">51</field>
 	        <field name="name">PAG A PROP D ANIM D CARR P CONCEP D PREMIOS (PJD)</field>
 	        <field name="description">PAGOS A PROPIETARIOS DE ANIMALES DE CARRERA POR CONCEPTO DE PREMIOS (PJD)</field>
@@ -409,7 +409,7 @@
 	        <field name="literal"></field>
 	    </record>
 
-        <record id="concepto_51" model="conceptos.islr">
+        <record id="concept_51" model="islr.concepts">
 	        <field name="code">52</field>
 	        <field name="name">PAG A PROP D ANIM D CARR P CONCEP D PREMIOS (PJND)</field>
 	        <field name="description">PAGOS A PROPIETARIOS DE ANIMALES DE CARRERA POR CONCEPTO DE PREMIOS (PJND)</field>
@@ -417,7 +417,7 @@
 	        <field name="literal"></field>
 	    </record>
 
-        <record id="concepto_52" model="conceptos.islr">
+        <record id="concept_52" model="islr.concepts">
 	        <field name="code">53</field>
 	        <field name="name">PAG A EMP CONT O SUBCON DOM O NO EN EL PAIS, P L EJE D OBRAS</field>
 	        <field name="description">PAGOS A EMPRESAS CONTRATISTAS O SUBCONTRATISTAS DOMICILIADAS O NO EN EL PAÍS, POR LA EJECUCIÓN DE OBRAS O DE LA PRESTACIÓN DE SERVICIOS EN BASE A VALUACIONES Y ORDENES DE PAGO (PNR)</field>
@@ -425,7 +425,7 @@
 	        <field name="literal"></field>
 	    </record>
 
-        <record id="concepto_53" model="conceptos.islr">
+        <record id="concept_53" model="islr.concepts">
 	        <field name="code">54</field>
 	        <field name="name">PAG A EMP CONT O SUBCON DOM O NO EN EL PAIS, P L EJE D OBRAS</field>
 	        <field name="description">PAGOS A EMPRESAS CONTRATISTAS O SUBCONTRATISTAS DOMICILIADAS O NO EN EL PAÍS, POR LA EJECUCIÓN DE OBRAS O DE LA PRESTACIÓN DE SERVICIOS EN BASE A VALUACIONES Y ORDENES DE PAGO (PNNR)</field>
@@ -433,7 +433,7 @@
 	        <field name="literal"></field>
 	    </record>
 
-        <record id="concepto_54" model="conceptos.islr">
+        <record id="concept_54" model="islr.concepts">
 	        <field name="code">55</field>
 	        <field name="name">PAG A EMP CONT O SUBCON DOM O NO EN EL PAIS, P L EJE D OBRAS</field>
 	        <field name="description">PAGOS A EMPRESAS CONTRATISTAS O SUBCONTRATISTAS, POR LA EJECUCIÓN DE OBRAS O DE LA PRESTACIÓN DE SERVICIOS. (PJD)</field>
@@ -441,7 +441,7 @@
 	        <field name="literal">1</field>
 	    </record>
 
-        <record id="concepto_55" model="conceptos.islr">
+        <record id="concept_55" model="islr.concepts">
 	        <field name="code">56</field>
 	        <field name="name">PAG A EMP CONT O SUBCON DOM O NO EN EL PAIS, P L EJE D OBRAS</field>
 	        <field name="description">PAGOS A EMPRESAS CONTRATISTAS O SUBCONTRATISTAS DOMICILIADAS O NO EN EL PAÍS, POR LA EJECUCIÓN DE OBRAS O DE LA PRESTACIÓN DE SERVICIOS EN BASE A VALUACIONES Y ORDENES DE PAGO (PJND)</field>
@@ -449,7 +449,7 @@
 	        <field name="literal">2</field>
 	    </record>
 
-        <record id="concepto_56" model="conceptos.islr">
+        <record id="concept_56" model="islr.concepts">
 	        <field name="code">57</field>
 	        <field name="name">PAG A L ARREND D L BIENES INMU (PNR)</field>
 	        <field name="description">PAGOS A LOS ARRENDADORES DE LOS BIENES INMUEBLES SITUADOS EN EL PAÍS (PNR)</field>
@@ -457,7 +457,7 @@
 	        <field name="literal"></field>
 	    </record>
 
-        <record id="concepto_57" model="conceptos.islr">
+        <record id="concept_57" model="islr.concepts">
 	        <field name="code">58</field>
 	        <field name="name">PAG A L ARREND D L BIENES INMU (PNNR)</field>
 	        <field name="description">PAGOS A LOS ARRENDADORES DE LOS BIENES INMUEBLES SITUADOS EN EL PAÍS (PNNR)</field>
@@ -465,7 +465,7 @@
 	        <field name="literal"></field>
 	    </record>
 
-        <record id="concepto_58" model="conceptos.islr">
+        <record id="concept_58" model="islr.concepts">
 	        <field name="code">59</field>
 	        <field name="name">PAG A L ARREND D L BIENES INMU (PJD)</field>
 	        <field name="description">PAGOS A LOS ARRENDADORES DE LOS BIENES INMUEBLES SITUADOS EN EL PAÍS (PJD)</field>
@@ -473,7 +473,7 @@
 	        <field name="literal"></field>
 	    </record>
 
-        <record id="concepto_59" model="conceptos.islr">
+        <record id="concept_59" model="islr.concepts">
 	        <field name="code">60</field>
 	        <field name="name">PAG A L ARREND D L BIENES INMU (PJND)</field>
 	        <field name="description">PAGOS A LOS ARRENDADORES DE LOS BIENES INMUEBLES SITUADOS EN EL PAÍS (PJND)</field>
@@ -481,7 +481,7 @@
 	        <field name="literal"></field>
 	    </record>
 
-        <record id="concepto_60" model="conceptos.islr">
+        <record id="concept_60" model="islr.concepts">
 	        <field name="code">61</field>
 	        <field name="name">CÁNONES D ARREND D BIENES MUEBLES SIT EN EL PAIS (PNR)</field>
 	        <field name="description">CÁNONES DE ARRENDAMIENTOS DE BIENES MUEBLES SITUADOS EN EL PAÍS (PNR)</field>
@@ -489,7 +489,7 @@
 	        <field name="literal">2</field>
 	    </record>
 
-        <record id="concepto_61" model="conceptos.islr">
+        <record id="concept_61" model="islr.concepts">
 	        <field name="code">62</field>
 	        <field name="name">CÁNONES D ARREND D BIENES MUEBLES SIT EN EL PAIS (PNNR)</field>
 	        <field name="description">CÁNONES DE ARRENDAMIENTOS DE BIENES MUEBLES SITUADOS EN EL PAÍS (PNNR)</field>
@@ -497,7 +497,7 @@
 	        <field name="literal">1</field>
 	    </record>
 
-        <record id="concepto_62" model="conceptos.islr">
+        <record id="concept_62" model="islr.concepts">
 	        <field name="code">63</field>
 	        <field name="name">CÁNONES D ARREND D BIENES MUEBLES SIT EN EL PAIS (PJD)</field>
 	        <field name="description">CÁNONES DE ARRENDAMIENTOS DE BIENES MUEBLES SITUADOS EN EL PAÍS (PJD)</field>
@@ -505,7 +505,7 @@
 	        <field name="literal"></field>
 	    </record>
 
-        <record id="concepto_63" model="conceptos.islr">
+        <record id="concept_63" model="islr.concepts">
 	        <field name="code">64</field>
 	        <field name="name">CÁNONES D ARREND D BIENES MUEBLES SIT EN EL PAIS (PJND)</field>
 	        <field name="description">CÁNONES DE ARRENDAMIENTOS DE BIENES MUEBLES SITUADOS EN EL PAÍS (PJND)</field>
@@ -513,7 +513,7 @@
 	        <field name="literal"></field>
 	    </record>
 
-        <record id="concepto_64" model="conceptos.islr">
+        <record id="concept_64" model="islr.concepts">
 	        <field name="code">65</field>
 	        <field name="name">PAG D L EMPR EMI D TARJ D CRED O CONS P L VTA D BIENES(PNR)</field>
 	        <field name="description">PAGOS DE LAS EMPRESAS EMISORAS DE TARJETAS DE CRÉDITO O CONSUMO POR LA VENTA DE BIENES Y SERVICIOS, O CUALQUIER OTRO CONCEPTO (PNR)</field>
@@ -521,7 +521,7 @@
 	        <field name="literal">C</field>
 	    </record>
 
-        <record id="concepto_65" model="conceptos.islr">
+        <record id="concept_65" model="islr.concepts">
 	        <field name="code">66</field>
 	        <field name="name">PAG D L EMPR EMI D TARJ D CRED O CONS P L VTA D BIENES(PNNR)</field>
 	        <field name="description">PAGOS DE LAS EMPRESAS EMISORAS DE TARJETAS DE CRÉDITO O CONSUMO POR LA VENTA DE BIENES Y SERVICIOS, O CUALQUIER OTRO CONCEPTO (PNNR)</field>
@@ -529,7 +529,7 @@
 	        <field name="literal">D</field>
 	    </record>
 
-        <record id="concepto_66" model="conceptos.islr">
+        <record id="concept_66" model="islr.concepts">
 	        <field name="code">67</field>
 	        <field name="name">PAG D L EMPR EMI D TARJ D CRED O CONS P L VTA D BIENES(PJD)</field>
 	        <field name="description">PAGOS DE LAS EMPRESAS EMISORAS DE TARJETAS DE CRÉDITO O CONSUMO POR LA VENTA DE BIENES Y SERVICIOS, O CUALQUIER OTRO CONCEPTO (PJD)</field>
@@ -537,7 +537,7 @@
 	        <field name="literal">A</field>
 	    </record>
 
-        <record id="concepto_67" model="conceptos.islr">
+        <record id="concept_67" model="islr.concepts">
 	        <field name="code">68</field>
 	        <field name="name">PAG D L EMPR EMI D TARJ D CRED O CONS P L VTA D BIENES(PJND)</field>
 	        <field name="description">PAGOS DE LAS EMPRESAS EMISORAS DE TARJETAS DE CRÉDITO O CONSUMO POR LA VENTA DE BIENES Y SERVICIOS, O CUALQUIER OTRO CONCEPTO (PJND)</field>
@@ -545,7 +545,7 @@
 	        <field name="literal">B</field>
 	    </record>
 
-        <record id="concepto_68" model="conceptos.islr">
+        <record id="concept_68" model="islr.concepts">
 	        <field name="code">69</field>
 	        <field name="name">PAG D L EMPR EMI D TARJ D CRED P L VTA D GASO E EST D SERVI</field>
 	        <field name="description">PAGOS DE LAS EMPRESAS EMISORAS DE TARJETAS DE CRÉDITO POR LA VENTA DE GASOLINA EN ESTACIONES DE SERVICIOS (PNR)</field>
@@ -553,7 +553,7 @@
 	        <field name="literal">A</field>
 	    </record>
 
-        <record id="concepto_69" model="conceptos.islr">
+        <record id="concept_69" model="islr.concepts">
 	        <field name="code">70</field>
 	        <field name="name">PAG D L EMPR EMI D TARJ D CRED P L VTA D GASO E EST D SERVI</field>
 	        <field name="description">PAGOS DE LAS EMPRESAS EMISORAS DE TARJETAS DE CRÉDITO POR LA VENTA DE GASOLINA EN ESTACIONES DE SERVICIOS (PJD)</field>
@@ -561,7 +561,7 @@
 	        <field name="literal">B</field>
 	    </record>
 
-        <record id="concepto_70" model="conceptos.islr">
+        <record id="concept_70" model="islr.concepts">
 	        <field name="code">71</field>
 	        <field name="name">PAG P GASTOS D TRANSP CONFOR P FLETES (PNR)</field>
 	        <field name="description">PAGOS POR GASTOS DE TRANSPORTE CONFORMADOS POR FLETES (PNR)</field>
@@ -569,7 +569,7 @@
 	        <field name="literal">C</field>
 	    </record>
 
-        <record id="concepto_71" model="conceptos.islr">
+        <record id="concept_71" model="islr.concepts">
 	        <field name="code">72</field>
 	        <field name="name">PAG P GASTOS D TRANSP CONFOR P FLETES (PJD</field>
 	        <field name="description">PAGOS POR GASTOS DE TRANSPORTE CONFORMADOS POR FLETES (PJD)</field>
@@ -577,7 +577,7 @@
 	        <field name="literal"></field>
 	    </record>
 
-        <record id="concepto_72" model="conceptos.islr">
+        <record id="concept_72" model="islr.concepts">
 	        <field name="code">73</field>
 	        <field name="name">PAG D L EMPR D SEGUROS, L SOC D CORRET D SEGUROS Y LAS EMPR</field>
 	        <field name="description">PAGOS DE LAS EMPRESAS DE SEGURO, LAS SOCIEDADES DE CORRETAJE DE SEGUROS Y LAS EMPRESAS DE REASEGUROS POR LAS PRESTACIONES DE SERVICIOS QUE LE SON PROPIOS (PNR)</field>
@@ -585,7 +585,7 @@
 	        <field name="literal"></field>
 	    </record>
 
-        <record id="concepto_73" model="conceptos.islr">
+        <record id="concept_73" model="islr.concepts">
 	        <field name="code">74</field>
 	        <field name="name">PAG D L EMPR D SEGUROS, L SOC D CORRET D SEGUROS Y LAS EMPR</field>
 	        <field name="description">PAGOS DE LAS EMPRESAS DE SEGURO, LAS SOCIEDADES DE CORRETAJE DE SEGUROS Y LAS EMPRESAS DE REASEGUROS POR LAS PRESTACIONES DE SERVICIOS QUE LE SON PROPIOS (PJD)</field>
@@ -593,7 +593,7 @@
 	        <field name="literal"></field>
 	    </record>
 
-        <record id="concepto_74" model="conceptos.islr">
+        <record id="concept_74" model="islr.concepts">
 	        <field name="code">75</field>
 	        <field name="name">PAG D L EMPR D SEGUROS A SUS CONTR P L REP D DAÑOS SUFRIDOS</field>
 	        <field name="description">PAGOS DE LAS EMPRESAS DE SEGURO A SUS CONTRATISTAS POR LA REPARACIÓN DE DAÑOS SUFRIDOS DE SUS ASEGURADOS (PNR)</field>
@@ -601,7 +601,7 @@
 	        <field name="literal">1</field>
 	    </record>
 
-        <record id="concepto_75" model="conceptos.islr">
+        <record id="concept_75" model="islr.concepts">
 	        <field name="code">76</field>
 	        <field name="name">PAG D L EMPR D SEGUROS A SUS CONTR P L REP D DAÑOS SUFRIDOS</field>
 	        <field name="description">PAGOS DE LAS EMPRESAS DE SEGURO A SUS CONTRATISTAS POR LA REPARACIÓN DE DAÑOS SUFRIDOS DE SUS ASEGURADOS (PJD)</field>
@@ -609,7 +609,7 @@
 	        <field name="literal">2</field>
 	    </record>
 
-        <record id="concepto_76" model="conceptos.islr">
+        <record id="concept_76" model="islr.concepts">
 	        <field name="code">77</field>
 	        <field name="name">PAG D L EMPR D SEGUROS A CLI, HOSP CS P L ATENC MED A SUS AS</field>
 	        <field name="description">PAGOS DE LAS EMPRESAS DE SEGUROS A CLÍNICAS Y/O CENTROS DE SALUD POR LA ATENCIÓN MEDICA A SUS ASEGURADOS (PNR)</field>
@@ -617,7 +617,7 @@
 	        <field name="literal">3</field>
 	    </record>
 
-        <record id="concepto_77" model="conceptos.islr">
+        <record id="concept_77" model="islr.concepts">
 	        <field name="code">78</field>
 	        <field name="name">PAG D L EMPR D SEGUROS A CLI, HOSP CS P L ATENC MED A SUS AS</field>
 	        <field name="description">PAGOS DE LAS EMPRESAS DE SEGUROS A CLÍNICAS Y/O CENTROS DE SALUD POR LA ATENCIÓN MEDICA A SUS ASEGURADOS (PJD)</field>
@@ -625,7 +625,7 @@
 	        <field name="literal"></field>
 	    </record>
 
-        <record id="concepto_78" model="conceptos.islr">
+        <record id="concept_78" model="islr.concepts">
 	        <field name="code">79</field>
 	        <field name="name">CANT Q SE PAG P ADQ D FONDOS D COM SITUADOS EN EL PAIS (PNR)</field>
 	        <field name="description">CANTIDADES QUE SE PAGUEN POR ADQUISICIÓN DE FONDOS DE COMERCIO SITUADOS EN EL PAÍS (PNR)</field>
@@ -633,7 +633,7 @@
 	        <field name="literal">1</field>
 	    </record>
 
-        <record id="concepto_79" model="conceptos.islr">
+        <record id="concept_79" model="islr.concepts">
 	        <field name="code">80</field>
 	        <field name="name">CANT Q SE PAG P ADQ D FONDOS D COM SITUADOS EN EL PAIS(PNNR)</field>
 	        <field name="description">CANTIDADES QUE SE PAGUEN POR ADQUISICIÓN DE FONDOS DE COMERCIO SITUADOS EN EL PAÍS (PNNR)</field>
@@ -641,7 +641,7 @@
 	        <field name="literal">2</field>
 	    </record>
 
-        <record id="concepto_80" model="conceptos.islr">
+        <record id="concept_80" model="islr.concepts">
 	        <field name="code">81</field>
 	        <field name="name">CANT Q SE PAG P ADQ D FONDOS D COM SITUADOS EN EL PAIS (PJD)</field>
 	        <field name="description">CANTIDADES QUE SE PAGUEN POR ADQUISICIÓN DE FONDOS DE COMERCIO SITUADOS EN EL PAÍS (PJD)</field>
@@ -649,7 +649,7 @@
 	        <field name="literal"></field>
 	    </record>
 
-        <record id="concepto_81" model="conceptos.islr">
+        <record id="concept_81" model="islr.concepts">
 	        <field name="code">82</field>
 	        <field name="name">CANT Q SE PAG P ADQ D FONDOS D COM SITUADOS EN EL PAIS(PJND)</field>
 	        <field name="description">CANTIDADES QUE SE PAGUEN POR ADQUISICIÓN DE FONDOS DE COMERCIO SITUADOS EN EL PAÍS (PJND)</field>
@@ -657,7 +657,7 @@
 	        <field name="literal"></field>
 	    </record>
 
-        <record id="concepto_82" model="conceptos.islr">
+        <record id="concept_82" model="islr.concepts">
 	        <field name="code">83</field>
 	        <field name="name">PAG P SERVICIOS D PUBLICIDAD Y PROPAGANDA Y L CESIÓN DE VTA</field>
 	        <field name="description">PAGOS POR SERVICIOS DE PUBLICIDAD Y PROPAGANDA Y LA CESIÓN DE VENTA DE ESPACIOS PARA TALES FINES (PNR)</field>
@@ -665,7 +665,7 @@
 	        <field name="literal"></field>
 	    </record>
 
-        <record id="concepto_83" model="conceptos.islr">
+        <record id="concept_83" model="islr.concepts">
 	        <field name="code">84</field>
 	        <field name="name">PAG P SERVICIOS D PUBLICIDAD Y PROPAGANDA Y L CESIÓN DE VTA</field>
 	        <field name="description">PAGOS POR SERVICIOS DE PUBLICIDAD Y PROPAGANDA Y LA CESIÓN DE VENTA DE ESPACIOS PARA TALES FINES (PJD)</field>
@@ -673,7 +673,7 @@
 	        <field name="literal"></field>
 	    </record>
 
-        <record id="concepto_84" model="conceptos.islr">
+        <record id="concept_84" model="islr.concepts">
 	        <field name="code">85</field>
 	        <field name="name">PAG P SERVICIOS D PUBLICIDAD Y PROPAGANDA Y L CESIÓN DE VTA</field>
 	        <field name="description">PAGOS POR SERVICIOS DE PUBLICIDAD Y PROPAGANDA Y LA CESIÓN DE VENTA DE ESPACIOS PARA TALES FINES (PJND)</field>
@@ -681,7 +681,7 @@
 	        <field name="literal"></field>
 	    </record>
 
-        <record id="concepto_85" model="conceptos.islr">
+        <record id="concept_85" model="islr.concepts">
 	        <field name="code">86</field>
 	        <field name="name">PAG P SERVICIOS D PUBLICIDAD Y PROPAGANDA Y L CESIÓN DE VTA</field>
 	        <field name="description">PAGOS POR SERVICIOS DE PUBLICIDAD Y PROPAGANDA Y LA CESIÓN DE VENTA DE ESPACIOS PARA TALES FINES A EMISORAS DE RADIO (PJD)</field>
