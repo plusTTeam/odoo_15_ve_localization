@@ -15213,7 +15213,6 @@ msgstr "Última fecha de ejecución"
 #: model:ir.model.fields,field_description:l10n_ve_plusteam.field_islr_concepts____last_update
 #: model:ir.model.fields,field_description:l10n_ve_plusteam.field_islr_tab____last_update
 #: model:ir.model.fields,field_description:l10n_ve_plusteam.field_person_type____last_update
-#: model:ir.model.fields,field_description:l10n_ve_plusteam.field_tax_unit____last_update
 #: model:ir.model.fields,field_description:l10n_ve_plusteam.field_res_config_settings____last_update
 #: model:ir.model.fields,field_description:l10n_ve_plusteam.field_res_partner____last_update
 #: model:ir.model.fields,field_description:l10n_ve_plusteam.field_tax_unit____last_update
