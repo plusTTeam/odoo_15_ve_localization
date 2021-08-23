@@ -1,15 +1,15 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
+# 	* base
 # 	* contacts
 # 	* l10n_ve_plusteam
-# 	* base
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 14.0-20210809\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-08-20 20:16+0000\n"
-"PO-Revision-Date: 2021-08-20 20:16+0000\n"
+"POT-Creation-Date: 2021-08-23 21:28+0000\n"
+"PO-Revision-Date: 2021-08-23 21:28+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -5636,7 +5636,7 @@ msgstr "&amp; Cerrar"
 #. module: base
 #: model_terms:ir.ui.view,arch_db:base.module_view_kanban
 msgid "&amp;nbsp;"
-msgstr " "
+msgstr ""
 
 #. module: base
 #: code:addons/base/models/ir_fields.py:0
@@ -6880,7 +6880,7 @@ msgstr "Activar y Traducir"
 #: model_terms:ir.ui.view,arch_db:base.view_currency_search
 #: model_terms:ir.ui.view,arch_db:base.view_view_search
 msgid "Active"
-msgstr "Activar"
+msgstr "Activo"
 
 #. module: base
 #: model:ir.model.fields,field_description:base.field_res_partner__active_lang_count
@@ -7357,6 +7357,13 @@ msgstr "Te permite referir a tus amigos a Odoo para obtener recompensas"
 #: model_terms:ir.ui.view,arch_db:base.view_users_form
 msgid "Allowed Companies"
 msgstr "Compañías permitidas"
+
+#. module: l10n_ve_plusteam
+#: model_terms:ir.ui.view,arch_db:l10n_ve_plusteam.view_partner_form
+msgid "Allows consulting company information using RIF number on SENIAT site"
+msgstr ""
+"Permitir consultar la información de la empresa utilizando el número RIF en "
+"el sitio de SENIAT"
 
 #. module: base
 #: model:ir.module.module,description:base.module_website_profile
@@ -8022,7 +8029,7 @@ msgstr ""
 msgid "Bank"
 msgstr "Banco"
 
-#. modules: contacts, base
+#. modules: base, contacts
 #: model:ir.actions.act_window,name:base.action_res_partner_bank_account_form
 #: model:ir.model,name:base.model_res_partner_bank
 #: model:ir.model.fields,field_description:base.field_res_company__bank_ids
@@ -8067,7 +8074,7 @@ msgstr ""
 msgid "Bank accounts related to this company"
 msgstr "Cuentas bancarias de esta empresa"
 
-#. modules: contacts, base
+#. modules: base, contacts
 #: model:ir.actions.act_window,name:base.action_res_bank_form
 #: model:ir.model.fields,field_description:base.field_res_partner__bank_ids
 #: model:ir.model.fields,field_description:base.field_res_users__bank_ids
@@ -9153,7 +9160,7 @@ msgstr ""
 msgid "Cocos (Keeling) Islands"
 msgstr "Islas Cocos (Keeling)"
 
-#. modules: l10n_ve_plusteam, base
+#. modules: base, l10n_ve_plusteam
 #: model:ir.model.fields,field_description:l10n_ve_plusteam.field_islr_concepts__code
 #: model:ir.model.fields,field_description:l10n_ve_plusteam.field_person_type__code
 #: model:ir.model.fields.selection,name:base.selection__ir_translation__type__code
@@ -9244,7 +9251,7 @@ msgstr "Comm10E 25 105 x 241 mm, Sobre U.S. Común 10"
 #: code:addons/base/models/ir_qweb_fields.py:0
 #, python-format
 msgid "Comma"
-msgstr "Coma"
+msgstr ""
 
 #. module: base
 #: model:ir.model.fields,help:base.field_ir_actions_act_window__view_mode
@@ -9470,7 +9477,7 @@ msgstr "Pasos de los asistentes de configuración"
 msgid "Config: Run Remaining Action Todo"
 msgstr "Config.: Ejecutar las acciones que quedan por hacer"
 
-#. modules: contacts, base
+#. modules: base, contacts
 #: model:ir.ui.menu,name:base.menu_reporting_config
 #: model:ir.ui.menu,name:contacts.res_partner_menu_config
 #: model_terms:ir.ui.view,arch_db:base.res_config_view_base
@@ -9577,8 +9584,8 @@ msgstr "Las restricciones con el mismo nombre son únicas por módulo."
 msgid "Construction"
 msgstr "Construcción"
 
-#. module: base
-#: model:ir.model,name:base.model_res_partner
+#. modules: base, l10n_ve_plusteam
+#: model:ir.model,name:l10n_ve_plusteam.model_res_partner
 #: model:ir.model.fields,field_description:base.field_res_partner__child_ids
 #: model:ir.model.fields,field_description:base.field_res_users__child_ids
 #: model:ir.model.fields.selection,name:base.selection__res_partner__type__contact
@@ -9612,14 +9619,14 @@ msgstr "Nombre del contacto"
 msgid "Contact Tag"
 msgstr "Etiqueta de contacto"
 
-#. modules: contacts, base
+#. modules: base, contacts
 #: model:ir.actions.act_window,name:base.action_partner_category_form
 #: model:ir.ui.menu,name:contacts.menu_partner_category_form
 #: model_terms:ir.ui.view,arch_db:base.view_partner_category_list
 msgid "Contact Tags"
 msgstr "Etiquetas de contacto"
 
-#. modules: contacts, base
+#. modules: base, contacts
 #: model:ir.actions.act_window,name:base.action_partner_title_contact
 #: model:ir.ui.menu,name:contacts.menu_partner_title_contact
 msgid "Contact Titles"
@@ -9637,7 +9644,7 @@ msgid "Contact your administrator to request access if necessary."
 msgstr ""
 "Ponte en contacto con tu administrador para pedirle acceso si es necesario"
 
-#. modules: contacts, base
+#. modules: base, contacts
 #: model:ir.actions.act_window,name:contacts.action_contacts
 #: model:ir.model.fields,field_description:base.field_base_partner_merge_automatic_wizard__partner_ids
 #: model:ir.module.module,shortdesc:base.module_contacts
@@ -9743,7 +9750,7 @@ msgstr "¡No se puede crear un contacto sin dirección de correo electrónico!"
 msgid "Count (Incl. Archived)"
 msgstr "Recuento (incluyendo los archivados)"
 
-#. modules: contacts, base
+#. modules: base, contacts
 #: model:ir.actions.act_window,name:base.action_country
 #: model:ir.model.fields,field_description:base.field_res_country_group__country_ids
 #: model:ir.ui.menu,name:contacts.menu_country_partner
@@ -9778,7 +9785,7 @@ msgstr "Código de llamada del país"
 msgid "Country Code"
 msgstr "Código de país"
 
-#. modules: contacts, base
+#. modules: base, contacts
 #: model:ir.actions.act_window,name:base.action_country_group
 #: model:ir.model,name:base.model_res_country_group
 #: model:ir.ui.menu,name:contacts.menu_country_group
@@ -9904,7 +9911,7 @@ msgstr "Crear etiqueta de contacto"
 #: model_terms:ir.actions.act_window,help:base.action_partner_customer_form
 #: model_terms:ir.actions.act_window,help:base.action_partner_form
 msgid "Create a new customer in your address book"
-msgstr "Crear un nuevo cliente en tu libro de direcciones"
+msgstr "Cree un nuevo cliente en su libro de direcciones"
 
 #. module: base
 #: model_terms:ir.actions.act_window,help:base.res_partner_industry_action
@@ -9983,7 +9990,7 @@ msgstr "Menús creados"
 msgid "Created Views"
 msgstr "Vistas creadas"
 
-#. modules: l10n_ve_plusteam, base
+#. modules: base, l10n_ve_plusteam
 #: model:ir.model.fields,field_description:base.field_base_language_export__create_uid
 #: model:ir.model.fields,field_description:base.field_base_language_import__create_uid
 #: model:ir.model.fields,field_description:base.field_base_language_install__create_uid
@@ -10069,7 +10076,7 @@ msgstr "Vistas creadas"
 msgid "Created by"
 msgstr "Creado por"
 
-#. modules: l10n_ve_plusteam, base
+#. modules: base, l10n_ve_plusteam
 #: model:ir.model.fields,field_description:base.field_base_language_export__create_date
 #: model:ir.model.fields,field_description:base.field_base_language_import__create_date
 #: model:ir.model.fields,field_description:base.field_base_language_install__create_date
@@ -10213,7 +10220,7 @@ msgstr ""
 msgid "Currencies"
 msgstr "Monedas"
 
-#. modules: l10n_ve_plusteam, base
+#. modules: base, l10n_ve_plusteam
 #: model:ir.model,name:base.model_res_currency
 #: model:ir.model.fields,field_description:base.field_res_company__currency_id
 #: model:ir.model.fields,field_description:base.field_res_country__currency_id
@@ -10507,7 +10514,7 @@ msgstr ""
 "La pérdida en la base de datos de ids ({}) y la presencia de ids extra ({}),"
 " puede ser causada por algún tipo de incoherencia en una consulta previa."
 
-#. modules: l10n_ve_plusteam, base
+#. modules: base, l10n_ve_plusteam
 #: code:addons/base/models/ir_qweb_fields.py:0
 #: model:ir.model.fields,field_description:base.field_res_currency__date
 #: model:ir.model.fields,field_description:base.field_res_currency_rate__name
@@ -10777,7 +10784,7 @@ msgstr ""
 msgid "Dependency"
 msgstr "Dependencia"
 
-#. modules: l10n_ve_plusteam, base
+#. modules: base, l10n_ve_plusteam
 #: model:ir.model.fields,field_description:base.field_ir_attachment__description
 #: model:ir.model.fields,field_description:base.field_ir_mail_server__name
 #: model:ir.model.fields,field_description:base.field_ir_module_category__description
@@ -10909,7 +10916,7 @@ msgstr "Conversaciones"
 msgid "Display"
 msgstr "Mostrar en pantalla"
 
-#. modules: contacts, l10n_ve_plusteam, base
+#. modules: base, contacts, l10n_ve_plusteam
 #: model:ir.model.fields,field_description:base.field__unknown__display_name
 #: model:ir.model.fields,field_description:base.field_base__display_name
 #: model:ir.model.fields,field_description:base.field_base_language_export__display_name
@@ -11004,7 +11011,6 @@ msgstr "Mostrar en pantalla"
 #: model:ir.model.fields,field_description:base.field_res_currency_rate__display_name
 #: model:ir.model.fields,field_description:base.field_res_groups__display_name
 #: model:ir.model.fields,field_description:base.field_res_lang__display_name
-#: model:ir.model.fields,field_description:base.field_res_partner__display_name
 #: model:ir.model.fields,field_description:base.field_res_partner_bank__display_name
 #: model:ir.model.fields,field_description:base.field_res_partner_category__display_name
 #: model:ir.model.fields,field_description:base.field_res_partner_industry__display_name
@@ -11698,29 +11704,6 @@ msgstr ""
 msgid "Error! You cannot create recursive menus."
 msgstr "¡Error! No puede crear menús recursivos."
 
-#. module: l10n_ve_plusteam
-#: model:ir.model.fields,help:l10n_ve_plusteam.field_islr_tab__percentage_retention
-msgid ""
-"Es el porcentaje que se aplica a la base imponible para calcular la "
-"retención según el concepto y tipo de persona."
-msgstr ""
-
-#. module: l10n_ve_plusteam
-#: model:ir.model.fields,help:l10n_ve_plusteam.field_islr_tab__subtracting
-msgid ""
-"Este es el monto que se calcula a partir de las personas físicas residentes "
-"como monto exento de impuesto, es decir que este monto se resta de la "
-"retención calculada para obtener la retención para las personas físicas "
-"residentes."
-msgstr ""
-
-#. module: l10n_ve_plusteam
-#: model:ir.model.fields,help:l10n_ve_plusteam.field_islr_tab__percentage_base
-msgid ""
-"Este porcentaje se aplica al monto del servicio según el concepto o tipo de "
-"persona para determinar la base imponible."
-msgstr ""
-
 #. module: base
 #: model:res.country,name:base.ee
 msgid "Estonia"
@@ -12094,7 +12077,7 @@ msgstr ""
 msgid "Fed. State"
 msgstr "Provincia"
 
-#. modules: contacts, base
+#. modules: base, contacts
 #: model:ir.actions.act_window,name:base.action_country_state
 #: model:ir.ui.menu,name:contacts.menu_country_state_partner
 msgid "Fed. States"
@@ -12277,7 +12260,7 @@ msgstr "El campo de etiqueta debe de tener un atributo de \"nombre\" definido"
 #: code:addons/model.py:0
 #, python-format
 msgid "Field:"
-msgstr "Campo:"
+msgstr ""
 
 #. module: base
 #: model:ir.actions.act_window,name:base.action_model_fields
@@ -12584,7 +12567,7 @@ msgstr "Formulario"
 #: code:addons/base/models/ir_qweb_fields.py:0
 #, python-format
 msgid "Format"
-msgstr "Formato"
+msgstr ""
 
 #. module: base
 #: model:ir.model.fields,help:base.field_res_partner__email_formatted
@@ -13053,7 +13036,7 @@ msgstr ""
 #: code:addons/base/models/res_config.py:0
 #, python-format
 msgid "Go to the configuration panel"
-msgstr ""
+msgstr "Ir al panel de configuración"
 
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_google_calendar
@@ -13414,7 +13397,7 @@ msgstr "Islas Heard y McDonald"
 #: code:addons/base/models/ir_qweb_fields.py:0
 #, python-format
 msgid "Height"
-msgstr "Altura"
+msgstr ""
 
 #. module: base
 #: model_terms:ir.ui.view,arch_db:base.view_server_action_form
@@ -13441,11 +13424,6 @@ msgid ""
 msgstr ""
 "Le ayuda a gestionar su contabilidad. Si no es un contable le recomendamos "
 "que sólo instale el módulo de facturación."
-
-#. module: base
-#: model:ir.module.category,description:base.module_category_sales_sales
-msgid "Helps you handle your quotations, sale orders and invoicing."
-msgstr "Le ayuda a gestionar sus presupuestos, pedidos de venta y facturas."
 
 #. module: base
 #: model:ir.module.category,description:base.module_category_user_type
@@ -13609,7 +13587,7 @@ msgstr ""
 msgid "IBAN Bank Accounts"
 msgstr "Cuentas bancarias IBAN"
 
-#. modules: contacts, l10n_ve_plusteam, base
+#. modules: base, contacts, l10n_ve_plusteam
 #: model:ir.model.fields,field_description:base.field__unknown__id
 #: model:ir.model.fields,field_description:base.field_base__id
 #: model:ir.model.fields,field_description:base.field_base_language_export__id
@@ -13704,7 +13682,6 @@ msgstr "Cuentas bancarias IBAN"
 #: model:ir.model.fields,field_description:base.field_res_currency_rate__id
 #: model:ir.model.fields,field_description:base.field_res_groups__id
 #: model:ir.model.fields,field_description:base.field_res_lang__id
-#: model:ir.model.fields,field_description:base.field_res_partner__id
 #: model:ir.model.fields,field_description:base.field_res_partner_bank__id
 #: model:ir.model.fields,field_description:base.field_res_partner_category__id
 #: model:ir.model.fields,field_description:base.field_res_partner_industry__id
@@ -14292,7 +14269,7 @@ msgstr "E-faktur Indonesia"
 msgid "Indonesian - Accounting"
 msgstr "Indonesia - Contabilidad"
 
-#. modules: contacts, base
+#. modules: base, contacts
 #: model:ir.actions.act_window,name:base.res_partner_industry_action
 #: model:ir.ui.menu,name:contacts.res_partner_industry_menu
 msgid "Industries"
@@ -14702,7 +14679,7 @@ msgstr "Inventario, logística, valoración, contabilidad"
 #. module: base
 #: model_terms:ir.ui.view,arch_db:base.view_partner_form
 msgid "Invoice"
-msgstr "Factura"
+msgstr "Facturas de clientes"
 
 #. module: base
 #: model:ir.model.fields,help:base.field_res_partner__type
@@ -14793,6 +14770,7 @@ msgstr "Israel - Contabilidad"
 
 #. module: l10n_ve_plusteam
 #: code:addons/l10n_ve_plusteam/models/person_type.py:0
+#: model:ir.model.fields,help:l10n_ve_plusteam.field_islr_tab__percentage_retention
 #, python-format
 msgid ""
 "It is the percentage that is applied to the tax base to calculate the "
@@ -14803,6 +14781,8 @@ msgstr ""
 
 #. module: l10n_ve_plusteam
 #: code:addons/l10n_ve_plusteam/models/res_partner.py:0
+#: model:ir.model.fields,help:l10n_ve_plusteam.field_res_partner__taxpayer
+#: model:ir.model.fields,help:l10n_ve_plusteam.field_res_users__taxpayer
 #, python-format
 msgid "It is used to filter the contributors for the sales book report"
 msgstr ""
@@ -14817,7 +14797,9 @@ msgstr ""
 msgid ""
 "It is used to know if the person is a taxpayer or not and to apply "
 "withholding."
-msgstr "Es usado para saber si una persona es un contribuyente o no y para aplicar retenciones"
+msgstr ""
+"Es usado para saber si una persona es un contribuyente o no y para aplicar "
+"retenciones"
 
 #. module: base
 #: model_terms:ir.ui.view,arch_db:base.form_res_users_key_description
@@ -15116,7 +15098,7 @@ msgstr ""
 msgid "Last Execution Date"
 msgstr "Última fecha de ejecución"
 
-#. modules: contacts, l10n_ve_plusteam, base
+#. modules: base, contacts, l10n_ve_plusteam
 #: model:ir.model.fields,field_description:base.field__unknown____last_update
 #: model:ir.model.fields,field_description:base.field_base____last_update
 #: model:ir.model.fields,field_description:base.field_base_language_export____last_update
@@ -15211,7 +15193,6 @@ msgstr "Última fecha de ejecución"
 #: model:ir.model.fields,field_description:base.field_res_currency_rate____last_update
 #: model:ir.model.fields,field_description:base.field_res_groups____last_update
 #: model:ir.model.fields,field_description:base.field_res_lang____last_update
-#: model:ir.model.fields,field_description:base.field_res_partner____last_update
 #: model:ir.model.fields,field_description:base.field_res_partner_bank____last_update
 #: model:ir.model.fields,field_description:base.field_res_partner_category____last_update
 #: model:ir.model.fields,field_description:base.field_res_partner_industry____last_update
@@ -15227,13 +15208,13 @@ msgstr "Última fecha de ejecución"
 #: model:ir.model.fields,field_description:l10n_ve_plusteam.field_islr_concepts____last_update
 #: model:ir.model.fields,field_description:l10n_ve_plusteam.field_islr_tab____last_update
 #: model:ir.model.fields,field_description:l10n_ve_plusteam.field_person_type____last_update
-#: model:ir.model.fields,field_description:l10n_ve_plusteam.field_tax_unit____last_update
 #: model:ir.model.fields,field_description:l10n_ve_plusteam.field_res_config_settings____last_update
 #: model:ir.model.fields,field_description:l10n_ve_plusteam.field_res_partner____last_update
+#: model:ir.model.fields,field_description:l10n_ve_plusteam.field_tax_unit____last_update
 msgid "Last Modified on"
 msgstr "Modificada por última vez"
 
-#. modules: l10n_ve_plusteam, base
+#. modules: base, l10n_ve_plusteam
 #: model:ir.model.fields,field_description:base.field_base_language_export__write_uid
 #: model:ir.model.fields,field_description:base.field_base_language_import__write_uid
 #: model:ir.model.fields,field_description:base.field_base_language_install__write_uid
@@ -15318,7 +15299,7 @@ msgstr "Modificada por última vez"
 msgid "Last Updated by"
 msgstr "Última actualización realizada por"
 
-#. modules: l10n_ve_plusteam, base
+#. modules: base, l10n_ve_plusteam
 #: model:ir.model.fields,field_description:base.field_base_language_export__write_date
 #: model:ir.model.fields,field_description:base.field_base_language_import__write_date
 #: model:ir.model.fields,field_description:base.field_base_language_install__write_date
@@ -15671,7 +15652,7 @@ msgstr "Cargar datos de prueba"
 msgid "Locale Code"
 msgstr "Código local"
 
-#. modules: contacts, l10n_ve_plusteam, base
+#. modules: base, contacts, l10n_ve_plusteam
 #: model:ir.module.category,name:base.module_category_accounting_localizations
 #: model:ir.module.category,name:base.module_category_localization
 #: model:ir.ui.menu,name:contacts.menu_localisation
@@ -19032,7 +19013,7 @@ msgstr ""
 #: model_terms:ir.actions.act_window,help:base.action_partner_form
 msgid "Odoo helps you easily track all activities related to a customer."
 msgstr ""
-"Odoo te ayuda a rastrear fácilmente todas las actividades relacionadas con "
+"Odoo le ayuda a rastrear fácilmente todas las actividades relacionadas con "
 "un cliente."
 
 #. module: base
@@ -20535,6 +20516,8 @@ msgstr "Método de pago Payulatam"
 #: model:ir.actions.act_window,name:l10n_ve_plusteam.person_type_action
 #: model:ir.model,name:l10n_ve_plusteam.model_person_type
 #: model:ir.model.fields,field_description:l10n_ve_plusteam.field_islr_tab__person_type_id
+#: model:ir.model.fields,field_description:l10n_ve_plusteam.field_res_partner__person_type
+#: model:ir.model.fields,field_description:l10n_ve_plusteam.field_res_users__person_type
 #: model:ir.ui.menu,name:l10n_ve_plusteam.person_type_menu
 msgid "Person Type"
 msgstr "Tipo de Persona"
@@ -20666,9 +20649,13 @@ msgstr ""
 "usuario o menú Usuario) para cambiar su propia contraseña."
 
 #. module: base
+#: model:ir.module.category,name:base.module_category_sales_point_of_sale
+msgid "Point Of Sale"
+msgstr ""
+
+#. module: base
 #: model:ir.module.category,name:base.module_category_accounting_localizations_point_of_sale
 #: model:ir.module.category,name:base.module_category_point_of_sale
-#: model:ir.module.category,name:base.module_category_sales_point_of_sale
 #: model:ir.module.module,shortdesc:base.module_point_of_sale
 msgid "Point of Sale"
 msgstr "Punto de venta"
@@ -21371,6 +21358,12 @@ msgstr "R. ARTES, ENTRETENIMIENTO Y RECREACIÓN"
 msgid "RFC"
 msgstr ""
 
+#. modules: base, l10n_ve_plusteam
+#: model:res.country,vat_label:base.ve
+#: model_terms:ir.ui.view,arch_db:l10n_ve_plusteam.view_partner_tree
+msgid "RIF"
+msgstr ""
+
 #. module: base
 #: model:res.country,vat_label:base.do
 msgid "RNC"
@@ -21495,7 +21488,7 @@ msgstr "Reglas de registro"
 #: code:addons/models.py:0 code:addons/models.py:0
 #, python-format
 msgid "Records:"
-msgstr ""
+msgstr "Registros:"
 
 #. module: base
 #: code:addons/base/models/ir_rule.py:0
@@ -21678,7 +21671,7 @@ msgstr "Repetir cada x."
 #: model_terms:ir.ui.view,arch_db:base.act_report_xml_search_view
 #: model_terms:ir.ui.view,arch_db:base.act_report_xml_view
 msgid "Report"
-msgstr "Reporte"
+msgstr "Informe"
 
 #. module: base
 #: model:ir.model,name:base.model_ir_actions_report
@@ -22120,7 +22113,6 @@ msgstr "Venta basada en la subcontratación de servicios"
 #: model:ir.module.category,name:base.module_category_sales_sales
 #: model:ir.module.module,shortdesc:base.module_sale
 #: model:ir.module.module,shortdesc:base.module_sale_management
-#: model_terms:ir.ui.view,arch_db:base.user_groups_view
 #: model_terms:ir.ui.view,arch_db:base.view_partner_form
 msgid "Sales"
 msgstr "Ventas"
@@ -22181,7 +22173,7 @@ msgstr "Maquinaria interna de ventas"
 #: model:ir.model.fields,field_description:base.field_res_users__user_id
 #: model_terms:ir.ui.view,arch_db:base.view_res_partner_filter
 msgid "Salesperson"
-msgstr "Vendedor"
+msgstr "Comercial"
 
 #. module: base
 #: model:res.country,name:base.ws
@@ -22196,7 +22188,7 @@ msgstr ""
 #. module: base
 #: model:ir.model.fields,field_description:base.field_res_partner_bank__sanitized_acc_number
 msgid "Sanitized Account Number"
-msgstr "Número de cuenta limpia"
+msgstr "Número de Cuenta Bancaria"
 
 #. module: base
 #: model:ir.model.fields.selection,name:base.selection__res_lang__week_start__6
@@ -22274,14 +22266,6 @@ msgstr "Científico"
 #: model:ir.model.fields,field_description:base.field_res_users_apikeys__scope
 msgid "Scope"
 msgstr "Ámbito"
-
-#. module: l10n_ve_plusteam
-#: model:ir.model.fields,help:l10n_ve_plusteam.field_res_partner__taxpayer
-#: model:ir.model.fields,help:l10n_ve_plusteam.field_res_users__taxpayer
-msgid ""
-"Se utiliza para filtrar los contribuyentes para el informe del libro de "
-"ventas."
-msgstr ""
 
 #. module: base
 #: model:ir.model.fields.selection,name:base.selection__ir_ui_view__type__search
@@ -22524,6 +22508,11 @@ msgstr "Enviar SMS al finalizar movimientos de inventario"
 #. module: base
 #: model:res.country,name:base.sn
 msgid "Senegal"
+msgstr ""
+
+#. module: l10n_ve_plusteam
+#: model_terms:ir.ui.view,arch_db:l10n_ve_plusteam.view_partner_form
+msgid "Seniat"
 msgstr ""
 
 #. module: base
@@ -22973,7 +22962,7 @@ msgstr "Sudán del Sur"
 #: code:addons/base/models/ir_qweb_fields.py:0
 #, python-format
 msgid "Space"
-msgstr "Espacio"
+msgstr ""
 
 #. module: base
 #: model:res.country,name:base.es
@@ -23455,7 +23444,7 @@ msgstr "Registros de tareas"
 #: model:ir.model.fields,field_description:base.field_res_partner__vat
 #: model:ir.model.fields,field_description:base.field_res_users__vat
 msgid "Tax ID"
-msgstr "RIF"
+msgstr "NIF"
 
 #. module: l10n_ve_plusteam
 #: model:ir.actions.act_window,name:l10n_ve_plusteam.tax_unit_action
@@ -23464,6 +23453,12 @@ msgstr "RIF"
 #: model_terms:ir.ui.view,arch_db:l10n_ve_plusteam.tax_unit_view_tree
 msgid "Tax Unit"
 msgstr "Unidad Tributaria"
+
+#. module: l10n_ve_plusteam
+#: model:ir.model.fields,field_description:l10n_ve_plusteam.field_res_partner__taxpayer
+#: model:ir.model.fields,field_description:l10n_ve_plusteam.field_res_users__taxpayer
+msgid "Taxpayer"
+msgstr ""
 
 #. module: base
 #: model:ir.module.module,summary:base.module_theme_kea
@@ -23641,7 +23636,7 @@ msgid ""
 "You can use this field for quick search."
 msgstr ""
 "EL código ISO del país en dos caracteres.\n"
-"Puedes utilizar este campo para una búsqueda rápida."
+"Puede utilizar este campo para la búsqueda rápida."
 
 #. module: base
 #: model:ir.model.fields,help:base.field_res_lang__url_code
@@ -24329,6 +24324,7 @@ msgstr ""
 
 #. module: l10n_ve_plusteam
 #: code:addons/l10n_ve_plusteam/models/person_type.py:0
+#: model:ir.model.fields,help:l10n_ve_plusteam.field_islr_tab__subtracting
 #, python-format
 msgid ""
 "This is the amount that is calculated from the resident natural persons as "
@@ -24495,6 +24491,7 @@ msgstr ""
 
 #. module: l10n_ve_plusteam
 #: code:addons/l10n_ve_plusteam/models/person_type.py:0
+#: model:ir.model.fields,help:l10n_ve_plusteam.field_islr_tab__percentage_base
 #, python-format
 msgid ""
 "This percentage is applied to the amount of the service according to the "
@@ -24567,12 +24564,6 @@ msgstr "Compensación de zona horaria"
 msgid "Timor-Leste"
 msgstr "Timor Oriental"
 
-#. module: l10n_ve_plusteam
-#: model:ir.model.fields,field_description:l10n_ve_plusteam.field_res_partner__sale_tips
-#: model:ir.model.fields,field_description:l10n_ve_plusteam.field_res_users__sale_tips
-msgid "Tipo de Persona"
-msgstr ""
-
 #. module: base
 #: model:ir.model.fields,field_description:base.field_res_partner__title
 #: model:ir.model.fields,field_description:base.field_res_partner_title__name
@@ -24583,7 +24574,7 @@ msgstr "Título"
 #. module: base
 #: model:ir.model.fields,field_description:base.field_ir_sequence_date_range__date_to
 msgid "To"
-msgstr "A"
+msgstr "Hasta"
 
 #. module: base
 #: model:ir.model.fields.selection,name:base.selection__ir_actions_todo__state__open
@@ -25549,7 +25540,7 @@ msgstr "Interfaz de PdV amigable para usuarios para tiendas y restaurantes"
 #: code:addons/models.py:0 code:addons/models.py:0
 #, python-format
 msgid "User:"
-msgstr ""
+msgstr "Usuario:"
 
 #. module: base
 #: code:addons/base/models/ir_rule.py:0
@@ -25562,7 +25553,7 @@ msgstr "Usuario: %s"
 msgid "Username"
 msgstr "Nombre de usuario"
 
-#. modules: contacts, base
+#. modules: base, contacts
 #: model:ir.actions.act_window,name:base.action_res_users
 #: model:ir.model,name:contacts.model_res_users
 #: model:ir.model.fields,field_description:base.field_change_password_wizard__user_ids
@@ -25650,7 +25641,7 @@ msgstr "Cuenta contable de IVA para proveedores"
 msgid "Validate and format phone numbers"
 msgstr "Validar y formatear los números de teléfono"
 
-#. modules: l10n_ve_plusteam, base
+#. modules: base, l10n_ve_plusteam
 #: model:ir.model.fields,field_description:base.field_ir_config_parameter__value
 #: model:ir.model.fields,field_description:base.field_ir_model_fields_selection__value
 #: model:ir.model.fields,field_description:base.field_ir_server_object_lines__value
@@ -25917,7 +25908,7 @@ msgstr "Gestión de inventarios: Transferencias por lotes"
 #: code:addons/base/models/res_partner.py:0 code:addons/models.py:0
 #, python-format
 msgid "Warning"
-msgstr "Advertencia"
+msgstr ""
 
 #. module: base
 #: code:addons/base/models/res_config.py:0
@@ -25929,7 +25920,7 @@ msgstr ""
 #: code:addons/models.py:0
 #, python-format
 msgid "Warnings"
-msgstr "Advertencias"
+msgstr "Avisos"
 
 #. module: base
 #: model:res.partner.industry,name:base.res_partner_industry_E
@@ -26186,7 +26177,7 @@ msgstr "Mayorista/Minorista"
 #: code:addons/base/models/ir_qweb_fields.py:0
 #, python-format
 msgid "Width"
-msgstr "Ancho"
+msgstr ""
 
 #. module: base
 #: model:ir.actions.act_window,name:base.ir_action_window
@@ -26628,7 +26619,7 @@ msgstr "siempre prohibido"
 #: code:addons/base/models/res_currency.py:0
 #, python-format
 msgid "and"
-msgstr "y"
+msgstr ""
 
 #. module: base
 #: model_terms:ir.ui.view,arch_db:base.res_partner_kanban_view
@@ -26691,7 +26682,7 @@ msgstr "hecho"
 #. module: base
 #: model_terms:ir.ui.view,arch_db:base.view_partner_form
 msgid "e.g. BE0477472701"
-msgstr "Por ejemplo, V15236987"
+msgstr "Por ejemplo, ESA00000000"
 
 #. module: base
 #: model_terms:ir.ui.view,arch_db:base.view_base_import_language
