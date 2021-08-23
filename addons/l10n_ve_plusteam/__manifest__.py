@@ -31,6 +31,7 @@
         'views/islr_concepts_views.xml',
         'views/person_type_views.xml',
         'views/tax_unit_views.xml',
+        'views/res_config_settings_views.xml',
         'views/menu_views.xml'
     ],
     # only loaded in demonstration mode
