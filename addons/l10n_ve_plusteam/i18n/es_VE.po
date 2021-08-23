@@ -14766,6 +14766,16 @@ msgstr ""
 "Se utiliza para filtrar los contribuyentes para el informe del libro de "
 "ventas."
 
+#. module: l10n_ve_plusteam
+#: code:addons/l10n_ve_plusteam/models/res_partner.py:0
+#: model:ir.model.fields,help:l10n_ve_plusteam.field_res_partner__special_taxpayer
+#: model:ir.model.fields,help:l10n_ve_plusteam.field_res_users__special_taxpayer
+#, python-format
+msgid ""
+"It is used to know if the person is a taxpayer or not and to apply "
+"withholding."
+msgstr "Es usado para saber si una persona es un contribuyente o no y para aplicar retenciones"
+
 #. module: base
 #: model_terms:ir.ui.view,arch_db:base.form_res_users_key_description
 msgid ""
@@ -22903,6 +22913,12 @@ msgstr "España - Contabilidad (PGCE 2008)"
 msgid "Sparse Fields"
 msgstr "Campos dispersos"
 
+#. module: l10n_ve_plusteam
+#: model:ir.model.fields,field_description:l10n_ve_plusteam.field_res_partner__special_taxpayer
+#: model:ir.model.fields,field_description:l10n_ve_plusteam.field_res_users__special_taxpayer
+msgid "Special Taxpayer"
+msgstr "Contribuyente Especial"
+
 #. module: base
 #: model:ir.model.fields,help:base.field_res_users__new_password
 msgid ""
@@ -25529,7 +25545,7 @@ msgstr "Uzbekistán"
 #: model:res.country,vat_label:base.uk
 #, python-format
 msgid "VAT"
-msgstr "RIF"
+msgstr "IVA"
 
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_base_vat
