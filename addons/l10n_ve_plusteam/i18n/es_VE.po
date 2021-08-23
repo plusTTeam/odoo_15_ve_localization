@@ -1060,29 +1060,29 @@ msgid ""
 "This module is compatible with base_vat module in order to be able to validate VAT numbers for each country that have or not have the possibility to manage multiple identification types.\n"
 msgstr ""
 "\n"
-"Agregue un nuevo modelo denominado \"Tipo de identificación\" que amplíe la funcionalidad del campo de número de identificación fiscal (NIF) del contacto y permita que el usuario identifique (eventualmente una factura) a los contactos no solo con su número identificación fiscal fiscal (NIF) sino con otros tipos de identificaciones como documento nacional , pasaporte, identificación extranjera, etc. Con este módulo instalado, verá ahora en la vista de formulario de contactos dos campos:\n"
+"Agregue un nuevo modelo denominado \"Tipo de identificación\" que amplíe la funcionalidad del campo de número de identificación fiscal (RIF) del contacto y permita que el usuario identifique (eventualmente una factura) a los contactos no solo con su número identificación fiscal fiscal (RIF) sino con otros tipos de identificaciones como documento nacional , pasaporte, identificación extranjera, etc. Con este módulo instalado, verá ahora en la vista de formulario de contactos dos campos:\n"
 "\n"
 "* Tipo de identificación\n"
 "* Número de identificación\n"
 "\n"
 "Este comportamiento es un requisito común para algunos países latinoamericanos como Argentina y Chile. Si su localización tiene estos requisitos, entonces debe depender de este módulo y definir en su módulo de localización los tipos de identificación que se utilizan en su país. En general, este tipo de identificaciones son definidas por las autoridades gubernamentales que regulan las operaciones fiscales, por ejemplo:\n"
 "\n"
-"* AFIP en Argentina define el DNI, CUIT (número de identificación fiscal(NIF) para entidades legales), CUIL (número de identificación fiscal(NIF) para personas naturales), y otros 80 tipos de identificación válidos.\n"
+"* AFIP en Argentina define el DNI, CUIT (número de identificación fiscal(RIF) para entidades legales), CUIL (número de identificación fiscal(RIF) para personas naturales), y otros 80 tipos de identificación válidos.\n"
 "\n"
 "Cada identificación contiene esta información:\n"
 "\n"
 "* nombre: nombre corto de la identificación\n"
 "* descripción: podría ser el mismo nombre corto o un nombre largo\n"
 "* id_pais(country_id): el país al que pertenece esta identificación\n"
-"* es_identificacionFiscal(is_vat): identifica este registro como el número de identificación fiscal(NIF) correspondiente para el país específico.\n"
+"* es_identificacionFiscal(is_vat): identifica este registro como el número de identificación fiscal(RIF) correspondiente para el país específico.\n"
 "* secuencia: permítanos ordenar los tipos de identificación según los más utilizados.\n"
 "* activo: podemos activar / desactivar identificaciones para que sea más fácil para nuestros clientes\n"
 "\n"
-"Con el fin de hacer que este módulo sea compatible con entornos de empresas múltiples donde tenemos compañías que no necesitan / no admiten este requisito, hemos agregado tipos de identificación genéricos y reglas genéricas para administrar la información de contacto y hacerla transparente para el usuario cuando solo use el número de identificación fiscal(NIF) como lo conocíamos anteriormente.\n"
+"Con el fin de hacer que este módulo sea compatible con entornos de empresas múltiples donde tenemos compañías que no necesitan / no admiten este requisito, hemos agregado tipos de identificación genéricos y reglas genéricas para administrar la información de contacto y hacerla transparente para el usuario cuando solo use el número de identificación fiscal(RIF) como lo conocíamos anteriormente.\n"
 "\n"
 "Identificaciones genéricas:\n"
 "\n"
-"* identificación Fiscal: la identificación fiscal o el número de identificación fiscal(NIF), de forma predeterminada, se seleccionará como tipo de identificación, por lo que el usuario solo tendrá que agregar el número de identificación fiscal relacionado.\n"
+"* identificación Fiscal: la identificación fiscal o el número de identificación fiscal(RIF), de forma predeterminada, se seleccionará como tipo de identificación, por lo que el usuario solo tendrá que agregar el número de identificación fiscal relacionado.\n"
 "* Pasaporte\n"
 "* Identificación extranjera (Documento nacional extranjero)\n"
 "\n"
@@ -1096,7 +1096,7 @@ msgstr ""
 "\n"
 "Todos los tipos de identificación definidos se pueden revisar y activar / desactivar en el menú \"Contactos / Configuración / Tipo de identificación\".\n"
 "\n"
-"Este módulo es compatible con el módulo base_vat para poder validar los números de identificación fiscal(NIF) para cada país que tenga o no la posibilidad de administrar múltiples tipos de identificación.\n"
+"Este módulo es compatible con el módulo base_vat para poder validar los números de identificación fiscal(RIF) para cada país que tenga o no la posibilidad de administrar múltiples tipos de identificación.\n"
 
 #. module: base
 #: model:ir.module.module,description:base.module_website_sale_delivery
@@ -5321,23 +5321,23 @@ msgid ""
 "    "
 msgstr ""
 "\n"
-"Validación del número de identificación fiscal(NIF) de los contactos.\n"
+"Validación del número de identificación fiscal(RIF) de los contactos.\n"
 "=========================================\n"
 "\n"
-"Tras instalar este módulo, se validarán los valores introducidos en el campo de número de identificación fiscal(NIF) de los\n"
+"Tras instalar este módulo, se validarán los valores introducidos en el campo de número de identificación fiscal(RIF) de los\n"
 "contactos para todos los países admitidos. Se deduce el país por las 2 letras del código que\n"
-"preceden al número de número de identificación fiscal(NIF). Por ejemplo, \"BE0477472701\" se validará usando la normativa\n"
+"preceden al número de número de identificación fiscal(RIF). Por ejemplo, \"BE0477472701\" se validará usando la normativa\n"
 "belga.\n"
 "\n"
-"Hay dos niveles diferentes para validar el número de identificación fiscal(NIF):\n"
+"Hay dos niveles diferentes para validar el número de identificación fiscal(RIF):\n"
 "--------------------------------------------------------\n"
 "* Por defecto, se realiza una simple comprobación sin conexión usando las reglas de\n"
 "validación conocidas de un país, normalmente mediante una sencilla comprobación de\n"
 "dígitos. Es rápido y se puede hacer en cualquier momento, pero admite números que quizá\n"
 "no estén realmente asociados o que ya no sean válidos.\n"
 "\n"
-"* Cuando se habilita la opción de \"Comprobación del número de identificación fiscal(NIF) en VIES\" (en la configuración de la\n"
-"empresa del usuario), los números del número de identificación fiscal(NIF) se enviarán en su lugar a la base electrónica de\n"
+"* Cuando se habilita la opción de \"Comprobación del número de identificación fiscal(RIF) en VIES\" (en la configuración de la\n"
+"empresa del usuario), los números del número de identificación fiscal(RIF) se enviarán en su lugar a la base electrónica de\n"
 "datos VIES de la Unión Europea, que verificará realmente si el número es válido y si\n"
 "actualmente está asociado a una empresa. Esto es un poco más lento que una simple\n"
 "comprobación sin conexión, pues requiere tener conexión a internet y puede que no esté\n"
@@ -6404,7 +6404,7 @@ msgid ""
 "ID</span></span> already exists ("
 msgstr ""
 "Ya existe un contacto con el mismo <span><span class=\"o_vat_label\">número "
-"de identificación fiscal (NIF)</span></span> ("
+"de identificación fiscal (RIF)</span></span> ("
 
 #. module: base
 #: model:ir.model.fields,field_description:base.field_base_partner_merge_automatic_wizard__exclude_contact
@@ -9251,7 +9251,7 @@ msgstr "Comm10E 25 105 x 241 mm, Sobre U.S. Común 10"
 #: code:addons/base/models/ir_qweb_fields.py:0
 #, python-format
 msgid "Comma"
-msgstr ""
+msgstr "Coma"
 
 #. module: base
 #: model:ir.model.fields,help:base.field_ir_actions_act_window__view_mode
@@ -12260,7 +12260,7 @@ msgstr "El campo de etiqueta debe de tener un atributo de \"nombre\" definido"
 #: code:addons/model.py:0
 #, python-format
 msgid "Field:"
-msgstr ""
+msgstr "Campo:"
 
 #. module: base
 #: model:ir.actions.act_window,name:base.action_model_fields
@@ -12567,7 +12567,7 @@ msgstr "Formulario"
 #: code:addons/base/models/ir_qweb_fields.py:0
 #, python-format
 msgid "Format"
-msgstr ""
+msgstr "Formato"
 
 #. module: base
 #: model:ir.model.fields,help:base.field_res_partner__email_formatted
@@ -13397,7 +13397,7 @@ msgstr "Islas Heard y McDonald"
 #: code:addons/base/models/ir_qweb_fields.py:0
 #, python-format
 msgid "Height"
-msgstr ""
+msgstr "Altura"
 
 #. module: base
 #: model_terms:ir.ui.view,arch_db:base.view_server_action_form
@@ -13682,6 +13682,7 @@ msgstr "Cuentas bancarias IBAN"
 #: model:ir.model.fields,field_description:base.field_res_currency_rate__id
 #: model:ir.model.fields,field_description:base.field_res_groups__id
 #: model:ir.model.fields,field_description:base.field_res_lang__id
+#: model:ir.model.fields,field_description:base.field_res_partner__id
 #: model:ir.model.fields,field_description:base.field_res_partner_bank__id
 #: model:ir.model.fields,field_description:base.field_res_partner_category__id
 #: model:ir.model.fields,field_description:base.field_res_partner_industry__id
@@ -14798,8 +14799,7 @@ msgid ""
 "It is used to know if the person is a taxpayer or not and to apply "
 "withholding."
 msgstr ""
-"Es usado para saber si una persona es un contribuyente o no y para aplicar "
-"retenciones"
+"Es usado para saber si una persona es un contribuyente o no y para aplicar retenciones"
 
 #. module: base
 #: model_terms:ir.ui.view,arch_db:base.form_res_users_key_description
@@ -15193,6 +15193,7 @@ msgstr "Última fecha de ejecución"
 #: model:ir.model.fields,field_description:base.field_res_currency_rate____last_update
 #: model:ir.model.fields,field_description:base.field_res_groups____last_update
 #: model:ir.model.fields,field_description:base.field_res_lang____last_update
+#: model:ir.model.fields,field_description:base.field_res_partner____last_update
 #: model:ir.model.fields,field_description:base.field_res_partner_bank____last_update
 #: model:ir.model.fields,field_description:base.field_res_partner_category____last_update
 #: model:ir.model.fields,field_description:base.field_res_partner_industry____last_update
@@ -15208,6 +15209,7 @@ msgstr "Última fecha de ejecución"
 #: model:ir.model.fields,field_description:l10n_ve_plusteam.field_islr_concepts____last_update
 #: model:ir.model.fields,field_description:l10n_ve_plusteam.field_islr_tab____last_update
 #: model:ir.model.fields,field_description:l10n_ve_plusteam.field_person_type____last_update
+#: model:ir.model.fields,field_description:l10n_ve_plusteam.field_tax_unit____last_update
 #: model:ir.model.fields,field_description:l10n_ve_plusteam.field_res_config_settings____last_update
 #: model:ir.model.fields,field_description:l10n_ve_plusteam.field_res_partner____last_update
 #: model:ir.model.fields,field_description:l10n_ve_plusteam.field_tax_unit____last_update
@@ -20656,6 +20658,7 @@ msgstr ""
 #. module: base
 #: model:ir.module.category,name:base.module_category_accounting_localizations_point_of_sale
 #: model:ir.module.category,name:base.module_category_point_of_sale
+#: model:ir.module.category,name:base.module_category_sales_point_of_sale
 #: model:ir.module.module,shortdesc:base.module_point_of_sale
 msgid "Point of Sale"
 msgstr "Punto de venta"
@@ -22113,6 +22116,7 @@ msgstr "Venta basada en la subcontratación de servicios"
 #: model:ir.module.category,name:base.module_category_sales_sales
 #: model:ir.module.module,shortdesc:base.module_sale
 #: model:ir.module.module,shortdesc:base.module_sale_management
+#: model_terms:ir.ui.view,arch_db:base.user_groups_view
 #: model_terms:ir.ui.view,arch_db:base.view_partner_form
 msgid "Sales"
 msgstr "Ventas"
@@ -22962,7 +22966,7 @@ msgstr "Sudán del Sur"
 #: code:addons/base/models/ir_qweb_fields.py:0
 #, python-format
 msgid "Space"
-msgstr ""
+msgstr "Espacio"
 
 #. module: base
 #: model:res.country,name:base.es
@@ -23444,7 +23448,7 @@ msgstr "Registros de tareas"
 #: model:ir.model.fields,field_description:base.field_res_partner__vat
 #: model:ir.model.fields,field_description:base.field_res_users__vat
 msgid "Tax ID"
-msgstr "NIF"
+msgstr "RIF"
 
 #. module: l10n_ve_plusteam
 #: model:ir.actions.act_window,name:l10n_ve_plusteam.tax_unit_action
@@ -25908,19 +25912,19 @@ msgstr "Gestión de inventarios: Transferencias por lotes"
 #: code:addons/base/models/res_partner.py:0 code:addons/models.py:0
 #, python-format
 msgid "Warning"
-msgstr ""
+msgstr "Advertencia"
 
 #. module: base
 #: code:addons/base/models/res_config.py:0
 #, python-format
 msgid "Warning!"
-msgstr ""
+msgstr "Advertencia!"
 
 #. module: base
 #: code:addons/models.py:0
 #, python-format
 msgid "Warnings"
-msgstr "Avisos"
+msgstr "Advertencias"
 
 #. module: base
 #: model:res.partner.industry,name:base.res_partner_industry_E
@@ -26177,7 +26181,7 @@ msgstr "Mayorista/Minorista"
 #: code:addons/base/models/ir_qweb_fields.py:0
 #, python-format
 msgid "Width"
-msgstr ""
+msgstr "Ancho"
 
 #. module: base
 #: model:ir.actions.act_window,name:base.ir_action_window
@@ -26619,7 +26623,7 @@ msgstr "siempre prohibido"
 #: code:addons/base/models/res_currency.py:0
 #, python-format
 msgid "and"
-msgstr ""
+msgstr "y"
 
 #. module: base
 #: model_terms:ir.ui.view,arch_db:base.res_partner_kanban_view
@@ -26682,7 +26686,7 @@ msgstr "hecho"
 #. module: base
 #: model_terms:ir.ui.view,arch_db:base.view_partner_form
 msgid "e.g. BE0477472701"
-msgstr "Por ejemplo, ESA00000000"
+msgstr "Por ejemplo, V15236987"
 
 #. module: base
 #: model_terms:ir.ui.view,arch_db:base.view_base_import_language
