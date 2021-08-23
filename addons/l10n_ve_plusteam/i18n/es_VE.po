@@ -13426,6 +13426,11 @@ msgstr ""
 "que sólo instale el módulo de facturación."
 
 #. module: base
+#: model:ir.module.category,description:base.module_category_sales_sales
+msgid "Helps you handle your quotations, sale orders and invoicing."
+msgstr "Le ayuda a gestionar sus presupuestos, pedidos de venta y facturas."
+
+#. module: base
 #: model:ir.module.category,description:base.module_category_user_type
 msgid "Helps you manage users."
 msgstr "Le ayuda a gestionar sus usuarios."
@@ -14798,8 +14803,7 @@ msgstr ""
 msgid ""
 "It is used to know if the person is a taxpayer or not and to apply "
 "withholding."
-msgstr ""
-"Es usado para saber si una persona es un contribuyente o no y para aplicar retenciones"
+msgstr "Es usado para saber si una persona es un contribuyente o no y para aplicar retenciones"
 
 #. module: base
 #: model_terms:ir.ui.view,arch_db:base.form_res_users_key_description

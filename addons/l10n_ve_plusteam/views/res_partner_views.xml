@@ -8,7 +8,8 @@
         <field name="arch" type="xml">
             <xpath expr="//sheet" position="before">
                 <header>
-                    <button role="link" string="Seniat" title="Allows consulting company information using RIF number on SENIAT site"
+                    <button role="link" string="Seniat"
+                            title="Allows consulting company information using RIF number on SENIAT site"
                             onclick="javascript:window.open('http://contribuyente.seniat.gob.ve/BuscaRif/BuscaRif.jsp','_blank','noreferrer');"
                             class="oe_highlight"/>
                 </header>
@@ -23,7 +24,8 @@
                     <group>
                         <group>
                             <field name="taxpayer" widget="checkbox"/>
-                            <field name="special_taxpayer" widget="checkbox" attrs="{'invisible': [('taxpayer', '=', False)]}"/>
+                            <field name="special_taxpayer" widget="checkbox"
+                                   attrs="{'invisible': [('taxpayer', '=', False)]}"/>
                         </group>
                     </group>
                 </page>
@@ -39,7 +41,7 @@
             <xpath expr="//field[@name='display_name']" position="after">
                 <xpath expr="//field[@name='vat']" position="move" optional="show" string="RIF"/>
             </xpath>
-             <xpath expr="//field[@name='email']" position="after">
+            <xpath expr="//field[@name='email']" position="after">
                 <field name="person_type" optional="show"/>
             </xpath>
         </field>
