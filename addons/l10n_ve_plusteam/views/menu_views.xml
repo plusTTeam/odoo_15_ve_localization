@@ -19,4 +19,11 @@
             parent="localization_menu"
             sequence="2"
     />
+     <menuitem
+            id="tax_unit_menu"
+            name="Tax Unit"
+            action="l10n_ve_plusteam.tax_unit_action"
+            parent="localization_menu"
+            sequence="3"
+    />
 </odoo>

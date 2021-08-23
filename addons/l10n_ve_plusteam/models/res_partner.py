@@ -9,8 +9,6 @@ class ResPartner(models.Model):
     _inherit = 'res.partner'
 
     person_type = fields.Many2one('person.type', string="Person Type")
-
-    sale_tips = fields.Many2one('tipo.personas', string="Tipo de Persona")
     taxpayer = fields.Boolean(
         string="Taxpayer",
         default=True,
