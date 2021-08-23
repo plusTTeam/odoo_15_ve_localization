@@ -1,9 +1,8 @@
 # -*- coding: utf-8 -*-
 
-from odoo import fields, models, api
-from odoo.exceptions import ValidationError
 import re
-
+from odoo import fields, models, api, _
+from odoo.exceptions import ValidationError
 
 
 class AccountMove(models.Model):
@@ -18,5 +17,4 @@ class AccountMove(models.Model):
     def _check_number_control(self):
         for record in self:
             if re.match(r"^[0-9]{6,9}$", record.control_number) is None:
-                raise ValidationError("Formato Numero de control Invalido. Debe tener minimo 6 números")
-
+                raise ValidationError(_("Invalid control number format. Must have at least 6 numbers"))
