@@ -19,10 +19,10 @@ class ResPartner(models.Model):
         default=False,
         help=_("It is used to know if the person is a taxpayer or not and to apply withholding.")
     )
-    iva_retention_percentage = fields.Float(
-        string="IVA Retention Percentage",
+    vat_withholding_percentage = fields.Float(
+        string="VAT Withholding Percentage",
         digits="2",
-        help=_("Retention percentage applied to the supplier")
+        help=_("Withholding percentage applied to the supplier")
     )
 
     @api.onchange("taxpayer")

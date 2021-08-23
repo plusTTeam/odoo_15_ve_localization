@@ -30,6 +30,7 @@
         'views/res_partner_views.xml',
         'views/islr_concepts_views.xml',
         'views/person_type_views.xml',
+        'views/res_company_views.xml',
         'views/menu_views.xml'
     ],
     # only loaded in demonstration mode

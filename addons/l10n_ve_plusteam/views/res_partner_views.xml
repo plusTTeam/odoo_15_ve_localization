@@ -15,9 +15,9 @@
                         <group>
                             <field name="taxpayer" widget="checkbox"/>
                             <field name="special_taxpayer" widget="checkbox" attrs="{'invisible': [('taxpayer', '=', False)]}"/>
-                            <label for="iva_retention_percentage"/>
+                            <label for="vat_withholding_percentage"/>
                             <div>
-                                <field name="iva_retention_percentage" class="oe_inline" attrs="{'readonly': [('taxpayer', '=', False)]}"/>
+                                <field name="vat_withholding_percentage" class="oe_inline" attrs="{'readonly': [('taxpayer', '=', False)]}"/>
                                 <span class="o_form_label oe_inline">%</span>
                             </div>
                         </group>
