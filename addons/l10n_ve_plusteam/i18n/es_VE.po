@@ -27051,3 +27051,8 @@ msgstr "Islas Åland"
 #: model_terms:ir.ui.view,arch_db:l10n_ve_plusteam.view_partner_form
 msgid "Allows consulting company information using RIF number on SENIAT site"
 msgstr "Permitir consultar la información de la empresa utilizando el número RIF en el sitio del SENIAT"
+
+#. module: l10n_ve_plusteam
+#: model_terms:ir.ui.view,arch_db:l10n_ve_plusteam.view_partner_form
+msgid "Seniat"
+msgstr ""
