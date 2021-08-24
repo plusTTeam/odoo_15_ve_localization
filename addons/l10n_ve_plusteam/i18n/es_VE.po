@@ -20654,11 +20654,6 @@ msgstr ""
 "usuario o menú Usuario) para cambiar su propia contraseña."
 
 #. module: base
-#: model:ir.module.category,name:base.module_category_sales_point_of_sale
-msgid "Point Of Sale"
-msgstr ""
-
-#. module: base
 #: model:ir.module.category,name:base.module_category_accounting_localizations_point_of_sale
 #: model:ir.module.category,name:base.module_category_point_of_sale
 #: model:ir.module.category,name:base.module_category_sales_point_of_sale
@@ -21362,12 +21357,6 @@ msgstr "R. ARTES, ENTRETENIMIENTO Y RECREACIÓN"
 #. module: base
 #: model:res.country,vat_label:base.mx
 msgid "RFC"
-msgstr ""
-
-#. modules: base, l10n_ve_plusteam
-#: model:res.country,vat_label:base.ve
-#: model_terms:ir.ui.view,arch_db:l10n_ve_plusteam.view_partner_tree
-msgid "RIF"
 msgstr ""
 
 #. module: base
