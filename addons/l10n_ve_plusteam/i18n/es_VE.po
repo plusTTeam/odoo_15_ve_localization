@@ -6672,6 +6672,7 @@ msgstr "Tests de consistencia de contabilidad"
 #. module: l10n_ve_plusteam
 #: model_terms:ir.ui.view,arch_db:l10n_ve_plusteam.res_config_settings_view_form
 msgid "Accounting accounts for ISLR retention Purchase"
+msgstr "Cuenta contable para retención de ISLR Compra"
 
 #. module: l10n_ve_plusteam
 #: model_terms:ir.ui.view,arch_db:l10n_ve_plusteam.res_config_settings_view_form
@@ -7361,6 +7362,7 @@ msgstr "Compañías permitidas"
 #: model_terms:ir.ui.view,arch_db:l10n_ve_plusteam.view_partner_form
 msgid "Allows consulting company information using RIF number on SENIAT site"
 msgstr "Permitir consultar la información de la empresa utilizando el número RIF en el sitio del SENIAT"
+
 #. module: base
 #: model:ir.module.module,description:base.module_website_profile
 msgid ""
@@ -9581,7 +9583,7 @@ msgid "Construction"
 msgstr "Construcción"
 
 #. modules: base, l10n_ve_plusteam
-#: model:ir.model,name:l10n_ve_plusteam.model_res_partner
+#: model:ir.model,name:base.model_res_partner
 #: model:ir.model.fields,field_description:base.field_res_partner__child_ids
 #: model:ir.model.fields,field_description:base.field_res_users__child_ids
 #: model:ir.model.fields.selection,name:base.selection__res_partner__type__contact
@@ -11000,7 +11002,6 @@ msgstr "Mostrar en pantalla"
 #: model:ir.model.fields,field_description:base.field_res_company__display_name
 #: model:ir.model.fields,field_description:base.field_res_config__display_name
 #: model:ir.model.fields,field_description:base.field_res_config_installer__display_name
-#: model:ir.model.fields,field_description:base.field_res_config_settings__display_name
 #: model:ir.model.fields,field_description:base.field_res_country__display_name
 #: model:ir.model.fields,field_description:base.field_res_country_group__display_name
 #: model:ir.model.fields,field_description:base.field_res_country_state__display_name
@@ -11021,6 +11022,8 @@ msgstr "Mostrar en pantalla"
 #: model:ir.model.fields,field_description:base.field_reset_view_arch_wizard__display_name
 #: model:ir.model.fields,field_description:base.field_wizard_ir_model_menu_create__display_name
 #: model:ir.model.fields,field_description:contacts.field_res_users__display_name
+#: model:ir.model.fields,field_description:l10n_ve_plusteam.field_res_config_settings__display_name
+#: model:ir.model.fields,field_description:l10n_ve_plusteam.field_res_partner__display_name
 #: model:ir.model.fields,field_description:l10n_ve_plusteam.field_islr_concepts__display_name
 #: model:ir.model.fields,field_description:l10n_ve_plusteam.field_islr_tab__display_name
 #: model:ir.model.fields,field_description:l10n_ve_plusteam.field_person_type__display_name
@@ -13699,7 +13702,6 @@ msgstr "Cuentas bancarias IBAN"
 #: model:ir.model.fields,field_description:base.field_res_company__id
 #: model:ir.model.fields,field_description:base.field_res_config__id
 #: model:ir.model.fields,field_description:base.field_res_config_installer__id
-#: model:ir.model.fields,field_description:base.field_res_config_settings__id
 #: model:ir.model.fields,field_description:base.field_res_country__id
 #: model:ir.model.fields,field_description:base.field_res_country_group__id
 #: model:ir.model.fields,field_description:base.field_res_country_state__id
@@ -13723,6 +13725,8 @@ msgstr "Cuentas bancarias IBAN"
 #: model:ir.model.fields,field_description:l10n_ve_plusteam.field_islr_concepts__id
 #: model:ir.model.fields,field_description:l10n_ve_plusteam.field_islr_tab__id
 #: model:ir.model.fields,field_description:l10n_ve_plusteam.field_person_type__id
+#: model:ir.model.fields,field_description:l10n_ve_plusteam.field_res_config_settings__id
+#: model:ir.model.fields,field_description:l10n_ve_plusteam.field_res_partner__id
 #: model:ir.model.fields,field_description:l10n_ve_plusteam.field_tax_unit__id
 msgid "ID"
 msgstr "Identificación"
@@ -15205,7 +15209,6 @@ msgstr "Última fecha de ejecución"
 #: model:ir.model.fields,field_description:base.field_res_company____last_update
 #: model:ir.model.fields,field_description:base.field_res_config____last_update
 #: model:ir.model.fields,field_description:base.field_res_config_installer____last_update
-#: model:ir.model.fields,field_description:base.field_res_config_settings____last_update
 #: model:ir.model.fields,field_description:base.field_res_country____last_update
 #: model:ir.model.fields,field_description:base.field_res_country_group____last_update
 #: model:ir.model.fields,field_description:base.field_res_country_state____last_update
@@ -15230,6 +15233,8 @@ msgstr "Última fecha de ejecución"
 #: model:ir.model.fields,field_description:l10n_ve_plusteam.field_islr_tab____last_update
 #: model:ir.model.fields,field_description:l10n_ve_plusteam.field_person_type____last_update
 #: model:ir.model.fields,field_description:l10n_ve_plusteam.field_tax_unit____last_update
+#: model:ir.model.fields,field_description:l10n_ve_plusteam.field_res_config_settings____last_update
+#: model:ir.model.fields,field_description:l10n_ve_plusteam.field_res_partner____last_update
 msgid "Last Modified on"
 msgstr "Modificada por última vez"
 
