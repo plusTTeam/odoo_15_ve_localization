@@ -1,15 +1,15 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
-# 	* base
 # 	* contacts
 # 	* l10n_ve_plusteam
+# 	* base
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 14.0-20210809\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-08-23 21:28+0000\n"
-"PO-Revision-Date: 2021-08-23 21:28+0000\n"
+"POT-Creation-Date: 2021-08-20 20:16+0000\n"
+"PO-Revision-Date: 2021-08-20 20:16+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -1060,29 +1060,29 @@ msgid ""
 "This module is compatible with base_vat module in order to be able to validate VAT numbers for each country that have or not have the possibility to manage multiple identification types.\n"
 msgstr ""
 "\n"
-"Agregue un nuevo modelo denominado \"Tipo de identificación\" que amplíe la funcionalidad del campo de número de identificación fiscal (RIF) del contacto y permita que el usuario identifique (eventualmente una factura) a los contactos no solo con su número identificación fiscal fiscal (RIF) sino con otros tipos de identificaciones como documento nacional , pasaporte, identificación extranjera, etc. Con este módulo instalado, verá ahora en la vista de formulario de contactos dos campos:\n"
+"Agregue un nuevo modelo denominado \"Tipo de identificación\" que amplíe la funcionalidad del campo de número de identificación fiscal (NIF) del contacto y permita que el usuario identifique (eventualmente una factura) a los contactos no solo con su número identificación fiscal fiscal (NIF) sino con otros tipos de identificaciones como documento nacional , pasaporte, identificación extranjera, etc. Con este módulo instalado, verá ahora en la vista de formulario de contactos dos campos:\n"
 "\n"
 "* Tipo de identificación\n"
 "* Número de identificación\n"
 "\n"
 "Este comportamiento es un requisito común para algunos países latinoamericanos como Argentina y Chile. Si su localización tiene estos requisitos, entonces debe depender de este módulo y definir en su módulo de localización los tipos de identificación que se utilizan en su país. En general, este tipo de identificaciones son definidas por las autoridades gubernamentales que regulan las operaciones fiscales, por ejemplo:\n"
 "\n"
-"* AFIP en Argentina define el DNI, CUIT (número de identificación fiscal(RIF) para entidades legales), CUIL (número de identificación fiscal(RIF) para personas naturales), y otros 80 tipos de identificación válidos.\n"
+"* AFIP en Argentina define el DNI, CUIT (número de identificación fiscal(NIF) para entidades legales), CUIL (número de identificación fiscal(NIF) para personas naturales), y otros 80 tipos de identificación válidos.\n"
 "\n"
 "Cada identificación contiene esta información:\n"
 "\n"
 "* nombre: nombre corto de la identificación\n"
 "* descripción: podría ser el mismo nombre corto o un nombre largo\n"
 "* id_pais(country_id): el país al que pertenece esta identificación\n"
-"* es_identificacionFiscal(is_vat): identifica este registro como el número de identificación fiscal(RIF) correspondiente para el país específico.\n"
+"* es_identificacionFiscal(is_vat): identifica este registro como el número de identificación fiscal(NIF) correspondiente para el país específico.\n"
 "* secuencia: permítanos ordenar los tipos de identificación según los más utilizados.\n"
 "* activo: podemos activar / desactivar identificaciones para que sea más fácil para nuestros clientes\n"
 "\n"
-"Con el fin de hacer que este módulo sea compatible con entornos de empresas múltiples donde tenemos compañías que no necesitan / no admiten este requisito, hemos agregado tipos de identificación genéricos y reglas genéricas para administrar la información de contacto y hacerla transparente para el usuario cuando solo use el número de identificación fiscal(RIF) como lo conocíamos anteriormente.\n"
+"Con el fin de hacer que este módulo sea compatible con entornos de empresas múltiples donde tenemos compañías que no necesitan / no admiten este requisito, hemos agregado tipos de identificación genéricos y reglas genéricas para administrar la información de contacto y hacerla transparente para el usuario cuando solo use el número de identificación fiscal(NIF) como lo conocíamos anteriormente.\n"
 "\n"
 "Identificaciones genéricas:\n"
 "\n"
-"* identificación Fiscal: la identificación fiscal o el número de identificación fiscal(RIF), de forma predeterminada, se seleccionará como tipo de identificación, por lo que el usuario solo tendrá que agregar el número de identificación fiscal relacionado.\n"
+"* identificación Fiscal: la identificación fiscal o el número de identificación fiscal(NIF), de forma predeterminada, se seleccionará como tipo de identificación, por lo que el usuario solo tendrá que agregar el número de identificación fiscal relacionado.\n"
 "* Pasaporte\n"
 "* Identificación extranjera (Documento nacional extranjero)\n"
 "\n"
@@ -1096,7 +1096,7 @@ msgstr ""
 "\n"
 "Todos los tipos de identificación definidos se pueden revisar y activar / desactivar en el menú \"Contactos / Configuración / Tipo de identificación\".\n"
 "\n"
-"Este módulo es compatible con el módulo base_vat para poder validar los números de identificación fiscal(RIF) para cada país que tenga o no la posibilidad de administrar múltiples tipos de identificación.\n"
+"Este módulo es compatible con el módulo base_vat para poder validar los números de identificación fiscal(NIF) para cada país que tenga o no la posibilidad de administrar múltiples tipos de identificación.\n"
 
 #. module: base
 #: model:ir.module.module,description:base.module_website_sale_delivery
@@ -5321,23 +5321,23 @@ msgid ""
 "    "
 msgstr ""
 "\n"
-"Validación del número de identificación fiscal(RIF) de los contactos.\n"
+"Validación del número de identificación fiscal(NIF) de los contactos.\n"
 "=========================================\n"
 "\n"
-"Tras instalar este módulo, se validarán los valores introducidos en el campo de número de identificación fiscal(RIF) de los\n"
+"Tras instalar este módulo, se validarán los valores introducidos en el campo de número de identificación fiscal(NIF) de los\n"
 "contactos para todos los países admitidos. Se deduce el país por las 2 letras del código que\n"
-"preceden al número de número de identificación fiscal(RIF). Por ejemplo, \"BE0477472701\" se validará usando la normativa\n"
+"preceden al número de número de identificación fiscal(NIF). Por ejemplo, \"BE0477472701\" se validará usando la normativa\n"
 "belga.\n"
 "\n"
-"Hay dos niveles diferentes para validar el número de identificación fiscal(RIF):\n"
+"Hay dos niveles diferentes para validar el número de identificación fiscal(NIF):\n"
 "--------------------------------------------------------\n"
 "* Por defecto, se realiza una simple comprobación sin conexión usando las reglas de\n"
 "validación conocidas de un país, normalmente mediante una sencilla comprobación de\n"
 "dígitos. Es rápido y se puede hacer en cualquier momento, pero admite números que quizá\n"
 "no estén realmente asociados o que ya no sean válidos.\n"
 "\n"
-"* Cuando se habilita la opción de \"Comprobación del número de identificación fiscal(RIF) en VIES\" (en la configuración de la\n"
-"empresa del usuario), los números del número de identificación fiscal(RIF) se enviarán en su lugar a la base electrónica de\n"
+"* Cuando se habilita la opción de \"Comprobación del número de identificación fiscal(NIF) en VIES\" (en la configuración de la\n"
+"empresa del usuario), los números del número de identificación fiscal(NIF) se enviarán en su lugar a la base electrónica de\n"
 "datos VIES de la Unión Europea, que verificará realmente si el número es válido y si\n"
 "actualmente está asociado a una empresa. Esto es un poco más lento que una simple\n"
 "comprobación sin conexión, pues requiere tener conexión a internet y puede que no esté\n"
@@ -5636,7 +5636,7 @@ msgstr "&amp; Cerrar"
 #. module: base
 #: model_terms:ir.ui.view,arch_db:base.module_view_kanban
 msgid "&amp;nbsp;"
-msgstr " "
+msgstr " "
 
 #. module: base
 #: code:addons/base/models/ir_fields.py:0
@@ -6672,7 +6672,6 @@ msgstr "Tests de consistencia de contabilidad"
 #. module: l10n_ve_plusteam
 #: model_terms:ir.ui.view,arch_db:l10n_ve_plusteam.res_config_settings_view_form
 msgid "Accounting accounts for ISLR retention Purchase"
-msgstr "Cuenta contable para retención de ISLR Compra"
 
 #. module: l10n_ve_plusteam
 #: model_terms:ir.ui.view,arch_db:l10n_ve_plusteam.res_config_settings_view_form
@@ -7362,7 +7361,6 @@ msgstr "Compañías permitidas"
 #: model_terms:ir.ui.view,arch_db:l10n_ve_plusteam.view_partner_form
 msgid "Allows consulting company information using RIF number on SENIAT site"
 msgstr "Permitir consultar la información de la empresa utilizando el número RIF en el sitio del SENIAT"
-
 #. module: base
 #: model:ir.module.module,description:base.module_website_profile
 msgid ""
@@ -8027,7 +8025,7 @@ msgstr ""
 msgid "Bank"
 msgstr "Banco"
 
-#. modules: base, contacts
+#. modules: contacts, base
 #: model:ir.actions.act_window,name:base.action_res_partner_bank_account_form
 #: model:ir.model,name:base.model_res_partner_bank
 #: model:ir.model.fields,field_description:base.field_res_company__bank_ids
@@ -8072,7 +8070,7 @@ msgstr ""
 msgid "Bank accounts related to this company"
 msgstr "Cuentas bancarias de esta empresa"
 
-#. modules: base, contacts
+#. modules: contacts, base
 #: model:ir.actions.act_window,name:base.action_res_bank_form
 #: model:ir.model.fields,field_description:base.field_res_partner__bank_ids
 #: model:ir.model.fields,field_description:base.field_res_users__bank_ids
@@ -9158,7 +9156,7 @@ msgstr ""
 msgid "Cocos (Keeling) Islands"
 msgstr "Islas Cocos (Keeling)"
 
-#. modules: base, l10n_ve_plusteam
+#. modules: l10n_ve_plusteam, base
 #: model:ir.model.fields,field_description:l10n_ve_plusteam.field_islr_concepts__code
 #: model:ir.model.fields,field_description:l10n_ve_plusteam.field_person_type__code
 #: model:ir.model.fields.selection,name:base.selection__ir_translation__type__code
@@ -9475,7 +9473,7 @@ msgstr "Pasos de los asistentes de configuración"
 msgid "Config: Run Remaining Action Todo"
 msgstr "Config.: Ejecutar las acciones que quedan por hacer"
 
-#. modules: base, contacts
+#. modules: contacts, base
 #: model:ir.ui.menu,name:base.menu_reporting_config
 #: model:ir.ui.menu,name:contacts.res_partner_menu_config
 #: model_terms:ir.ui.view,arch_db:base.res_config_view_base
@@ -9617,14 +9615,14 @@ msgstr "Nombre del contacto"
 msgid "Contact Tag"
 msgstr "Etiqueta de contacto"
 
-#. modules: base, contacts
+#. modules: contacts, base
 #: model:ir.actions.act_window,name:base.action_partner_category_form
 #: model:ir.ui.menu,name:contacts.menu_partner_category_form
 #: model_terms:ir.ui.view,arch_db:base.view_partner_category_list
 msgid "Contact Tags"
 msgstr "Etiquetas de contacto"
 
-#. modules: base, contacts
+#. modules: contacts, base
 #: model:ir.actions.act_window,name:base.action_partner_title_contact
 #: model:ir.ui.menu,name:contacts.menu_partner_title_contact
 msgid "Contact Titles"
@@ -9642,7 +9640,7 @@ msgid "Contact your administrator to request access if necessary."
 msgstr ""
 "Ponte en contacto con tu administrador para pedirle acceso si es necesario"
 
-#. modules: base, contacts
+#. modules: contacts, base
 #: model:ir.actions.act_window,name:contacts.action_contacts
 #: model:ir.model.fields,field_description:base.field_base_partner_merge_automatic_wizard__partner_ids
 #: model:ir.module.module,shortdesc:base.module_contacts
@@ -9748,7 +9746,7 @@ msgstr "¡No se puede crear un contacto sin dirección de correo electrónico!"
 msgid "Count (Incl. Archived)"
 msgstr "Recuento (incluyendo los archivados)"
 
-#. modules: base, contacts
+#. modules: contacts, base
 #: model:ir.actions.act_window,name:base.action_country
 #: model:ir.model.fields,field_description:base.field_res_country_group__country_ids
 #: model:ir.ui.menu,name:contacts.menu_country_partner
@@ -9783,7 +9781,7 @@ msgstr "Código de llamada del país"
 msgid "Country Code"
 msgstr "Código de país"
 
-#. modules: base, contacts
+#. modules: contacts, base
 #: model:ir.actions.act_window,name:base.action_country_group
 #: model:ir.model,name:base.model_res_country_group
 #: model:ir.ui.menu,name:contacts.menu_country_group
@@ -9909,7 +9907,7 @@ msgstr "Crear etiqueta de contacto"
 #: model_terms:ir.actions.act_window,help:base.action_partner_customer_form
 #: model_terms:ir.actions.act_window,help:base.action_partner_form
 msgid "Create a new customer in your address book"
-msgstr "Cree un nuevo cliente en su libro de direcciones"
+msgstr "Crear un nuevo cliente en tu libro de direcciones"
 
 #. module: base
 #: model_terms:ir.actions.act_window,help:base.res_partner_industry_action
@@ -9988,7 +9986,7 @@ msgstr "Menús creados"
 msgid "Created Views"
 msgstr "Vistas creadas"
 
-#. modules: base, l10n_ve_plusteam
+#. modules: l10n_ve_plusteam, base
 #: model:ir.model.fields,field_description:base.field_base_language_export__create_uid
 #: model:ir.model.fields,field_description:base.field_base_language_import__create_uid
 #: model:ir.model.fields,field_description:base.field_base_language_install__create_uid
@@ -10074,7 +10072,7 @@ msgstr "Vistas creadas"
 msgid "Created by"
 msgstr "Creado por"
 
-#. modules: base, l10n_ve_plusteam
+#. modules: l10n_ve_plusteam, base
 #: model:ir.model.fields,field_description:base.field_base_language_export__create_date
 #: model:ir.model.fields,field_description:base.field_base_language_import__create_date
 #: model:ir.model.fields,field_description:base.field_base_language_install__create_date
@@ -10218,7 +10216,7 @@ msgstr ""
 msgid "Currencies"
 msgstr "Monedas"
 
-#. modules: base, l10n_ve_plusteam
+#. modules: l10n_ve_plusteam, base
 #: model:ir.model,name:base.model_res_currency
 #: model:ir.model.fields,field_description:base.field_res_company__currency_id
 #: model:ir.model.fields,field_description:base.field_res_country__currency_id
@@ -10512,7 +10510,7 @@ msgstr ""
 "La pérdida en la base de datos de ids ({}) y la presencia de ids extra ({}),"
 " puede ser causada por algún tipo de incoherencia en una consulta previa."
 
-#. modules: base, l10n_ve_plusteam
+#. modules: l10n_ve_plusteam, base
 #: code:addons/base/models/ir_qweb_fields.py:0
 #: model:ir.model.fields,field_description:base.field_res_currency__date
 #: model:ir.model.fields,field_description:base.field_res_currency_rate__name
@@ -10782,7 +10780,7 @@ msgstr ""
 msgid "Dependency"
 msgstr "Dependencia"
 
-#. modules: base, l10n_ve_plusteam
+#. modules: l10n_ve_plusteam, base
 #: model:ir.model.fields,field_description:base.field_ir_attachment__description
 #: model:ir.model.fields,field_description:base.field_ir_mail_server__name
 #: model:ir.model.fields,field_description:base.field_ir_module_category__description
@@ -10914,7 +10912,7 @@ msgstr "Conversaciones"
 msgid "Display"
 msgstr "Mostrar en pantalla"
 
-#. modules: base, contacts, l10n_ve_plusteam
+#. modules: contacts, l10n_ve_plusteam, base
 #: model:ir.model.fields,field_description:base.field__unknown__display_name
 #: model:ir.model.fields,field_description:base.field_base__display_name
 #: model:ir.model.fields,field_description:base.field_base_language_export__display_name
@@ -11002,6 +11000,7 @@ msgstr "Mostrar en pantalla"
 #: model:ir.model.fields,field_description:base.field_res_company__display_name
 #: model:ir.model.fields,field_description:base.field_res_config__display_name
 #: model:ir.model.fields,field_description:base.field_res_config_installer__display_name
+#: model:ir.model.fields,field_description:base.field_res_config_settings__display_name
 #: model:ir.model.fields,field_description:base.field_res_country__display_name
 #: model:ir.model.fields,field_description:base.field_res_country_group__display_name
 #: model:ir.model.fields,field_description:base.field_res_country_state__display_name
@@ -11025,8 +11024,6 @@ msgstr "Mostrar en pantalla"
 #: model:ir.model.fields,field_description:l10n_ve_plusteam.field_islr_concepts__display_name
 #: model:ir.model.fields,field_description:l10n_ve_plusteam.field_islr_tab__display_name
 #: model:ir.model.fields,field_description:l10n_ve_plusteam.field_person_type__display_name
-#: model:ir.model.fields,field_description:l10n_ve_plusteam.field_res_config_settings__display_name
-#: model:ir.model.fields,field_description:l10n_ve_plusteam.field_res_partner__display_name
 #: model:ir.model.fields,field_description:l10n_ve_plusteam.field_tax_unit__display_name
 msgid "Display Name"
 msgstr "Mostrar nombre"
@@ -11703,6 +11700,29 @@ msgstr ""
 msgid "Error! You cannot create recursive menus."
 msgstr "¡Error! No puede crear menús recursivos."
 
+#. module: l10n_ve_plusteam
+#: model:ir.model.fields,help:l10n_ve_plusteam.field_islr_tab__percentage_retention
+msgid ""
+"Es el porcentaje que se aplica a la base imponible para calcular la "
+"retención según el concepto y tipo de persona."
+msgstr ""
+
+#. module: l10n_ve_plusteam
+#: model:ir.model.fields,help:l10n_ve_plusteam.field_islr_tab__subtracting
+msgid ""
+"Este es el monto que se calcula a partir de las personas físicas residentes "
+"como monto exento de impuesto, es decir que este monto se resta de la "
+"retención calculada para obtener la retención para las personas físicas "
+"residentes."
+msgstr ""
+
+#. module: l10n_ve_plusteam
+#: model:ir.model.fields,help:l10n_ve_plusteam.field_islr_tab__percentage_base
+msgid ""
+"Este porcentaje se aplica al monto del servicio según el concepto o tipo de "
+"persona para determinar la base imponible."
+msgstr ""
+
 #. module: base
 #: model:res.country,name:base.ee
 msgid "Estonia"
@@ -12076,7 +12096,7 @@ msgstr ""
 msgid "Fed. State"
 msgstr "Provincia"
 
-#. modules: base, contacts
+#. modules: contacts, base
 #: model:ir.actions.act_window,name:base.action_country_state
 #: model:ir.ui.menu,name:contacts.menu_country_state_partner
 msgid "Fed. States"
@@ -13591,7 +13611,7 @@ msgstr ""
 msgid "IBAN Bank Accounts"
 msgstr "Cuentas bancarias IBAN"
 
-#. modules: base, contacts, l10n_ve_plusteam
+#. modules: contacts, l10n_ve_plusteam, base
 #: model:ir.model.fields,field_description:base.field__unknown__id
 #: model:ir.model.fields,field_description:base.field_base__id
 #: model:ir.model.fields,field_description:base.field_base_language_export__id
@@ -13679,6 +13699,7 @@ msgstr "Cuentas bancarias IBAN"
 #: model:ir.model.fields,field_description:base.field_res_company__id
 #: model:ir.model.fields,field_description:base.field_res_config__id
 #: model:ir.model.fields,field_description:base.field_res_config_installer__id
+#: model:ir.model.fields,field_description:base.field_res_config_settings__id
 #: model:ir.model.fields,field_description:base.field_res_country__id
 #: model:ir.model.fields,field_description:base.field_res_country_group__id
 #: model:ir.model.fields,field_description:base.field_res_country_state__id
@@ -13702,8 +13723,6 @@ msgstr "Cuentas bancarias IBAN"
 #: model:ir.model.fields,field_description:l10n_ve_plusteam.field_islr_concepts__id
 #: model:ir.model.fields,field_description:l10n_ve_plusteam.field_islr_tab__id
 #: model:ir.model.fields,field_description:l10n_ve_plusteam.field_person_type__id
-#: model:ir.model.fields,field_description:l10n_ve_plusteam.field_res_config_settings__id
-#: model:ir.model.fields,field_description:l10n_ve_plusteam.field_res_partner__id
 #: model:ir.model.fields,field_description:l10n_ve_plusteam.field_tax_unit__id
 msgid "ID"
 msgstr "Identificación"
@@ -14274,7 +14293,7 @@ msgstr "E-faktur Indonesia"
 msgid "Indonesian - Accounting"
 msgstr "Indonesia - Contabilidad"
 
-#. modules: base, contacts
+#. modules: contacts, base
 #: model:ir.actions.act_window,name:base.res_partner_industry_action
 #: model:ir.ui.menu,name:contacts.res_partner_industry_menu
 msgid "Industries"
@@ -14684,7 +14703,7 @@ msgstr "Inventario, logística, valoración, contabilidad"
 #. module: base
 #: model_terms:ir.ui.view,arch_db:base.view_partner_form
 msgid "Invoice"
-msgstr "Facturas de clientes"
+msgstr "Factura"
 
 #. module: base
 #: model:ir.model.fields,help:base.field_res_partner__type
@@ -14775,7 +14794,6 @@ msgstr "Israel - Contabilidad"
 
 #. module: l10n_ve_plusteam
 #: code:addons/l10n_ve_plusteam/models/person_type.py:0
-#: model:ir.model.fields,help:l10n_ve_plusteam.field_islr_tab__percentage_retention
 #, python-format
 msgid ""
 "It is the percentage that is applied to the tax base to calculate the "
@@ -14786,8 +14804,6 @@ msgstr ""
 
 #. module: l10n_ve_plusteam
 #: code:addons/l10n_ve_plusteam/models/res_partner.py:0
-#: model:ir.model.fields,help:l10n_ve_plusteam.field_res_partner__taxpayer
-#: model:ir.model.fields,help:l10n_ve_plusteam.field_res_users__taxpayer
 #, python-format
 msgid "It is used to filter the contributors for the sales book report"
 msgstr ""
@@ -15101,7 +15117,7 @@ msgstr ""
 msgid "Last Execution Date"
 msgstr "Última fecha de ejecución"
 
-#. modules: base, contacts, l10n_ve_plusteam
+#. modules: contacts, l10n_ve_plusteam, base
 #: model:ir.model.fields,field_description:base.field__unknown____last_update
 #: model:ir.model.fields,field_description:base.field_base____last_update
 #: model:ir.model.fields,field_description:base.field_base_language_export____last_update
@@ -15189,6 +15205,7 @@ msgstr "Última fecha de ejecución"
 #: model:ir.model.fields,field_description:base.field_res_company____last_update
 #: model:ir.model.fields,field_description:base.field_res_config____last_update
 #: model:ir.model.fields,field_description:base.field_res_config_installer____last_update
+#: model:ir.model.fields,field_description:base.field_res_config_settings____last_update
 #: model:ir.model.fields,field_description:base.field_res_country____last_update
 #: model:ir.model.fields,field_description:base.field_res_country_group____last_update
 #: model:ir.model.fields,field_description:base.field_res_country_state____last_update
@@ -15212,13 +15229,11 @@ msgstr "Última fecha de ejecución"
 #: model:ir.model.fields,field_description:l10n_ve_plusteam.field_islr_concepts____last_update
 #: model:ir.model.fields,field_description:l10n_ve_plusteam.field_islr_tab____last_update
 #: model:ir.model.fields,field_description:l10n_ve_plusteam.field_person_type____last_update
-#: model:ir.model.fields,field_description:l10n_ve_plusteam.field_res_config_settings____last_update
-#: model:ir.model.fields,field_description:l10n_ve_plusteam.field_res_partner____last_update
 #: model:ir.model.fields,field_description:l10n_ve_plusteam.field_tax_unit____last_update
 msgid "Last Modified on"
 msgstr "Modificada por última vez"
 
-#. modules: base, l10n_ve_plusteam
+#. modules: l10n_ve_plusteam, base
 #: model:ir.model.fields,field_description:base.field_base_language_export__write_uid
 #: model:ir.model.fields,field_description:base.field_base_language_import__write_uid
 #: model:ir.model.fields,field_description:base.field_base_language_install__write_uid
@@ -15303,7 +15318,7 @@ msgstr "Modificada por última vez"
 msgid "Last Updated by"
 msgstr "Última actualización realizada por"
 
-#. modules: base, l10n_ve_plusteam
+#. modules: l10n_ve_plusteam, base
 #: model:ir.model.fields,field_description:base.field_base_language_export__write_date
 #: model:ir.model.fields,field_description:base.field_base_language_import__write_date
 #: model:ir.model.fields,field_description:base.field_base_language_install__write_date
@@ -15656,7 +15671,7 @@ msgstr "Cargar datos de prueba"
 msgid "Locale Code"
 msgstr "Código local"
 
-#. modules: base, contacts, l10n_ve_plusteam
+#. modules: contacts, l10n_ve_plusteam, base
 #: model:ir.module.category,name:base.module_category_accounting_localizations
 #: model:ir.module.category,name:base.module_category_localization
 #: model:ir.ui.menu,name:contacts.menu_localisation
@@ -19017,7 +19032,7 @@ msgstr ""
 #: model_terms:ir.actions.act_window,help:base.action_partner_form
 msgid "Odoo helps you easily track all activities related to a customer."
 msgstr ""
-"Odoo le ayuda a rastrear fácilmente todas las actividades relacionadas con "
+"Odoo te ayuda a rastrear fácilmente todas las actividades relacionadas con "
 "un cliente."
 
 #. module: base
@@ -20520,8 +20535,6 @@ msgstr "Método de pago Payulatam"
 #: model:ir.actions.act_window,name:l10n_ve_plusteam.person_type_action
 #: model:ir.model,name:l10n_ve_plusteam.model_person_type
 #: model:ir.model.fields,field_description:l10n_ve_plusteam.field_islr_tab__person_type_id
-#: model:ir.model.fields,field_description:l10n_ve_plusteam.field_res_partner__person_type
-#: model:ir.model.fields,field_description:l10n_ve_plusteam.field_res_users__person_type
 #: model:ir.ui.menu,name:l10n_ve_plusteam.person_type_menu
 msgid "Person Type"
 msgstr "Tipo de Persona"
@@ -21665,7 +21678,7 @@ msgstr "Repetir cada x."
 #: model_terms:ir.ui.view,arch_db:base.act_report_xml_search_view
 #: model_terms:ir.ui.view,arch_db:base.act_report_xml_view
 msgid "Report"
-msgstr "Informe"
+msgstr "Reporte"
 
 #. module: base
 #: model:ir.model,name:base.model_ir_actions_report
@@ -22168,7 +22181,7 @@ msgstr "Maquinaria interna de ventas"
 #: model:ir.model.fields,field_description:base.field_res_users__user_id
 #: model_terms:ir.ui.view,arch_db:base.view_res_partner_filter
 msgid "Salesperson"
-msgstr "Comercial"
+msgstr "Vendedor"
 
 #. module: base
 #: model:res.country,name:base.ws
@@ -22183,7 +22196,7 @@ msgstr ""
 #. module: base
 #: model:ir.model.fields,field_description:base.field_res_partner_bank__sanitized_acc_number
 msgid "Sanitized Account Number"
-msgstr "Número de Cuenta Bancaria"
+msgstr "Número de cuenta limpia"
 
 #. module: base
 #: model:ir.model.fields.selection,name:base.selection__res_lang__week_start__6
@@ -22503,11 +22516,6 @@ msgstr "Enviar SMS al finalizar movimientos de inventario"
 #. module: base
 #: model:res.country,name:base.sn
 msgid "Senegal"
-msgstr ""
-
-#. module: l10n_ve_plusteam
-#: model_terms:ir.ui.view,arch_db:l10n_ve_plusteam.view_partner_form
-msgid "Seniat"
 msgstr ""
 
 #. module: base
@@ -23449,12 +23457,6 @@ msgstr "RIF"
 msgid "Tax Unit"
 msgstr "Unidad Tributaria"
 
-#. module: l10n_ve_plusteam
-#: model:ir.model.fields,field_description:l10n_ve_plusteam.field_res_partner__taxpayer
-#: model:ir.model.fields,field_description:l10n_ve_plusteam.field_res_users__taxpayer
-msgid "Taxpayer"
-msgstr "Contribuyente"
-
 #. module: base
 #: model:ir.module.module,summary:base.module_theme_kea
 msgid "Tech, IT, Computers, Stores"
@@ -23631,7 +23633,7 @@ msgid ""
 "You can use this field for quick search."
 msgstr ""
 "EL código ISO del país en dos caracteres.\n"
-"Puede utilizar este campo para la búsqueda rápida."
+"Puedes utilizar este campo para una búsqueda rápida."
 
 #. module: base
 #: model:ir.model.fields,help:base.field_res_lang__url_code
@@ -24319,7 +24321,6 @@ msgstr ""
 
 #. module: l10n_ve_plusteam
 #: code:addons/l10n_ve_plusteam/models/person_type.py:0
-#: model:ir.model.fields,help:l10n_ve_plusteam.field_islr_tab__subtracting
 #, python-format
 msgid ""
 "This is the amount that is calculated from the resident natural persons as "
@@ -24486,7 +24487,6 @@ msgstr ""
 
 #. module: l10n_ve_plusteam
 #: code:addons/l10n_ve_plusteam/models/person_type.py:0
-#: model:ir.model.fields,help:l10n_ve_plusteam.field_islr_tab__percentage_base
 #, python-format
 msgid ""
 "This percentage is applied to the amount of the service according to the "
@@ -24569,7 +24569,7 @@ msgstr "Título"
 #. module: base
 #: model:ir.model.fields,field_description:base.field_ir_sequence_date_range__date_to
 msgid "To"
-msgstr "Hasta"
+msgstr "A"
 
 #. module: base
 #: model:ir.model.fields.selection,name:base.selection__ir_actions_todo__state__open
@@ -25548,7 +25548,7 @@ msgstr "Usuario: %s"
 msgid "Username"
 msgstr "Nombre de usuario"
 
-#. modules: base, contacts
+#. modules: contacts, base
 #: model:ir.actions.act_window,name:base.action_res_users
 #: model:ir.model,name:contacts.model_res_users
 #: model:ir.model.fields,field_description:base.field_change_password_wizard__user_ids
@@ -25636,7 +25636,7 @@ msgstr "Cuenta contable de IVA para proveedores"
 msgid "Validate and format phone numbers"
 msgstr "Validar y formatear los números de teléfono"
 
-#. modules: base, l10n_ve_plusteam
+#. modules: l10n_ve_plusteam, base
 #: model:ir.model.fields,field_description:base.field_ir_config_parameter__value
 #: model:ir.model.fields,field_description:base.field_ir_model_fields_selection__value
 #: model:ir.model.fields,field_description:base.field_ir_server_object_lines__value
