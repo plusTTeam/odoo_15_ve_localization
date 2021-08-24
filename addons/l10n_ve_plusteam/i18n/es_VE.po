@@ -9454,8 +9454,8 @@ msgstr "Configuración"
 msgid "Config Installer"
 msgstr "Instalador de Configuración"
 
-#. module: l10n_ve_plusteam
-#: model:ir.model,name:l10n_ve_plusteam.model_res_config_settings
+#. module: base
+#: model:ir.model,name:base.model_res_config_settings
 msgid "Config Settings"
 msgstr "Opciones de configuración"
 
@@ -10997,6 +10997,7 @@ msgstr "Mostrar en pantalla"
 #: model:ir.model.fields,field_description:base.field_res_company__display_name
 #: model:ir.model.fields,field_description:base.field_res_config__display_name
 #: model:ir.model.fields,field_description:base.field_res_config_installer__display_name
+#: model:ir.model.fields,field_description:base.field_res_partner__display_name
 #: model:ir.model.fields,field_description:base.field_res_country__display_name
 #: model:ir.model.fields,field_description:base.field_res_country_group__display_name
 #: model:ir.model.fields,field_description:base.field_res_country_state__display_name
@@ -11020,8 +11021,6 @@ msgstr "Mostrar en pantalla"
 #: model:ir.model.fields,field_description:l10n_ve_plusteam.field_islr_concepts__display_name
 #: model:ir.model.fields,field_description:l10n_ve_plusteam.field_islr_tab__display_name
 #: model:ir.model.fields,field_description:l10n_ve_plusteam.field_person_type__display_name
-#: model:ir.model.fields,field_description:l10n_ve_plusteam.field_res_config_settings__display_name
-#: model:ir.model.fields,field_description:l10n_ve_plusteam.field_res_partner__display_name
 #: model:ir.model.fields,field_description:l10n_ve_plusteam.field_tax_unit__display_name
 msgid "Display Name"
 msgstr "Mostrar nombre"
@@ -13697,6 +13696,7 @@ msgstr "Cuentas bancarias IBAN"
 #: model:ir.model.fields,field_description:base.field_res_company__id
 #: model:ir.model.fields,field_description:base.field_res_config__id
 #: model:ir.model.fields,field_description:base.field_res_config_installer__id
+#: model:ir.model.fields,field_description:base.field_res_config_settings__id
 #: model:ir.model.fields,field_description:base.field_res_country__id
 #: model:ir.model.fields,field_description:base.field_res_country_group__id
 #: model:ir.model.fields,field_description:base.field_res_country_state__id
@@ -13720,8 +13720,6 @@ msgstr "Cuentas bancarias IBAN"
 #: model:ir.model.fields,field_description:l10n_ve_plusteam.field_islr_concepts__id
 #: model:ir.model.fields,field_description:l10n_ve_plusteam.field_islr_tab__id
 #: model:ir.model.fields,field_description:l10n_ve_plusteam.field_person_type__id
-#: model:ir.model.fields,field_description:l10n_ve_plusteam.field_res_config_settings__id
-#: model:ir.model.fields,field_description:l10n_ve_plusteam.field_res_partner__id
 #: model:ir.model.fields,field_description:l10n_ve_plusteam.field_tax_unit__id
 msgid "ID"
 msgstr "Identificación"
@@ -15204,6 +15202,7 @@ msgstr "Última fecha de ejecución"
 #: model:ir.model.fields,field_description:base.field_res_company____last_update
 #: model:ir.model.fields,field_description:base.field_res_config____last_update
 #: model:ir.model.fields,field_description:base.field_res_config_installer____last_update
+#: model:ir.model.fields,field_description:base.field_res_config_settings____last_update
 #: model:ir.model.fields,field_description:base.field_res_country____last_update
 #: model:ir.model.fields,field_description:base.field_res_country_group____last_update
 #: model:ir.model.fields,field_description:base.field_res_country_state____last_update
@@ -15228,8 +15227,6 @@ msgstr "Última fecha de ejecución"
 #: model:ir.model.fields,field_description:l10n_ve_plusteam.field_islr_tab____last_update
 #: model:ir.model.fields,field_description:l10n_ve_plusteam.field_person_type____last_update
 #: model:ir.model.fields,field_description:l10n_ve_plusteam.field_tax_unit____last_update
-#: model:ir.model.fields,field_description:l10n_ve_plusteam.field_res_config_settings____last_update
-#: model:ir.model.fields,field_description:l10n_ve_plusteam.field_res_partner____last_update
 msgid "Last Modified on"
 msgstr "Modificada por última vez"
 
