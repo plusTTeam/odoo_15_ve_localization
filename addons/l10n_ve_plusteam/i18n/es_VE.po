@@ -6003,17 +6003,6 @@ msgid ""
 "                            </span>"
 msgstr ""
 
-#. module: l10n_ve_plusteam
-#: model_terms:ir.ui.view,arch_db:l10n_ve_plusteam.res_config_settings_view_form
-msgid "<span class=\"o_form_label\">Accounting accounts for ISLR retention</span>"
-msgstr ""
-"<span class=\"o_form_label\">Cuenta contable para retención de ISLR</span>"
-
-#. module: l10n_ve_plusteam
-#: model_terms:ir.ui.view,arch_db:l10n_ve_plusteam.res_config_settings_view_form
-msgid "<span class=\"o_form_label\">Accounting accounts for VAT retention</span>"
-msgstr "<span class=\"o_form_label\">Cuenta contable para retención de IVA</span>"
-
 #. module: base
 #: model_terms:ir.ui.view,arch_db:base.view_base_module_update
 msgid ""
@@ -6668,26 +6657,6 @@ msgstr "Contabilidad - MRP"
 #: model:ir.module.module,shortdesc:base.module_account_test
 msgid "Accounting Consistency Tests"
 msgstr "Tests de consistencia de contabilidad"
-
-#. module: l10n_ve_plusteam
-#: model_terms:ir.ui.view,arch_db:l10n_ve_plusteam.res_config_settings_view_form
-msgid "Accounting accounts for ISLR retention Purchase"
-msgstr "Cuenta contable para retención de ISLR Compra"
-
-#. module: l10n_ve_plusteam
-#: model_terms:ir.ui.view,arch_db:l10n_ve_plusteam.res_config_settings_view_form
-msgid "Accounting accounts for ISLR retention Sale"
-msgstr "Cuenta contable para retención de ISLR Venta"
-
-#. module: l10n_ve_plusteam
-#: model_terms:ir.ui.view,arch_db:l10n_ve_plusteam.res_config_settings_view_form
-msgid "Accounting accounts for VAT retention Sale"
-msgstr "Cuenta contable para retención de IVA Venta"
-
-#. module: l10n_ve_plusteam
-#: model_terms:ir.ui.view,arch_db:l10n_ve_plusteam.res_config_settings_view_form
-msgid "Accounting accounts for VAT retention purchase"
-msgstr "Cuenta contable para retención de IVA Compra"
 
 #. module: base
 #: model:ir.module.module,description:base.module_l10n_nl
@@ -10997,7 +10966,7 @@ msgstr "Mostrar en pantalla"
 #: model:ir.model.fields,field_description:base.field_res_company__display_name
 #: model:ir.model.fields,field_description:base.field_res_config__display_name
 #: model:ir.model.fields,field_description:base.field_res_config_installer__display_name
-#: model:ir.model.fields,field_description:base.field_res_partner__display_name
+#: model:ir.model.fields,field_description:base.field_res_config_settings__display_name
 #: model:ir.model.fields,field_description:base.field_res_country__display_name
 #: model:ir.model.fields,field_description:base.field_res_country_group__display_name
 #: model:ir.model.fields,field_description:base.field_res_country_state__display_name
@@ -13836,16 +13805,6 @@ msgstr "Conceptos ISLR"
 #: model:ir.model.fields,field_description:l10n_ve_plusteam.field_person_type__islr_tab_ids
 msgid "ISLR Tab"
 msgstr "Tabulador ISLR"
-
-#. module: l10n_ve_plusteam
-#: model:ir.model.fields,field_description:l10n_ve_plusteam.field_res_config_settings__islr_account_sale_id
-msgid "ISLR accounting account for customer"
-msgstr "Cuenta contable de ISLR para clientes"
-
-#. module: l10n_ve_plusteam
-#: model:ir.model.fields,field_description:l10n_ve_plusteam.field_res_config_settings__islr_account_purchase_id
-msgid "ISLR accounting account for suppliers"
-msgstr "Cuenta contable de ISLR para proveedores"
 
 #. module: base
 #: model:ir.model.fields,field_description:base.field_base_language_import__code
@@ -21137,16 +21096,6 @@ msgstr "Compra"
 msgid "Purchase Agreements"
 msgstr "Acuerdos de compra"
 
-#. module: l10n_ve_plusteam
-#: model_terms:ir.ui.view,arch_db:l10n_ve_plusteam.res_config_settings_view_form
-msgid "Purchase ISLR"
-msgstr "Compras ISLR"
-
-#. module: l10n_ve_plusteam
-#: model_terms:ir.ui.view,arch_db:l10n_ve_plusteam.res_config_settings_view_form
-msgid "Purchase IVA"
-msgstr "Compras IVA"
-
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_purchase_product_matrix
 msgid "Purchase Matrix"
@@ -21851,11 +21800,6 @@ msgstr "Restringir"
 msgid "Retail"
 msgstr ""
 
-#. module: l10n_ve_plusteam
-#: model_terms:ir.ui.view,arch_db:l10n_ve_plusteam.res_config_settings_view_form
-msgid "Retention Accounting Accounts"
-msgstr "Cuentas Contable para Retención"
-
 #. module: base
 #: model:ir.model.fields,field_description:base.field_report_paperformat__margin_right
 msgid "Right Margin (mm)"
@@ -22077,16 +22021,6 @@ msgstr "Cupón de ventas"
 msgid "Sale Coupon Delivery"
 msgstr "Entrega del cupón de ventas"
 
-#. module: l10n_ve_plusteam
-#: model_terms:ir.ui.view,arch_db:l10n_ve_plusteam.res_config_settings_view_form
-msgid "Sale ISLR"
-msgstr "Ventas ISLR"
-
-#. module: l10n_ve_plusteam
-#: model_terms:ir.ui.view,arch_db:l10n_ve_plusteam.res_config_settings_view_form
-msgid "Sale IVA"
-msgstr "Ventas IVA"
-
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_sale_product_matrix
 msgid "Sale Matrix"
@@ -22271,14 +22205,6 @@ msgstr "Científico"
 #: model:ir.model.fields,field_description:base.field_res_users_apikeys__scope
 msgid "Scope"
 msgstr "Ámbito"
-
-#. module: l10n_ve_plusteam
-#: model:ir.model.fields,help:l10n_ve_plusteam.field_res_partner__taxpayer
-#: model:ir.model.fields,help:l10n_ve_plusteam.field_res_users__taxpayer
-msgid ""
-"Se utiliza para filtrar los contribuyentes para el informe del libro de "
-"ventas."
-msgstr ""
 
 #. module: base
 #: model:ir.model.fields.selection,name:base.selection__ir_ui_view__type__search
@@ -24564,12 +24490,6 @@ msgstr "Compensación de zona horaria"
 msgid "Timor-Leste"
 msgstr "Timor Oriental"
 
-#. module: l10n_ve_plusteam
-#: model:ir.model.fields,field_description:l10n_ve_plusteam.field_res_partner__sale_tips
-#: model:ir.model.fields,field_description:l10n_ve_plusteam.field_res_users__sale_tips
-msgid "Tipo de Persona"
-msgstr ""
-
 #. module: base
 #: model:ir.model.fields,field_description:base.field_res_partner__title
 #: model:ir.model.fields,field_description:base.field_res_partner_title__name
@@ -25631,16 +25551,6 @@ msgstr "IVA"
 #: model:ir.module.module,shortdesc:base.module_base_vat
 msgid "VAT Number Validation"
 msgstr "Validación de número de IVA"
-
-#. module: l10n_ve_plusteam
-#: model:ir.model.fields,field_description:l10n_ve_plusteam.field_res_config_settings__iva_account_sale_id
-msgid "VAT accounting account for customer"
-msgstr "Cuenta contable de IVA para clientes"
-
-#. module: l10n_ve_plusteam
-#: model:ir.model.fields,field_description:l10n_ve_plusteam.field_res_config_settings__iva_account_purchase_id
-msgid "VAT accounting account for suppliers"
-msgstr "Cuenta contable de IVA para proveedores"
 
 #. module: base
 #: model:ir.module.module,summary:base.module_phone_validation
