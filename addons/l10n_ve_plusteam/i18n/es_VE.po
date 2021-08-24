@@ -23454,7 +23454,7 @@ msgstr "Unidad Tributaria"
 #: model:ir.model.fields,field_description:l10n_ve_plusteam.field_res_partner__taxpayer
 #: model:ir.model.fields,field_description:l10n_ve_plusteam.field_res_users__taxpayer
 msgid "Taxpayer"
-msgstr ""
+msgstr "Contribuyente"
 
 #. module: base
 #: model:ir.module.module,summary:base.module_theme_kea
