@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_partner_form" model="ir.ui.view">
+        <field name="name">res.partner.form</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="priority">20</field>
+        <field name="arch" type="xml">
+            <xpath expr="//sheet" position="before">
+                <header>
+                    <button role="link" string="Seniat"
+                            title="Allows consulting company information using RIF number on SENIAT site"
+                            onclick="javascript:window.open('http://contribuyente.seniat.gob.ve/BuscaRif/BuscaRif.jsp','_blank','noreferrer');"
+                            class="oe_highlight"/>
+                </header>
+            </xpath>
+        </field>
+        <field name="arch" type="xml">
+            <field name="vat" position="after">
+                <field name="person_type"/>
+            </field>
+            <page name="internal_notes" position="after">
+                <page name="basic_retention_data" string="Basic Retention Data">
+                    <group>
+                        <group>
+                            <field name="taxpayer" widget="checkbox"/>
+                            <field name="special_taxpayer" widget="checkbox"
+                                   attrs="{'invisible': [('taxpayer', '=', False)]}"/>
+                        </group>
+                    </group>
+                </page>
+            </page>
+        </field>
+    </record>
+
+    <record id="view_partner_tree" model="ir.ui.view">
+        <field name="name">res.partner.tree</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='display_name']" position="after">
+                <xpath expr="//field[@name='vat']" position="move" optional="show"/>
+            </xpath>
+            <xpath expr="//field[@name='email']" position="after">
+                <field name="person_type" optional="show"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,9 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_islr_concepts_manager,islr.concepts,model_islr_concepts,account.group_account_manager,1,1,1,1
+access_islr_concepts_readonly,islr.concepts,model_islr_concepts,account.group_account_readonly,1,0,0,0
+access_person_type_manager,person.type,model_person_type,account.group_account_manager,1,1,1,1
+access_person_type_readonly,person.type,model_person_type,account.group_account_readonly,1,0,0,0
+access_islr_tab_manager,islr.tab,model_islr_tab,account.group_account_manager,1,1,1,1
+access_islr_tab_readonly,islr.tab,model_islr_tab,account.group_account_readonly,1,0,0,0
+access_tax_unit_manager,tax.unit,model_tax_unit,account.group_account_manager,1,1,1,1
+access_tax_unit_readonly,tax.unit,model_tax_unit,account.group_account_readonly,1,0,0,0
