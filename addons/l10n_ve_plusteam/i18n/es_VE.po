@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 14.0-20210809\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-08-20 20:16+0000\n"
-"PO-Revision-Date: 2021-08-20 20:16+0000\n"
+"POT-Creation-Date: 2021-08-25 14:12+0000\n"
+"PO-Revision-Date: 2021-08-25 14:12+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -6003,6 +6003,16 @@ msgid ""
 "                            </span>"
 msgstr ""
 
+#. module: l10n_ve_plusteam
+#: model_terms:ir.ui.view,arch_db:l10n_ve_plusteam.res_config_settings_view_form
+msgid "<span class=\"o_form_label\">Accounting accounts for ISLR retention</span>"
+msgstr "<span class=\"o_form_label\">Cuentas contables para retenciones de ISLR</span>"
+
+#. module: l10n_ve_plusteam
+#: model_terms:ir.ui.view,arch_db:l10n_ve_plusteam.res_config_settings_view_form
+msgid "<span class=\"o_form_label\">Accounting accounts for VAT retention</span>"
+msgstr "<span class=\"o_form_label\">Cuentas contables para retenciones de IVA</span>"
+
 #. module: base
 #: model_terms:ir.ui.view,arch_db:base.view_base_module_update
 msgid ""
@@ -6657,6 +6667,26 @@ msgstr "Contabilidad - MRP"
 #: model:ir.module.module,shortdesc:base.module_account_test
 msgid "Accounting Consistency Tests"
 msgstr "Tests de consistencia de contabilidad"
+
+#. module: l10n_ve_plusteam
+#: model_terms:ir.ui.view,arch_db:l10n_ve_plusteam.res_config_settings_view_form
+msgid "Accounting accounts for ISLR retention Purchase"
+msgstr "Cuentas contables para retenciones de ISLR a proveedores"
+
+#. module: l10n_ve_plusteam
+#: model_terms:ir.ui.view,arch_db:l10n_ve_plusteam.res_config_settings_view_form
+msgid "Accounting accounts for ISLR retention Sale"
+msgstr "Cuentas contables para retenciones de ISLR de clientes"
+
+#. module: l10n_ve_plusteam
+#: model_terms:ir.ui.view,arch_db:l10n_ve_plusteam.res_config_settings_view_form
+msgid "Accounting accounts for VAT retention Sale"
+msgstr "Cuentas contables para retenciones de IVA para clientes"
+
+#. module: l10n_ve_plusteam
+#: model_terms:ir.ui.view,arch_db:l10n_ve_plusteam.res_config_settings_view_form
+msgid "Accounting accounts for VAT retention purchase"
+msgstr "Cuentas contables para retenciones de IVA a proveedores"
 
 #. module: base
 #: model:ir.module.module,description:base.module_l10n_nl
@@ -7326,6 +7356,13 @@ msgstr "Te permite referir a tus amigos a Odoo para obtener recompensas"
 #: model_terms:ir.ui.view,arch_db:base.view_users_form
 msgid "Allowed Companies"
 msgstr "Compañías permitidas"
+
+#. module: l10n_ve_plusteam
+#: model_terms:ir.ui.view,arch_db:l10n_ve_plusteam.view_partner_form
+msgid "Allows consulting company information using RIF number on SENIAT site"
+msgstr ""
+"Permitir consultar la información de la empresa utilizando el número RIF en "
+"el portal web del SENIAT"
 
 #. module: base
 #: model:ir.module.module,description:base.module_website_profile
@@ -8159,6 +8196,11 @@ msgstr "Vista base"
 #: model:ir.cron,name:base.autovacuum_job
 msgid "Base: Auto-vacuum internal data"
 msgstr "Base: Limpieza automática de datos internos"
+
+#. module: l10n_ve_plusteam
+#: model_terms:ir.ui.view,arch_db:l10n_ve_plusteam.view_partner_form
+msgid "Basic Retention Data"
+msgstr "Datos Básicos de Retención"
 
 #. module: base
 #: model:ir.module.module,summary:base.module_iap
@@ -9122,7 +9164,7 @@ msgstr ""
 msgid "Cocos (Keeling) Islands"
 msgstr "Islas Cocos (Keeling)"
 
-#. modules: l10n_ve_plusteam, base
+#. modules: base, l10n_ve_plusteam
 #: model:ir.model.fields,field_description:l10n_ve_plusteam.field_islr_concepts__code
 #: model:ir.model.fields,field_description:l10n_ve_plusteam.field_person_type__code
 #: model:ir.model.fields.selection,name:base.selection__ir_translation__type__code
@@ -11666,29 +11708,6 @@ msgstr ""
 msgid "Error! You cannot create recursive menus."
 msgstr "¡Error! No puede crear menús recursivos."
 
-#. module: l10n_ve_plusteam
-#: model:ir.model.fields,help:l10n_ve_plusteam.field_islr_tab__percentage_retention
-msgid ""
-"Es el porcentaje que se aplica a la base imponible para calcular la "
-"retención según el concepto y tipo de persona."
-msgstr ""
-
-#. module: l10n_ve_plusteam
-#: model:ir.model.fields,help:l10n_ve_plusteam.field_islr_tab__subtracting
-msgid ""
-"Este es el monto que se calcula a partir de las personas físicas residentes "
-"como monto exento de impuesto, es decir que este monto se resta de la "
-"retención calculada para obtener la retención para las personas físicas "
-"residentes."
-msgstr ""
-
-#. module: l10n_ve_plusteam
-#: model:ir.model.fields,help:l10n_ve_plusteam.field_islr_tab__percentage_base
-msgid ""
-"Este porcentaje se aplica al monto del servicio según el concepto o tipo de "
-"persona para determinar la base imponible."
-msgstr ""
-
 #. module: base
 #: model:res.country,name:base.ee
 msgid "Estonia"
@@ -13806,6 +13825,16 @@ msgstr "Conceptos ISLR"
 msgid "ISLR Tab"
 msgstr "Tabulador ISLR"
 
+#. module: l10n_ve_plusteam
+#: model:ir.model.fields,field_description:l10n_ve_plusteam.field_res_config_settings__islr_account_sale_id
+msgid "ISLR accounting account for customer"
+msgstr "Cuenta contable ISLR para clientes"
+
+#. module: l10n_ve_plusteam
+#: model:ir.model.fields,field_description:l10n_ve_plusteam.field_res_config_settings__islr_account_purchase_id
+msgid "ISLR accounting account for suppliers"
+msgstr "Cuenta contable ISLR para proveedores"
+
 #. module: base
 #: model:ir.model.fields,field_description:base.field_base_language_import__code
 msgid "ISO Code"
@@ -14750,6 +14779,7 @@ msgstr "Israel - Contabilidad"
 
 #. module: l10n_ve_plusteam
 #: code:addons/l10n_ve_plusteam/models/person_type.py:0
+#: model:ir.model.fields,help:l10n_ve_plusteam.field_islr_tab__percentage_retention
 #, python-format
 msgid ""
 "It is the percentage that is applied to the tax base to calculate the "
@@ -14760,6 +14790,8 @@ msgstr ""
 
 #. module: l10n_ve_plusteam
 #: code:addons/l10n_ve_plusteam/models/res_partner.py:0
+#: model:ir.model.fields,help:l10n_ve_plusteam.field_res_partner__taxpayer
+#: model:ir.model.fields,help:l10n_ve_plusteam.field_res_users__taxpayer
 #, python-format
 msgid "It is used to filter the contributors for the sales book report"
 msgstr ""
@@ -14774,7 +14806,9 @@ msgstr ""
 msgid ""
 "It is used to know if the person is a taxpayer or not and to apply "
 "withholding."
-msgstr "Es usado para saber si una persona es un contribuyente o no y para aplicar retenciones"
+msgstr ""
+"Es usado para saber si una persona es un contribuyente o no y para aplicar "
+"retenciones"
 
 #. module: base
 #: model_terms:ir.ui.view,arch_db:base.form_res_users_key_description
@@ -20491,6 +20525,8 @@ msgstr "Método de pago Payulatam"
 #: model:ir.actions.act_window,name:l10n_ve_plusteam.person_type_action
 #: model:ir.model,name:l10n_ve_plusteam.model_person_type
 #: model:ir.model.fields,field_description:l10n_ve_plusteam.field_islr_tab__person_type_id
+#: model:ir.model.fields,field_description:l10n_ve_plusteam.field_res_partner__person_type
+#: model:ir.model.fields,field_description:l10n_ve_plusteam.field_res_users__person_type
 #: model:ir.ui.menu,name:l10n_ve_plusteam.person_type_menu
 msgid "Person Type"
 msgstr "Tipo de Persona"
@@ -21095,6 +21131,16 @@ msgstr "Compra"
 #: model:ir.module.module,shortdesc:base.module_purchase_requisition
 msgid "Purchase Agreements"
 msgstr "Acuerdos de compra"
+
+#. module: l10n_ve_plusteam
+#: model_terms:ir.ui.view,arch_db:l10n_ve_plusteam.res_config_settings_view_form
+msgid "Purchase ISLR"
+msgstr "Compras ISLR"
+
+#. module: l10n_ve_plusteam
+#: model_terms:ir.ui.view,arch_db:l10n_ve_plusteam.res_config_settings_view_form
+msgid "Purchase IVA"
+msgstr "Compras IVA"
 
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_purchase_product_matrix
@@ -21800,6 +21846,11 @@ msgstr "Restringir"
 msgid "Retail"
 msgstr ""
 
+#. module: l10n_ve_plusteam
+#: model_terms:ir.ui.view,arch_db:l10n_ve_plusteam.res_config_settings_view_form
+msgid "Retention Accounting Accounts"
+msgstr "Cuentas Contables de Retención"
+
 #. module: base
 #: model:ir.model.fields,field_description:base.field_report_paperformat__margin_right
 msgid "Right Margin (mm)"
@@ -22021,6 +22072,16 @@ msgstr "Cupón de ventas"
 msgid "Sale Coupon Delivery"
 msgstr "Entrega del cupón de ventas"
 
+#. module: l10n_ve_plusteam
+#: model_terms:ir.ui.view,arch_db:l10n_ve_plusteam.res_config_settings_view_form
+msgid "Sale ISLR"
+msgstr "Ventas ISLR"
+
+#. module: l10n_ve_plusteam
+#: model_terms:ir.ui.view,arch_db:l10n_ve_plusteam.res_config_settings_view_form
+msgid "Sale IVA"
+msgstr "Ventas IVA"
+
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_sale_product_matrix
 msgid "Sale Matrix"
@@ -22051,7 +22112,6 @@ msgstr "Venta basada en la subcontratación de servicios"
 #: model:ir.module.category,name:base.module_category_sales_sales
 #: model:ir.module.module,shortdesc:base.module_sale
 #: model:ir.module.module,shortdesc:base.module_sale_management
-#: model_terms:ir.ui.view,arch_db:base.user_groups_view
 #: model_terms:ir.ui.view,arch_db:base.view_partner_form
 msgid "Sales"
 msgstr "Ventas"
@@ -22448,6 +22508,11 @@ msgstr "Enviar SMS al finalizar movimientos de inventario"
 #: model:res.country,name:base.sn
 msgid "Senegal"
 msgstr ""
+
+#. module: l10n_ve_plusteam
+#: model_terms:ir.ui.view,arch_db:l10n_ve_plusteam.view_partner_form
+msgid "Seniat"
+msgstr "Consultar RIF"
 
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_payment_sepa_direct_debit
@@ -23388,6 +23453,12 @@ msgstr "RIF"
 msgid "Tax Unit"
 msgstr "Unidad Tributaria"
 
+#. module: l10n_ve_plusteam
+#: model:ir.model.fields,field_description:l10n_ve_plusteam.field_res_partner__taxpayer
+#: model:ir.model.fields,field_description:l10n_ve_plusteam.field_res_users__taxpayer
+msgid "Taxpayer"
+msgstr "Contribuyente"
+
 #. module: base
 #: model:ir.module.module,summary:base.module_theme_kea
 msgid "Tech, IT, Computers, Stores"
@@ -23995,6 +24066,17 @@ msgstr ""
 "Campos:\n"
 "%(fields_list)s"
 
+#. module: l10n_ve_plusteam
+#: code:addons/l10n_ve_plusteam/models/res_company.py:0
+#: code:addons/l10n_ve_plusteam/models/res_partner.py:0
+#, python-format
+msgid ""
+"The retention percentage must be between the the values 0 and 100, please "
+"verify that the value is in this range"
+msgstr ""
+"El Porcentaje de retención debe estar entre los valores 0 y 100, por favor "
+"verifica que el valor se encuentra en este intervalo"
+
 #. module: base
 #: model:ir.model.constraint,message:base.constraint_res_currency_rounding_gt_zero
 msgid "The rounding factor must be greater than 0!"
@@ -24252,6 +24334,7 @@ msgstr ""
 
 #. module: l10n_ve_plusteam
 #: code:addons/l10n_ve_plusteam/models/person_type.py:0
+#: model:ir.model.fields,help:l10n_ve_plusteam.field_islr_tab__subtracting
 #, python-format
 msgid ""
 "This is the amount that is calculated from the resident natural persons as "
@@ -24418,6 +24501,7 @@ msgstr ""
 
 #. module: l10n_ve_plusteam
 #: code:addons/l10n_ve_plusteam/models/person_type.py:0
+#: model:ir.model.fields,help:l10n_ve_plusteam.field_islr_tab__percentage_base
 #, python-format
 msgid ""
 "This percentage is applied to the amount of the service according to the "
@@ -25545,12 +25629,29 @@ msgstr "Uzbekistán"
 #: model:res.country,vat_label:base.uk
 #, python-format
 msgid "VAT"
-msgstr "IVA"
+msgstr "RIF"
 
 #. module: base
 #: model:ir.module.module,shortdesc:base.module_base_vat
 msgid "VAT Number Validation"
 msgstr "Validación de número de IVA"
+
+#. module: l10n_ve_plusteam
+#: model:ir.model.fields,field_description:l10n_ve_plusteam.field_res_company__vat_withholding_percentage
+#: model:ir.model.fields,field_description:l10n_ve_plusteam.field_res_partner__vat_withholding_percentage
+#: model:ir.model.fields,field_description:l10n_ve_plusteam.field_res_users__vat_withholding_percentage
+msgid "VAT Withholding Percentage"
+msgstr "Porcentaje de retención de IVA"
+
+#. module: l10n_ve_plusteam
+#: model:ir.model.fields,field_description:l10n_ve_plusteam.field_res_config_settings__iva_account_sale_id
+msgid "VAT accounting account for customer"
+msgstr "Cuenta contable IVA para clientes"
+
+#. module: l10n_ve_plusteam
+#: model:ir.model.fields,field_description:l10n_ve_plusteam.field_res_config_settings__iva_account_purchase_id
+msgid "VAT accounting account for suppliers"
+msgstr "Cuenta contable IVA para proveedores"
 
 #. module: base
 #: model:ir.module.module,summary:base.module_phone_validation
@@ -26100,6 +26201,21 @@ msgstr "Ancho"
 #: model:ir.ui.menu,name:base.menu_ir_action_window
 msgid "Window Actions"
 msgstr "Acciones de ventana"
+
+#. module: l10n_ve_plusteam
+#: code:addons/l10n_ve_plusteam/models/res_company.py:0
+#: model:ir.model.fields,help:l10n_ve_plusteam.field_res_company__vat_withholding_percentage
+#, python-format
+msgid "Withholding percentage applied to the company"
+msgstr "Procentaje de retención aplicado a la compañía"
+
+#. module: l10n_ve_plusteam
+#: code:addons/l10n_ve_plusteam/models/res_partner.py:0
+#: model:ir.model.fields,help:l10n_ve_plusteam.field_res_partner__vat_withholding_percentage
+#: model:ir.model.fields,help:l10n_ve_plusteam.field_res_users__vat_withholding_percentage
+#, python-format
+msgid "Withholding percentage applied to the supplier"
+msgstr "Procentaje de retención aplicado al proveedor"
 
 #. module: base
 #: model:ir.model.fields,field_description:base.field_base_partner_merge_line__wizard_id
@@ -27046,13 +27162,3 @@ msgstr "sí"
 #: model:res.country,name:base.ax
 msgid "Åland Islands"
 msgstr "Islas Åland"
-
-#. module: l10n_ve_plusteam
-#: model_terms:ir.ui.view,arch_db:l10n_ve_plusteam.view_partner_form
-msgid "Allows consulting company information using RIF number on SENIAT site"
-msgstr "Permitir consultar la información de la empresa utilizando el número RIF en el sitio del SENIAT"
-
-#. module: l10n_ve_plusteam
-#: model_terms:ir.ui.view,arch_db:l10n_ve_plusteam.view_partner_form
-msgid "Seniat"
-msgstr ""

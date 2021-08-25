@@ -23,4 +23,4 @@ class TaxUnit(models.Model):
     @api.depends("value", "gazette")
     def _compute_complete_name_with_code(self):
         for tax in self:
-            tax.complete_name_with_code = f"{'Gaceta Nro'} {tax.gazette} "
+            tax.complete_name_with_code = f"Gaceta Nro. {tax.gazette}"

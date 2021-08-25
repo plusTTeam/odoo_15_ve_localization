@@ -4,3 +4,4 @@ coverage/all
 coverage/local
 __pycache__
 venv
+coverage
