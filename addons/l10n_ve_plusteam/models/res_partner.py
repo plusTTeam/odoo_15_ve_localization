@@ -30,7 +30,7 @@ class ResPartner(models.Model):
         for record in self:
             if record.taxpayer is False:
                 record.special_taxpayer = False
-                record.iva_retention_percentage = 0
+                record.vat_withholding_percentage = 0
 
     @api.constrains('vat')
     def _check_rif_field(self):
@@ -39,10 +39,10 @@ class ResPartner(models.Model):
                 raise ValidationError(_("The RIF/Identification Card format is invalid. "
                                         "Must start with a letter (V, J, E, P) followed by 7 or 9 numbers"))
 
-    @api.constrains("iva_retention_percentage")
-    def _check_iva_retention_percentage(self):
+    @api.constrains("vat_withholding_percentage")
+    def _check_vat_withholding_percentage(self):
         for record in self:
-            if record.iva_retention_percentage < 0 or record.iva_retention_percentage > 100:
+            if record.vat_withholding_percentage < 0 or record.vat_withholding_percentage > 100:
                 raise ValidationError(
                     _("The retention percentage must be between the the values 0 and 100, "
                       "please verify that the value is in this range")
