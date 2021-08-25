@@ -2,6 +2,7 @@
 from odoo import _
 from odoo.tests.common import TransactionCase, Form
 from odoo.exceptions import ValidationError
+from ..tools.constants import MESSAGE_EXCEPTION_NOT_EXECUTE
 
 
 class TestResPartner(TransactionCase):
@@ -40,7 +41,7 @@ class TestResPartner(TransactionCase):
             str(raise_exception.exception),
             _("The RIF/Identification Card format is invalid. "
               "Must start with a letter (V, J, E, P) followed by 7 or 9 numbers"),
-            msg="The exception was not executed correctly"
+            msg=MESSAGE_EXCEPTION_NOT_EXECUTE
         )
 
     def test_onchange_taxpayer_field(self):
@@ -60,7 +61,7 @@ class TestResPartner(TransactionCase):
             str(raise_exception.exception),
             _("The retention percentage must be between the the values 0 and 100, "
               "please verify that the value is in this range"),
-            msg="The exception was not executed correctly"
+            msg=MESSAGE_EXCEPTION_NOT_EXECUTE
         )
         with self.assertRaises(ValidationError) as raise_exception:
             self.contact.vat_withholding_percentage = -150.00
@@ -68,5 +69,5 @@ class TestResPartner(TransactionCase):
             str(raise_exception.exception),
             _("The retention percentage must be between the the values 0 and 100, "
               "please verify that the value is in this range"),
-            msg="The exception was not executed correctly"
+            msg=MESSAGE_EXCEPTION_NOT_EXECUTE
         )
