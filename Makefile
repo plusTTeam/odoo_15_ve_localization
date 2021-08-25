@@ -27,4 +27,4 @@ init_test_db:
 	docker exec -t plusteam-odoo-localization-db psql -U odoo -d postgres -c "CREATE DATABASE db_test"
 	docker start plusteam-odoo-localization-web
 	docker exec -u root -t plusteam-odoo-localization-web odoo -i all -d db_test --stop-after-init --without-demo all
-	docker exec -u root -t plusteam-odoo-localization-web odoo -i plus_poc -d db_test --stop-after-init
+	docker exec -u root -t plusteam-odoo-localization-web odoo -i l10n_ve_plusteam -d db_test --stop-after-init
