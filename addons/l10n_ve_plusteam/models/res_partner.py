@@ -30,7 +30,6 @@ class ResPartner(models.Model):
         for record in self:
             if record.taxpayer is False:
                 record.special_taxpayer = False
-                record.vat_withholding_percentage = 0
 
     @api.constrains('vat')
     def _check_rif_field(self):

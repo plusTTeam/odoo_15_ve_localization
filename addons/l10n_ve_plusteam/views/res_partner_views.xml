@@ -14,6 +14,9 @@
                             class="oe_highlight"/>
                 </header>
             </xpath>
+            <field name="vat" position="attributes">
+                <attribute name="string">RIF</attribute>
+            </field>
             <field name="vat" position="after">
                 <field name="person_type"/>
             </field>
@@ -27,9 +30,7 @@
                                    attrs="{'invisible': [('taxpayer', '=', False)]}"/>
                             <label for="vat_withholding_percentage"/>
                             <div>
-                                <field name="vat_withholding_percentage"
-                                       class="oe_inline"
-                                       attrs="{'readonly': [('taxpayer', '=', False)]}"/>
+                                <field name="vat_withholding_percentage" class="oe_inline"/>
                                 <span class="o_form_label oe_inline">%</span>
                             </div>
                         </group>

@@ -7,7 +7,11 @@
         <field name="inherit_id" ref="base.view_company_form"/>
         <field name="arch" type="xml">
             <field name="favicon" position="after">
-                <field name="vat_withholding_percentage"/>
+                <label for="vat_withholding_percentage"/>
+                <div>
+                    <field name="vat_withholding_percentage" class="oe_inline"/>
+                    <span class="o_form_label oe_inline">%</span>
+                </div>
             </field>
         </field>
     </record>
