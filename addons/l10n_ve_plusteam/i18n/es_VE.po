@@ -27162,3 +27162,51 @@ msgstr "sí"
 #: model:res.country,name:base.ax
 msgid "Åland Islands"
 msgstr "Islas Åland"
+
+#. module: l10n_ve_plusteam
+#: model:ir.model.fields,field_description:l10n_ve_plusteam.field_account_bank_statement_line__control_number
+#: model:ir.model.fields,field_description:l10n_ve_plusteam.field_account_move__control_number
+#: model:ir.model.fields,field_description:l10n_ve_plusteam.field_account_payment__control_number
+msgid "Control Number"
+msgstr "Número de Control"
+
+#. module: l10n_ve_plusteam
+#: model:ir.model.fields,help:l10n_ve_plusteam.field_account_bank_statement_line__form_number
+#: model:ir.model.fields,help:l10n_ve_plusteam.field_account_move__form_number
+#: model:ir.model.fields,help:l10n_ve_plusteam.field_account_payment__form_number
+msgid "Import form number C-80 or C-81"
+msgstr "Número de planilla de importación C-80 o C-81"
+
+#. module: l10n_ve_plusteam
+#: model:ir.model.fields,help:l10n_ve_plusteam.field_account_bank_statement_line__file_number
+#: model:ir.model.fields,help:l10n_ve_plusteam.field_account_move__file_number
+#: model:ir.model.fields,help:l10n_ve_plusteam.field_account_payment__file_number
+msgid "Import file number"
+msgstr "Número de expediente de importación"
+
+#. module: l10n_ve_plusteam
+#: model:ir.model.fields,field_description:l10n_ve_plusteam.field_account_bank_statement_line__form_number
+#: model:ir.model.fields,field_description:l10n_ve_plusteam.field_account_move__form_number
+#: model:ir.model.fields,field_description:l10n_ve_plusteam.field_account_payment__form_number
+msgid "form number"
+msgstr "Número de planilla"
+
+#. module: l10n_ve_plusteam
+#: model:ir.model.fields,field_description:l10n_ve_plusteam.field_account_bank_statement_line__file_number
+#: model:ir.model.fields,field_description:l10n_ve_plusteam.field_account_move__file_number
+#: model:ir.model.fields,field_description:l10n_ve_plusteam.field_account_payment__file_number
+msgid "file number"
+msgstr "Número de expediente"
+
+#. module: l10n_ve_plusteam
+#: code:addons/l10n_ve_plusteam/models/account_move.py:0
+#, python-format
+msgid "Invalid control number format. Must have at least 6 numbers"
+msgstr "Formato de Numero de control Inválido. Debe tener minimo 6 números"
+
+#. module: l10n_ve_plusteam
+#: model:ir.model.fields,field_description:l10n_ve_plusteam.field_account_bank_statement_line__import_doc
+#: model:ir.model.fields,field_description:l10n_ve_plusteam.field_account_move__import_doc
+#: model:ir.model.fields,field_description:l10n_ve_plusteam.field_account_payment__import_doc
+msgid "Import"
+msgstr "Importación"

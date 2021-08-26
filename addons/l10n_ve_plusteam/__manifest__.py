@@ -32,6 +32,7 @@
         'views/islr_concepts_views.xml',
         'views/person_type_views.xml',
         'views/tax_unit_views.xml',
+        'views/account_move_views.xml',
         'views/res_config_settings_views.xml',
         'views/res_company_views.xml',
         'views/menu_views.xml'
