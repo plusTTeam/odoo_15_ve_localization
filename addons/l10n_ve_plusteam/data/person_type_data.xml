@@ -17,5 +17,677 @@
 	        <field name="code">4</field>
 	        <field name="name">(PJND) Persona jurídica No Domiciliada</field>
 	    </record>
+
+        <record id="islr_tab_0" model="islr.tab">
+	        <field name="person_type_id">1</field>
+	        <field name="concept_id" ref="l10n_ve_plusteam.concept_002"/>
+	        <field name="percentage_base">100</field>
+	        <field name="percentage_retention" eval="3"/>
+	        <field name="subtracting" eval="50000.01"/>
+	    </record>
+
+        <record id="islr_tab_1" model="islr.tab">
+	        <field name="person_type_id">1</field>
+	        <field name="concept_id" ref="l10n_ve_plusteam.concept_006"/>
+	        <field name="percentage_base">100</field>
+	        <field name="percentage_retention" eval="3"/>
+	        <field name="subtracting" eval="50000.01"/>
+	    </record>
+
+        <record id="islr_tab_2" model="islr.tab">
+	        <field name="person_type_id">1</field>
+	        <field name="concept_id" ref="l10n_ve_plusteam.concept_010"/>
+	        <field name="percentage_base">100</field>
+	        <field name="percentage_retention" eval="3"/>
+	        <field name="subtracting" eval="50000.01"/>
+	    </record>
+
+        <record id="islr_tab_3" model="islr.tab">
+	        <field name="person_type_id">1</field>
+	        <field name="concept_id" ref="l10n_ve_plusteam.concept_012"/>
+	        <field name="percentage_base">100</field>
+	        <field name="percentage_retention" eval="3"/>
+	        <field name="subtracting" eval="50000.01"/>
+	    </record>
+
+        <record id="islr_tab_4" model="islr.tab">
+	        <field name="person_type_id">1</field>
+	        <field name="concept_id" ref="l10n_ve_plusteam.concept_014"/>
+	        <field name="percentage_base">100</field>
+	        <field name="percentage_retention" eval="3"/>
+	        <field name="subtracting" eval="50000.01"/>
+	    </record>
+
+        <record id="islr_tab_5" model="islr.tab">
+	        <field name="person_type_id">1</field>
+	        <field name="concept_id" ref="l10n_ve_plusteam.concept_018"/>
+	        <field name="percentage_base">100</field>
+	        <field name="percentage_retention" eval="3"/>
+	        <field name="subtracting" eval="50000.01"/>
+	    </record>
+
+        <record id="islr_tab_6" model="islr.tab">
+	        <field name="person_type_id">1</field>
+	        <field name="concept_id" ref="l10n_ve_plusteam.concept_025"/>
+	        <field name="percentage_base">100</field>
+	        <field name="percentage_retention" eval="3"/>
+	        <field name="subtracting" eval="50000.01"/>
+	    </record>
+
+        <record id="islr_tab_7" model="islr.tab">
+	        <field name="person_type_id">1</field>
+	        <field name="concept_id" ref="l10n_ve_plusteam.concept_041"/>
+	        <field name="percentage_base">100</field>
+	        <field name="percentage_retention" eval="34"/>
+	        <field name="subtracting" eval="0.00"/>
+	    </record>
+
+        <record id="islr_tab_8" model="islr.tab">
+	        <field name="person_type_id">1</field>
+	        <field name="concept_id" ref="l10n_ve_plusteam.concept_045"/>
+	        <field name="percentage_base">100</field>
+	        <field name="percentage_retention" eval="16"/>
+	        <field name="subtracting" eval="0.00"/>
+	    </record>
+
+        <record id="islr_tab_9" model="islr.tab">
+	        <field name="person_type_id">1</field>
+	        <field name="concept_id" ref="l10n_ve_plusteam.concept_049"/>
+	        <field name="percentage_base">100</field>
+	        <field name="percentage_retention" eval="3"/>
+	        <field name="subtracting" eval="50000.01"/>
+	    </record>
+
+        <record id="islr_tab_10" model="islr.tab">
+	        <field name="person_type_id">1</field>
+	        <field name="concept_id" ref="l10n_ve_plusteam.concept_053"/>
+	        <field name="percentage_base">100</field>
+	        <field name="percentage_retention" eval="1"/>
+	        <field name="subtracting" eval="16666.68"/>
+	    </record>
+
+        <record id="islr_tab_11" model="islr.tab">
+	        <field name="person_type_id">1</field>
+	        <field name="concept_id" ref="l10n_ve_plusteam.concept_057"/>
+	        <field name="percentage_base">100</field>
+	        <field name="percentage_retention" eval="3"/>
+	        <field name="subtracting" eval="50000.01"/>
+	    </record>
+
+        <record id="islr_tab_12" model="islr.tab">
+	        <field name="person_type_id">1</field>
+	        <field name="concept_id" ref="l10n_ve_plusteam.concept_061"/>
+	        <field name="percentage_base">100</field>
+	        <field name="percentage_retention" eval="3"/>
+	        <field name="subtracting" eval="50000.01"/>
+	    </record>
+
+        <record id="islr_tab_13" model="islr.tab">
+	        <field name="person_type_id">1</field>
+	        <field name="concept_id" ref="l10n_ve_plusteam.concept_065"/>
+	        <field name="percentage_base">100</field>
+	        <field name="percentage_retention" eval="3"/>
+	        <field name="subtracting" eval="50000.01"/>
+	    </record>
+
+        <record id="islr_tab_14" model="islr.tab">
+	        <field name="person_type_id">1</field>
+	        <field name="concept_id" ref="l10n_ve_plusteam.concept_069"/>
+	        <field name="percentage_base">100</field>
+	        <field name="percentage_retention" eval="1"/>
+	        <field name="subtracting" eval="16666.68"/>
+	    </record>
+
+        <record id="islr_tab_15" model="islr.tab">
+	        <field name="person_type_id">1</field>
+	        <field name="concept_id" ref="l10n_ve_plusteam.concept_071"/>
+	        <field name="percentage_base">100</field>
+	        <field name="percentage_retention" eval="1"/>
+	        <field name="subtracting" eval="16666.68"/>
+	    </record>
+
+        <record id="islr_tab_16" model="islr.tab">
+	        <field name="person_type_id">1</field>
+	        <field name="concept_id" ref="l10n_ve_plusteam.concept_073"/>
+	        <field name="percentage_base">100</field>
+	        <field name="percentage_retention" eval="3"/>
+	        <field name="subtracting" eval="0.00"/>
+	    </record>
+
+        <record id="islr_tab_17" model="islr.tab">
+	        <field name="person_type_id">1</field>
+	        <field name="concept_id" ref="l10n_ve_plusteam.concept_075"/>
+	        <field name="percentage_base">100</field>
+	        <field name="percentage_retention" eval="3"/>
+	        <field name="subtracting" eval="0.00"/>
+	    </record>
+
+        <record id="islr_tab_18" model="islr.tab">
+	        <field name="person_type_id">1</field>
+	        <field name="concept_id" ref="l10n_ve_plusteam.concept_077"/>
+	        <field name="percentage_base">100</field>
+	        <field name="percentage_retention" eval="3"/>
+	        <field name="subtracting" eval="0.00"/>
+	    </record>
+
+        <record id="islr_tab_19" model="islr.tab">
+	        <field name="person_type_id">1</field>
+	        <field name="concept_id" ref="l10n_ve_plusteam.concept_079"/>
+	        <field name="percentage_base">100</field>
+	        <field name="percentage_retention" eval="3"/>
+	        <field name="subtracting" eval="0.00"/>
+	    </record>
+
+        <record id="islr_tab_20" model="islr.tab">
+	        <field name="person_type_id">1</field>
+	        <field name="concept_id" ref="l10n_ve_plusteam.concept_083"/>
+	        <field name="percentage_base">100</field>
+	        <field name="percentage_retention" eval="3"/>
+	        <field name="subtracting" eval="50000.01"/>
+	    </record>
+
+        <record id="islr_tab_21" model="islr.tab">
+	        <field name="person_type_id">2</field>
+	        <field name="concept_id" ref="l10n_ve_plusteam.concept_003"/>
+	        <field name="percentage_base">100</field>
+	        <field name="percentage_retention" eval="34"/>
+	        <field name="subtracting" eval="0.00"/>
+	    </record>
+
+        <record id="islr_tab_22" model="islr.tab">
+	        <field name="person_type_id">2</field>
+	        <field name="concept_id" ref="l10n_ve_plusteam.concept_007"/>
+	        <field name="percentage_base">100</field>
+	        <field name="percentage_retention" eval="34"/>
+	        <field name="subtracting" eval="0.00"/>
+	    </record>
+
+        <record id="islr_tab_23" model="islr.tab">
+	        <field name="person_type_id">2</field>
+	        <field name="concept_id" ref="l10n_ve_plusteam.concept_011"/>
+	        <field name="percentage_base">100</field>
+	        <field name="percentage_retention" eval="34"/>
+	        <field name="subtracting" eval="0.00"/>
+	    </record>
+
+        <record id="islr_tab_24" model="islr.tab">
+	        <field name="person_type_id">2</field>
+	        <field name="concept_id" ref="l10n_ve_plusteam.concept_013"/>
+	        <field name="percentage_base">100</field>
+	        <field name="percentage_retention" eval="34"/>
+	        <field name="subtracting" eval="0.00"/>
+	    </record>
+
+        <record id="islr_tab_25" model="islr.tab">
+	        <field name="person_type_id">2</field>
+	        <field name="concept_id" ref="l10n_ve_plusteam.concept_015"/>
+	        <field name="percentage_base">100</field>
+	        <field name="percentage_retention" eval="34"/>
+	        <field name="subtracting" eval="0.00"/>
+	    </record>
+
+        <record id="islr_tab_26" model="islr.tab">
+	        <field name="person_type_id">2</field>
+	        <field name="concept_id" ref="l10n_ve_plusteam.concept_019"/>
+	        <field name="percentage_base">100</field>
+	        <field name="percentage_retention" eval="34"/>
+	        <field name="subtracting" eval="0.00"/>
+	    </record>
+
+        <record id="islr_tab_27" model="islr.tab">
+	        <field name="person_type_id">2</field>
+	        <field name="concept_id" ref="l10n_ve_plusteam.concept_022"/>
+	        <field name="percentage_base">100</field>
+	        <field name="percentage_retention" eval="34"/>
+	        <field name="subtracting" eval="0.00"/>
+	    </record>
+
+        <record id="islr_tab_28" model="islr.tab">
+	        <field name="person_type_id">2</field>
+	        <field name="concept_id" ref="l10n_ve_plusteam.concept_026"/>
+	        <field name="percentage_base">100</field>
+	        <field name="percentage_retention" eval="34"/>
+	        <field name="subtracting" eval="0.00"/>
+	    </record>
+
+        <record id="islr_tab_29" model="islr.tab">
+	        <field name="person_type_id">2</field>
+	        <field name="concept_id" ref="l10n_ve_plusteam.concept_030"/>
+	        <field name="percentage_base">100</field>
+	        <field name="percentage_retention" eval="10"/>
+	        <field name="subtracting" eval="0.00"/>
+	    </record>
+
+        <record id="islr_tab_30" model="islr.tab">
+	        <field name="person_type_id">2</field>
+	        <field name="concept_id" ref="l10n_ve_plusteam.concept_032"/>
+	        <field name="percentage_base">100</field>
+	        <field name="percentage_retention" eval="34"/>
+	        <field name="subtracting" eval="0.00"/>
+	    </record>
+
+        <record id="islr_tab_31" model="islr.tab">
+	        <field name="person_type_id">2</field>
+	        <field name="concept_id" ref="l10n_ve_plusteam.concept_034"/>
+	        <field name="percentage_base">100</field>
+	        <field name="percentage_retention" eval="34"/>
+	        <field name="subtracting" eval="0.00"/>
+	    </record>
+
+        <record id="islr_tab_32" model="islr.tab">
+	        <field name="person_type_id">2</field>
+	        <field name="concept_id" ref="l10n_ve_plusteam.concept_036"/>
+	        <field name="percentage_base">100</field>
+	        <field name="percentage_retention" eval="34"/>
+	        <field name="subtracting" eval="0.00"/>
+	    </record>
+
+        <record id="islr_tab_33" model="islr.tab">
+	        <field name="person_type_id">2</field>
+	        <field name="concept_id" ref="l10n_ve_plusteam.concept_038"/>
+	        <field name="percentage_base">100</field>
+	        <field name="percentage_retention" eval="34"/>
+	        <field name="subtracting" eval="0.00"/>
+	    </record>
+
+        <record id="islr_tab_34" model="islr.tab">
+	        <field name="person_type_id">2</field>
+	        <field name="concept_id" ref="l10n_ve_plusteam.concept_042"/>
+	        <field name="percentage_base">100</field>
+	        <field name="percentage_retention" eval="34"/>
+	        <field name="subtracting" eval="0.00"/>
+	    </record>
+
+        <record id="islr_tab_35" model="islr.tab">
+	        <field name="person_type_id">2</field>
+	        <field name="concept_id" ref="l10n_ve_plusteam.concept_046"/>
+	        <field name="percentage_base">100</field>
+	        <field name="percentage_retention" eval="16"/>
+	        <field name="subtracting" eval="0.00"/>
+	    </record>
+
+        <record id="islr_tab_36" model="islr.tab">
+	        <field name="person_type_id">2</field>
+	        <field name="concept_id" ref="l10n_ve_plusteam.concept_050"/>
+	        <field name="percentage_base">100</field>
+	        <field name="percentage_retention" eval="34"/>
+	        <field name="subtracting" eval="0.00"/>
+	    </record>
+
+        <record id="islr_tab_37" model="islr.tab">
+	        <field name="person_type_id">2</field>
+	        <field name="concept_id" ref="l10n_ve_plusteam.concept_054"/>
+	        <field name="percentage_base">100</field>
+	        <field name="percentage_retention" eval="34"/>
+	        <field name="subtracting" eval="0.00"/>
+	    </record>
+
+        <record id="islr_tab_38" model="islr.tab">
+	        <field name="person_type_id">2</field>
+	        <field name="concept_id" ref="l10n_ve_plusteam.concept_058"/>
+	        <field name="percentage_base">100</field>
+	        <field name="percentage_retention" eval="34"/>
+	        <field name="subtracting" eval="0.00"/>
+	    </record>
+
+        <record id="islr_tab_39" model="islr.tab">
+	        <field name="person_type_id">2</field>
+	        <field name="concept_id" ref="l10n_ve_plusteam.concept_062"/>
+	        <field name="percentage_base">100</field>
+	        <field name="percentage_retention" eval="34"/>
+	        <field name="subtracting" eval="0.00"/>
+	    </record>
+
+        <record id="islr_tab_40" model="islr.tab">
+	        <field name="person_type_id">2</field>
+	        <field name="concept_id" ref="l10n_ve_plusteam.concept_066"/>
+	        <field name="percentage_base">100</field>
+	        <field name="percentage_retention" eval="34"/>
+	        <field name="subtracting" eval="0.00"/>
+	    </record>
+
+        <record id="islr_tab_41" model="islr.tab">
+	        <field name="person_type_id">2</field>
+	        <field name="concept_id" ref="l10n_ve_plusteam.concept_080"/>
+	        <field name="percentage_base">100</field>
+	        <field name="percentage_retention" eval="34"/>
+	        <field name="subtracting" eval="0.00"/>
+	    </record>
+
+        <record id="islr_tab_42" model="islr.tab">
+	        <field name="person_type_id">3</field>
+	        <field name="concept_id" ref="l10n_ve_plusteam.concept_004"/>
+	        <field name="percentage_base">100</field>
+	        <field name="percentage_retention" eval="5"/>
+	        <field name="subtracting" eval="0.00"/>
+	    </record>
+
+        <record id="islr_tab_43" model="islr.tab">
+	        <field name="person_type_id">3</field>
+	        <field name="concept_id" ref="l10n_ve_plusteam.concept_005"/>
+	        <field name="percentage_base">100</field>
+	        <field name="percentage_retention" eval="5"/>
+	        <field name="subtracting" eval="0.00"/>
+	    </record>
+
+        <record id="islr_tab_44" model="islr.tab">
+	        <field name="person_type_id">3</field>
+	        <field name="concept_id" ref="l10n_ve_plusteam.concept_016"/>
+	        <field name="percentage_base">100</field>
+	        <field name="percentage_retention" eval="5"/>
+	        <field name="subtracting" eval="0.00"/>
+	    </record>
+
+        <record id="islr_tab_45" model="islr.tab">
+	        <field name="person_type_id">3</field>
+	        <field name="concept_id" ref="l10n_ve_plusteam.concept_020"/>
+	        <field name="percentage_base">100</field>
+	        <field name="percentage_retention" eval="5"/>
+	        <field name="subtracting" eval="0.00"/>
+	    </record>
+
+        <record id="islr_tab_46" model="islr.tab">
+	        <field name="person_type_id">3</field>
+	        <field name="concept_id" ref="l10n_ve_plusteam.concept_027"/>
+	        <field name="percentage_base">100</field>
+	        <field name="percentage_retention" eval="5"/>
+	        <field name="subtracting" eval="0.00"/>
+	    </record>
+
+        <record id="islr_tab_47" model="islr.tab">
+	        <field name="person_type_id">3</field>
+	        <field name="concept_id" ref="l10n_ve_plusteam.concept_043"/>
+	        <field name="percentage_base">100</field>
+	        <field name="percentage_retention" eval="34"/>
+	        <field name="subtracting" eval="0.00"/>
+	    </record>
+
+        <record id="islr_tab_48" model="islr.tab">
+	        <field name="person_type_id">3</field>
+	        <field name="concept_id" ref="l10n_ve_plusteam.concept_047"/>
+	        <field name="percentage_base">100</field>
+	        <field name="percentage_retention" eval="16"/>
+	        <field name="subtracting" eval="0.00"/>
+	    </record>
+
+        <record id="islr_tab_49" model="islr.tab">
+	        <field name="person_type_id">3</field>
+	        <field name="concept_id" ref="l10n_ve_plusteam.concept_051"/>
+	        <field name="percentage_base">100</field>
+	        <field name="percentage_retention" eval="5"/>
+	        <field name="subtracting" eval="0.00"/>
+	    </record>
+
+        <record id="islr_tab_50" model="islr.tab">
+	        <field name="person_type_id">3</field>
+	        <field name="concept_id" ref="l10n_ve_plusteam.concept_055"/>
+	        <field name="percentage_base">100</field>
+	        <field name="percentage_retention" eval="2"/>
+	        <field name="subtracting" eval="0.00"/>
+	    </record>
+
+        <record id="islr_tab_51" model="islr.tab">
+	        <field name="person_type_id">3</field>
+	        <field name="concept_id" ref="l10n_ve_plusteam.concept_059"/>
+	        <field name="percentage_base">100</field>
+	        <field name="percentage_retention" eval="5"/>
+	        <field name="subtracting" eval="0.00"/>
+	    </record>
+
+        <record id="islr_tab_52" model="islr.tab">
+	        <field name="person_type_id">3</field>
+	        <field name="concept_id" ref="l10n_ve_plusteam.concept_063"/>
+	        <field name="percentage_base">100</field>
+	        <field name="percentage_retention" eval="5"/>
+	        <field name="subtracting" eval="0.00"/>
+	    </record>
+
+        <record id="islr_tab_53" model="islr.tab">
+	        <field name="person_type_id">3</field>
+	        <field name="concept_id" ref="l10n_ve_plusteam.concept_067"/>
+	        <field name="percentage_base">100</field>
+	        <field name="percentage_retention" eval="5"/>
+	        <field name="subtracting" eval="0.00"/>
+	    </record>
+
+        <record id="islr_tab_54" model="islr.tab">
+	        <field name="person_type_id">3</field>
+	        <field name="concept_id" ref="l10n_ve_plusteam.concept_070"/>
+	        <field name="percentage_base">100</field>
+	        <field name="percentage_retention" eval="1"/>
+	        <field name="subtracting" eval="0.00"/>
+	    </record>
+
+        <record id="islr_tab_55" model="islr.tab">
+	        <field name="person_type_id">3</field>
+	        <field name="concept_id" ref="l10n_ve_plusteam.concept_072"/>
+	        <field name="percentage_base">100</field>
+	        <field name="percentage_retention" eval="3"/>
+	        <field name="subtracting" eval="0.00"/>
+	    </record>
+
+        <record id="islr_tab_56" model="islr.tab">
+	        <field name="person_type_id">3</field>
+	        <field name="concept_id" ref="l10n_ve_plusteam.concept_074"/>
+	        <field name="percentage_base">100</field>
+	        <field name="percentage_retention" eval="5"/>
+	        <field name="subtracting" eval="0.00"/>
+	    </record>
+
+        <record id="islr_tab_57" model="islr.tab">
+	        <field name="person_type_id">3</field>
+	        <field name="concept_id" ref="l10n_ve_plusteam.concept_076"/>
+	        <field name="percentage_base">100</field>
+	        <field name="percentage_retention" eval="5"/>
+	        <field name="subtracting" eval="0.00"/>
+	    </record>
+
+        <record id="islr_tab_58" model="islr.tab">
+	        <field name="person_type_id">3</field>
+	        <field name="concept_id" ref="l10n_ve_plusteam.concept_078"/>
+	        <field name="percentage_base">100</field>
+	        <field name="percentage_retention" eval="5"/>
+	        <field name="subtracting" eval="0.00"/>
+	    </record>
+
+        <record id="islr_tab_59" model="islr.tab">
+	        <field name="person_type_id">3</field>
+	        <field name="concept_id" ref="l10n_ve_plusteam.concept_081"/>
+	        <field name="percentage_base">100</field>
+	        <field name="percentage_retention" eval="5"/>
+	        <field name="subtracting" eval="0.00"/>
+	    </record>
+
+        <record id="islr_tab_60" model="islr.tab">
+	        <field name="person_type_id">3</field>
+	        <field name="concept_id" ref="l10n_ve_plusteam.concept_084"/>
+	        <field name="percentage_base">100</field>
+	        <field name="percentage_retention" eval="5"/>
+	        <field name="subtracting" eval="0.00"/>
+	    </record>
+
+        <record id="islr_tab_61" model="islr.tab">
+	        <field name="person_type_id">3</field>
+	        <field name="concept_id" ref="l10n_ve_plusteam.concept_086"/>
+	        <field name="percentage_base">100</field>
+	        <field name="percentage_retention" eval="3"/>
+	        <field name="subtracting" eval="0.00"/>
+	    </record>
+
+        <record id="islr_tab_62" model="islr.tab">
+	        <field name="person_type_id">4</field>
+	        <field name="concept_id" ref="l10n_ve_plusteam.concept_005"/>
+	        <field name="percentage_base">100</field>
+	        <field name="percentage_retention" eval="34"/>
+	        <field name="subtracting" eval="0.00"/>
+	    </record>
+
+        <record id="islr_tab_63" model="islr.tab">
+	        <field name="person_type_id">4</field>
+	        <field name="concept_id" ref="l10n_ve_plusteam.concept_009"/>
+	        <field name="percentage_base">100</field>
+	        <field name="percentage_retention" eval="34"/>
+	        <field name="subtracting" eval="0.00"/>
+	    </record>
+
+        <record id="islr_tab_64" model="islr.tab">
+	        <field name="person_type_id">4</field>
+	        <field name="concept_id" ref="l10n_ve_plusteam.concept_017"/>
+	        <field name="percentage_base">100</field>
+	        <field name="percentage_retention" eval="5"/>
+	        <field name="subtracting" eval="0.00"/>
+	    </record>
+
+        <record id="islr_tab_65" model="islr.tab">
+	        <field name="person_type_id">4</field>
+	        <field name="concept_id" ref="l10n_ve_plusteam.concept_021"/>
+	        <field name="percentage_base">100</field>
+	        <field name="percentage_retention" eval="5"/>
+	        <field name="subtracting" eval="0.00"/>
+	    </record>
+
+        <record id="islr_tab_66" model="islr.tab">
+	        <field name="person_type_id">4</field>
+	        <field name="concept_id" ref="l10n_ve_plusteam.concept_023"/>
+	        <field name="percentage_base">100</field>
+	        <field name="percentage_retention" eval="34"/>
+	        <field name="subtracting" eval="0.00"/>
+	    </record>
+
+        <record id="islr_tab_67" model="islr.tab">
+	        <field name="person_type_id">4</field>
+	        <field name="concept_id" ref="l10n_ve_plusteam.concept_024"/>
+	        <field name="percentage_base">100</field>
+	        <field name="percentage_retention" eval="4.95"/>
+	        <field name="subtracting" eval="0.00"/>
+	    </record>
+
+        <record id="islr_tab_68" model="islr.tab">
+	        <field name="person_type_id">4</field>
+	        <field name="concept_id" ref="l10n_ve_plusteam.concept_028"/>
+	        <field name="percentage_base">100</field>
+	        <field name="percentage_retention" eval="34"/>
+	        <field name="subtracting" eval="0.00"/>
+	    </record>
+
+        <record id="islr_tab_69" model="islr.tab">
+	        <field name="person_type_id">4</field>
+	        <field name="concept_id" ref="l10n_ve_plusteam.concept_029"/>
+	        <field name="percentage_base">100</field>
+	        <field name="percentage_retention" eval="34"/>
+	        <field name="subtracting" eval="0.00"/>
+	    </record>
+
+        <record id="islr_tab_70" model="islr.tab">
+	        <field name="person_type_id">4</field>
+	        <field name="concept_id" ref="l10n_ve_plusteam.concept_031"/>
+	        <field name="percentage_base">100</field>
+	        <field name="percentage_retention" eval="10"/>
+	        <field name="subtracting" eval="0.00"/>
+	    </record>
+
+        <record id="islr_tab_71" model="islr.tab">
+	        <field name="person_type_id">4</field>
+	        <field name="concept_id" ref="l10n_ve_plusteam.concept_033"/>
+	        <field name="percentage_base">100</field>
+	        <field name="percentage_retention" eval="34"/>
+	        <field name="subtracting" eval="0.00"/>
+	    </record>
+
+        <record id="islr_tab_72" model="islr.tab">
+	        <field name="person_type_id">4</field>
+	        <field name="concept_id" ref="l10n_ve_plusteam.concept_035"/>
+	        <field name="percentage_base">100</field>
+	        <field name="percentage_retention" eval="34"/>
+	        <field name="subtracting" eval="0.00"/>
+	    </record>
+
+        <record id="islr_tab_73" model="islr.tab">
+	        <field name="person_type_id">4</field>
+	        <field name="concept_id" ref="l10n_ve_plusteam.concept_037"/>
+	        <field name="percentage_base">100</field>
+	        <field name="percentage_retention" eval="34"/>
+	        <field name="subtracting" eval="0.00"/>
+	    </record>
+
+        <record id="islr_tab_74" model="islr.tab">
+	        <field name="person_type_id">4</field>
+	        <field name="concept_id" ref="l10n_ve_plusteam.concept_039"/>
+	        <field name="percentage_base">100</field>
+	        <field name="percentage_retention" eval="34"/>
+	        <field name="subtracting" eval="0.00"/>
+	    </record>
+
+        <record id="islr_tab_75" model="islr.tab">
+	        <field name="person_type_id">4</field>
+	        <field name="concept_id" ref="l10n_ve_plusteam.concept_040"/>
+	        <field name="percentage_base">100</field>
+	        <field name="percentage_retention" eval="10"/>
+	        <field name="subtracting" eval="0.00"/>
+	    </record>
+
+        <record id="islr_tab_76" model="islr.tab">
+	        <field name="person_type_id">4</field>
+	        <field name="concept_id" ref="l10n_ve_plusteam.concept_048"/>
+	        <field name="percentage_base">100</field>
+	        <field name="percentage_retention" eval="16"/>
+	        <field name="subtracting" eval="0.00"/>
+	    </record>
+
+        <record id="islr_tab_77" model="islr.tab">
+	        <field name="person_type_id">4</field>
+	        <field name="concept_id" ref="l10n_ve_plusteam.concept_052"/>
+	        <field name="percentage_base">100</field>
+	        <field name="percentage_retention" eval="5"/>
+	        <field name="subtracting" eval="0.00"/>
+	    </record>
+
+        <record id="islr_tab_78" model="islr.tab">
+	        <field name="person_type_id">4</field>
+	        <field name="concept_id" ref="l10n_ve_plusteam.concept_056"/>
+	        <field name="percentage_base">100</field>
+	        <field name="percentage_retention" eval="34"/>
+	        <field name="subtracting" eval="0.00"/>
+	    </record>
+
+        <record id="islr_tab_79" model="islr.tab">
+	        <field name="person_type_id">4</field>
+	        <field name="concept_id" ref="l10n_ve_plusteam.concept_060"/>
+	        <field name="percentage_base">100</field>
+	        <field name="percentage_retention" eval="34"/>
+	        <field name="subtracting" eval="0.00"/>
+	    </record>
+
+        <record id="islr_tab_80" model="islr.tab">
+	        <field name="person_type_id">4</field>
+	        <field name="concept_id" ref="l10n_ve_plusteam.concept_064"/>
+	        <field name="percentage_base">100</field>
+	        <field name="percentage_retention" eval="5"/>
+	        <field name="subtracting" eval="0.00"/>
+	    </record>
+
+        <record id="islr_tab_81" model="islr.tab">
+	        <field name="person_type_id">4</field>
+	        <field name="concept_id" ref="l10n_ve_plusteam.concept_068"/>
+	        <field name="percentage_base">100</field>
+	        <field name="percentage_retention" eval="5"/>
+	        <field name="subtracting" eval="0.00"/>
+	    </record>
+
+        <record id="islr_tab_82" model="islr.tab">
+	        <field name="person_type_id">4</field>
+	        <field name="concept_id" ref="l10n_ve_plusteam.concept_082"/>
+	        <field name="percentage_base">100</field>
+	        <field name="percentage_retention" eval="5"/>
+	        <field name="subtracting" eval="0.00"/>
+	    </record>
+
+        <record id="islr_tab_83" model="islr.tab">
+	        <field name="person_type_id">4</field>
+	        <field name="concept_id" ref="l10n_ve_plusteam.concept_085"/>
+	        <field name="percentage_base">100</field>
+	        <field name="percentage_retention" eval="5"/>
+	        <field name="subtracting" eval="0.00"/>
+	    </record>
 	</data>
 </odoo>
