@@ -10,9 +10,10 @@
                 <field name="control_number"/>
             </xpath>
             <xpath expr="//div[@class='d-flex']" position="after"> 
-            <field name="import_doc" attrs="{'invisible': [('move_type', 'not in', ('in_invoice', 'in_refund', 'in_receipt'))]}" /> 
-            <field name="form_number" attrs="{'invisible':[('import_doc','=',False)]}"/> 
-            <field name="file_number" attrs="{'invisible':[('import_doc','=',False)]}"/> </xpath>
+                <field name="import_doc" attrs="{'invisible': [('move_type', 'not in', ('in_invoice', 'in_refund', 'in_receipt'))]}" />
+                <field name="form_number" attrs="{'invisible':[('import_doc','=',False)]}"/>
+                <field name="file_number" attrs="{'invisible':[('import_doc','=',False)]}"/>
+            </xpath>
         </field>
     </record>
 

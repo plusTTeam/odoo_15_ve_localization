@@ -14,7 +14,7 @@ class AccountMove(models.Model):
     import_doc = fields.Boolean(string="Import")
 
     @api.constrains('control_number')
-    def _check_number_control(self):
+    def _check_control_number(self):
         for record in self:
             if re.match(r"^[0-9]{6,9}$", record.control_number) is None:
                 raise ValidationError(_("Invalid control number format. Must have at least 6 numbers"))
