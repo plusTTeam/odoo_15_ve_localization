@@ -8,7 +8,7 @@ on:
     types: [ opened, synchronize, reopened ]
 jobs:
   test:
-    name: QA
+    name: Code Review & QA
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
