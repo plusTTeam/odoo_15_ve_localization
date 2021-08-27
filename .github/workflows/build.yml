@@ -7,13 +7,23 @@ on:
   pull_request:
     types: [ opened, synchronize, reopened ]
 jobs:
-  sonarcloud:
-    name: SonarCloud
+  test:
+    name: QA
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout
       - uses: actions/checkout@v2
         with:
           fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
+      - name: Build odoo image
+        run: make rebuild
+      - name: Wait odoo
+        run: ./wait-for-it.sh docker:8070 -- echo "Odoo is up" --timeout=120
+      - name: Run tests
+        run: |
+          make init_test_db
+          make generate_local_coverage_report
+          sed -i 's/\/mnt\/extra-addons/\/github\/workspace\/addons/g' coverage/coverage.xml
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
         env:
