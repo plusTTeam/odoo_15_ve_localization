@@ -20,7 +20,7 @@
     'version': '0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['base', 'contacts', 'account'],
+    'depends': ['base', 'contacts', 'account', 'hr'],
 
     # always loaded
     'data': [
@@ -28,6 +28,8 @@
         'data/islr_concepts_data.xml',
         'data/person_type_data.xml',
         'data/res_country_state_data.xml',
+        'data/resource_calendar_data.xml',
+        'data/resource_calendar_leaves_data.xml',
         'views/res_partner_views.xml',
         'views/islr_concepts_views.xml',
         'views/person_type_views.xml',
@@ -35,6 +37,7 @@
         'views/account_move_views.xml',
         'views/res_config_settings_views.xml',
         'views/res_company_views.xml',
+        'views/resource_calendar_views.xml',
         'views/menu_views.xml'
     ],
     # only loaded in demonstration mode
