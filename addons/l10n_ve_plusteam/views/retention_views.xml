@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="retention_view_form" model="ir.ui.view">
+        <field name="name">retention.form</field>
+        <field name="model">retention</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                   <group  >
+                        <group  >
+                            <label for="receipt_number" string="Receipt Number" />
+                            <h1>
+                            <field name="receipt_number" placeholder="receipt number"  nolabel="1"/>
+                            </h1>
+			            </group>
+                        <group  >
+                          <label for="year_fiscal_period" string="Fiscal Period" />
+                            <div class="d-flex" >
+					           <label for="month_fiscal_period" string="Month" style="font-weight:bold;"/>
+                               <field name="month_fiscal_period" nolabel="1"  style="width: 120px !important" />
+					           <label for="year_fiscal_period" string="Year" style="font-weight:bold;"  />
+                               <field name="year_fiscal_period" />
+                            </div>
+			            </group>
+                     
+			        </group>
+                    <group >
+                        <group  >
+                            <field name="issue_date" />
+                            <field name="deliver_date"  />
+					        <field name="name"/>
+                            <field name="rif"/>
+			            </group>
+			            <group >   
+                           <field name="invoice_number"/>
+                           <field name="amount_tax"/>
+                           <field name="amount_total"/>
+                           <field name="amount_base_taxed"/> 
+                           <field name="vat_withholding_percentage"/> 
+                           
+                   	    </group>
+                    </group>       
+                  
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="retention_view_tree" model="ir.ui.view">
+        <field name="name">retention.tree</field>
+        <field name="model">retention</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="rif"/>
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="retention_action">
+        <field name="name">retention</field>
+        <field name="res_model">retention</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+</odoo>
