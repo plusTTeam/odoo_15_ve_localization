@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 
 from odoo import fields, models, api, _
-from odoo.exceptions import ValidationError
 
 
 class ResourceCalendar(models.Model):
@@ -12,6 +11,11 @@ class ResourceCalendar(models.Model):
 
     @api.model
     def remove_working_hours(self):
+        working_hour_40 = self.env.ref("resource.resource_calendar_std", raise_if_not_found=False)
+        if working_hour_40:
+            working_hour_40.update({
+                "name": _("Standard 40 hours/week")
+            })
         working_hour_35 = self.env.ref("resource.resource_calendar_std_35h", raise_if_not_found=False)
         if working_hour_35:
             working_hour_35.unlink()

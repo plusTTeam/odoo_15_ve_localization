@@ -2,7 +2,6 @@
 <odoo>
     <data noupdate="1">
         <function name="add_holidays" model="resource.calendar.leaves"/>
-
-<!--        <function name="add_days_weekend" model="resource.calendar.leaves"/>-->
+        <function name="add_days_weekend" model="resource.calendar.leaves"/>
     </data>
 </odoo>
