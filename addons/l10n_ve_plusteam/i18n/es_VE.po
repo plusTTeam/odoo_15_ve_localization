@@ -27284,3 +27284,73 @@ msgstr "Las asistencias no se pueden superponer."
 #, python-format
 msgid "Standard 40 hours/week"
 msgstr "Estándar de 40 horas a la semana"
+
+#. module: resource
+#: model:ir.model.fields,field_description:resource.field_resource_calendar_attendance__day_period
+msgid "Day Period"
+msgstr "Período del Día"
+
+#. module: resource
+#: model:ir.model.fields,field_description:resource.field_resource_calendar_attendance__week_type
+msgid "Week Even/Odd"
+msgstr "Semana Par/Impar"
+
+#. module: resource
+#: code:addons/resource/models/resource.py:0
+#, python-format
+msgid "Monday Afternoon"
+msgstr "Lunes por la tarde"
+
+#. module: resource
+#: code:addons/resource/models/resource.py:0
+#, python-format
+msgid "Monday Morning"
+msgstr "Lunes por la mañana"
+
+#. module: resource
+#: code:addons/resource/models/resource.py:0
+#, python-format
+msgid "Tuesday Afternoon"
+msgstr "Martes por la tarde"
+
+#. module: resource
+#: code:addons/resource/models/resource.py:0
+#, python-format
+msgid "Wednesday Afternoon"
+msgstr "Miércoles por la tarde"
+
+#. module: resource
+#: code:addons/resource/models/resource.py:0
+#, python-format
+msgid "Wednesday Morning"
+msgstr "Miércoles por la mañana"
+
+#. module: resource
+#: code:addons/resource/models/resource.py:0
+#, python-format
+msgid "Tuesday Morning"
+msgstr "Martes por la mañana"
+
+#. module: resource
+#: code:addons/resource/models/resource.py:0
+#, python-format
+msgid "Thursday Afternoon"
+msgstr "Jueves por la tarde"
+
+#. module: resource
+#: code:addons/resource/models/resource.py:0
+#, python-format
+msgid "Thursday Morning"
+msgstr "Jueves por la mañana"
+
+#. module: resource
+#: code:addons/resource/models/resource.py:0
+#, python-format
+msgid "Friday Afternoon"
+msgstr "Viernes por la tarde"
+
+#. module: resource
+#: code:addons/resource/models/resource.py:0
+#, python-format
+msgid "Friday Morning"
+msgstr "Viernes por la mañana"
