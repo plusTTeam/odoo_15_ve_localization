@@ -27210,3 +27210,10 @@ msgstr "Formato de Numero de control Inválido. Debe tener minimo 6 números"
 #: model:ir.model.fields,field_description:l10n_ve_plusteam.field_account_payment__import_doc
 msgid "Import"
 msgstr "Importación"
+
+#. module: account
+#: model:ir.model.fields,field_description:account.field_account_bank_statement_line__amount_untaxed
+#: model:ir.model.fields,field_description:account.field_account_move__amount_untaxed
+#: model:ir.model.fields,field_description:account.field_account_payment__amount_untaxed
+msgid "Untaxed Amount"
+msgstr "Sub_Total"

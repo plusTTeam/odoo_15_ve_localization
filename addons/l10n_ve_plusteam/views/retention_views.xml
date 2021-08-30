@@ -7,6 +7,14 @@
         <field name="arch" type="xml">
             <form>
                 <sheet>
+                     <group  >
+                         <div class="d-flex" >
+					         <label for="iva" string="IVA" style="font-weight:bold;"/>
+                             <field name="iva" nolabel="1"  style="width: 120px !important" />
+					         <label for="islr" string="ISLR" style="font-weight:bold;"  />
+                             <field name="islr" />
+                         </div>
+			        </group>
                    <group  >
                         <group  >
                             <label for="receipt_number" string="Receipt Number" />
@@ -29,16 +37,20 @@
                         <group  >
                             <field name="issue_date" />
                             <field name="deliver_date"  />
-					        <field name="name"/>
+					        <field name="partner_id"/>
                             <field name="rif"/>
 			            </group>
 			            <group >   
                            <field name="invoice_number"/>
-                           <field name="amount_tax"/>
                            <field name="amount_total"/>
-                           <field name="amount_base_taxed"/> 
-                           <field name="vat_withholding_percentage"/> 
-                           
+                           <field name="amount_base_taxed"/>
+                           <field name="amount_tax"/>
+                           <label for="withholding_percentage"/>
+                           <div>
+                              <field name="withholding_percentage" class="oe_inline"/>
+                              <span class="o_form_label oe_inline">%</span>
+                           </div>
+                           <field name="amount_retetion"/>
                    	    </group>
                     </group>       
                   
@@ -53,7 +65,10 @@
         <field name="arch" type="xml">
             <tree>
                 <field name="rif"/>
-                <field name="name"/>
+                <field name="partner_id"/>
+                <field name="issue_date" />
+                <field name="invoice_number"/>
+                <field name="amount_retetion"/>
             </tree>
         </field>
     </record>

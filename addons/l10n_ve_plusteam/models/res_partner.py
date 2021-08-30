@@ -8,6 +8,7 @@ from odoo.exceptions import ValidationError
 class ResPartner(models.Model):
     _inherit = 'res.partner'
 
+    vat = fields.Char(required=True)
     person_type = fields.Many2one('person.type', string="Person Type")
     taxpayer = fields.Boolean(
         string="Taxpayer",

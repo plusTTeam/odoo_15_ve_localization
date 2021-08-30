@@ -14,7 +14,7 @@ class AccountMove(models.Model):
     import_doc = fields.Boolean(string="Import")
      # === Amount fields ===
     amount_base_taxed = fields.Monetary(string='Amount Base taxed', store=True, readonly=True, tracking=True,
-        compute='_compute_amount2')
+        compute='_compute_amount_base_tax')
 
     @api.constrains('control_number')
     def _check_control_number(self):
@@ -26,7 +26,7 @@ class AccountMove(models.Model):
     @api.depends(
         'line_ids.currency_id',
         'line_ids.amount_currency')
-    def _compute_amount2(self):
+    def _compute_amount_base_tax(self):
         for move in self:
             total_base_taxed = 0.0
             total_base_taxed_currency = 0.0
