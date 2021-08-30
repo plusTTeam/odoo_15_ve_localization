@@ -8,3 +8,4 @@ from . import tax_unit
 from . import res_config_settings
 from . import res_company
 from . import resource_calendar
+from . import resource_calendar_leaves
