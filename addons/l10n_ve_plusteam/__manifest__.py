@@ -24,6 +24,7 @@
     # always loaded
     'data': [
         'security/ir.model.access.csv',
+        'data/res_lang_data.xml',
         'data/islr_concepts_data.xml',
         'data/person_type_data.xml',
         'data/res_country_state_data.xml',
