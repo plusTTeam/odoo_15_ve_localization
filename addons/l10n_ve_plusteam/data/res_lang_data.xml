@@ -1,3 +1,4 @@
+<?xml version="1.0" ?>
 <odoo>
     <record id="lang_es_ve" model="ir.model.data">
         <field name="name">lang_es_VE</field>
@@ -9,5 +10,5 @@
     <record model="res.lang" id="base.lang_es_VE">
         <field name="active" eval="True"/>
     </record>
-    <function name="switch_lang" model="base.language.install"/>
+    <function name="install_lang_es_ve" model="res.lang"/>
 </odoo>

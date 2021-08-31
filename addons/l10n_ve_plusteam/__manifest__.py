@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 {
     'name': "l10n_ve_plusteam",
 
@@ -25,6 +26,7 @@
     'data': [
         'security/ir.model.access.csv',
         'data/res_lang_data.xml',
+        'data/res_users_data.xml',
         'data/islr_concepts_data.xml',
         'data/person_type_data.xml',
         'data/res_country_state_data.xml',
@@ -44,4 +46,5 @@
         'demo/demo.xml',
     ],
 }
-# -*- coding: utf-8 -*-
+
+
