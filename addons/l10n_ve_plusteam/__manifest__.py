@@ -31,6 +31,7 @@
         'data/person_type_data.xml',
         'data/res_country_state_data.xml',
         'data/resource_calendar_leaves_data.xml',
+        'data/resource_calendar_attendance_data.xml',
         'data/resource_calendar_data.xml',
         'views/res_partner_views.xml',
         'views/islr_concepts_views.xml',
