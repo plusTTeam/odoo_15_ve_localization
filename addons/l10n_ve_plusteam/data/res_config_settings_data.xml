@@ -1,0 +1,11 @@
+<?xml version="1.0" ?>
+<odoo>
+    <data noupdate="1">
+        <record id="settings_tax_sale" model="res.config.settings">
+            <field name="sale_tax_id" ref="tax_16_sale"/>
+        </record>
+        <function model="res.config.settings" name="execute">
+            <value model="res.config.settings" search="[('id', '=', ref('settings_tax_sale'))]"/>
+        </function>
+    </data>
+</odoo>
