@@ -1,0 +1,27 @@
+<?xml version="1.0" ?>
+<odoo>
+    <data noupdate="1">
+        <record id="vat_withholding_suppliers" model="account.account">
+            <field name="code">2.1.7.2004</field>
+            <field name="name">I.V.A. RETENIDO EN COMPRAS</field>
+            <field name="user_type_id" ref="account.data_account_type_current_assets"/>
+            <field name="reconcile" eval="True"/>
+            <field name="currency_id" ref="base.VEF"/>
+        </record>
+        <record id="islr_withholding_suppliers" model="account.account">
+            <field name="code">2.1.7.2002</field>
+            <field name="name">I.S.L.R. RETENIDO EN COMPRAS</field>
+            <field name="user_type_id" ref="account.data_account_type_current_assets"/>
+            <field name="reconcile" eval="True"/>
+            <field name="currency_id" ref="base.VEF"/>
+        </record>
+
+        <record id="cs_erp.settings" model="res.config.settings">
+            <field name="iva_account_purchase_id" ref="l10n_ve_plusteam.vat_withholding_suppliers"/>
+            <field name="islr_account_purchase_id" ref="l10n_ve_plusteam.islr_withholding_suppliers"/>
+        </record>
+        <function model="res.config.settings" name="execute">
+            <value model="res.config.settings" search="[('id', '=', ref('cs_erp.settings'))]"/>
+        </function>
+    </data>
+</odoo>
