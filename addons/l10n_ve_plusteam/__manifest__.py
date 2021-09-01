@@ -20,7 +20,7 @@
     'version': '0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['base', 'contacts', 'account'],
+    'depends': ['base', 'contacts', 'account', 'l10n_ve'],
 
     # always loaded
     'data': [
@@ -28,6 +28,7 @@
         'data/islr_concepts_data.xml',
         'data/person_type_data.xml',
         'data/res_country_state_data.xml',
+        'data/account_tax_data.xml',
         'views/res_partner_views.xml',
         'views/islr_concepts_views.xml',
         'views/person_type_views.xml',
