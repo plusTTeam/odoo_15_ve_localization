@@ -16,12 +16,12 @@
             <field name="currency_id" ref="base.VEF"/>
         </record>
 
-        <record id="cs_erp.settings" model="res.config.settings">
+        <record id="settings_withholding" model="res.config.settings">
             <field name="iva_account_purchase_id" ref="l10n_ve_plusteam.vat_withholding_suppliers"/>
             <field name="islr_account_purchase_id" ref="l10n_ve_plusteam.islr_withholding_suppliers"/>
         </record>
         <function model="res.config.settings" name="execute">
-            <value model="res.config.settings" search="[('id', '=', ref('cs_erp.settings'))]"/>
+            <value model="res.config.settings" search="[('id', '=', ref('settings_withholding'))]"/>
         </function>
     </data>
 </odoo>
