@@ -3,6 +3,8 @@
     <data noupdate="1">
         <record id="settings_tax_sale" model="res.config.settings">
             <field name="sale_tax_id" ref="tax_16_sale"/>
+            <field name="purchase_tax_id" ref="tax_16_purchase"/>
+            <field name="chart_template_id" ref="ve_chart_template_amd"/>
         </record>
         <function model="res.config.settings" name="execute">
             <value model="res.config.settings" search="[('id', '=', ref('settings_tax_sale'))]"/>
