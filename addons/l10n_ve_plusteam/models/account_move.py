@@ -47,7 +47,22 @@ class AccountMove(models.Model):
                 sign = -1
             move.amount_base_taxed = sign * (total_base_taxed_currency if len(currencies) == 1 else total_base_taxed)
 
-               
+   
+    def action_register_retention(self):
+        ''' Open the retetion.register wizard to retention the selected journal entries.
+        :return: An action opening the retention.register wizard.
+        '''
+        return {
+            'name': _('Register Retention'),
+            'res_model': 'account.retention.register',
+            'view_mode': 'form',
+            'context': {
+               'active_model': 'account.move',
+                'active_ids': self.ids,
+            },
+            'target': 'new',
+            'type': 'ir.actions.act_window',
+        }     
 
            
            

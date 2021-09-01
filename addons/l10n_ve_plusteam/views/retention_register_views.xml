@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="view_account_retention_register_form" model="ir.ui.view">
+            <field name="name">account.retention.register.form</field>
+            <field name="model">account.retention.register</field>
+            <field name="arch" type="xml">
+                <form string="Register Payment">
+                        
+                    <field name="retention_type" options="{'horizontal': true}" class="oe_edit_only" widget="radio"  groups="base.group_no_one"/>     
+                    <group>
+                        <group name="group1">
+                            <label for="year_fiscal_period" string="Fiscal Period" />
+                            <div class="d-flex" >
+					           <label for="month_fiscal_period" string="Month" style="font-weight:bold;"/>
+                               <field name="month_fiscal_period" nolabel="1"  style="width: 120px !important" />
+					           <label for="year_fiscal_period" string="Year" style="font-weight:bold;"  />
+                               <field name="year_fiscal_period" />
+                            </div>
+                            <field name="issue_date" />
+                            <field name="deliver_date"  />
+                            <field name="document"/>
+                            <field name="rif"/>
+                        </group>
+                        <group name="group2">
+                            <field name="amount_base_untaxed"/>
+                            <field name="amount_base_taxed"/>
+                            <field name="amount_tax"/>
+                            <field name="amount_total"/>
+                            <label for="vat_withholding_percentage"/>
+                            <div name="amount_div" class="o_row">
+                                <field name="vat_withholding_percentage" class="oe_inline"/>
+                                <field name="currency_id"
+                                       options="{'no_create': True, 'no_open': True}"
+                                       groups="base.group_multi_currency"/>
+                                <span class="o_form_label oe_inline">%</span>       
+                            </div>
+                            <field name="amount_retetion"/>
+                        </group>
+                    </group>
+                    <footer>
+                        <button string="Create Retention" name="action_create_retention" type="object" class="oe_highlight"/>
+                        <button string="Cancel" class="btn btn-secondary" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+    </data>
+</odoo>
