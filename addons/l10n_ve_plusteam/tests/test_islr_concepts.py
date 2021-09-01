@@ -7,7 +7,7 @@ class TestISLRConcepts(TransactionCase):
     def setUp(self):
         super(TestISLRConcepts, self).setUp()
 
-        self.concept = self.env.ref("l10n_ve_plusteam.concept_0")
+        self.concept = self.env.ref("l10n_ve_plusteam.concept_001")
 
     def test_complete_name(self):
         self.assertEqual(

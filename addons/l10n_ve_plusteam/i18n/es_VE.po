@@ -27213,6 +27213,34 @@ msgid "Import"
 msgstr "Importación"
 
 #. module: l10n_ve_plusteam
+#: model:ir.model.fields,field_description:l10n_ve_plusteam.field_account_bank_statement_line__invoice_number
+#: model:ir.model.fields,field_description:l10n_ve_plusteam.field_account_move__invoice_number
+#: model:ir.model.fields,field_description:l10n_ve_plusteam.field_account_payment__invoice_number
+msgid "Invoice Number"
+msgstr "Número de Factura"
+
+#. module: l10n_ve_plusteam
+#: model:ir.model.fields,help:l10n_ve_plusteam.field_account_bank_statement_line__invoice_number
+#: model:ir.model.fields,help:l10n_ve_plusteam.field_account_move__invoice_number
+#: model:ir.model.fields,help:l10n_ve_plusteam.field_account_payment__invoice_number
+msgid "Is defined when it is a supplier invoice"
+msgstr "Es definido cuando es una factura de proveedor"
+
+#. module: l10n_ve_plusteam
+#: model:ir.model.fields,field_description:l10n_ve_plusteam.field_account_bank_statement_line__fiscal_printing_serial
+#: model:ir.model.fields,field_description:l10n_ve_plusteam.field_account_move__fiscal_printing_serial
+#: model:ir.model.fields,field_description:l10n_ve_plusteam.field_account_payment__fiscal_printing_serial
+msgid "Fiscal Printing Serial"
+msgstr "Serial de Impresora Fiscal"
+
+#. module: l10n_ve_plusteam
+#: model:ir.model.fields,help:l10n_ve_plusteam.field_account_bank_statement_line__fiscal_printing_serial
+#: model:ir.model.fields,help:l10n_ve_plusteam.field_account_move__fiscal_printing_serial
+#: model:ir.model.fields,help:l10n_ve_plusteam.field_account_payment__fiscal_printing_serial
+msgid "Defined when the invoice is printed to the customer"
+msgstr "Definido cuando la factura es impresa al cliente"
+
+#. module: l10n_ve_plusteam
 #: model:ir.model.fields,field_description:l10n_ve_plusteam.field_resource_calendar__hours_per_day
 msgid "Average Hour per Day"
 msgstr "Promedio de Horas por Día"
