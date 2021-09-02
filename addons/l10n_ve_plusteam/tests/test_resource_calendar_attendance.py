@@ -9,34 +9,34 @@ class TestResourceCalendarAttendance(TransactionCase):
     def setUp(self):
         super(TestResourceCalendarAttendance, self).setUp()
 
-        mondays = self.search([("name", "=", WEEK_DAYS["monday"]["morning"]["name_spanish"])])
+        mondays = self.env[RESOURCE_CALENDAR_ATTENDANCE_MODEL].search([("name", "=", WEEK_DAYS["monday"]["morning"]["name_spanish"])])
         for monday in mondays:
             monday.write({"name": WEEK_DAYS["monday"]["morning"]["name_english"]})
-        mondays = self.search([("name", "=", WEEK_DAYS["monday"]["afternoon"]["name_spanish"])])
+        mondays = self.env[RESOURCE_CALENDAR_ATTENDANCE_MODEL].search([("name", "=", WEEK_DAYS["monday"]["afternoon"]["name_spanish"])])
         for monday in mondays:
             monday.write({"name": WEEK_DAYS["monday"]["afternoon"]["name_english"]})
-        tuesdays = self.search([("name", "=", WEEK_DAYS["tuesday"]["morning"]["name_spanish"])])
+        tuesdays = self.env[RESOURCE_CALENDAR_ATTENDANCE_MODEL].search([("name", "=", WEEK_DAYS["tuesday"]["morning"]["name_spanish"])])
         for tuesday in tuesdays:
             tuesday.write({"name": WEEK_DAYS["tuesday"]["morning"]["name_english"]})
-        tuesdays = self.search([("name", "=", WEEK_DAYS["tuesday"]["afternoon"]["name_spanish"])])
+        tuesdays = self.env[RESOURCE_CALENDAR_ATTENDANCE_MODEL].search([("name", "=", WEEK_DAYS["tuesday"]["afternoon"]["name_spanish"])])
         for tuesday in tuesdays:
             tuesday.write({"name": WEEK_DAYS["tuesday"]["afternoon"]["name_english"]})
-        wednesdays = self.search([("name", "=", WEEK_DAYS["wednesday"]["morning"]["name_spanish"])])
+        wednesdays = self.env[RESOURCE_CALENDAR_ATTENDANCE_MODEL].search([("name", "=", WEEK_DAYS["wednesday"]["morning"]["name_spanish"])])
         for wednesday in wednesdays:
             wednesday.write({"name": WEEK_DAYS["wednesday"]["morning"]["name_english"]})
-        wednesdays = self.search([("name", "=", WEEK_DAYS["wednesday"]["afternoon"]["name_spanish"])])
+        wednesdays = self.env[RESOURCE_CALENDAR_ATTENDANCE_MODEL].search([("name", "=", WEEK_DAYS["wednesday"]["afternoon"]["name_spanish"])])
         for wednesday in wednesdays:
             wednesday.write({"name": WEEK_DAYS["wednesday"]["afternoon"]["name_english"]})
-        tuesdays = self.search([("name", "=", WEEK_DAYS["tuesday"]["morning"]["name_spanish"])])
+        tuesdays = self.env[RESOURCE_CALENDAR_ATTENDANCE_MODEL].search([("name", "=", WEEK_DAYS["tuesday"]["morning"]["name_spanish"])])
         for tuesday in tuesdays:
             tuesday.write({"name": WEEK_DAYS["tuesday"]["morning"]["name_english"]})
-        tuesdays = self.search([("name", "=", WEEK_DAYS["tuesday"]["afternoon"]["name_spanish"])])
+        tuesdays = self.env[RESOURCE_CALENDAR_ATTENDANCE_MODEL].search([("name", "=", WEEK_DAYS["tuesday"]["afternoon"]["name_spanish"])])
         for tuesday in tuesdays:
             tuesday.write({"name": WEEK_DAYS["tuesday"]["afternoon"]["name_english"]})
-        fridays = self.search([("name", "=", WEEK_DAYS["friday"]["morning"]["name_spanish"])])
+        fridays = self.env[RESOURCE_CALENDAR_ATTENDANCE_MODEL].search([("name", "=", WEEK_DAYS["friday"]["morning"]["name_spanish"])])
         for friday in fridays:
             friday.write({"name": WEEK_DAYS["friday"]["morning"]["name_english"]})
-        fridays = self.search([("name", "=", WEEK_DAYS["friday"]["afternoon"]["name_spanish"])])
+        fridays = self.env[RESOURCE_CALENDAR_ATTENDANCE_MODEL].search([("name", "=", WEEK_DAYS["friday"]["afternoon"]["name_spanish"])])
         for friday in fridays:
             friday.write({"name": WEEK_DAYS["friday"]["afternoon"]["name_english"]})
 
