@@ -2,14 +2,14 @@
 <odoo>
     <data noupdate="1">
         <record id="vat_withholding_suppliers" model="account.account">
-            <field name="code">2172004</field>
+            <field name="code">2172000</field>
             <field name="name">I.V.A. RETENIDO EN COMPRAS</field>
             <field name="user_type_id" ref="account.data_account_type_current_liabilities"/>
             <field name="reconcile" eval="True"/>
             <field name="currency_id" ref="base.VEF"/>
         </record>
         <record id="islr_withholding_suppliers" model="account.account">
-            <field name="code">2172002</field>
+            <field name="code">2172001</field>
             <field name="name">I.S.L.R. RETENIDO EN COMPRAS</field>
             <field name="user_type_id" ref="account.data_account_type_current_liabilities"/>
             <field name="reconcile" eval="True"/>
@@ -17,7 +17,7 @@
         </record>
 
         <record id="vat_withholding_customer" model="account.account">
-            <field name="code">1172005</field>
+            <field name="code">1172002</field>
             <field name="name">I.V.A. RETENIDO EN VENTAS</field>
             <field name="user_type_id" ref="account.data_account_type_current_assets"/>
             <field name="reconcile" eval="True"/>
