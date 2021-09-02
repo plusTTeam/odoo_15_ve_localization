@@ -2,9 +2,11 @@
 
 ACCOUNT_MODEL = "account.account"
 RESOURCE_CALENDAR_LEAVES_MODEL = "resource.calendar.leaves"
+RESOURCE_CALENDAR_ATTENDANCE_MODEL = "resource.calendar.attendance"
 IR_MODEL_DATA = "ir.model.data"
 REF_MAIN_COMPANY = "base.main_company"
 MESSAGE_EXCEPTION_NOT_EXECUTE = "The exception was not executed correctly"
+MESSAGE_DAY_NOT_FOUND = "Day not found"
 GLOBAL_TIME_OFF = [
     {
         "name": "Navidad",
