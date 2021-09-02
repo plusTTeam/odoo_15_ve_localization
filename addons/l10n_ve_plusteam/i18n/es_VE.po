@@ -27323,61 +27323,71 @@ msgstr "Período del Día"
 msgid "Week Even/Odd"
 msgstr "Semana Par/Impar"
 
-#. module: resource
+#. modules: l10n_ve_plusteam, resource
+#: code:addons/l10n_ve_plusteam/models/resource_calendar_attendance.py:0
 #: code:addons/resource/models/resource.py:0
 #, python-format
 msgid "Monday Afternoon"
 msgstr "Lunes por la tarde"
 
-#. module: resource
+#. modules: l10n_ve_plusteam, resource
+#: code:addons/l10n_ve_plusteam/models/resource_calendar_attendance.py:0
 #: code:addons/resource/models/resource.py:0
 #, python-format
 msgid "Monday Morning"
 msgstr "Lunes por la mañana"
 
-#. module: resource
+#. modules: l10n_ve_plusteam, resource
+#: code:addons/l10n_ve_plusteam/models/resource_calendar_attendance.py:0
 #: code:addons/resource/models/resource.py:0
 #, python-format
 msgid "Tuesday Afternoon"
 msgstr "Martes por la tarde"
 
-#. module: resource
-#: code:addons/resource/models/resource.py:0
-#, python-format
-msgid "Wednesday Afternoon"
-msgstr "Miércoles por la tarde"
-
-#. module: resource
-#: code:addons/resource/models/resource.py:0
-#, python-format
-msgid "Wednesday Morning"
-msgstr "Miércoles por la mañana"
-
-#. module: resource
+#. modules: l10n_ve_plusteam, resource
+#: code:addons/l10n_ve_plusteam/models/resource_calendar_attendance.py:0
 #: code:addons/resource/models/resource.py:0
 #, python-format
 msgid "Tuesday Morning"
 msgstr "Martes por la mañana"
 
-#. module: resource
+#. modules: l10n_ve_plusteam, resource
+#: code:addons/l10n_ve_plusteam/models/resource_calendar_attendance.py:0
+#: code:addons/resource/models/resource.py:0
+#, python-format
+msgid "Wednesday Afternoon"
+msgstr "Miércoles por la tarde"
+
+#. modules: l10n_ve_plusteam, resource
+#: code:addons/l10n_ve_plusteam/models/resource_calendar_attendance.py:0
+#: code:addons/resource/models/resource.py:0
+#, python-format
+msgid "Wednesday Morning"
+msgstr "Miércoles por la mañana"
+
+#. modules: l10n_ve_plusteam, resource
+#: code:addons/l10n_ve_plusteam/models/resource_calendar_attendance.py:0
 #: code:addons/resource/models/resource.py:0
 #, python-format
 msgid "Thursday Afternoon"
 msgstr "Jueves por la tarde"
 
-#. module: resource
+#. modules: l10n_ve_plusteam, resource
+#: code:addons/l10n_ve_plusteam/models/resource_calendar_attendance.py:0
 #: code:addons/resource/models/resource.py:0
 #, python-format
 msgid "Thursday Morning"
 msgstr "Jueves por la mañana"
 
-#. module: resource
+#. modules: l10n_ve_plusteam, resource
+#: code:addons/l10n_ve_plusteam/models/resource_calendar_attendance.py:0
 #: code:addons/resource/models/resource.py:0
 #, python-format
 msgid "Friday Afternoon"
 msgstr "Viernes por la tarde"
 
-#. module: resource
+#. modules: l10n_ve_plusteam, resource
+#: code:addons/l10n_ve_plusteam/models/resource_calendar_attendance.py:0
 #: code:addons/resource/models/resource.py:0
 #, python-format
 msgid "Friday Morning"
