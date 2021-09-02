@@ -1,5 +1,5 @@
 from odoo.tests.common import TransactionCase
-from ..tools.constants import GLOBAL_TIME_OFF
+from ..tools.constants import GLOBAL_TIME_OFF, RESOURCE_CALENDAR_LEAVES_MODEL
 
 
 class TestTaxUnit(TransactionCase):
@@ -8,16 +8,16 @@ class TestTaxUnit(TransactionCase):
         super(TestTaxUnit, self).setUp()
 
     def test_add_holidays(self):
-        self.env["resource.calendar.leaves"].add_holidays()
+        self.env[RESOURCE_CALENDAR_LEAVES_MODEL].add_holidays()
         found_day = False
         for holiday in GLOBAL_TIME_OFF:
-            day = self.env["resource.calendar.leaves"].search([("name", "=", holiday["name"])], limit=1)
+            day = self.env[RESOURCE_CALENDAR_LEAVES_MODEL].search([("name", "=", holiday["name"])], limit=1)
             if day:
                 found_day = True
                 self.assertEqual(holiday["name"], day.name, msg="Day not located")
             self.assertTrue(found_day, msg="There is no record that matches the search")
 
     def test_add_days_weekend(self):
-        self.env["resource.calendar.leaves"].add_days_weekend()
-        days = self.env["resource.calendar.leaves"].search([("name", "=", "Fin de Semana")])
+        self.env[RESOURCE_CALENDAR_LEAVES_MODEL].add_days_weekend()
+        days = self.env[RESOURCE_CALENDAR_LEAVES_MODEL].search([("name", "=", "Fin de Semana")])
         self.assertTrue(len(days) > 1, msg="There is no record that matches the search")

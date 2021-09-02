@@ -23,7 +23,7 @@ class ResourceCalendarLeaves(models.Model):
                 if date < now:
                     continue
                 utc_offset = date.utcoffset().total_seconds() * (-1)
-                self.env["resource.calendar.leaves"].create({
+                self.create({
                     "calendar_id": self.env.ref("resource.resource_calendar_std").id,
                     "name": holiday["name"],
                     "date_from": (date.replace(tzinfo=None) + timedelta(seconds=utc_offset)),
@@ -34,12 +34,12 @@ class ResourceCalendarLeaves(models.Model):
     def add_days_weekend(self):
         now, ve_timezone = self.get_now_with_timezone()
         weekends = self.all_weekends(now.replace(tzinfo=None))
-        start_dates = self.env["resource.calendar.leaves"].search([]).mapped("date_from")
+        start_dates = self.search([]).mapped("date_from")
         for weekend in weekends:
             utc_offset = ve_timezone.utcoffset(weekend).total_seconds() * (-1)
             if (fields.Datetime.start_of(weekend, "day") + timedelta(seconds=utc_offset)) in start_dates:
                 continue
-            self.env["resource.calendar.leaves"].create({
+            self.create({
                 "calendar_id": self.env.ref("resource.resource_calendar_std").id,
                 "name": "Fin de Semana",
                 "date_from": (fields.Datetime.start_of(weekend, "day") + timedelta(seconds=utc_offset)),
