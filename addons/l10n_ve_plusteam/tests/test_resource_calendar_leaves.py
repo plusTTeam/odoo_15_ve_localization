@@ -2,10 +2,10 @@ from odoo.tests.common import TransactionCase
 from ..tools.constants import GLOBAL_TIME_OFF, RESOURCE_CALENDAR_LEAVES_MODEL
 
 
-class TestTaxUnit(TransactionCase):
+class TestResourceCalendarLeaves(TransactionCase):
 
     def setUp(self):
-        super(TestTaxUnit, self).setUp()
+        super(TestResourceCalendarLeaves, self).setUp()
 
     def test_add_holidays(self):
         self.env[RESOURCE_CALENDAR_LEAVES_MODEL].add_holidays()
