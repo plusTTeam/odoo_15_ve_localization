@@ -36,7 +36,8 @@
                         <group  >
                             <field name="issue_date" />
                             <field name="deliver_date"  />
-					        <field name="partner_id"/>
+                            <field name="partner_type"/>
+                            <field name="partner_id"/>
                             <field name="rif"/>
                             <field name="destination_account_id"/>
 			            </group>
@@ -51,7 +52,7 @@
                               <field name="vat_withholding_percentage" class="oe_inline"/>
                               <span class="o_form_label oe_inline">%</span>
                            </div>
-                           <field name="amount_retetion"/>
+                           <field name="amount_retention"/>
                    	    </group>
                     </group>       
                   
@@ -65,18 +66,44 @@
         <field name="model">retention</field>
         <field name="arch" type="xml">
             <tree>
+                <field name="partner_id" invisible="context.get('default_move_type') not in ('in_invoice', 'in_refund','in_receipt')" groups="base.group_user" string="Vendor" />
+                <field name="partner_id" invisible="context.get('default_move_type') not in ('out_invoice', 'out_refund','out_receipt')" groups="base.group_user" string="Customer" />
                 <field name="rif"/>
-                <field name="partner_id"/>
+                <field name="code"/>
                 <field name="issue_date" />
                 <field name="invoice_number"/>
-                <field name="amount_retetion"/>
+                <field name="ref" optional="hide"/>
+                <field name="amount_retention"/>
             </tree>
         </field>
     </record>
 
-    <record model="ir.actions.act_window" id="retention_action">
-        <field name="name">retention</field>
-        <field name="res_model">retention</field>
-        <field name="view_mode">tree,form</field>
+    <record id="retention_out_invoice_tree" model="ir.ui.view">
+            <field name="name">retention.out.invoice.tree</field>
+            <field name="model">retention</field>
+            <field name="inherit_id" ref="retention_view_tree"/>
+            <field name="mode">primary</field>
+            <field name="arch" type="xml">
+                 <xpath expr="//field[@name='ref']" position="attributes">
+                    <attribute name="optional">show</attribute>
+                </xpath>
+            </field>
     </record>
+
+    <record id="retention_action_out_invoice_type" model="ir.actions.act_window">
+            <field name="name">Retention</field>
+            <field name="res_model">retention</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="retention_out_invoice_tree"/>
+            <field name="domain">[('move_type', '=', 'in_invoice')]</field>
+            <field name="context">{'default_move_type': 'in_invoice'}</field>
+            <field name="help" type="html">
+              <p class="o_view_nocontent_smiling_face">
+                Create a retention invoice
+              </p><p>
+                Create retention, register retention supplier.
+              </p>
+            </field>
+    </record>
+
 </odoo>

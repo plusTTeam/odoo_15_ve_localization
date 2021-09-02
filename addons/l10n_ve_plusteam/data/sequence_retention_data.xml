@@ -6,7 +6,7 @@
             <field name="implementation">no_gap</field>
             <field name="prefix">%(year)s%(month)s</field>
             <field name="number_next_actual">1</field>
-            <field name="padding">14</field>
+            <field name="padding">8</field>
         </record>
     </data>
 </odoo>

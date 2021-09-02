@@ -28,6 +28,7 @@
         'data/islr_concepts_data.xml',
         'data/person_type_data.xml',
         'data/res_country_state_data.xml',
+        'data/sequence_retention_data.xml',
         'views/res_partner_views.xml',
         'views/islr_concepts_views.xml',
         'views/person_type_views.xml',
