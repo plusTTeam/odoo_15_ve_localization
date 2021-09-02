@@ -50,3 +50,55 @@ GLOBAL_TIME_OFF = [
         "day": "12"
     }
 ]
+WEEK_DAYS = {
+    "monday": {
+        "morning": {
+            "name_spanis": "Lunes por la mañana",
+            "name_english": "Monday Morning"
+        },
+        "afternoon": {
+            "name_spanis": "Lunes por la tarde",
+            "name_english": "Monday Afternoon"
+        }
+    },
+    "tuesday": {
+        "morning": {
+            "name_spanish": "Martes por la mañana",
+            "name_english": "Tuesday Morning"
+        },
+        "afternoon": {
+            "name_spanish": "Martes por la tarde",
+            "name_english": "Tuesday Afternoon"
+        }
+    },
+    "wednesday": {
+        "morning": {
+            "name_spanish": "Miércoles por la mañana",
+            "name_english": "Wednesday Morning"
+        },
+        "afternoon": {
+            "name_spanish": "Miércoles por la tarde",
+            "name_english": "Wednesday Afternoon"
+        }
+    },
+    "thursday": {
+        "morning": {
+            "name_spanish": "Jueves por la mañana",
+            "name_english": "Thursday Morning"
+        },
+        "afternoon": {
+            "name_spanish": "Jueves por la tarde",
+            "name_english": "Thursday Afternoon"
+        }
+    },
+    "friday": {
+        "morning": {
+            "name_spanish": "Viernes por la mañana",
+            "name_english": "Friday Morning"
+        },
+        "afternoon": {
+            "name_spanish": "Viernes por la tarde",
+            "name_english": "Friday Afternoon"
+        }
+    }
+}
