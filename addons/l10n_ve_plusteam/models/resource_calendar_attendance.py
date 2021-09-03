@@ -1,9 +1,11 @@
 
-from odoo import models, api, _
+from odoo import models, api, fields, _
 
 
 class ResourceCalendarAttendance(models.Model):
     _inherit = 'resource.calendar.attendance'
+
+    name = fields.Char(translate=True)
 
     @api.model
     def update_translations(self):

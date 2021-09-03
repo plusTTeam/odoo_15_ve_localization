@@ -26,6 +26,7 @@
     'data': [
         'security/ir.model.access.csv',
         'data/res_lang_data.xml',
+        'data/ir_translation_data.xml',
         'data/res_users_data.xml',
         'data/islr_concepts_data.xml',
         'data/person_type_data.xml',

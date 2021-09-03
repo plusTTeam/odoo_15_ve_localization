@@ -9,7 +9,8 @@ class ResLang(models.Model):
     @api.model
     def install_lang_es_ve(self):
         lang_code = "es_VE"
-        lang = self._activate_lang(lang_code) or self._create_lang(lang_code)
+        if not self._activate_lang(lang_code):
+            self._create_lang(lang_code)
         ir_default = self.env['ir.default']
         default_value = ir_default.get('res.partner', 'lang')
         if default_value is None or default_value == "en_US":
