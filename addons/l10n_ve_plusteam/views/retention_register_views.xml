@@ -18,8 +18,8 @@
 					           <label for="year_fiscal_period" string="Year" style="font-weight:bold;"  />
                                <field name="year_fiscal_period" />
                             </div>
-                            <field name="issue_date" />
-                            <field name="deliver_date"  />
+                            <field name="date" />
+                            <field name="invoice_date"  />
                             <field name="document"/>
                             <field name="rif"/>
                         </group>
@@ -36,7 +36,7 @@
                                        groups="base.group_multi_currency"/>
                                 <span class="o_form_label oe_inline">%</span>       
                             </div>
-                            <field name="amount_retetion"/>
+                            <field name="amount_retention"/>
                         </group>
                     </group>
                     <footer>

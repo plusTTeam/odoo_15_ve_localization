@@ -49,15 +49,12 @@ class Retention(models.Model):
         ('out_refund', 'Customer Credit Note'),
         ('in_invoice', 'Vendor Bill'),
         ('in_refund', 'Vendor Credit Note'),
-        ('out_receipt', 'Sales Receipt'),
-        ('in_receipt', 'Purchase Receipt'),
     ], string='Type', required=True, store=True, index=True, readonly=True, tracking=True,
         default="entry", change_default=True)
 
     # == Business fields ==
     code = fields.Char(string="Retention Number", default=_("New"))
-    issue_date = fields.Date(string="Issue Date", required=True, default = fields.Date.context_today)
-    deliver_date = fields.Date(string="Deliver Date", required=True)
+    date = fields.Date(string="Date", required=True, default = fields.Date.context_today)
     month_fiscal_period = fields.Char(string="Month", compute ='_compute_month_fiscal_char', store=True, readonly=False)
     year_fiscal_period = fields.Char(string="Year", default = str(today.year))
     is_iva = fields.Boolean(string='Is IVA', default=False,
@@ -85,13 +82,15 @@ class Retention(models.Model):
         ('customer', 'Customer'),
         ('supplier', 'Vendor'),
     ], default='supplier', tracking=True, required=True)
-    partner_id = fields.Many2one("res.partner", string="Name")
+    partner_id = fields.Many2one("res.partner", string="Customer/Vendor",domain="[('parent_id','=', False)]",
+        check_company=True)
     rif = fields.Char(string="RIF", related="partner_id.vat")
     vat_withholding_percentage = fields.Float(string="vat withholding percentage", store=True, readonly=False,
                                               related="partner_id.vat_withholding_percentage")
     # === invoice fields ===
     invoice_number = fields.Many2one("account.move", string="Invoice Number",
-                                     domain="[('state', '=', 'posted'),('partner_id', '=', partner_id )]")
+                                     domain="[('move_type', 'in', ('out_invoice', 'in_invoice', 'in_refund', 'out_refund')),('retention_state', '!=', 'with_retention_iva'),('state', '=', 'posted'),('partner_id', '=', partner_id )]")
+    invoice_date = fields.Date(string="Invoice Date", required=True, related="invoice_number.date")
     ref = fields.Char(string="Reference", related="invoice_number.ref")
     company_currency_id = fields.Many2one(related='invoice_number.company_currency_id', string='Company Currency',
                                           readonly=True, help='Utility field to express amount currency')
@@ -124,11 +123,11 @@ class Retention(models.Model):
         for retention in self:
               retention.amount_retention = retention.amount_tax * retention.vat_withholding_percentage / 100
 
-    @api.depends('issue_date')
+    @api.depends('date')
     def _compute_month_fiscal_char(self):
         for retention in self:    
-            month_char= str(retention.issue_date.month)
-            if len(month_char)== 1: month_char= '0'+str(retention.issue_date.month)
+            month_char= str(retention.date.month)
+            if len(month_char)== 1: month_char= '0'+str(retention.date.month)
             retention.month_fiscal_period = month_char     
       
     @api.depends('is_iva')
@@ -151,18 +150,18 @@ class Retention(models.Model):
                     retention.destination_account_id = self.env['account.account'].search([
                         ('company_id', '=', retention.company_id.id),
                         ('id', '=', set_param),
-                    ], limit=1).id
+                    ], limit=1)
                 else:
                     retention.destination_account_id = int(self.env['ir.config_parameter'].sudo().get_param('l10n_ve_plusteam.islr_account_sale_id.id'))
             elif retention.partner_type == 'supplier':
                 # Cuando es proveedor.
                 if retention.is_iva:
-                    set_param = self.env['ir.config_parameter'].sudo().get_param('l10n_ve_plusteam.iva_account_purchase_id')
+                    set_param = int(self.env['ir.config_parameter'].sudo().get_param('l10n_ve_plusteam.iva_account_purchase_id'))
                     raise ValidationError(_(set_param))
                     retention.destination_account_id = self.env['account.account'].search([
                         ('company_id', '=', retention.company_id.id),
                         ('id', '=', set_param),
-                    ], limit=1).id
+                    ], limit=1)
                 else:
                     retention.destination_account_id = self.env['ir.config_parameter'].sudo().get_param('l10n_ve_plusteam.isrl_account_purchase_id.id')
             else:   
@@ -178,7 +177,13 @@ class Retention(models.Model):
     def create(self, values):
         if values['partner_type'] == 'supplier' and (values['code'] == " " or values['code'] ==_("New")):
             values['code'] = self.env["ir.sequence"].next_by_code("retention.sequence")
-        values['state'] =  'posted'  
+        values['state'] =  'posted'
+
+        # Update the status invoice.
+        for retention in self.with_context(skip_account_move_synchronization=True):
+            retention.invoice_number.write({
+                'retention_state': 'with Retention IVA'
+            })
         return super(Retention, self).create(values)
 
     @api.depends("ref", "code")

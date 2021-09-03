@@ -16,15 +16,13 @@ class AccountMove(models.Model):
     amount_base_taxed = fields.Monetary(string='Amount Base taxed', store=True, readonly=True, tracking=True,
         compute='_compute_amount_base_tax')
     # === Retention fields ===
-    retention_id = fields.Many2one(
-        index=True,
-        comodel_name='retention',
-        string="Retention", copy=False, check_company=True)
+    retention_id = fields.One2many("retention", "invoice_number", string="Retention", copy=False, check_company=True)
     retention_state = fields.Selection(selection=[
-        ('with_retention', 'with Retention'),
+        ('with_retention_iva', 'with Retention IVA'),
+        ('with_retention_islr', 'with Retention ISLR'),
+        ('with_retention_Both', 'with Retention Both'),
         ('without_retention', 'without Retention')],
-        string="Retention Status", store=True, readonly=True, copy=False, tracking=True,
-        compute='_compute_amount')
+        string="Retention Status", store=True, readonly=True, copy=False, tracking=True)
 
     @api.constrains('control_number')
     def _check_control_number(self):

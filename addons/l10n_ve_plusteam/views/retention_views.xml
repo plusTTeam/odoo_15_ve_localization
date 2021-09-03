@@ -11,7 +11,7 @@
                     
                      <group  >
                          <div class="d-flex" >
-					        <field name="retention_type" options="{'horizontal': true}" class="oe_edit_only" widget="radio"  groups="base.group_no_one"/>
+					        <field name="retention_type" options="{'horizontal': true}"  widget="radio"  groups="base.group_no_one"/>
                          </div>
 			        </group>
                    <group  >
@@ -34,8 +34,8 @@
 			        </group>
                     <group >
                         <group  >
-                            <field name="issue_date" />
-                            <field name="deliver_date"  />
+                            <field name="date" />
+                            <field name="invoice_date"  />
                             <field name="partner_type"/>
                             <field name="partner_id"/>
                             <field name="rif"/>
@@ -70,7 +70,8 @@
                 <field name="partner_id" invisible="context.get('default_move_type') not in ('out_invoice', 'out_refund','out_receipt')" groups="base.group_user" string="Customer" />
                 <field name="rif"/>
                 <field name="code"/>
-                <field name="issue_date" />
+                <field name="retention_type"/>
+                <field name="date" />
                 <field name="invoice_number"/>
                 <field name="ref" optional="hide"/>
                 <field name="amount_retention"/>
