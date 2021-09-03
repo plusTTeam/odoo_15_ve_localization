@@ -16,7 +16,7 @@ class ResLang(models.Model):
         if default_value is None or default_value == "en_US":
             ir_default.set('res.partner', 'lang', lang_code)
             partner = self.env.company.partner_id
-            if not partner.lang:
+            if not partner.lang or partner.lang == "en_US":
                 partner.write({'lang': lang_code})
             lang_install = self.env["base.language.install"].create({
                 "lang": "es_VE",
