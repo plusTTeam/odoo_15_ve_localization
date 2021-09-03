@@ -2,6 +2,8 @@
 
 ACCOUNT_MODEL = "account.account"
 RESOURCE_CALENDAR_LEAVES_MODEL = "resource.calendar.leaves"
+RES_LANG_MODEL = "res.lang"
+RES_PARTNER_MODEL = "res.partner"
 RESOURCE_CALENDAR_ATTENDANCE_MODEL = "resource.calendar.attendance"
 IR_MODEL_DATA = "ir.model.data"
 REF_MAIN_COMPANY = "base.main_company"
