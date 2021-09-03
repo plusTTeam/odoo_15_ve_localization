@@ -9,34 +9,48 @@ class TestResourceCalendarAttendance(TransactionCase):
     def setUp(self):
         super(TestResourceCalendarAttendance, self).setUp()
 
-        mondays = self.env[RESOURCE_CALENDAR_ATTENDANCE_MODEL].search([("name", "=", WEEK_DAYS["monday"]["morning"]["name_spanish"])])
+        mondays = self.env[RESOURCE_CALENDAR_ATTENDANCE_MODEL].search(
+            [("name", "=", WEEK_DAYS["monday"]["morning"]["name_spanish"])])
         for monday in mondays:
             monday.write({"name": WEEK_DAYS["monday"]["morning"]["name_english"]})
-        mondays = self.env[RESOURCE_CALENDAR_ATTENDANCE_MODEL].search([("name", "=", WEEK_DAYS["monday"]["afternoon"]["name_spanish"])])
+        mondays = self.env[RESOURCE_CALENDAR_ATTENDANCE_MODEL].search(
+            [("name", "=", WEEK_DAYS["monday"]["afternoon"]["name_spanish"])])
         for monday in mondays:
             monday.write({"name": WEEK_DAYS["monday"]["afternoon"]["name_english"]})
-        tuesdays = self.env[RESOURCE_CALENDAR_ATTENDANCE_MODEL].search([("name", "=", WEEK_DAYS["tuesday"]["morning"]["name_spanish"])])
+
+        tuesdays = self.env[RESOURCE_CALENDAR_ATTENDANCE_MODEL].search(
+            [("name", "=", WEEK_DAYS["tuesday"]["morning"]["name_spanish"])])
         for tuesday in tuesdays:
             tuesday.write({"name": WEEK_DAYS["tuesday"]["morning"]["name_english"]})
-        tuesdays = self.env[RESOURCE_CALENDAR_ATTENDANCE_MODEL].search([("name", "=", WEEK_DAYS["tuesday"]["afternoon"]["name_spanish"])])
+        tuesdays = self.env[RESOURCE_CALENDAR_ATTENDANCE_MODEL].search(
+            [("name", "=", WEEK_DAYS["tuesday"]["afternoon"]["name_spanish"])])
         for tuesday in tuesdays:
             tuesday.write({"name": WEEK_DAYS["tuesday"]["afternoon"]["name_english"]})
-        wednesdays = self.env[RESOURCE_CALENDAR_ATTENDANCE_MODEL].search([("name", "=", WEEK_DAYS["wednesday"]["morning"]["name_spanish"])])
+
+        wednesdays = self.env[RESOURCE_CALENDAR_ATTENDANCE_MODEL].search(
+            [("name", "=", WEEK_DAYS["wednesday"]["morning"]["name_spanish"])])
         for wednesday in wednesdays:
             wednesday.write({"name": WEEK_DAYS["wednesday"]["morning"]["name_english"]})
-        wednesdays = self.env[RESOURCE_CALENDAR_ATTENDANCE_MODEL].search([("name", "=", WEEK_DAYS["wednesday"]["afternoon"]["name_spanish"])])
+        wednesdays = self.env[RESOURCE_CALENDAR_ATTENDANCE_MODEL].search(
+            [("name", "=", WEEK_DAYS["wednesday"]["afternoon"]["name_spanish"])])
         for wednesday in wednesdays:
             wednesday.write({"name": WEEK_DAYS["wednesday"]["afternoon"]["name_english"]})
-        tuesdays = self.env[RESOURCE_CALENDAR_ATTENDANCE_MODEL].search([("name", "=", WEEK_DAYS["tuesday"]["morning"]["name_spanish"])])
-        for tuesday in tuesdays:
-            tuesday.write({"name": WEEK_DAYS["tuesday"]["morning"]["name_english"]})
-        tuesdays = self.env[RESOURCE_CALENDAR_ATTENDANCE_MODEL].search([("name", "=", WEEK_DAYS["tuesday"]["afternoon"]["name_spanish"])])
-        for tuesday in tuesdays:
-            tuesday.write({"name": WEEK_DAYS["tuesday"]["afternoon"]["name_english"]})
-        fridays = self.env[RESOURCE_CALENDAR_ATTENDANCE_MODEL].search([("name", "=", WEEK_DAYS["friday"]["morning"]["name_spanish"])])
+
+        thursdays = self.env[RESOURCE_CALENDAR_ATTENDANCE_MODEL].search(
+            [("name", "=", WEEK_DAYS["thursday"]["morning"]["name_spanish"])])
+        for thursday in thursdays:
+            thursday.write({"name": WEEK_DAYS["thursday"]["morning"]["name_english"]})
+        thursdays = self.env[RESOURCE_CALENDAR_ATTENDANCE_MODEL].search(
+            [("name", "=", WEEK_DAYS["thursday"]["afternoon"]["name_spanish"])])
+        for thursday in thursdays:
+            thursday.write({"name": WEEK_DAYS["thursday"]["afternoon"]["name_english"]})
+
+        fridays = self.env[RESOURCE_CALENDAR_ATTENDANCE_MODEL].search(
+            [("name", "=", WEEK_DAYS["friday"]["morning"]["name_spanish"])])
         for friday in fridays:
             friday.write({"name": WEEK_DAYS["friday"]["morning"]["name_english"]})
-        fridays = self.env[RESOURCE_CALENDAR_ATTENDANCE_MODEL].search([("name", "=", WEEK_DAYS["friday"]["afternoon"]["name_spanish"])])
+        fridays = self.env[RESOURCE_CALENDAR_ATTENDANCE_MODEL].search(
+            [("name", "=", WEEK_DAYS["friday"]["afternoon"]["name_spanish"])])
         for friday in fridays:
             friday.write({"name": WEEK_DAYS["friday"]["afternoon"]["name_english"]})
 
@@ -47,13 +61,14 @@ class TestResourceCalendarAttendance(TransactionCase):
         self.assertEqual(attendance.name, WEEK_DAYS["monday"]["morning"]["name_spanish"], msg=MESSAGE_DAY_NOT_FOUND)
         attendance = self.env[RESOURCE_CALENDAR_ATTENDANCE_MODEL].search(
             [("name", "=", WEEK_DAYS["tuesday"]["afternoon"]["name_spanish"])], limit=1)
-        self.assertEqual(attendance.name, WEEK_DAYS["tuesday"]["morning"]["name_spanish"], msg=MESSAGE_DAY_NOT_FOUND)
+        self.assertEqual(attendance.name, WEEK_DAYS["tuesday"]["afternoon"]["name_spanish"], msg=MESSAGE_DAY_NOT_FOUND)
         attendance = self.env[RESOURCE_CALENDAR_ATTENDANCE_MODEL].search(
             [("name", "=", WEEK_DAYS["wednesday"]["afternoon"]["name_spanish"])], limit=1)
-        self.assertEqual(attendance.name, WEEK_DAYS["wednesday"]["morning"]["name_spanish"], msg=MESSAGE_DAY_NOT_FOUND)
+        self.assertEqual(
+            attendance.name, WEEK_DAYS["wednesday"]["afternoon"]["name_spanish"], msg=MESSAGE_DAY_NOT_FOUND)
         attendance = self.env[RESOURCE_CALENDAR_ATTENDANCE_MODEL].search(
-            [("name", "=", WEEK_DAYS["tuesday"]["morning"]["name_spanish"])], limit=1)
-        self.assertEqual(attendance.name, WEEK_DAYS["tuesday"]["morning"]["name_spanish"], msg=MESSAGE_DAY_NOT_FOUND)
+            [("name", "=", WEEK_DAYS["thursday"]["morning"]["name_spanish"])], limit=1)
+        self.assertEqual(attendance.name, WEEK_DAYS["thursday"]["morning"]["name_spanish"], msg=MESSAGE_DAY_NOT_FOUND)
         attendance = self.env[RESOURCE_CALENDAR_ATTENDANCE_MODEL].search(
             [("name", "=", WEEK_DAYS["friday"]["morning"]["name_spanish"])], limit=1)
         self.assertEqual(attendance.name, WEEK_DAYS["friday"]["morning"]["name_spanish"], msg=MESSAGE_DAY_NOT_FOUND)

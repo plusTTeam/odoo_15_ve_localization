@@ -53,11 +53,11 @@ GLOBAL_TIME_OFF = [
 WEEK_DAYS = {
     "monday": {
         "morning": {
-            "name_spanis": "Lunes por la mañana",
+            "name_spanish": "Lunes por la mañana",
             "name_english": "Monday Morning"
         },
         "afternoon": {
-            "name_spanis": "Lunes por la tarde",
+            "name_spanish": "Lunes por la tarde",
             "name_english": "Monday Afternoon"
         }
     },

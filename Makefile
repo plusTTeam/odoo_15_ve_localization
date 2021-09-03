@@ -12,6 +12,10 @@ rebuild:
 	docker-compose down
 	docker-compose up -d --build
 
+generate_local_coverage:
+	docker exec -it plusteam-odoo-localization-web pytest -s --odoo-database=db_test --html=/coverage/local/report.html /mnt/extra-addons/
+	docker cp plusteam-odoo-localization-web:/coverage/local coverage
+
 generate_local_coverage_report:
 	docker exec -i -u root plusteam-odoo-localization-web pytest -s --odoo-database=db_test --html=/coverage/local/report.html --junitxml=/coverage/local/report.xml --cov=/mnt/extra-addons/  /mnt/extra-addons/
 	docker exec -i -u root plusteam-odoo-localization-web coverage xml
