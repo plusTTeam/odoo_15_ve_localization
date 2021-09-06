@@ -10,16 +10,20 @@ class AccountRetentionRegister(models.TransientModel):
     
     today = fields.Date.today()
     # == Business fields ==
+    code = fields.Char(string="Retention Number", default=_("New"))
     date = fields.Date(string="Date", required=True, default=fields.Date.context_today)
     invoice_date = fields.Date(string="Invoice Date", required=True, compute = "_get_data_invoice")
     month_fiscal_period = fields.Char(string="Month", compute ='_compute_month_fiscal_char', store=True, readonly=False)
     year_fiscal_period = fields.Char(string="Year", default = str(today.year))
+    is_iva = fields.Boolean(string='Is IVA', default=False,
+        help="Check if the retention is a iva, otherwise it is islr")
     retention_type = fields.Selection(string='Retention Type',
         selection=[('iva', 'IVA'), ('islr', 'ISLR')],
         compute='_compute_retention_type', inverse='_write_retention_type', default='iva')
   
      # === partner fields ===
-    partner_id = fields.Many2one("res.partner", string="Name", compute = "_get_data_invoice")
+    partner_id = fields.Many2one("res.partner", string="Name",domain="[('parent_id','=', False)]",
+        check_company=True, compute = "_get_data_invoice")
     rif = fields.Char(string="RIF", related="partner_id.vat")
     vat_withholding_percentage = fields.Float(string="vat withholding percentage", store=True, readonly=False,
                                               related="partner_id.vat_withholding_percentage")
@@ -29,7 +33,8 @@ class AccountRetentionRegister(models.TransientModel):
     
     currency_id = fields.Many2one('res.currency', string='Currency', store=True, readonly=False,
         help="The payment's currency.")    
-   
+    company_id =  fields.Char(string="Company", compute = "_get_data_invoice")
+    move_type =  fields.Char(string="Move Type", compute = "_get_data_invoice")
     # == Fields given through the context ==
     document = fields.Char(string="Document Number", compute = "_get_data_invoice")    
     amount_tax = fields.Monetary(currency_field='currency_id',  compute = "_get_data_invoice") 
@@ -59,6 +64,8 @@ class AccountRetentionRegister(models.TransientModel):
                 wizard.partner_id = lines.partner_id
                 wizard.amount_base_untaxed = lines.amount_untaxed-lines.amount_base_taxed
                 wizard.invoice_date = lines.date
+                wizard.company_id = lines.company_id.id
+                wizard.move_type = lines.move_type
             else:    
                 wizard.communication = "Sin relacion"
 
@@ -71,9 +78,13 @@ class AccountRetentionRegister(models.TransientModel):
             retention.amount_retention = amount_retention
 
     @api.depends('is_iva')
-    def _compute_company_type(self):
+    def _compute_retention_type(self):
         for partner in self:
             partner.retention_type = 'iva' if partner.is_iva else 'islr'
+
+    def _write_retention_type(self):
+        for partner in self:
+            partner.is_iva = partner.retention_type == 'iva' 
 
     @api.onchange('vat_withholding_percentage')
     def _onchange_value_withholding_percentage(self):
@@ -93,9 +104,10 @@ class AccountRetentionRegister(models.TransientModel):
              'month_fiscal_period':self.month_fiscal_period,
              'year_fiscal_period':self.year_fiscal_period,
              'retention_type':self.retention_type,
-             'destination_account_id':self.destination_account_id,
+             'move_type':self.move_type,
+             'code':self.code,
              'company_id':self.company_id,
-             'partner_id':self.partner_id,
+             'partner_id':self.partner_id.id,
              'vat_withholding_percentage':self.vat_withholding_percentage,
              'invoice_number':self.invoice_number,
              'amount_retention':self.amount_retention,
@@ -113,9 +125,7 @@ class AccountRetentionRegister(models.TransientModel):
             retention_vals_list = [retention_vals]
 
         retentions = self.env['retention'].create(retention_vals_list)
-
-        retentions.action_post()
-
+        
         return retentions
 
     def action_create_retention(self):
@@ -128,7 +138,7 @@ class AccountRetentionRegister(models.TransientModel):
             'name': _('Retention'),
             'type': 'ir.actions.act_window',
             'res_model': 'retention',
-            'context': {'create': False},
+            'context': {'create': True},
         }
         if len(retentions) == 1:
             action.update({

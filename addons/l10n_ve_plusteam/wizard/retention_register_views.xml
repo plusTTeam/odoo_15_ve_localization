@@ -11,6 +11,7 @@
                     <field name="retention_type" options="{'horizontal': true}" class="oe_edit_only" widget="radio"  groups="base.group_no_one"/>     
                     <group>
                         <group name="group1">
+                            <field name="code" placeholder="receipt number"  invisible="context.get('default_move_type') not in ('in_invoice', 'in_refund','in_receipt')"/>
                             <label for="year_fiscal_period" string="Fiscal Period" />
                             <div class="d-flex" >
 					           <label for="month_fiscal_period" string="Month" style="font-weight:bold;"/>

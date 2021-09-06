@@ -8,4 +8,3 @@ from . import tax_unit
 from . import res_config_settings
 from . import res_company
 from . import retention
-from . import account_retention_register

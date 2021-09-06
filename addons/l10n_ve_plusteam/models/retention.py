@@ -6,6 +6,7 @@ from odoo.exceptions import ValidationError
 
 class Retention(models.Model):
     _name = "retention"
+    _inherits = {'account.move': 'move_id'}
     _description = "Retention"
     _rec_name = "complete_name_with_code"
 
@@ -27,7 +28,7 @@ class Retention(models.Model):
             journal = self.env['account.journal'].browse(self._context['default_journal_id'])
 
             if move_type != 'entry' and journal.type not in journal_types:
-                raise UserError(_(
+                raise ValidationError(_(
                     "Cannot create an invoice of type %(move_type)s with a journal having %(journal_type)s as type.",
                     move_type=move_type,
                     journal_type=journal.type,
@@ -53,12 +54,12 @@ class Retention(models.Model):
         default="entry", change_default=True)
 
     # == Business fields ==
-    code = fields.Char(string="Retention Number", default=_("New"))
+    code = fields.Char(string="Retention Number", default=_("New"), store=True)
     date = fields.Date(string="Date", required=True, default = fields.Date.context_today)
     month_fiscal_period = fields.Char(string="Month", compute ='_compute_month_fiscal_char', store=True, readonly=False)
     year_fiscal_period = fields.Char(string="Year", default = str(today.year))
     is_iva = fields.Boolean(string='Is IVA', default=False,
-        help="Check if the contact is a company, otherwise it is a person")
+        help="Check if the retention is a iva, otherwise it is islr")
     retention_type = fields.Selection(string='Retention Type',
         selection=[('iva', 'IVA'), ('islr', 'ISLR')],
         compute='_compute_retention_type', inverse='_write_retention_type', default='iva')
@@ -91,6 +92,7 @@ class Retention(models.Model):
     invoice_number = fields.Many2one("account.move", string="Invoice Number",
                                      domain="[('move_type', 'in', ('out_invoice', 'in_invoice', 'in_refund', 'out_refund')),('retention_state', '!=', 'with_retention_iva'),('state', '=', 'posted'),('partner_id', '=', partner_id )]")
     invoice_date = fields.Date(string="Invoice Date", required=True, related="invoice_number.date")
+    control_number = fields.Char(string="Control Number", related="invoice_number.control_number")
     ref = fields.Char(string="Reference", related="invoice_number.ref")
     company_currency_id = fields.Many2one(related='invoice_number.company_currency_id', string='Company Currency',
                                           readonly=True, help='Utility field to express amount currency')
@@ -102,8 +104,10 @@ class Retention(models.Model):
                                    currency_field='company_currency_id')
     amount_base_taxed = fields.Monetary(string="Amount base taxed", related="invoice_number.amount_base_taxed",
                                         currency_field='company_currency_id')
-    amount_retention = fields.Float(string="Amount Retention", compute='_compute_amount_retention')
-    amount_base_untaxed = fields.Float(string="Amount Retention", compute='_compute_amount_base_untaxed')
+    amount_retention = fields.Float(string="Amount Retention", compute='_compute_amount_retention',
+                                        currency_field='company_currency_id')
+    amount_base_untaxed = fields.Float(string="Amount Retention", compute='_compute_amount_base_untaxed',
+                                        currency_field='company_currency_id')
 
     @api.depends(
         'vat_withholding_percentage',
@@ -172,19 +176,25 @@ class Retention(models.Model):
         for retention in self:
             retention.company_id = retention.partner_id.company_id or retention.company_id or self.env.company
 
+    def action_post(self):
+        ''' draft -> posted '''
+        self.move_id._post(soft=False)
 
     @api.model
     def create(self, values):
-        if values['partner_type'] == 'supplier' and (values['code'] == " " or values['code'] ==_("New")):
+        if not values.get('code',False) and values['code'].strip() in [_("New"),""]:
             values['code'] = self.env["ir.sequence"].next_by_code("retention.sequence")
         values['state'] =  'posted'
 
-        # Update the status invoice.
+        return super(Retention, self).create(values)
+
+    def write(self, values):
+       # Update the status invoice.
         for retention in self.with_context(skip_account_move_synchronization=True):
             retention.invoice_number.write({
                 'retention_state': 'with Retention IVA'
             })
-        return super(Retention, self).create(values)
+        return super(Retention, self).write(values)    
 
     @api.depends("ref", "code")
     def _compute_complete_name_with_code(self):

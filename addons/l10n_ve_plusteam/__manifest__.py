@@ -20,7 +20,7 @@
     'version': '0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['base', 'contacts', 'account'],
+    'depends': ['base', 'contacts', 'account','account_debit_note'],
 
     # always loaded
     'data': [
@@ -37,7 +37,8 @@
         'views/res_config_settings_views.xml',
         'views/res_company_views.xml',
         'views/retention_views.xml',
-        'views/retention_register_views.xml',
+        'wizard/retention_register_views.xml',
+        'report/comprobante_retention.xml',
         'views/menu_views.xml'
     ],
     # only loaded in demonstration mode
