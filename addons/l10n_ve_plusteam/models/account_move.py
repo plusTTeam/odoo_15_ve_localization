@@ -18,11 +18,11 @@ class AccountMove(models.Model):
     # === Retention fields ===
     retention_id = fields.One2many("retention", "invoice_number", string="Retention", copy=False, check_company=True)
     retention_state = fields.Selection(selection=[
-        ('with_retention_iva', 'with Retention IVA'),
-        ('with_retention_islr', 'with Retention ISLR'),
-        ('with_retention_Both', 'with Retention Both'),
-        ('without_retention', 'without Retention')],
-        string="Retention Status", store=True, readonly=True, copy=False, tracking=True)
+        ('with_retention_iva', 'With Retention IVA'),
+        ('with_retention_islr', 'With Retention ISLR'),
+        ('with_retention_Both', 'With Retention Both'),
+        ('without_retention', 'Without Retention')],
+        string="Retention Status", store=True, readonly=True, copy=False, tracking=True, default="without_retention")
 
     @api.constrains('control_number')
     def _check_control_number(self):
