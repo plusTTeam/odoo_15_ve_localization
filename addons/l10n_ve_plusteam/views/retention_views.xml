@@ -11,7 +11,7 @@
                     
                      <group  >
                          <div class="d-flex" >
-					        <field name="retention_type" options="{'horizontal': true}"  widget="radio"  groups="base.group_no_one"/>
+					        <field name="retention_type" options="{'horizontal': true}"  widget="radio" />
                          </div>
 			        </group>
                    <group  >
