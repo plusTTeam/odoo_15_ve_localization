@@ -14,6 +14,7 @@ services:
       - odoo-web-data-localization:/var/lib/odoo
       - ./config:/etc/odoo
       - ./addons:/mnt/extra-addons
+      - ./addons-enterprise:/mnt/enterprise
       - ./src:/home/odoo/src
     command: --dev all
   db:
