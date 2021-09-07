@@ -61,6 +61,7 @@ class Retention(models.Model):
     retention_type = fields.Selection(string='Retention Type',
                                       selection=[('iva', 'IVA'), ('islr', 'ISLR')],
                                       compute='_compute_retention_type', inverse='_write_retention_type', default='iva')
+    retention_state = fields.Char(string="Year", default="with_retention_iva")
     destination_account_id = fields.Many2one(
         comodel_name='account.account',
         string='Destination Account',
@@ -88,7 +89,8 @@ class Retention(models.Model):
                                               related="partner_id.vat_withholding_percentage", required=True)
     # === invoice fields ===
     invoice_number = fields.Many2one("account.move", string="Invoice Number", required=True,
-                                     domain="[('move_type', 'in', ('out_invoice', 'in_invoice', 'in_refund', 'out_refund')),('retention_state', '!=', 'with_retention_iva'),('state', '=', 'posted'),('partner_id', '=', partner_id )]")
+                                     domain="[('move_type', 'in', ('out_invoice', 'in_invoice', 'in_refund', 'out_refund')),"
+                                            "('retention_state', 'not in', ('with_retention_iva',retention_state)),('state', '=', 'posted'),('partner_id', '=', partner_id )]")
     invoice_date = fields.Date(string="Invoice Date", required=True, related="invoice_number.date")
     control_number = fields.Char(string="Control Number", related="invoice_number.control_number")
     ref = fields.Char(string="Reference", related="invoice_number.ref")
