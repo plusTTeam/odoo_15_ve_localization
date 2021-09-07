@@ -45,7 +45,8 @@ class AccountRetentionRegister(models.TransientModel):
     amount_retention = fields.Float(string="Amount Retention", compute='_compute_amount_retention')
 
     can_edit_wizard = fields.Boolean(store=True, copy=False, default=True,
-                                     help="Technical field used to indicate the user can edit the wizard content such as the amount.")
+                                     help="Technical field used to indicate the user can edit the wizard content such "
+                                          "as the amount.")
 
     # -------------------------------------------------------------------------
     # HELPERS

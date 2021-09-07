@@ -8,54 +8,52 @@
             <form string="Register Retention">
                 <sheet>
                     <field name="company_id" invisible="1"/>
-                    
-                     <group  >
-                         <div class="d-flex" >
-					        <field name="retention_type" options="{'horizontal': true}"  widget="radio" />
-                         </div>
-			        </group>
-                   <group  >
-                        <group  >
-                            <label for="code" string="Receipt Number" />
+                    <group>
+                        <div class="d-flex">
+                            <field name="retention_type" options="{'horizontal': true}" widget="radio"/>
+                        </div>
+                    </group>
+                    <group>
+                        <group>
+                            <label for="code" string="Receipt Number"/>
                             <h1>
-                            <field name="code" placeholder="receipt number"  nolabel="1" readonly="context.get('default_move_type') in ('in_invoice', 'in_refund','in_receipt')"/>
+                                <field name="code" placeholder="receipt number" nolabel="1"
+                                       readonly="context.get('default_move_type') in ('in_invoice', 'in_refund','in_receipt')"/>
                             </h1>
-			            </group>
-                        <group  >
-                          <label for="year_fiscal_period" string="Fiscal Period" />
-                            <div class="d-flex" >
-					           <label for="month_fiscal_period" string="Month" style="font-weight:bold;"/>
-                               <field name="month_fiscal_period" nolabel="1"  style="width: 120px !important" />
-					           <label for="year_fiscal_period" string="Year" style="font-weight:bold;"  />
-                               <field name="year_fiscal_period" />
+                        </group>
+                        <group>
+                            <label for="year_fiscal_period" string="Fiscal Period"/>
+                            <div class="d-flex">
+                                <label for="month_fiscal_period" string="Month" style="font-weight:bold;"/>
+                                <field name="month_fiscal_period" nolabel="1" style="width: 120px !important"/>
+                                <label for="year_fiscal_period" string="Year" style="font-weight:bold;"/>
+                                <field name="year_fiscal_period"/>
                             </div>
-			            </group>
-                     
-			        </group>
-                    <group >
-                        <group  >
-                            <field name="date" />
-                            <field name="invoice_date"  />
+                        </group>
+                    </group>
+                    <group>
+                        <group>
+                            <field name="date"/>
+                            <field name="invoice_date"/>
                             <field name="partner_type"/>
                             <field name="partner_id"/>
                             <field name="rif"/>
                             <field name="destination_account_id"/>
-			            </group>
-			            <group >   
-                           <field name="invoice_number"/>
-                           <field name="amount_base_untaxed"/>
-                           <field name="amount_base_taxed"/>
-                           <field name="amount_tax"/>
-                           <field name="amount_total"/>
-                           <label for="vat_withholding_percentage"/>
-                           <div>
-                              <field name="vat_withholding_percentage" class="oe_inline"/>
-                              <span class="o_form_label oe_inline">%</span>
-                           </div>
-                           <field name="amount_retention"/>
-                   	    </group>
-                    </group>       
-                  
+                        </group>
+                        <group>
+                            <field name="invoice_number"/>
+                            <field name="amount_base_untaxed"/>
+                            <field name="amount_base_taxed"/>
+                            <field name="amount_tax"/>
+                            <field name="amount_total"/>
+                            <label for="vat_withholding_percentage"/>
+                            <div>
+                                <field name="vat_withholding_percentage" class="oe_inline"/>
+                                <span class="o_form_label oe_inline">%</span>
+                            </div>
+                            <field name="amount_retention"/>
+                        </group>
+                    </group>
                 </sheet>
             </form>
         </field>
@@ -66,12 +64,16 @@
         <field name="model">retention</field>
         <field name="arch" type="xml">
             <tree>
-                <field name="partner_id" invisible="context.get('default_move_type') not in ('in_invoice', 'in_refund','in_receipt')" groups="base.group_user" string="Vendor" />
-                <field name="partner_id" invisible="context.get('default_move_type') not in ('out_invoice', 'out_refund','out_receipt')" groups="base.group_user" string="Customer" />
+                <field name="partner_id"
+                       invisible="context.get('default_move_type') not in ('in_invoice', 'in_refund','in_receipt')"
+                       groups="base.group_user" string="Vendor"/>
+                <field name="partner_id"
+                       invisible="context.get('default_move_type') not in ('out_invoice', 'out_refund','out_receipt')"
+                       groups="base.group_user" string="Customer"/>
                 <field name="rif"/>
                 <field name="code"/>
                 <field name="retention_type"/>
-                <field name="date" />
+                <field name="date"/>
                 <field name="invoice_number"/>
                 <field name="control_number" optional="hide"/>
                 <field name="amount_retention"/>
@@ -80,31 +82,31 @@
     </record>
 
     <record id="retention_out_invoice_tree" model="ir.ui.view">
-            <field name="name">retention.out.invoice.tree</field>
-            <field name="model">retention</field>
-            <field name="inherit_id" ref="retention_view_tree"/>
-            <field name="mode">primary</field>
-            <field name="arch" type="xml">
-                 <xpath expr="//field[@name='control_number']" position="attributes">
-                    <attribute name="optional">show</attribute>
-                </xpath>
-            </field>
+        <field name="name">retention.out.invoice.tree</field>
+        <field name="model">retention</field>
+        <field name="inherit_id" ref="retention_view_tree"/>
+        <field name="mode">primary</field>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='control_number']" position="attributes">
+                <attribute name="optional">show</attribute>
+            </xpath>
+        </field>
     </record>
 
     <record id="retention_action_out_invoice_type" model="ir.actions.act_window">
-            <field name="name">Retention</field>
-            <field name="res_model">retention</field>
-            <field name="view_mode">tree,form</field>
-            <field name="view_id" ref="retention_out_invoice_tree"/>
-            <field name="domain">[('move_type', '=', 'in_invoice')]</field>
-            <field name="context">{'default_move_type': 'in_invoice'}</field>
-            <field name="help" type="html">
-              <p class="o_view_nocontent_smiling_face">
+        <field name="name">Retention</field>
+        <field name="res_model">retention</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="retention_out_invoice_tree"/>
+        <field name="domain">[('move_type', '=', 'in_invoice')]</field>
+        <field name="context">{'default_move_type': 'in_invoice'}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
                 Create a retention invoice
-              </p><p>
+            </p>
+            <p>
                 Create retention, register retention supplier.
-              </p>
-            </field>
+            </p>
+        </field>
     </record>
-
 </odoo>
