@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
+import logging
 from odoo import models, fields, api, _
 from odoo.exceptions import ValidationError
+_logger = logging.getLogger(__name__)
 
 
 class Retention(models.Model):
@@ -132,7 +134,8 @@ class Retention(models.Model):
     def _compute_month_fiscal_char(self):
         for retention in self:
             month_char = str(retention.date.month)
-            if len(month_char) == 1: month_char = '0' + str(retention.date.month)
+            if len(month_char) == 1:
+                month_char = '0' + str(retention.date.month)
             retention.month_fiscal_period = month_char
 
     @api.depends('is_iva')
@@ -144,36 +147,19 @@ class Retention(models.Model):
         for partner in self:
             partner.is_iva = partner.retention_type == 'iva'
 
-    @api.depends('partner_type', 'is_iva')
-    def _compute_destination_account_id(self):
+    @api.model
+    def _get_destination_account_id(self):
+        get_param = self.env['ir.config_parameter'].sudo().get_param
         for retention in self:
+            account = "l10n_ve_plusteam.iva_account_sale_id"
             if retention.partner_type == 'customer':
-                # Clientes Venta.
-                if retention.is_iva:
-                    set_param = int(
-                        self.env['ir.config_parameter'].sudo().get_param('l10n_ve_plusteam.iva_account_sale_id'))
-                    retention.destination_account_id = self.env['account.account'].search([
-                        ('company_id', '=', retention.company_id.id),
-                        ('id', '=', set_param),
-                    ], limit=1)
-                else:
-                    retention.destination_account_id = int(
-                        self.env['ir.config_parameter'].sudo().get_param('l10n_ve_plusteam.islr_account_sale_id.id'))
+                account = "l10n_ve_plusteam.iva_account_sale_id" if retention.is_iva else \
+                    "l10n_ve_plusteam.islr_account_sale_id"
             elif retention.partner_type == 'supplier':
-                # Cuando es proveedor.
-                if retention.is_iva:
-                    set_param = int(
-                        self.env['ir.config_parameter'].sudo().get_param('l10n_ve_plusteam.iva_account_purchase_id'))
-                    retention.destination_account_id = self.env['account.account'].search([
-                        ('company_id', '=', retention.company_id.id),
-                        ('id', '=', set_param),
-                    ], limit=1)
-
-                else:
-                    retention.destination_account_id = self.env['ir.config_parameter'].sudo().get_param(
-                        'l10n_ve_plusteam.isrl_account_purchase_id.id')
-            else:
-                retention.destination_account_id = 'ninguno'
+                account = "l10n_ve_plusteam.iva_account_purchase_id" if retention.is_iva else \
+                    "l10n_ve_plusteam.islr_account_purchase_id"
+            retention.destination_account_id = int(get_param(account))
+            _logger.info(int(get_param(account)))
 
     @api.depends('partner_id')
     def _compute_company_id(self):
@@ -185,7 +171,7 @@ class Retention(models.Model):
         if values.get("code", "").strip() in [_("New"), ""]:
             values['code'] = self.env["ir.sequence"].next_by_code("retention.sequence")
         values['state'] = 'posted'
-        if is_iva:
+        if values.get("retention_type", False) == "iva":
             retention_state = "with_retention_iva"
         else:
             retention_state = "with_retention_islr"

@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
+import logging
 from odoo import models, fields, api, _
 from odoo.exceptions import UserError
+_logger = logging.getLogger(__name__)
 
 
 class AccountRetentionRegister(models.TransientModel):
@@ -82,12 +84,12 @@ class AccountRetentionRegister(models.TransientModel):
 
     @api.depends('is_iva')
     def _compute_retention_type(self):
-        for partner in self:
-            partner.retention_type = 'iva' if partner.is_iva else 'islr'
+        for retention in self:
+            retention.retention_type = 'iva' if retention.is_iva else 'islr'
 
     def _write_retention_type(self):
-        for partner in self:
-            partner.is_iva = partner.retention_type == 'iva'
+        for retention in self:
+            retention.is_iva = retention.retention_type == 'iva'
 
     @api.onchange('vat_withholding_percentage')
     def _onchange_value_withholding_percentage(self):
@@ -98,10 +100,21 @@ class AccountRetentionRegister(models.TransientModel):
     def _compute_month_fiscal_char(self):
         for retention in self:
             month_char = str(retention.date.month)
-            if len(month_char) == 1: month_char = '0' + str(retention.date.month)
+            if len(month_char) == 1:
+                month_char = '0' + str(retention.date.month)
             retention.month_fiscal_period = month_char
 
     def _create_retention_vals_from_wizard(self):
+        partner_type = "supplier" if self._context.get('default_move_type') not in \
+                                     ('in_invoice', 'in_refund', 'in_receipt') else "customer"
+        get_param = self.env['ir.config_parameter'].sudo().get_param
+        account = "l10n_ve_plusteam.iva_account_sale_id"
+        if partner_type == 'customer':
+            account = "l10n_ve_plusteam.iva_account_sale_id" if self.is_iva else "l10n_ve_plusteam.islr_account_sale_id"
+        elif partner_type == 'supplier':
+            account = "l10n_ve_plusteam.iva_account_purchase_id" if self.is_iva else \
+                "l10n_ve_plusteam.islr_account_purchase_id"
+        destination_account_id = int(get_param(account))
         retention_vals = {
             'date': self.date.strftime("%Y-%m-%d"),
             'month_fiscal_period': self.month_fiscal_period,
@@ -116,7 +129,8 @@ class AccountRetentionRegister(models.TransientModel):
             'invoice_number': self.invoice_number.id,
             'invoice_date': self.invoice_date.strftime("%Y-%m-%d"),
             'amount_retention': self.amount_retention,
-            'amount_base_untaxed': self.amount_base_untaxed
+            'amount_base_untaxed': self.amount_base_untaxed,
+            "destination_account_id": destination_account_id
         }
 
         return retention_vals
@@ -125,10 +139,8 @@ class AccountRetentionRegister(models.TransientModel):
         self.ensure_one()
         retention_vals = self._create_retention_vals_from_wizard()
         retention_vals_list = retention_vals
-
         self.env['retention'].create(retention_vals_list)
 
     def action_create_retention(self):
         self._create_retentions()
-
         return True
