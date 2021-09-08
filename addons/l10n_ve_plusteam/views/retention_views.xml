@@ -75,6 +75,7 @@
                 <field name="retention_type"/>
                 <field name="date"/>
                 <field name="invoice_number"/>
+                <field name="type_name"/>    
                 <field name="control_number" optional="hide"/>
                 <field name="amount_retention"/>
             </tree>
@@ -98,7 +99,7 @@
         <field name="res_model">retention</field>
         <field name="view_mode">tree,form</field>
         <field name="view_id" ref="retention_out_invoice_tree"/>
-        <field name="domain">[('move_type', '=', 'in_invoice')]</field>
+        <field name="domain">[('move_type', 'in', ('in_invoice','in_refund'))]</field>
         <field name="context">{'default_move_type': 'in_invoice'}</field>
         <field name="help" type="html">
             <p class="o_view_nocontent_smiling_face">
