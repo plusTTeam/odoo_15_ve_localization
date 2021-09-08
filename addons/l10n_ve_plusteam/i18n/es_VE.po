@@ -3,6 +3,7 @@
 # 	* contacts
 # 	* l10n_ve_plusteam
 # 	* base
+# 	* resource
 #
 msgid ""
 msgstr ""
@@ -27238,3 +27239,156 @@ msgstr "Serial de Impresora Fiscal"
 #: model:ir.model.fields,help:l10n_ve_plusteam.field_account_payment__fiscal_printing_serial
 msgid "Defined when the invoice is printed to the customer"
 msgstr "Definido cuando la factura es impresa al cliente"
+
+#. module: l10n_ve_plusteam
+#: model:ir.model.fields,field_description:l10n_ve_plusteam.field_resource_calendar__hours_per_day
+msgid "Average Hour per Day"
+msgstr "Promedio de Horas por Día"
+
+#. module: l10n_ve_plusteam
+#: code:addons/l10n_ve_plusteam/models/resource_calendar.py:0
+#: model:ir.model.fields,help:l10n_ve_plusteam.field_resource_calendar__hours_per_day
+#, python-format
+msgid ""
+"Average hours per day a resource is supposed to work with this calendar."
+msgstr "Promedio de horas por día que se supone que un empleado trabaja con este calendario"
+
+#. module: resource
+#: model:ir.model.fields,field_description:resource.field_resource_calendar__global_leave_ids
+#: model_terms:ir.ui.view,arch_db:resource.resource_calendar_form
+msgid "Global Time Off"
+msgstr "Días no Laborales"
+
+#. module: l10n_ve_plusteam
+#: code:addons/l10n_ve_plusteam/models/resource_calendar_leaves.py:0
+#, python-format
+msgid "Weekend"
+msgstr "Fin de Semana"
+
+#. module: resource
+#: model_terms:ir.ui.view,arch_db:resource.resource_calendar_form
+msgid "Switch to 1 week calendar"
+msgstr "Cambiar a calendario de una semana"
+
+#. module: resource
+#: model_terms:ir.ui.view,arch_db:resource.resource_calendar_form
+msgid "Switch to 2 weeks calendar"
+msgstr "Cambiar a calendario de 2 semanas"
+
+#. module: resource
+#: model_terms:ir.ui.view,arch_db:resource.resource_calendar_form
+msgid ""
+"Are you sure you want to switch this calendar to 1 week calendar ? All "
+"entries will be lost"
+msgstr ""
+"¿Está seguro de que desea cambiar este calendario a un calendario de una semana? "
+"Todas las entradas se perderán"
+
+#. module: resource
+#: model_terms:ir.ui.view,arch_db:resource.resource_calendar_form
+msgid ""
+"Are you sure you want to switch this calendar to 2 weeks calendar ? All "
+"entries will be lost"
+msgstr ""
+"¿Está seguro de que desea cambiar este calendario a un calendario de 2 semanas? "
+"Todas las entradas se perderán"
+
+#. module: resource
+#: model:ir.actions.act_window,name:resource.action_resource_calendar_leave_tree
+#: model:ir.actions.act_window,name:resource.resource_calendar_leaves_action_from_calendar
+#: model:ir.ui.menu,name:resource.menu_view_resource_calendar_leaves_search
+msgid "Resource Time Off"
+msgstr "Tiempo Libre de Recursos"
+
+#. module: resource
+#: code:addons/resource/models/resource.py:0
+#, python-format
+msgid "Attendances can't overlap."
+msgstr "Las asistencias no se pueden superponer."
+
+#. modules: l10n_ve_plusteam, resource
+#: code:addons/l10n_ve_plusteam/models/resource_calendar.py:0
+#: code:addons/resource/models/res_company.py:0
+#, python-format
+msgid "Standard 40 hours/week"
+msgstr "Estándar de 40 horas a la semana"
+
+#. module: resource
+#: model:ir.model.fields,field_description:resource.field_resource_calendar_attendance__day_period
+msgid "Day Period"
+msgstr "Período del Día"
+
+#. module: resource
+#: model:ir.model.fields,field_description:resource.field_resource_calendar_attendance__week_type
+msgid "Week Even/Odd"
+msgstr "Semana Par/Impar"
+
+#. modules: l10n_ve_plusteam, resource
+#: code:addons/l10n_ve_plusteam/models/resource_calendar_attendance.py:0
+#: code:addons/resource/models/resource.py:0
+#, python-format
+msgid "Monday Afternoon"
+msgstr "Lunes por la tarde"
+
+#. modules: l10n_ve_plusteam, resource
+#: code:addons/l10n_ve_plusteam/models/resource_calendar_attendance.py:0
+#: code:addons/resource/models/resource.py:0
+#, python-format
+msgid "Monday Morning"
+msgstr "Lunes por la mañana"
+
+#. modules: l10n_ve_plusteam, resource
+#: code:addons/l10n_ve_plusteam/models/resource_calendar_attendance.py:0
+#: code:addons/resource/models/resource.py:0
+#, python-format
+msgid "Tuesday Afternoon"
+msgstr "Martes por la tarde"
+
+#. modules: l10n_ve_plusteam, resource
+#: code:addons/l10n_ve_plusteam/models/resource_calendar_attendance.py:0
+#: code:addons/resource/models/resource.py:0
+#, python-format
+msgid "Tuesday Morning"
+msgstr "Martes por la mañana"
+
+#. modules: l10n_ve_plusteam, resource
+#: code:addons/l10n_ve_plusteam/models/resource_calendar_attendance.py:0
+#: code:addons/resource/models/resource.py:0
+#, python-format
+msgid "Wednesday Afternoon"
+msgstr "Miércoles por la tarde"
+
+#. modules: l10n_ve_plusteam, resource
+#: code:addons/l10n_ve_plusteam/models/resource_calendar_attendance.py:0
+#: code:addons/resource/models/resource.py:0
+#, python-format
+msgid "Wednesday Morning"
+msgstr "Miércoles por la mañana"
+
+#. modules: l10n_ve_plusteam, resource
+#: code:addons/l10n_ve_plusteam/models/resource_calendar_attendance.py:0
+#: code:addons/resource/models/resource.py:0
+#, python-format
+msgid "Thursday Afternoon"
+msgstr "Jueves por la tarde"
+
+#. modules: l10n_ve_plusteam, resource
+#: code:addons/l10n_ve_plusteam/models/resource_calendar_attendance.py:0
+#: code:addons/resource/models/resource.py:0
+#, python-format
+msgid "Thursday Morning"
+msgstr "Jueves por la mañana"
+
+#. modules: l10n_ve_plusteam, resource
+#: code:addons/l10n_ve_plusteam/models/resource_calendar_attendance.py:0
+#: code:addons/resource/models/resource.py:0
+#, python-format
+msgid "Friday Afternoon"
+msgstr "Viernes por la tarde"
+
+#. modules: l10n_ve_plusteam, resource
+#: code:addons/l10n_ve_plusteam/models/resource_calendar_attendance.py:0
+#: code:addons/resource/models/resource.py:0
+#, python-format
+msgid "Friday Morning"
+msgstr "Viernes por la mañana"
