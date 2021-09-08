@@ -38,6 +38,7 @@
         'data/resource_calendar_data.xml',
         'data/account_tax_data.xml',
         'data/res_config_settings_data.xml',
+        'data/res_country_data.xml',
         'views/res_partner_views.xml',
         'views/islr_concepts_views.xml',
         'views/person_type_views.xml',
