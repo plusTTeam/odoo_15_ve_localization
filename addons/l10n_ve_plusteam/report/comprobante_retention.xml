@@ -6,7 +6,7 @@
         <field name="report_type">qweb-pdf</field>
         <field name="report_name">l10n_ve_plusteam.report_comprobante_retention</field>
         <field name="report_file">report_comprobante_retention</field>
-        <field name="print_report_name">'Comprobante - %s' % (object.name)</field>
+        <field name="print_report_name">'Comprobante - %s' % (object.code)</field>
     </record>
 
     <template id="report_comprobante_retention">
@@ -18,17 +18,23 @@
                         del impuesto, en calidad de agentes de retención, a quienes por sus funciones públicas o por razón 
                         de sus actividades privadas intervengan en operaciones gravadas con el impuesto establecido en esta Ley.)</small></p>
                         <h3 align="center"><u>COMPROBANTE DE RETENCIÓN DEL IMPUESTO AL VALOR AGREGADO</u></h3>
-                        <p style="display:inline-block">Nro Comprobante <span t-field="retention.code"/> </p> <p style="display:inline-block">Fecha Emisión <span t-field="retention.date"/></p>
+                        <p style="display:inline-block">Nro Comprobante    <span t-field="retention.code" /> <span>&amp;nbsp;&amp;nbsp;
+                        <t>      Fecha Emisión    <span t-field="retention.date"/></t></span></p>
                         <h4 ><u>DATOS DEL AGENTE DE RETENCION</u></h4>
-                        <p style="display:inline-block">Nombre/Razon Social: <span t-field="retention.partner_id.name"/></p> 
-                        <p style="display:inline-block"> Periodo Fiscal: <span t-field="retention.month_fiscal_period"/> <span t-field="retention.year_fiscal_period"/></p>
+                        <p style="display:inline-block">Nombre/Razon Social: <span t-field="retention.partner_id.name"/><span>&amp;nbsp;&amp;nbsp;
+                         Periodo Fiscal: <span t-field="retention.month_fiscal_period"/> <span t-field="retention.year_fiscal_period"/></span></p>
                         <p >Numero RIF: <span t-field="retention.partner_id.vat"/></p>
                         <p >Direccion Fiscal: <span t-field="retention.partner_id.street"/><span t-field="retention.partner_id.city"/><span t-field="retention.partner_id.state_id.country_id"/></p>
                         <h4 ><u>DATOS DEL PROVEEDOR</u></h4>
                         <p >Nombre/Razon Social: <span t-field="retention.company_id.name"/></p> 
                         <p >Numero RIF: <span t-field="retention.company_id.vat"/></p>
                         <h4 ><u>DATOS DE LA COMPRA</u></h4>
-                        <p >Numero de la Factura <span t-field="retention.invoice_number.name"/></p> 
+                        <t t-if="retention.move_type in ('in_invoice', 'in_refund', 'in_receipt')">
+                            <p >Numero de la Factura   <span t-field="retention.invoice_number.ref"/></p> 
+                        </t>
+                        <t t-if="retention.move_type in ('out_invoice', 'out_refund', 'out_receipt')">
+                            <p >Numero de la Factura   <span t-field="retention.invoice_number.name"/></p> 
+                        </t> 
                         <p >Numero de la Nota de Credito </p>
                         <p >Numero de la Nota de Debito </p>
                         <p >Numero de Control <span t-field="retention.control_number"/></p> 
@@ -52,22 +58,21 @@
                                 <tr>
                                 <td><span t-field="retention.amount_total"/></td>
                                 <td><p><span t-field="retention.amount_base_untaxed"/></p> </td>
-                                <td><p><span t-field="retention.amount_base_taxed"/></p> </td>
                                 <t t-foreach="retention.invoice_number.amount_by_group" t-as="amount_by_group">
-                                <tr style="">
                                     <t t-if="amount_by_group[5] == 1 and amount_by_group[1]>0">
+                                        <td name="td_amount_by_group_3" class="text-right o_price_total">
+                                            <span t-esc="amount_by_group[2]"
+                                                t-options='{"widget": "monetary", "display_currency": retention.company_currency_id}'/>
+                                        </td>
                                         <td name="td_amount_by_group_label_3">
                                             <span t-esc="amount_by_group[0]"/>
-                                            <span>&amp;nbsp;<span>on</span>&amp;nbsp;<t t-esc="amount_by_group[2]" t-options='{"widget": "monetary", "display_currency": retention.company_currency_id}'/></span>
                                         </td>
                                         <td name="td_amount_by_group_3" class="text-right o_price_total">
                                             <span t-esc="amount_by_group[1]"
                                                 t-options='{"widget": "monetary", "display_currency": retention.company_currency_id}'/>
                                         </td>
                                     </t>
-                                </tr>
-                            </t>
-                                <td><p><span t-field="retention.amount_tax"/></p></td>
+                                </t>
                                 <td><p><span t-field="retention.amount_retention"/></p></td>
                                 </tr>
                             

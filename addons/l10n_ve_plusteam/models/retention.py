@@ -63,12 +63,11 @@ class Retention(models.Model):
     retention_type = fields.Selection(string='Retention Type',
                                       selection=[('iva', 'IVA'), ('islr', 'ISLR')],
                                       compute='_compute_retention_type', inverse='_write_retention_type', default='iva')
-    retention_state = fields.Char(string="Year", default="with_retention_iva")
+
     destination_account_id = fields.Many2one(
         comodel_name='account.account',
         string='Destination Account',
         store=True, readonly=False,
-        compute='_compute_destination_account_id',
         check_company=True)
     state = fields.Selection(selection=[
         ('draft', 'Draft'),
@@ -101,7 +100,7 @@ class Retention(models.Model):
                                           readonly=True, help='Utility field to express amount currency')
     amount_tax = fields.Monetary(string="Amount tax", related="invoice_number.amount_tax",
                                  currency_field='company_currency_id')
-    amount_untaxed = fields.Monetary(string="Amount tax", related="invoice_number.amount_untaxed",
+    amount_untaxed = fields.Monetary(string="Amount untaxed", related="invoice_number.amount_untaxed",
                                      currency_field='company_currency_id')
     amount_total = fields.Monetary(string="Amount total", related="invoice_number.amount_total",
                                    currency_field='company_currency_id')
@@ -109,7 +108,7 @@ class Retention(models.Model):
                                         currency_field='company_currency_id')
     amount_retention = fields.Float(string="Amount Retention", compute='_compute_amount_retention',
                                     currency_field='company_currency_id')
-    amount_base_untaxed = fields.Float(string="Amount Retention", compute='_compute_amount_base_untaxed',
+    amount_base_untaxed = fields.Float(string="Amount Base Untaxed", compute='_compute_amount_base_untaxed',
                                        currency_field='company_currency_id')
 
     @api.depends(
