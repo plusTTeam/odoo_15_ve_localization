@@ -21,24 +21,36 @@
                         <p style="display:inline-block">Nro Comprobante    <span t-field="retention.code" /> <span>&amp;nbsp;&amp;nbsp;
                         <t>      Fecha Emisión    <span t-field="retention.date"/></t></span></p>
                         <h4 ><u>DATOS DEL AGENTE DE RETENCION</u></h4>
-                        <p style="display:inline-block">Nombre/Razon Social: <span t-field="retention.partner_id.name"/><span>&amp;nbsp;&amp;nbsp;
-                         Periodo Fiscal: <span t-field="retention.month_fiscal_period"/> <span t-field="retention.year_fiscal_period"/></span></p>
-                        <p >Numero RIF: <span t-field="retention.partner_id.vat"/></p>
-                        <p >Direccion Fiscal: <span t-field="retention.partner_id.street"/><span t-field="retention.partner_id.city"/><span t-field="retention.partner_id.state_id.country_id"/></p>
-                        <h4 ><u>DATOS DEL PROVEEDOR</u></h4>
-                        <p >Nombre/Razon Social: <span t-field="retention.company_id.name"/></p> 
+                        <p style="display:inline-block">Nombre/Razon Social: <span t-field="retention.company_id.name"/><span>&amp;nbsp;&amp;nbsp;
+                         Periodo Fiscal: Mes <span  t-field="retention.month_fiscal_period"/> Año <span  t-field="retention.year_fiscal_period"/></span></p>
                         <p >Numero RIF: <span t-field="retention.company_id.vat"/></p>
+                        <p >Direccion Fiscal: <span t-field="retention.company_id.street"/><span t-field="retention.company_id.city"/><span t-field="retention.company_id.state_id.country_id"/></p>
+                        <h4 ><u>DATOS DEL PROVEEDOR</u></h4>
+                        <p >Nombre/Razon Social:  <span t-field="retention.partner_id.name"/>    Numero RIF: <span t-field="retention.partner_id.vat"/></p>
                         <h4 ><u>DATOS DE LA COMPRA</u></h4>
-                        <t t-if="retention.move_type in ('in_invoice', 'in_refund', 'in_receipt')">
-                            <p >Numero de la Factura   <span t-field="retention.invoice_number.ref"/></p> 
+                        <t t-if="retention.invoice_number.debit_origin_id ">
+                            <p >Numero de la Factura  <span/> </p> 
+                        </t>
+                        <t t-if="retention.move_type in ('in_invoice', 'in_refund', 'in_receipt') and not retention.invoice_number.debit_origin_id ">
+                            <p >Numero de la Factura   <t t-if="retention.move_type=='in_invoice'"><span t-field="retention.invoice_number.ref"/> </t></p> 
+                        </t>
+                        <t t-if="retention.move_type in ('out_invoice', 'out_refund', 'out_receipt') and not retention.invoice_number.debit_origin_id">
+                            <p >Numero de la Factura  <t t-if="retention.move_type=='out_invoice'"><span t-field="retention.invoice_number.name"/> </t></p>
+                        </t> 
+                         <t t-if="retention.move_type in ('in_invoice', 'in_refund', 'in_receipt')">
+                            <p >Numero de la Nota de Credito   <t t-if="retention.move_type=='in_refund'"><span t-field="retention.invoice_number.ref"/> </t></p> 
                         </t>
                         <t t-if="retention.move_type in ('out_invoice', 'out_refund', 'out_receipt')">
-                            <p >Numero de la Factura   <span t-field="retention.invoice_number.name"/></p> 
+                            <p >Numero de la Nota de Credito  <t t-if="retention.move_type=='out_refund'"><span t-field="retention.invoice_number.name"/> </t></p>
                         </t> 
-                        <p >Numero de la Nota de Credito </p>
-                        <p >Numero de la Nota de Debito </p>
+                        <t t-if="retention.invoice_number.debit_origin_id ">
+                            <p >Numero de la Nota de Debito  <span t-field="retention.invoice_number.name"/></p>
+                        </t>
+                        <t t-else ="">    
+                            <p >Numero de la Nota de Debito  <span /></p>
+                        </t>
                         <p >Numero de Control <span t-field="retention.control_number"/></p> 
-                        <p >Numero de la Factura Afectada </p> 
+                        <p >Numero de la Factura Afectada  <span t-field="retention.invoice_number.debit_origin_id"/></p> 	
                         <p >Fecha de Emisión <span t-field="retention.invoice_number.date"/></p> 
                         <p >Tipo de Transacción    01-reg</p> 
                         <h4 ><u>DETALLES DEL CALCULO DE LA RETENCION</u></h4>
@@ -55,29 +67,41 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                <td><span t-field="retention.amount_total"/></td>
-                                <td><p><span t-field="retention.amount_base_untaxed"/></p> </td>
-                                <t t-foreach="retention.invoice_number.amount_by_group" t-as="amount_by_group">
-                                    <t t-if="amount_by_group[5] == 1 and amount_by_group[1]>0">
-                                        <td name="td_amount_by_group_3" class="text-right o_price_total">
-                                            <span t-esc="amount_by_group[2]"
-                                                t-options='{"widget": "monetary", "display_currency": retention.company_currency_id}'/>
+                             <t t-set="contador" t-value="1"/>
+                             <t t-foreach="retention.invoice_number.amount_by_group" t-as="amount_by_group">
+                                <tr>                                    
+                                    <t t-if="amount_by_group[1]>0">
+                                        <td class="text-right o_price_total" t-if="contador==1"><span t-field="retention.amount_total"/></td>
+                                        <td class="text-right o_price_total" t-if="contador==1"><p><span t-field="retention.amount_base_untaxed" t-options='{"widget": "monetary", "display_currency": retention.company_currency_id}'/></p> </td>
+                                        <td t-if="contador==0"><span /></td>
+                                        <td t-if="contador==0"><p><span t-options='{"widget": "monetary", "display_currency": retention.company_currency_id}'/></p> </td>
+                                        <t t-set="contador" t-value="0"/>
+                                        <td name="td_amount_by_group" class="text-right o_price_total">
+                                            <span t-esc="amount_by_group[2]"/>
+                                                <span>&amp;nbsp;<t t-options='{"widget": "monetary", "display_currency": retention.company_currency_id}'/></span>
                                         </td>
-                                        <td name="td_amount_by_group_label_3">
+                                        <td name="td_amount_by_group_label">
                                             <span t-esc="amount_by_group[0]"/>
                                         </td>
-                                        <td name="td_amount_by_group_3" class="text-right o_price_total">
+                                        <td name="td_amount_by_group" class="text-right o_price_total">
                                             <span t-esc="amount_by_group[1]"
                                                 t-options='{"widget": "monetary", "display_currency": retention.company_currency_id}'/>
                                         </td>
-                                    </t>
-                                </t>
-                                <td><p><span t-field="retention.amount_retention"/></p></td>
+                                        <t t-set="amount_retention_subtotal" t-value="retention.vat_withholding_percentage*amount_by_group[1]/100"/>
+                                        <td name="td_amount_by_group" class="text-right o_price_total">
+                                            <span
+                                            t-esc="amount_retention_subtotal"
+                                            t-options='{"widget": "monetary", "display_currency": retention.company_currency_id}'
+                                            />
+                                        </td>
+                                        </t>
+                                        
                                 </tr>
-                            
+                                
+                             </t>
                             </tbody>
                         </table>
+                        <p >Total Monto Retenido <span t-field="retention.amount_retention"/> </p> 
                     </div>
                 </t>
             </t>

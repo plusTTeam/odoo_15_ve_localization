@@ -89,9 +89,10 @@ class Retention(models.Model):
     # === invoice fields ===
     invoice_number = fields.Many2one("account.move", string="Invoice Number", required=True,
                                      domain="[('move_type', 'in', ('out_invoice', 'in_invoice', 'in_refund', "
-                                            "'out_refund')), ('retention_state', '!=', 'with_retention_iva'),"
+                                            "'out_refund')), ('retention_state', '!=', 'with_retention_Both'),"
                                             "('state', '=', 'posted'),('partner_id', '=', partner_id )]")
     invoice_date = fields.Date(string="Invoice Date", required=True, related="invoice_number.date")
+    type_name = fields.Char(string="Type Document", related="invoice_number.type_name")
     control_number = fields.Char(string="Control Number", related="invoice_number.control_number")
     ref = fields.Char(string="Reference", related="invoice_number.ref")
     company_currency_id = fields.Many2one(related="invoice_number.company_currency_id", string="Company Currency",
