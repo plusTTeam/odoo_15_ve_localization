@@ -11,7 +11,7 @@
                 <button name="action_register_retention" id="account_invoice_retention_btn"
                         type="object" class="oe_highlight"
                         attrs="{'invisible': ['|','|', ('state', '!=', 'posted'),
-                        ('retention_state', '=', 'with_retention_iva'),
+                        ('retention_state', '=', 'with_retention_Both'),
                         ('move_type', 'not in', ('out_invoice', 'out_refund', 'in_invoice', 'in_refund',
                         'out_receipt', 'in_receipt'))]}"
                         string="Register Retention"
@@ -30,6 +30,9 @@
                         name="invoice_number"
                         attrs="{'invisible': [('move_type', 'not in', ('in_invoice', 'in_refund', 'in_receipt'))]}"
                 />
+            </xpath>
+            <xpath expr="//field[@name='amount_residual']" position="after">
+                <field name="retention_state" attrs="{'invisible': [('retention_state', '=', 'without_retention')]}"/>
             </xpath>
             <xpath expr="//div[@class='d-flex']" position="after">
                 <field name="import_doc"
