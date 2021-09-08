@@ -6,6 +6,7 @@
             <field name="name">I.V.A. DÉBITO FISCAL</field>
             <field name="user_type_id" ref="account.data_account_type_current_assets"/>
             <field name="reconcile" eval="True"/>
+            <field name="create_asset">no</field>
         </record>
         <record id="vat_withholding_suppliers" model="account.account">
             <field name="code">2174000</field>
@@ -13,6 +14,7 @@
             <field name="user_type_id" ref="account.data_account_type_current_liabilities"/>
             <field name="reconcile" eval="True"/>
             <field name="currency_id" ref="base.VEF"/>
+            <field name="create_asset">no</field>
         </record>
         <record id="islr_withholding_suppliers" model="account.account">
             <field name="code">2174001</field>
@@ -20,6 +22,7 @@
             <field name="user_type_id" ref="account.data_account_type_current_liabilities"/>
             <field name="reconcile" eval="True"/>
             <field name="currency_id" ref="base.VEF"/>
+            <field name="create_asset">no</field>
         </record>
 
         <record id="vat_withholding_customer" model="account.account">
@@ -28,6 +31,7 @@
             <field name="user_type_id" ref="account.data_account_type_current_assets"/>
             <field name="reconcile" eval="True"/>
             <field name="currency_id" ref="base.VEF"/>
+            <field name="create_asset">no</field>
         </record>
         <record id="islr_withholding_customer" model="account.account">
             <field name="code">1172003</field>
@@ -35,6 +39,7 @@
             <field name="user_type_id" ref="account.data_account_type_current_assets"/>
             <field name="reconcile" eval="True"/>
             <field name="currency_id" ref="base.VEF"/>
+            <field name="create_asset">no</field>
         </record>
     </data>
 </odoo>
