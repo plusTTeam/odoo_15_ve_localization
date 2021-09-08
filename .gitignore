@@ -5,3 +5,4 @@ coverage/local
 __pycache__
 venv
 coverage
+/addons/l10n_ve_plusteam/i18n/es_VE_ALL.po

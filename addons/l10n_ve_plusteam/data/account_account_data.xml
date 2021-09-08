@@ -1,6 +1,12 @@
-<?xml version="1.0" ?>
+<?xml version="1.0"?>
 <odoo>
     <data noupdate="1">
+        <record id="account_account_2172003" model="account.account">
+            <field name="code">2172003</field>
+            <field name="name">I.V.A. DÉBITO FISCAL</field>
+            <field name="user_type_id" ref="account.data_account_type_current_assets"/>
+            <field name="reconcile" eval="True"/>
+        </record>
         <record id="vat_withholding_suppliers" model="account.account">
             <field name="code">2174000</field>
             <field name="name">I.V.A. RETENIDO EN COMPRAS</field>
