@@ -6,6 +6,7 @@ from odoo.exceptions import ValidationError
 class Retention(models.Model):
     _name = "retention"
     _description = "Retention"
+    _inherits = {'account.move': 'move_id'}
     _rec_name = "complete_name_with_code"
 
     @api.model
@@ -50,7 +51,9 @@ class Retention(models.Model):
         ("in_refund", "Vendor Credit Note"),
     ], string="Type", required=True, store=True, index=True, readonly=True, tracking=True,
         default="entry", change_default=True)
-
+    move_id = fields.Many2one(
+        comodel_name="account.move", string="Journal Entry", required=True, readonly=True, ondelete="cascade",
+        check_company=True)
     # == Business fields ==
     code = fields.Char(string="Retention Number", default=_("New"), store=True)
     date = fields.Date(string="Date", required=True, default=fields.Date.context_today)
@@ -157,7 +160,6 @@ class Retention(models.Model):
                 account = "l10n_ve_plusteam.iva_account_purchase_id" if retention.is_iva else \
                     "l10n_ve_plusteam.islr_account_purchase_id"
             retention.destination_account_id = int(get_param(account))
-            _logger.info(int(get_param(account)))
 
     @api.depends("partner_id")
     def _compute_company_id(self):
@@ -182,6 +184,9 @@ class Retention(models.Model):
             invoice.write({
                 "retention_state": "with_retention_Both"
             })
+        # journal_entry = self.env["account.move"].create({
+        #
+        # })
         return super(Retention, self).create(values)
 
     @api.depends("ref", "code")
