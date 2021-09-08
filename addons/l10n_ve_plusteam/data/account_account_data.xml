@@ -36,15 +36,5 @@
             <field name="reconcile" eval="True"/>
             <field name="currency_id" ref="base.VEF"/>
         </record>
-
-        <record id="settings_withholding" model="res.config.settings">
-            <field name="iva_account_purchase_id" ref="l10n_ve_plusteam.vat_withholding_suppliers"/>
-            <field name="islr_account_purchase_id" ref="l10n_ve_plusteam.islr_withholding_suppliers"/>
-            <field name="iva_account_sale_id" ref="l10n_ve_plusteam.vat_withholding_customer"/>
-            <field name="islr_account_sale_id" ref="l10n_ve_plusteam.islr_withholding_customer"/>
-        </record>
-        <function model="res.config.settings" name="execute">
-            <value model="res.config.settings" search="[('id', '=', ref('settings_withholding'))]"/>
-        </function>
     </data>
 </odoo>
