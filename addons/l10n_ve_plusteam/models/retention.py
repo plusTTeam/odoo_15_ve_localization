@@ -61,7 +61,6 @@ class Retention(models.Model):
     retention_type = fields.Selection(string="Retention Type",
                                       selection=[("iva", "IVA"), ("islr", "ISLR")],
                                       compute="_compute_retention_type", inverse="_write_retention_type", default="iva")
-    retention_state = fields.Char(string="Year", default="with_retention_iva")
     destination_account_id = fields.Many2one(
         comodel_name="account.account",
         string="Destination Account",
