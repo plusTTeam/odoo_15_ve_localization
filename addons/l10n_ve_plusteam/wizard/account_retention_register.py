@@ -34,6 +34,7 @@ class AccountRetentionRegister(models.TransientModel):
                                   help="The payment's currency.")
     company_id = fields.Char(string="Company", compute="_get_data_invoice")
     move_type = fields.Char(string="Move Type", compute="_get_data_invoice")
+    original_invoice_number = fields.Char(string="Original Invoice Number", compute="_get_data_invoice")    
     type_name = fields.Char(string="Type Document", compute="_get_data_invoice" )
     # == Fields given through the context ==
     document = fields.Char(string="Document Number", compute="_get_data_invoice")
@@ -71,6 +72,7 @@ class AccountRetentionRegister(models.TransientModel):
                 wizard.company_id = invoice.company_id.id
                 wizard.move_type = invoice.move_type
                 wizard.type_name = invoice.type_name
+                wizard.original_invoice_number = invoice.original_invoice_number
             else:
                 wizard.communication = "Sin relacion"
 
@@ -125,6 +127,7 @@ class AccountRetentionRegister(models.TransientModel):
             "is_iva": self.is_iva,
             "move_type": self.move_type,
             "type_name": self.type_name,
+            "original_invoice_number": self.original_invoice_number,
             "code": self.code,
             "company_id": self.company_id,
             "partner_id": self.partner_id.id,

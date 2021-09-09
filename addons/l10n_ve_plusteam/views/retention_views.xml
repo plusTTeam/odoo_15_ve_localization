@@ -76,6 +76,7 @@
                 <field name="date"/>
                 <field name="invoice_number"/>
                 <field name="type_name"/>    
+                <field name="original_invoice_number" optional="hide"/>
                 <field name="control_number" optional="hide"/>
                 <field name="amount_retention"/>
             </tree>
@@ -88,7 +89,7 @@
         <field name="inherit_id" ref="retention_view_tree"/>
         <field name="mode">primary</field>
         <field name="arch" type="xml">
-            <xpath expr="//field[@name='control_number']" position="attributes">
+            <xpath expr="//field[@name='original_invoice_number']" position="attributes">
                 <attribute name="optional">show</attribute>
             </xpath>
         </field>
