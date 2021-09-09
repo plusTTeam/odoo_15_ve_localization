@@ -11,3 +11,4 @@ from . import resource_calendar
 from . import resource_calendar_leaves
 from . import res_lang
 from . import resource_calendar_attendance
+from . import account_chart_template

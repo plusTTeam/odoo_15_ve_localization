@@ -5,21 +5,9 @@
             <field name="name">Venezuela - Contabilidad</field>
             <field name="bank_account_code_prefix">1113</field>
             <field name="cash_account_code_prefix">1111</field>
-            <field name="transfer_account_code_prefix">1129003</field>
+            <field name="transfer_account_code_prefix">1129</field>
             <field name="code_digits">7</field>
             <field name="currency_id" ref="base.VEF"/>
-        </record>
-        <function model="account.chart.template" name="try_loading">
-            <value eval="[ref('l10n_ve_plusteam.ve_chart_template_amd')]"/>
-        </function>
-        <record id="l10n_ve_plusteam.ve_chart_template_amd" model="account.chart.template">
-            <field name="property_account_receivable_id" ref="account_activa_account_1122001"/>
-            <field name="property_account_payable_id" ref="account_activa_account_2122001"/>
-            <field name="property_account_expense_categ_id" ref="account_activa_account_7151002"/>
-            <field name="property_account_income_categ_id" ref="account_activa_account_5111001"/>
-            <field name="income_currency_exchange_account_id" ref="account_activa_account_9212003"/>
-            <field name="expense_currency_exchange_account_id" ref="account_activa_account_9113006"/>
-            <field name="default_pos_receivable_account_id" ref="account_activa_account_1122003" />
         </record>
     </data>
 </odoo>

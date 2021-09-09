@@ -4,6 +4,7 @@
 # 	* l10n_ve_plusteam
 # 	* base
 # 	* resource
+#   * account
 #
 msgid ""
 msgstr ""
@@ -27392,3 +27393,15 @@ msgstr "Viernes por la tarde"
 #, python-format
 msgid "Friday Morning"
 msgstr "Viernes por la mañana"
+
+#. modules: account, l10n_ve_plusteam
+#: code:addons/account/models/chart_template.py:0
+#, python-format
+msgid "Liquidity Transfer"
+msgstr "Transferencia de liquidez"
+
+#. modules: account, l10n_ve_plusteam
+#: code:addons/account/models/company.py:0
+#, python-format
+msgid "Undistributed Profits/Losses"
+msgstr "Ganancias/pérdidas no distribuidas"
