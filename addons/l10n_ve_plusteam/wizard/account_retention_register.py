@@ -29,13 +29,12 @@ class AccountRetentionRegister(models.TransientModel):
     # === invoice fields ===
     invoice_number = fields.Many2one("account.move", string="Invoice Number", compute="_get_data_invoice",
                                      domain="[('partner_id', '=', partner_id )]")
-
     currency_id = fields.Many2one("res.currency", string="Currency", store=True, readonly=False,
                                   help="The payment's currency.")
     company_id = fields.Char(string="Company", compute="_get_data_invoice")
     move_type = fields.Char(string="Move Type", compute="_get_data_invoice")
     original_invoice_number = fields.Char(string="Original Invoice Number", compute="_get_data_invoice")    
-    type_name = fields.Char(string="Type Document", compute="_get_data_invoice" )
+    type_document = fields.Char(string="Type Document", compute="_compute_type_document")
     # == Fields given through the context ==
     document = fields.Char(string="Document Number", compute="_get_data_invoice")
     amount_tax = fields.Monetary(currency_field="currency_id", compute="_get_data_invoice")
@@ -71,8 +70,7 @@ class AccountRetentionRegister(models.TransientModel):
                 wizard.invoice_date = invoice.date
                 wizard.company_id = invoice.company_id.id
                 wizard.move_type = invoice.move_type
-                wizard.type_name = invoice.type_name
-                wizard.original_invoice_number = invoice.original_invoice_number
+                wizard.original_invoice_number = invoice.invoice_number
             else:
                 wizard.communication = "Sin relacion"
 
@@ -106,6 +104,19 @@ class AccountRetentionRegister(models.TransientModel):
                 month_char = "0" + str(retention.date.month)
             retention.month_fiscal_period = month_char
 
+    @api.depends("invoice_number")
+    def _compute_type_document(self):
+        for retention in self:
+            if retention.invoice_number.move_type in ('out_invoice', 'in_invoice'):
+                if retention.invoice_number.debit_origin_id:
+                    retention.type_document = 'N/D'
+                else:
+                    retention.type_document = 'Factura'
+            elif retention.invoice_number.move_type in ('in_refund', 'out_refund'):
+                retention.type_document = 'N/C'
+            else:
+                retention.type_document = 'Otro'
+
     def _get_destination_account_id(self):
         partner_type = "supplier" if self._context.get("default_move_type") not in \
                                      ("in_invoice", "in_refund", "in_receipt") else "customer"
@@ -126,7 +137,7 @@ class AccountRetentionRegister(models.TransientModel):
             "retention_type": self.retention_type,
             "is_iva": self.is_iva,
             "move_type": self.move_type,
-            "type_name": self.type_name,
+            "type_document": self.type_document,
             "original_invoice_number": self.original_invoice_number,
             "code": self.code,
             "company_id": self.company_id,

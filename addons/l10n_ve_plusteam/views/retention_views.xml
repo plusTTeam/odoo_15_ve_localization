@@ -75,7 +75,7 @@
                 <field name="retention_type"/>
                 <field name="date"/>
                 <field name="invoice_number"/>
-                <field name="type_name"/>    
+                <field name="type_document"/>
                 <field name="original_invoice_number" optional="hide"/>
                 <field name="control_number" optional="hide"/>
                 <field name="amount_retention"/>

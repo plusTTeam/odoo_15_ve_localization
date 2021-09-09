@@ -93,7 +93,7 @@ class Retention(models.Model):
                                             "('state', '=', 'posted'),('partner_id', '=', partner_id )]")
     original_invoice_number = fields.Char(string="Original Invoice Number", related="invoice_number.invoice_number")                                        
     invoice_date = fields.Date(string="Invoice Date", required=True, related="invoice_number.date")
-    type_name = fields.Char(string="Type Document", related="invoice_number.type_name")
+    type_document = fields.Char(string="Type Document", compute="_compute_type_document")
     control_number = fields.Char(string="Control Number", related="invoice_number.control_number")
     ref = fields.Char(string="Reference", related="invoice_number.ref")
     company_currency_id = fields.Many2one(related="invoice_number.company_currency_id", string="Company Currency",
@@ -164,6 +164,19 @@ class Retention(models.Model):
     def _compute_company_id(self):
         for retention in self:
             retention.company_id = retention.partner_id.company_id or retention.company_id or self.env.company
+
+    @api.depends("invoice_number")
+    def _compute_type_document(self):
+        for retention in self:
+            if retention.invoice_number.move_type in ('out_invoice', 'in_invoice'):
+                if retention.invoice_number.debit_origin_id:
+                    retention.type_document = 'N/D'
+                else:
+                    retention.type_document = 'Factura'
+            elif retention.invoice_number.move_type in ('in_refund', 'out_refund'):
+                retention.type_document = 'N/C'
+            else:
+                retention.type_document = 'Otro'
 
     @api.model
     def create(self, values):
