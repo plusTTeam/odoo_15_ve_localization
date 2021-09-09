@@ -106,9 +106,9 @@ class Retention(models.Model):
                                    currency_field="company_currency_id")
     amount_base_taxed = fields.Monetary(string="Amount base taxed", related="invoice_number.amount_base_taxed",
                                         currency_field="company_currency_id")
-    amount_retention = fields.Float(string="Amount Retention", compute="_compute_amount_retention",
+    amount_retention = fields.Monetary(string="Amount Retention", compute="_compute_amount_retention",
                                     currency_field="company_currency_id")
-    amount_base_untaxed = fields.Float(string="Amount Retention", compute="_compute_amount_base_untaxed",
+    amount_base_untaxed = fields.Monetary(string="Amount Retention", compute="_compute_amount_base_untaxed",
                                        currency_field="company_currency_id")
 
     @api.depends(
