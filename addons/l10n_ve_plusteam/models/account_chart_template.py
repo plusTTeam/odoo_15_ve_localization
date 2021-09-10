@@ -1,7 +1,5 @@
 # -*- coding: utf-8 -*-
-import logging
 from odoo import models, api, _
-_logger = logging.getLogger(__name__)
 
 
 class AccountChartTemplate(models.Model):

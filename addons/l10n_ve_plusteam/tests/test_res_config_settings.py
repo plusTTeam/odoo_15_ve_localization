@@ -19,5 +19,7 @@ class TestResConfigSettings(TransactionCase):
     def test_set_values(self):
         settings = self.env["res.config.settings"].search([("company_id", "=", self.company.id)], limit=1)
         settings.write({
-            "iva_account_purchase_id":
+            "iva_account_purchase_id": self.new_account.id
         })
+        self.assertEqual(self.company.iva_account_purchase_id.id, self.new_account.id,
+                         msg="The account was not changed in the company instance")
