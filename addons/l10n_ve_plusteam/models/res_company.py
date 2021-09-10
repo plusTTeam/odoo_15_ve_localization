@@ -4,7 +4,7 @@ from odoo import fields, models, api, _
 from odoo.exceptions import ValidationError
 
 
-class ResPartner(models.Model):
+class ResCompany(models.Model):
     _inherit = 'res.company'
 
     vat_withholding_percentage = fields.Float(
