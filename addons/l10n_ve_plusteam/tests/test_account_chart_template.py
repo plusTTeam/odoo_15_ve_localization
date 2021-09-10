@@ -20,6 +20,7 @@ class TestAccountChartTemplate(TransactionCase):
         second_company_settings.write({
             "chart_template_id": self.chart_template.id
         })
+        second_company_settings.set_values()
         keys = [
             "iva_account_purchase_id",
             "iva_account_sale_id",

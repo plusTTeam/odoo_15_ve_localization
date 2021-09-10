@@ -21,5 +21,6 @@ class TestResConfigSettings(TransactionCase):
         settings.write({
             "iva_account_purchase_id": self.new_account.id
         })
+        settings.set_values()
         self.assertEqual(self.company.iva_account_purchase_id.id, self.new_account.id,
                          msg="The account was not changed in the company instance")
