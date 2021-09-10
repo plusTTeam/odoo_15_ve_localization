@@ -27,7 +27,6 @@ class AccountChartTemplate(models.Model):
 
     def _load(self, sale_tax_rate, purchase_tax_rate, company):
         load = super(AccountChartTemplate, self)._load(sale_tax_rate, purchase_tax_rate, company)
-        company = self.env.company
         refs = [
             ["vat_withholding_suppliers", "iva_account_purchase_id"],
             ["islr_withholding_suppliers", "iva_account_sale_id"],
@@ -35,13 +34,16 @@ class AccountChartTemplate(models.Model):
             ["islr_withholding_customer", "islr_account_sale_id"]
         ]
         for ref in refs:
-            external_id = self.env.ref(ref[0]).get_external_id()
-            module, name = external_id.split(".", 1)
-            xml_id = "%s.%s_%s" % (module, company.id, name)
-            company[ref[1]] = self.env.ref(xml_id).id
-            _logger.info(xml_id, self.env.ref(xml_id).id)
-        company.account_sale_tax_id = self.env["account.tax"].search(
-            [("value", "=", 16), ("company_id", "=", company.id)], limit=1).id
-        company.account_purchase_tax_id = self.env["account.tax"].search(
-            [("value", "=", 16), ("company_id", "=", company.id)], limit=1).id
+            xml_id = "%s.%s_%s" % ("l10n_ve_plusteam", company.id, ref[0])
+            account_id = self.env.ref(xml_id, raise_if_not_found=False).id
+            if account_id:
+                company[ref[1]] = account_id
+        xml_id = "%s.%s_%s" % ("l10n_ve_plusteam", company.id, "tax_16_sale")
+        sale_tax_id = self.env.ref(xml_id, raise_if_not_found=False).id
+        if sale_tax_id:
+            company.account_sale_tax_id = sale_tax_id
+        xml_id = "%s.%s_%s" % ("l10n_ve_plusteam", company.id, "tax_16_purchase")
+        purchase_tax_id = self.env.ref(xml_id, raise_if_not_found=False).id
+        if purchase_tax_id:
+            company.account_purchase_tax_id = purchase_tax_id
         return load
