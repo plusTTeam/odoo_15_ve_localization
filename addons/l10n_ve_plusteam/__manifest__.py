@@ -8,13 +8,13 @@
 
     'description': """
         Chart of Account for Venezuela.
-        ===============================
+        ------------------------------
         
         Venezuela doesn't have any chart of account by law, but the default
         proposed in Odoo should comply with some Accepted best practices in Venezuela
         
         Features:
-        ===============================
+        ------------------------------
         - Taxes for Venezuela
         - Retention process for IVA, ISLR and IGTF
         - Accounting books: Mayor, Diario, Inventario y Balances
