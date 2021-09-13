@@ -12,6 +12,21 @@ rebuild:
 	docker-compose down
 	docker-compose up -d --build
 
+restart:
+	docker-compose restart
+
+clean:
+	docker-compose down
+	-docker volume rm odoo14_ve_localization_odoo-db-data-localization
+	-docker volume rm odoo14_ve_localization_odoo-web-data-localization
+	docker-compose up -d --build
+
+generate_local_coverage:
+	docker exec -i -u root plusteam-odoo-localization-web pytest -s --odoo-database=db_test --html=/coverage/local/report.html --junitxml=/coverage/local/report.xml /mnt/extra-addons/  /mnt/extra-addons/
+	docker exec -i -u root plusteam-odoo-localization-web coverage xml
+	docker cp plusteam-odoo-localization-web:/coverage/local coverage
+	docker cp plusteam-odoo-localization-web:coverage.xml coverage
+
 generate_local_coverage_report:
 	docker exec -i -u root plusteam-odoo-localization-web pytest -s --odoo-database=db_test --html=/coverage/local/report.html --junitxml=/coverage/local/report.xml --cov=/mnt/extra-addons/  /mnt/extra-addons/
 	docker exec -i -u root plusteam-odoo-localization-web coverage xml
@@ -30,3 +45,4 @@ init_test_db:
 	docker start plusteam-odoo-localization-web
 	docker exec -u root -t plusteam-odoo-localization-web odoo -i all -d db_test --stop-after-init --without-demo all
 	docker exec -u root -t plusteam-odoo-localization-web odoo -i l10n_ve_plusteam -d db_test --stop-after-init
+	docker exec -u root -t plusteam-odoo-localization-web chown -R 777 /var/lib/odoo/.local/share/Odoo/filestore/db_test

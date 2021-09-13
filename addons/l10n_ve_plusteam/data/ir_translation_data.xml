@@ -1,0 +1,99 @@
+<?xml version="1.0" ?>
+<odoo>
+    <data noupdate="1">
+        <record id="monday_morning" model="ir.translation">
+            <field name="src">Monday Morning</field>
+            <field name="value">Lunes por la mañana</field>
+            <field name="name">resource.calendar.attendance,name</field>
+            <field name="lang">es_VE</field>
+            <field name="res_id">1</field>
+            <field name="type">model</field>
+            <field name="state">translated</field>
+        </record>
+        <record id="monday_afternoon" model="ir.translation">
+            <field name="src">Monday Afternoon</field>
+            <field name="value">Lunes por la tarde</field>
+            <field name="name">resource.calendar.attendance,name</field>
+            <field name="lang">es_VE</field>
+            <field name="res_id">2</field>
+            <field name="type">model</field>
+            <field name="state">translated</field>
+        </record>
+
+        <record id="tuesday_morning" model="ir.translation">
+            <field name="src">Tuesday Morning</field>
+            <field name="value">Martes por la mañana</field>
+            <field name="name">resource.calendar.attendance,name</field>
+            <field name="lang">es_VE</field>
+            <field name="res_id">3</field>
+            <field name="type">model</field>
+            <field name="state">translated</field>
+        </record>
+        <record id="tuesday_afternoon" model="ir.translation">
+            <field name="src">Tuesday Afternoon</field>
+            <field name="value">Martes por la tarde</field>
+            <field name="name">resource.calendar.attendance,name</field>
+            <field name="lang">es_VE</field>
+            <field name="res_id">4</field>
+            <field name="type">model</field>
+            <field name="state">translated</field>
+        </record>
+
+        <record id="wednesday_morning" model="ir.translation">
+            <field name="src">Wednesday Morning</field>
+            <field name="value">Miércoles por la mañana</field>
+            <field name="name">resource.calendar.attendance,name</field>
+            <field name="lang">es_VE</field>
+            <field name="res_id">5</field>
+            <field name="type">model</field>
+            <field name="state">translated</field>
+        </record>
+        <record id="wednesday_afternoon" model="ir.translation">
+            <field name="src">Wednesday Afternoon</field>
+            <field name="value">Miércoles por la tarde</field>
+            <field name="name">resource.calendar.attendance,name</field>
+            <field name="lang">es_VE</field>
+            <field name="res_id">6</field>
+            <field name="type">model</field>
+            <field name="state">translated</field>
+        </record>
+
+        <record id="thursday_morning" model="ir.translation">
+            <field name="src">Thursday Morning</field>
+            <field name="value">Jueves por la mañana</field>
+            <field name="name">resource.calendar.attendance,name</field>
+            <field name="lang">es_VE</field>
+            <field name="res_id">7</field>
+            <field name="type">model</field>
+            <field name="state">translated</field>
+        </record>
+        <record id="thursday_afternoon" model="ir.translation">
+            <field name="src">Thursday Afternoon</field>
+            <field name="value">Jueves por la tarde</field>
+            <field name="name">resource.calendar.attendance,name</field>
+            <field name="lang">es_VE</field>
+            <field name="res_id">8</field>
+            <field name="type">model</field>
+            <field name="state">translated</field>
+        </record>
+
+        <record id="friday_morning" model="ir.translation">
+            <field name="src">Friday Morning</field>
+            <field name="value">Viernes por la mañana</field>
+            <field name="name">resource.calendar.attendance,name</field>
+            <field name="lang">es_VE</field>
+            <field name="res_id">9</field>
+            <field name="type">model</field>
+            <field name="state">translated</field>
+        </record>
+        <record id="friday_afternoon" model="ir.translation">
+            <field name="src">Friday Afternoon</field>
+            <field name="value">Viernes por la tarde</field>
+            <field name="name">resource.calendar.attendance,name</field>
+            <field name="lang">es_VE</field>
+            <field name="res_id">10</field>
+            <field name="type">model</field>
+            <field name="state">translated</field>
+        </record>
+    </data>
+</odoo>

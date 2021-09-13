@@ -1,0 +1,9 @@
+<?xml version="1.0" ?>
+<odoo>
+    <data>
+        <record id="base.user_admin" model="res.users">
+            <field name="tz">America/Caracas</field>
+            <field name="lang">es_VE</field>
+        </record>
+    </data>
+</odoo>
