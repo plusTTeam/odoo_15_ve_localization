@@ -3,26 +3,25 @@
     'name': "Venezuela - Accounting",
 
     'summary': """
-        Venezuelan accounting Localization based on laws defined by SENIAT to operate in Venezuela
+Venezuelan accounting Localization based on laws defined by SENIAT to operate in Venezuela
     """,
 
     'description': """
-        Chart of Account for Venezuela.
-        ------------------------------
-        
-        Venezuela doesn't have any chart of account by law, but the default
-        proposed in Odoo should comply with some Accepted best practices in Venezuela
-        
-        Features:
-        ------------------------------
-        - Taxes for Venezuela
-        - Retention process for IVA, ISLR and IGTF
-        - Accounting books: Mayor, Diario, Inventario y Balances
-        - States for Venezuela
-        - Consulting of RIF
-        - New fields in invoices and contacts
-        - Multiple exchange rates by day
-        - Communication with fiscal printers
+Venezuelan Account Localization
+----------
+
+Venezuela doesn't have any chart of account by law, but the default
+proposed in Odoo should comply with some Accepted best practices in Venezuela
+
+Features:
+* Taxes for Venezuela
+* Retention process for IVA, ISLR and IGTF
+* Accounting books: Mayor, Diario, Inventario y Balances
+* States for Venezuela
+* Consulting of RIF
+* New fields in invoices and contacts
+* Multiple exchange rates by day
+* Communication with fiscal printers
     """,
 
     'author': "PLUSTEAM",
