@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from odoo import models, api, _
+from odoo import models, api
 
 
 class AccountChartTemplate(models.Model):
@@ -15,7 +15,8 @@ class AccountChartTemplate(models.Model):
         for account in account_undistributed_profits_losses:
             account.write({"name": "Ganancias/pérdidas no distribuidas"})
 
-        account_liquidity_transfer_template = self.env["account.account.template"].search([("name", "=", "Liquidity Transfer")])
+        account_liquidity_transfer_template = self.env["account.account.template"].search(
+            [("name", "=", "Liquidity Transfer")])
         for account in account_liquidity_transfer_template:
             account.write({"name": "Transferencia de liquidez"})
         account_undistributed_profits_losses_template = self.env["account.account.template"].search(
