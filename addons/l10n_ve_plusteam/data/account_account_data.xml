@@ -1,40 +1,248 @@
 <?xml version="1.0"?>
 <odoo>
     <data noupdate="1">
-        <record id="account_account_2172003" model="account.account">
+        <record id="account_account_2172003" model="account.account.template">
             <field name="code">2172003</field>
             <field name="name">I.V.A. DÉBITO FISCAL</field>
             <field name="user_type_id" ref="account.data_account_type_current_assets"/>
             <field name="reconcile" eval="True"/>
+            <field name="chart_template_id" ref="ve_chart_template_amd"/>
         </record>
-        <record id="vat_withholding_suppliers" model="account.account">
+        <record id="vat_withholding_suppliers" model="account.account.template">
             <field name="code">2174000</field>
             <field name="name">I.V.A. RETENIDO EN COMPRAS</field>
             <field name="user_type_id" ref="account.data_account_type_current_liabilities"/>
             <field name="reconcile" eval="True"/>
             <field name="currency_id" ref="base.VEF"/>
+            <field name="chart_template_id" ref="ve_chart_template_amd"/>
         </record>
-        <record id="islr_withholding_suppliers" model="account.account">
+        <record id="islr_withholding_suppliers" model="account.account.template">
             <field name="code">2174001</field>
             <field name="name">I.S.L.R. RETENIDO EN COMPRAS</field>
             <field name="user_type_id" ref="account.data_account_type_current_liabilities"/>
             <field name="reconcile" eval="True"/>
             <field name="currency_id" ref="base.VEF"/>
+            <field name="chart_template_id" ref="ve_chart_template_amd"/>
         </record>
 
-        <record id="vat_withholding_customer" model="account.account">
+        <record id="vat_withholding_customer" model="account.account.template">
             <field name="code">1172002</field>
             <field name="name">I.V.A. RETENIDO EN VENTAS</field>
             <field name="user_type_id" ref="account.data_account_type_current_assets"/>
             <field name="reconcile" eval="True"/>
             <field name="currency_id" ref="base.VEF"/>
+            <field name="chart_template_id" ref="ve_chart_template_amd"/>
         </record>
-        <record id="islr_withholding_customer" model="account.account">
+        <record id="islr_withholding_customer" model="account.account.template">
             <field name="code">1172003</field>
             <field name="name">I.S.L.R. RETENIDO EN VENTAS</field>
             <field name="user_type_id" ref="account.data_account_type_current_assets"/>
             <field name="reconcile" eval="True"/>
             <field name="currency_id" ref="base.VEF"/>
+            <field name="chart_template_id" ref="ve_chart_template_amd"/>
+        </record>
+
+        <record id="account_activa_account_1122001" model="account.account.template">
+            <field name="code">1122001</field>
+            <field name="name">CUENTAS POR COBRAR CLIENTES</field>
+            <field name="user_type_id" ref="account.data_account_type_receivable"/>
+            <field name="reconcile" eval="True"/>
+            <field name="currency_id" ref="base.VEF"/>
+            <field name="chart_template_id" ref="ve_chart_template_amd"/>
+        </record>
+        <record id="account_activa_account_1122003" model="account.account.template">
+            <field name="code">1122003</field>
+            <field name="name">CUENTAS POR COBRAR CLIENTES (POS)</field>
+            <field name="user_type_id" ref="account.data_account_type_receivable"/>
+            <field name="reconcile" eval="True"/>
+            <field name="currency_id" ref="base.VEF"/>
+            <field name="chart_template_id" ref="ve_chart_template_amd"/>
+        </record>
+        <record id="account_activa_account_1122004" model="account.account.template">
+            <field name="code">1122004</field>
+            <field name="name">CUENTAS POR COBRAR MAYORISTA</field>
+            <field name="user_type_id" ref="account.data_account_type_receivable"/>
+            <field name="reconcile" eval="True"/>
+            <field name="currency_id" ref="base.VEF"/>
+            <field name="chart_template_id" ref="ve_chart_template_amd"/>
+        </record>
+        <record id="account_activa_account_1122005" model="account.account.template">
+            <field name="code">1122005</field>
+            <field name="name">CUENTAS POR COBRAR DETALLISTA</field>
+            <field name="user_type_id" ref="account.data_account_type_receivable"/>
+            <field name="reconcile" eval="True"/>
+            <field name="currency_id" ref="base.VEF"/>
+            <field name="chart_template_id" ref="ve_chart_template_amd"/>
+        </record>
+        <record id="account_activa_account_1122006" model="account.account.template">
+            <field name="code">1122006</field>
+            <field name="name">IMPUESTOS POR COBRAR</field>
+            <field name="user_type_id" ref="account.data_account_type_receivable"/>
+            <field name="reconcile" eval="True"/>
+            <field name="currency_id" ref="base.VEF"/>
+            <field name="chart_template_id" ref="ve_chart_template_amd"/>
+        </record>
+        <record id="account_activa_account_1125003" model="account.account.template">
+            <field name="code">1125003</field>
+            <field name="name">CUENTAS POR COBRAR SOCIOS</field>
+            <field name="user_type_id" ref="account.data_account_type_receivable"/>
+            <field name="reconcile" eval="True"/>
+            <field name="currency_id" ref="base.VEF"/>
+            <field name="chart_template_id" ref="ve_chart_template_amd"/>
+        </record>
+        <record id="account_activa_account_1271005" model="account.account.template">
+            <field name="code">1271005</field>
+            <field name="name">OTRAS CUENTAS POR COBRAR</field>
+            <field name="user_type_id" ref="account.data_account_type_receivable"/>
+            <field name="reconcile" eval="True"/>
+            <field name="currency_id" ref="base.VEF"/>
+            <field name="chart_template_id" ref="ve_chart_template_amd"/>
+        </record>
+        <record id="account_activa_account_1129009" model="account.account.template">
+            <field name="code">1129009</field>
+            <field name="name">0TRAS CUENTAS X COBRAR OTROS DEUDORES</field>
+            <field name="user_type_id" ref="account.data_account_type_receivable"/>
+            <field name="reconcile" eval="True"/>
+            <field name="currency_id" ref="base.VEF"/>
+            <field name="chart_template_id" ref="ve_chart_template_amd"/>
+        </record>
+        <record id="account_activa_account_2151002" model="account.account.template">
+            <field name="code">2151002</field>
+            <field name="name">DIVDENDO POR COBRAR NO COBRADOS</field>
+            <field name="user_type_id" ref="account.data_account_type_receivable"/>
+            <field name="reconcile" eval="True"/>
+            <field name="currency_id" ref="base.VEF"/>
+            <field name="chart_template_id" ref="ve_chart_template_amd"/>
+        </record>
+
+        <record id="account_activa_account_2122001" model="account.account.template">
+            <field name="code">2122001</field>
+            <field name="name">CUENTAS POR PAGAR PROVEEDORES</field>
+            <field name="user_type_id" ref="account.data_account_type_payable"/>
+            <field name="reconcile" eval="True"/>
+            <field name="currency_id" ref="base.VEF"/>
+            <field name="chart_template_id" ref="ve_chart_template_amd"/>
+        </record>
+        <record id="account_activa_account_2124001" model="account.account.template">
+            <field name="code">2124001</field>
+            <field name="name">CUENTAS POR PAGAR SOCIOS</field>
+            <field name="user_type_id" ref="account.data_account_type_payable"/>
+            <field name="reconcile" eval="True"/>
+            <field name="currency_id" ref="base.VEF"/>
+            <field name="chart_template_id" ref="ve_chart_template_amd"/>
+        </record>
+        <record id="account_activa_account_2151001" model="account.account.template">
+            <field name="code">2151001</field>
+            <field name="name">DIVIDENDO POR PAGAR VIGENTES</field>
+            <field name="user_type_id" ref="account.data_account_type_payable"/>
+            <field name="reconcile" eval="True"/>
+            <field name="currency_id" ref="base.VEF"/>
+            <field name="chart_template_id" ref="ve_chart_template_amd"/>
+        </record>
+        <record id="account_activa_account_2175017" model="account.account.template">
+            <field name="code">2175017</field>
+            <field name="name">NOMINA POR PAGAR</field>
+            <field name="user_type_id" ref="account.data_account_type_payable"/>
+            <field name="reconcile" eval="True"/>
+            <field name="currency_id" ref="base.VEF"/>
+            <field name="chart_template_id" ref="ve_chart_template_amd"/>
+        </record>
+        <record id="account_activa_account_2175018" model="account.account.template">
+            <field name="code">2175018</field>
+            <field name="name">IMPUESTOS POR PAGAR</field>
+            <field name="user_type_id" ref="account.data_account_type_payable"/>
+            <field name="reconcile" eval="True"/>
+            <field name="currency_id" ref="base.VEF"/>
+            <field name="chart_template_id" ref="ve_chart_template_amd"/>
+        </record>
+        <record id="account_activa_account_2151001" model="account.account.template">
+            <field name="code">2151001</field>
+            <field name="name">DIVIDENDO POR PAGAR VIGENTES</field>
+            <field name="user_type_id" ref="account.data_account_type_payable"/>
+            <field name="reconcile" eval="True"/>
+            <field name="currency_id" ref="base.VEF"/>
+            <field name="chart_template_id" ref="ve_chart_template_amd"/>
+        </record>
+        <record id="account_activa_account_2175008" model="account.account.template">
+            <field name="code">2175008</field>
+            <field name="name">POLIZA DE SEGURO POR PAGAR</field>
+            <field name="user_type_id" ref="account.data_account_type_payable"/>
+            <field name="reconcile" eval="True"/>
+            <field name="currency_id" ref="base.VEF"/>
+            <field name="chart_template_id" ref="ve_chart_template_amd"/>
+        </record>
+
+        <record id="account_activa_account_9212003" model="account.account.template">
+            <field name="code">9212003</field>
+            <field name="name">GANANCIAS EN DIFERENCIAL CAMBIARIO</field>
+            <field name="user_type_id" ref="account.data_account_type_revenue"/>
+            <field name="reconcile" eval="True"/>
+            <field name="currency_id" ref="base.VEF"/>
+            <field name="chart_template_id" ref="ve_chart_template_amd"/>
+        </record>
+        <record id="account_activa_account_9113006" model="account.account.template">
+            <field name="code">9113006</field>
+            <field name="name">PERDIDAS EN DIFERENCIAL CAMBIARIO</field>
+            <field name="user_type_id" ref="account.data_account_type_expenses"/>
+            <field name="reconcile" eval="True"/>
+            <field name="currency_id" ref="base.VEF"/>
+            <field name="chart_template_id" ref="ve_chart_template_amd"/>
+        </record>
+
+        <record id="account_activa_account_5111001" model="account.account.template">
+            <field name="code">5111001</field>
+            <field name="name">VENTAS NACIONALES AL MAYOR</field>
+            <field name="user_type_id" ref="account.data_account_type_current_assets"/>
+            <field name="reconcile" eval="True"/>
+            <field name="currency_id" ref="base.VEF"/>
+            <field name="chart_template_id" ref="ve_chart_template_amd"/>
+        </record>
+        <record id="account_activa_account_5111002" model="account.account.template">
+            <field name="code">5111002</field>
+            <field name="name">VENTAS NACIONALES AL DETAL</field>
+            <field name="user_type_id" ref="account.data_account_type_current_assets"/>
+            <field name="reconcile" eval="True"/>
+            <field name="currency_id" ref="base.VEF"/>
+            <field name="chart_template_id" ref="ve_chart_template_amd"/>
+        </record>
+
+        <record id="account_activa_account_7151001" model="account.account.template">
+            <field name="code">7151001</field>
+            <field name="name">SUMINISTROS DE EQUIPOS DE OFICINA</field>
+            <field name="user_type_id" ref="account.data_account_type_current_liabilities"/>
+            <field name="reconcile" eval="True"/>
+            <field name="currency_id" ref="base.VEF"/>
+            <field name="chart_template_id" ref="ve_chart_template_amd"/>
+        </record>
+        <record id="account_activa_account_7151002" model="account.account.template">
+            <field name="code">7151002</field>
+            <field name="name">COMPRAS NACIONALES AL MAYOR</field>
+            <field name="user_type_id" ref="account.data_account_type_current_liabilities"/>
+            <field name="reconcile" eval="True"/>
+            <field name="currency_id" ref="base.VEF"/>
+            <field name="chart_template_id" ref="ve_chart_template_amd"/>
+        </record>
+        <record id="account_activa_account_7151003" model="account.account.template">
+            <field name="code">7151003</field>
+            <field name="name">COMPRAS NACIONALES AL DETAL</field>
+            <field name="user_type_id" ref="account.data_account_type_current_liabilities"/>
+            <field name="reconcile" eval="True"/>
+            <field name="currency_id" ref="base.VEF"/>
+            <field name="chart_template_id" ref="ve_chart_template_amd"/>
+        </record>
+
+        <record id="l10n_ve_plusteam.ve_chart_template_amd" model="account.chart.template">
+            <field name="property_account_receivable_id" ref="account_activa_account_1122001"/>
+            <field name="property_account_payable_id" ref="account_activa_account_2122001"/>
+            <field name="property_account_expense_categ_id" ref="account_activa_account_7151002"/>
+            <field name="property_account_income_categ_id" ref="account_activa_account_5111001"/>
+            <field name="property_account_expense_id" ref="account_activa_account_7151002"/>
+            <field name="property_account_income_id" ref="account_activa_account_5111001"/>
+            <field name="income_currency_exchange_account_id" ref="account_activa_account_9212003"/>
+            <field name="expense_currency_exchange_account_id" ref="account_activa_account_9113006"/>
+            <field name="default_pos_receivable_account_id" ref="account_activa_account_1122003"/>
+            <field name="property_tax_receivable_account_id" ref="account_activa_account_1122006"/>
+            <field name="property_tax_payable_account_id" ref="account_activa_account_2175018"/>
         </record>
     </data>
 </odoo>

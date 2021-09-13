@@ -4,6 +4,7 @@
 # 	* l10n_ve_plusteam
 # 	* base
 # 	* resource
+#   * account
 #
 msgid ""
 msgstr ""
@@ -6006,13 +6007,21 @@ msgstr ""
 
 #. module: l10n_ve_plusteam
 #: model_terms:ir.ui.view,arch_db:l10n_ve_plusteam.res_config_settings_view_form
-msgid "<span class=\"o_form_label\">Accounting accounts for ISLR retention</span>"
-msgstr "<span class=\"o_form_label\">Cuentas contables para retenciones de ISLR</span>"
+msgid ""
+"<span class=\"o_form_label\">Accounting accounts for ISLR retention</span>\n"
+"                            <span class=\"fa fa-lg fa-building-o\" title=\"Values set here are company-specific.\" aria-label=\"Values set here are company-specific.\" role=\"img\"/>"
+msgstr ""
+"<span class=\"o_form_label\">Cuentas contables para retenciones de ISLR</span>\n"
+"                            <span class=\"fa fa-lg fa-building-o\" title=\"Los valores configurados aquí son específicos de la compañía.\" aria-label=\"Los valores configurados aquí son específicos de la compañía.\" role=\"img\"/>"
 
 #. module: l10n_ve_plusteam
 #: model_terms:ir.ui.view,arch_db:l10n_ve_plusteam.res_config_settings_view_form
-msgid "<span class=\"o_form_label\">Accounting accounts for VAT retention</span>"
-msgstr "<span class=\"o_form_label\">Cuentas contables para retenciones de IVA</span>"
+msgid ""
+"<span class=\"o_form_label\">Accounting accounts for VAT retention</span>\n"
+"                            <span class=\"fa fa-lg fa-building-o\" title=\"Values set here are company-specific.\" aria-label=\"Values set here are company-specific.\" role=\"img\"/>"
+msgstr ""
+"<span class=\"o_form_label\">Cuentas contables para retenciones de IVA</span>\n"
+"                            <span class=\"fa fa-lg fa-building-o\" title=\"Los valores configurados aquí son específicos de la compañía.\" aria-label=\"Los valores configurados aquí son específicos de la compañía.\" role=\"img\"/>"
 
 #. module: base
 #: model_terms:ir.ui.view,arch_db:base.view_base_module_update
@@ -27392,3 +27401,15 @@ msgstr "Viernes por la tarde"
 #, python-format
 msgid "Friday Morning"
 msgstr "Viernes por la mañana"
+
+#. modules: account, l10n_ve_plusteam
+#: code:addons/account/models/chart_template.py:0
+#, python-format
+msgid "Liquidity Transfer"
+msgstr "Transferencia de liquidez"
+
+#. modules: account, l10n_ve_plusteam
+#: code:addons/account/models/company.py:0
+#, python-format
+msgid "Undistributed Profits/Losses"
+msgstr "Ganancias/pérdidas no distribuidas"
