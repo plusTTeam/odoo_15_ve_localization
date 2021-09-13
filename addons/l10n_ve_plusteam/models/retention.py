@@ -49,11 +49,12 @@ class Retention(models.Model):
         ("in_invoice", "Vendor Bill"),
         ("in_refund", "Vendor Credit Note"),
     ], string="Type", required=True, store=True, index=True, readonly=True, tracking=True,
-        default="entry", change_default=True)
+        default="entry", change_default=True, related="invoice_number.move_type")
 
     # == Business fields ==
     code = fields.Char(string="Retention Number", default=_("New"), store=True)
     date = fields.Date(string="Date", required=True, default=fields.Date.context_today)
+    receipt_date = fields.Date(string="Receipt Date", required=True, default=fields.Date.context_today)
     month_fiscal_period = fields.Char(string="Month", compute="_compute_month_fiscal_char", store=True, readonly=False)
     year_fiscal_period = fields.Char(string="Year", default=str(today.year))
     is_iva = fields.Boolean(string="Is IVA", default=False,
@@ -65,7 +66,7 @@ class Retention(models.Model):
         comodel_name="account.account",
         string="Destination Account",
         store=True, readonly=False,
-        compute="_compute_destination_account_id",
+        compute="_get_destination_account_id",
         check_company=True)
     state = fields.Selection(selection=[
         ("draft", "Draft"),
@@ -80,7 +81,7 @@ class Retention(models.Model):
     partner_type = fields.Selection([
         ("customer", "Customer"),
         ("supplier", "Vendor"),
-    ], default="supplier", tracking=True)
+    ],string="partner type", default="supplier", tracking=True)
     partner_id = fields.Many2one("res.partner", string="Customer/Vendor", domain="[('parent_id','=', False)]",
                                  check_company=True)
     rif = fields.Char(string="RIF", related="partner_id.vat")
@@ -91,7 +92,7 @@ class Retention(models.Model):
                                      domain="[('move_type', 'in', ('out_invoice', 'in_invoice', 'in_refund', "
                                             "'out_refund')), ('retention_state', '!=', 'with_retention_Both'),"
                                             "('state', '=', 'posted'),('partner_id', '=', partner_id )]")
-    original_invoice_number = fields.Char(string="Original Invoice Number", related="invoice_number.invoice_number")                                        
+    original_document_number = fields.Char(string="Original Document Number", related="invoice_number.document_number")                                        
     invoice_date = fields.Date(string="Invoice Date", required=True, related="invoice_number.date")
     type_document = fields.Char(string="Type Document", compute="_compute_type_document")
     control_number = fields.Char(string="Control Number", related="invoice_number.control_number")
@@ -100,7 +101,7 @@ class Retention(models.Model):
                                           readonly=True, help="Utility field to express amount currency")
     amount_tax = fields.Monetary(string="Amount tax", related="invoice_number.amount_tax",
                                  currency_field="company_currency_id")
-    amount_untaxed = fields.Monetary(string="Amount tax", related="invoice_number.amount_untaxed",
+    amount_untaxed = fields.Monetary(string="Amount untaxed", related="invoice_number.amount_untaxed",
                                      currency_field="company_currency_id")
     amount_total = fields.Monetary(string="Amount total", related="invoice_number.amount_total",
                                    currency_field="company_currency_id")
@@ -108,7 +109,7 @@ class Retention(models.Model):
                                         currency_field="company_currency_id")
     amount_retention = fields.Monetary(string="Amount Retention", compute="_compute_amount_retention",
                                     currency_field="company_currency_id")
-    amount_base_untaxed = fields.Monetary(string="Amount Retention", compute="_compute_amount_base_untaxed",
+    amount_base_untaxed = fields.Monetary(string="Amount base untaxed", compute="_compute_amount_base_untaxed",
                                        currency_field="company_currency_id")
 
     @api.depends(
@@ -158,7 +159,6 @@ class Retention(models.Model):
                 account = "l10n_ve_plusteam.iva_account_purchase_id" if retention.is_iva else \
                     "l10n_ve_plusteam.islr_account_purchase_id"
             retention.destination_account_id = int(get_param(account))
-            _logger.info(int(get_param(account)))
 
     @api.depends("partner_id")
     def _compute_company_id(self):
@@ -180,6 +180,7 @@ class Retention(models.Model):
 
     @api.model
     def create(self, values):
+        
         if values.get("code", "").strip() in [_("New"), ""]:
             values["code"] = self.env["ir.sequence"].next_by_code("retention.sequence")
         values["state"] = "posted"
@@ -193,9 +194,15 @@ class Retention(models.Model):
                 "retention_state": retention_state
             })
         else:
+            if invoice.retention_state == retention_state:
+               raise ValidationError(_("This type was already generated"))
+
             invoice.write({
                 "retention_state": "with_retention_Both"
             })
+         
+        invoice.write({'line_ids':(1,invoice.line_ids.id,{'amount_residual': invoice.line_ids.amount_residual - values.get("amount_retention",0)})})
+        
         return super(Retention, self).create(values)
 
     @api.depends("ref", "code")

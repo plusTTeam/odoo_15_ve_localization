@@ -34,14 +34,16 @@
                     <group>
                         <group>
                             <field name="date"/>
-                            <field name="invoice_date"/>
+                            <field name="receipt_date" 
+                                   invisible="context.get('default_move_type') in ('in_invoice', 'in_refund','in_receipt')"/>
                             <field name="partner_type"/>
                             <field name="partner_id"/>
                             <field name="rif"/>
-                            <field name="destination_account_id" invisible="1"/>
+                            <field name="destination_account_id" invisible="1" />
                         </group>
                         <group>
                             <field name="invoice_number"/>
+                            <field name="invoice_date"/>
                             <field name="amount_base_untaxed"/>
                             <field name="amount_base_taxed"/>
                             <field name="amount_tax"/>
@@ -74,13 +76,26 @@
                 <field name="code"/>
                 <field name="retention_type"/>
                 <field name="date"/>
-                <field name="invoice_number"/>
+                <field name="invoice_number" optional="hide"/>
                 <field name="type_document"/>
-                <field name="original_invoice_number" optional="hide"/>
+                <field name="original_document_number" optional="hide"/>
                 <field name="control_number" optional="hide"/>
                 <field name="amount_retention"/>
             </tree>
         </field>
+    </record>
+
+    <record id="view_retention_filter" model="ir.ui.view">
+            <field name="name">retention.select</field>
+            <field name="model">retention</field>
+            <field name="arch" type="xml">
+                <search string="Search Retention">
+                    <filter string="ISLR" name="type_person" domain="[('is_iva', '=', False)]"/>
+                    <filter string="IVA" name="type_company" domain="[('is_iva', '=', True)]"/>
+                    <separator/>
+                   
+                </search>
+            </field>
     </record>
 
     <record id="retention_out_invoice_tree" model="ir.ui.view">
@@ -89,7 +104,7 @@
         <field name="inherit_id" ref="retention_view_tree"/>
         <field name="mode">primary</field>
         <field name="arch" type="xml">
-            <xpath expr="//field[@name='original_invoice_number']" position="attributes">
+            <xpath expr="//field[@name='original_document_number']" position="attributes">
                 <attribute name="optional">show</attribute>
             </xpath>
         </field>

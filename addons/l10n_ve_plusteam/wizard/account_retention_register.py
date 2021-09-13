@@ -26,6 +26,11 @@ class AccountRetentionRegister(models.TransientModel):
     rif = fields.Char(string="RIF", related="partner_id.vat")
     vat_withholding_percentage = fields.Float(string="vat withholding percentage", store=True, readonly=False,
                                               related="partner_id.vat_withholding_percentage")
+    destination_account_id = fields.Many2one(
+        comodel_name="account.account",
+        string="Destination Account",
+        store=True, readonly=False,
+        check_company=True)                                          
     # === invoice fields ===
     invoice_number = fields.Many2one("account.move", string="Invoice Number", compute="_get_data_invoice",
                                      domain="[('partner_id', '=', partner_id )]")
@@ -33,11 +38,11 @@ class AccountRetentionRegister(models.TransientModel):
                                   help="The payment's currency.")
     company_id = fields.Char(string="Company", compute="_get_data_invoice")
     move_type = fields.Char(string="Move Type", compute="_get_data_invoice")
-    original_invoice_number = fields.Char(string="Original Invoice Number", compute="_get_data_invoice")    
+    original_document_number = fields.Char(string="Original Invoice Number", compute="_get_data_invoice")    
     type_document = fields.Char(string="Type Document", compute="_compute_type_document")
     # == Fields given through the context ==
     document = fields.Char(string="Document Number", compute="_get_data_invoice")
-    amount_tax = fields.Monetary(currency_field="currency_id", compute="_get_data_invoice")
+    amount_tax = fields.Monetary(string="Amount tax",currency_field="currency_id", compute="_get_data_invoice")
     amount_total = fields.Monetary(string="Amount total", compute="_get_data_invoice", currency_field="currency_id")
     amount_base_taxed = fields.Monetary(string="Amount base taxed", compute="_get_data_invoice",
                                         currency_field="currency_id")
@@ -57,10 +62,7 @@ class AccountRetentionRegister(models.TransientModel):
         invoice = self.env["account.move"].browse(self._context.get("active_ids", []))
         for wizard in self:
             if invoice:
-                if invoice.ref:
-                    wizard.document = f"{invoice.name} _ {invoice.ref}"
-                else:
-                    wizard.document = invoice.name
+                wizard.document = invoice.document_number
                 wizard.invoice_number = invoice.id
                 wizard.amount_tax = invoice.amount_tax
                 wizard.amount_base_taxed = invoice.amount_base_taxed
@@ -70,9 +72,9 @@ class AccountRetentionRegister(models.TransientModel):
                 wizard.invoice_date = invoice.date
                 wizard.company_id = invoice.company_id.id
                 wizard.move_type = invoice.move_type
-                wizard.original_invoice_number = invoice.invoice_number
+                wizard.original_document_number = invoice.document_number
             else:
-                wizard.communication = "Sin relacion"
+                wizard.document = "Sin relacion"
 
     @api.depends(
         "vat_withholding_percentage",
@@ -107,27 +109,28 @@ class AccountRetentionRegister(models.TransientModel):
     @api.depends("invoice_number")
     def _compute_type_document(self):
         for retention in self:
-            if retention.invoice_number.move_type in ('out_invoice', 'in_invoice'):
+            if retention.move_type in ('out_invoice', 'in_invoice'):
                 if retention.invoice_number.debit_origin_id:
                     retention.type_document = 'N/D'
                 else:
                     retention.type_document = 'Factura'
-            elif retention.invoice_number.move_type in ('in_refund', 'out_refund'):
+            elif retention.move_type in ('in_refund', 'out_refund'):
                 retention.type_document = 'N/C'
             else:
                 retention.type_document = 'Otro'
 
+    @api.model
     def _get_destination_account_id(self):
-        partner_type = "supplier" if self._context.get("default_move_type") not in \
-                                     ("in_invoice", "in_refund", "in_receipt") else "customer"
         get_param = self.env["ir.config_parameter"].sudo().get_param
-        account = "l10n_ve_plusteam.iva_account_sale_id"
-        if partner_type == "customer":
-            account = "l10n_ve_plusteam.iva_account_sale_id" if self.is_iva else "l10n_ve_plusteam.islr_account_sale_id"
-        elif partner_type == "supplier":
-            account = "l10n_ve_plusteam.iva_account_purchase_id" if self.is_iva else \
-                "l10n_ve_plusteam.islr_account_purchase_id"
-        return int(get_param(account))
+        for retention in self:
+            account = "l10n_ve_plusteam.iva_account_sale_id"
+            if retention.move_type in ("out_invoice", "out_refund", "out_receipt"):
+                account = "l10n_ve_plusteam.iva_account_sale_id" if retention.is_iva else \
+                    "l10n_ve_plusteam.islr_account_sale_id"
+            elif retention.move_type in ("in_invoice", "in_refund", "in_receipt"):
+                account = "l10n_ve_plusteam.iva_account_purchase_id" if retention.is_iva else \
+                    "l10n_ve_plusteam.islr_account_purchase_id"
+        retention.destination_account_id = int(get_param(account))
 
     def _create_retention_vals_from_wizard(self):
         return {
@@ -138,7 +141,7 @@ class AccountRetentionRegister(models.TransientModel):
             "is_iva": self.is_iva,
             "move_type": self.move_type,
             "type_document": self.type_document,
-            "original_invoice_number": self.original_invoice_number,
+            "original_document_number": self.original_document_number,
             "code": self.code,
             "company_id": self.company_id,
             "partner_id": self.partner_id.id,
@@ -147,7 +150,7 @@ class AccountRetentionRegister(models.TransientModel):
             "invoice_date": self.invoice_date.strftime("%Y-%m-%d"),
             "amount_retention": self.amount_retention,
             "amount_base_untaxed": self.amount_base_untaxed,
-            "destination_account_id": self._get_destination_account_id()
+            "destination_account_id": self.destination_account_id.id
         }
 
     def _create_retentions(self):
