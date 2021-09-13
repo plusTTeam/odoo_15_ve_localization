@@ -3,17 +3,15 @@
     'name': "Venezuela - Accounting",
 
     'summary': """
-        Venezuelan accounting Localization based on laws defined by SENIAT
-        Localización Venezolana basadas en las leyes y gacetas definidas por el SENIAT
-        """,
+        Venezuelan accounting Localization based on laws defined by SENIAT to operate in Venezuela
+    """,
 
     'description': """
         Chart of Account for Venezuela.
         ===============================
         
         Venezuela doesn't have any chart of account by law, but the default
-        proposed in Odoo should comply with some Accepted best practices in Venezuela,
-        this plan comply with this practices.
+        proposed in Odoo should comply with some Accepted best practices in Venezuela
         
         Features:
         ===============================
@@ -25,12 +23,6 @@
         - New fields in invoices and contacts
         - Multiple exchange rates by day
         - Communication with fiscal printers
-        
-        We recommend use of account_anglo_saxon if you want valued your
-        stocks as Venezuela does with out invoices.
-        
-        If you install this module, and select Custom chart a basic chart will be proposed,
-        but you will need set manually account defaults for taxes.
     """,
 
     'author': "PLUSTEAM",
