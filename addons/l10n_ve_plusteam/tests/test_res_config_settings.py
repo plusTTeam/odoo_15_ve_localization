@@ -17,9 +17,8 @@ class TestResConfigSettings(TransactionCase):
         })
 
     def test_set_values(self):
-        settings = self.env["res.config.settings"].search([("company_id", "=", self.company.id)], limit=1)
+        settings = self.env["res.config.settings"].with_company(self.company).search([], limit=1)
         settings.iva_account_purchase_id = self.new_account.id
-        settings.set_values()
         settings.flush()
         settings.execute()
         self.assertEqual(self.company.iva_account_purchase_id.id, self.new_account.id,
