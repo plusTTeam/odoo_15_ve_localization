@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
 from odoo import models, fields, api, _
 from odoo.exceptions import ValidationError
-
+import logging
+_logger = logging.getLogger(__name__)
 
 class Retention(models.Model):
     _name = "retention"
@@ -179,6 +180,18 @@ class Retention(models.Model):
                 retention.type_document = 'Otro'
 
     @api.model
+    def _update_amount_residual(self, values):
+        for line in self.invoice_number.line_ids:
+            _logger.info(line.account_id.user_type_id.type)
+            _logger.info(line.line_ids.amount_residual)
+
+        for line in self.invoice_number.line_ids.filtered(
+            lambda lines: lines.account_id.user_type_id.type in ('receivable', 'payable')):
+            _logger.info(line.account_id.user_type_id.type)
+            _logger.info(line.amount_residual)
+            line.write({'amount_residual': line.amount_residual - values.get("amount_retention", 0.0)})
+
+    @api.model
     def create(self, values):
         
         if values.get("code", "").strip() in [_("New"), ""]:
@@ -200,10 +213,10 @@ class Retention(models.Model):
             invoice.write({
                 "retention_state": "with_retention_Both"
             })
-         
-        invoice.write({'line_ids':(1,invoice.line_ids.id,{'amount_residual': invoice.line_ids.amount_residual - values.get("amount_retention",0)})})
-        
+        self._update_amount_residual(values)
+
         return super(Retention, self).create(values)
+
 
     @api.depends("ref", "code")
     def _compute_complete_name_with_code(self):
