@@ -25,6 +25,6 @@ class TestAccountMove(TransactionCase):
             self.invoice.control_number = "12345"
         self.assertEqual(
             str(raise_exception.exception),
-            _("Invalid control number format. Must have at least 6 numbers"),
+            _("Invalid control number format. Must have at least 6 numbers and a maximum of 9 numbers"),
             msg=MESSAGE_EXCEPTION_NOT_EXECUTE
         )

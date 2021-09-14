@@ -1,0 +1,9 @@
+<?xml version="1.0" ?>
+<odoo>
+    <data noupdate="1">
+        <function model="account.chart.template" name="try_loading">
+            <value eval="[ref('l10n_ve_plusteam.ve_chart_template_amd')]"/>
+        </function>
+        <function model="account.chart.template" name="update_translation_accounts"/>
+    </data>
+</odoo>
