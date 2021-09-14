@@ -14,7 +14,8 @@
             <field name="name">IVA 31%</field>
         </record>
 
-        <record id="tax_0_sale" model="account.tax">
+        <record id="tax_0_sale" model="account.tax.template">
+            <field name="chart_template_id" ref="ve_chart_template_amd"/>
             <field name="name">Exento (ventas)</field>
             <field name="description">Exento (ventas)</field>
             <field name="amount">0</field>
@@ -42,7 +43,8 @@
                 }),
             ]"/>
         </record>
-        <record id="tax_8_sale" model="account.tax">
+        <record id="tax_8_sale" model="account.tax.template">
+            <field name="chart_template_id" ref="ve_chart_template_amd"/>
             <field name="name">IVA (8.0%) ventas</field>
             <field name="description">IVA (8.0%) ventas</field>
             <field name="amount">8</field>
@@ -72,7 +74,8 @@
                 }),
             ]"/>
         </record>
-        <record id="tax_16_sale" model="account.tax">
+        <record id="tax_16_sale" model="account.tax.template">
+            <field name="chart_template_id" ref="ve_chart_template_amd"/>
             <field name="name">IVA (16.0%) ventas</field>
             <field name="description">IVA (16.0%) ventas</field>
             <field name="amount">16</field>
@@ -102,7 +105,8 @@
                 }),
             ]"/>
         </record>
-        <record id="tax_31_sale" model="account.tax">
+        <record id="tax_31_sale" model="account.tax.template">
+            <field name="chart_template_id" ref="ve_chart_template_amd"/>
             <field name="name">IVA (31.0%) ventas</field>
             <field name="description">IVA (31.0%) ventas</field>
             <field name="amount">31</field>
@@ -133,7 +137,8 @@
             ]"/>
         </record>
 <!--        PURCHASE-->
-        <record id="tax_0_purchase" model="account.tax">
+        <record id="tax_0_purchase" model="account.tax.template">
+            <field name="chart_template_id" ref="ve_chart_template_amd"/>
             <field name="name">Exento (compras)</field>
             <field name="description">Exento (compras)</field>
             <field name="amount">0</field>
@@ -161,7 +166,8 @@
                 }),
             ]"/>
         </record>
-        <record id="tax_8_purchase" model="account.tax">
+        <record id="tax_8_purchase" model="account.tax.template">
+            <field name="chart_template_id" ref="ve_chart_template_amd"/>
             <field name="name">IVA (8.0%) compras</field>
             <field name="description">IVA (8.0%) compras</field>
             <field name="amount">8</field>
@@ -191,7 +197,8 @@
                 }),
             ]"/>
         </record>
-        <record id="tax_16_purchase" model="account.tax">
+        <record id="tax_16_purchase" model="account.tax.template">
+            <field name="chart_template_id" ref="ve_chart_template_amd"/>
             <field name="name">IVA (16.0%) compras</field>
             <field name="description">IVA (16.0%) compras</field>
             <field name="amount">16</field>
@@ -221,7 +228,8 @@
                 }),
             ]"/>
         </record>
-        <record id="tax_31_purchase" model="account.tax">
+        <record id="tax_31_purchase" model="account.tax.template">
+            <field name="chart_template_id" ref="ve_chart_template_amd"/>
             <field name="name">IVA (31.0%) compras</field>
             <field name="description">IVA (31.0%) compras</field>
             <field name="amount">31</field>

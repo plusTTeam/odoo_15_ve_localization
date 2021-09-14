@@ -1,22 +1,36 @@
 # -*- coding: utf-8 -*-
 {
-    'name': "l10n_ve_plusteam",
+    'name': "Venezuela - Accounting",
 
     'summary': """
-        Short (1 phrase/line) summary of the module's purpose, used as
-        subtitle on modules listing or apps.openerp.com""",
-
-    'description': """
-        Long description of module's purpose
+Venezuelan accounting Localization based on laws defined by SENIAT to operate in Venezuela
     """,
 
-    'author': "My Company",
-    'website': "http://www.yourcompany.com",
+    'description': """
+Venezuelan Account Localization
+----------
+
+Venezuela doesn't have any chart of account by law, but the default
+proposed in Odoo should comply with some Accepted best practices in Venezuela
+
+Features:
+* Taxes for Venezuela
+* Retention process for IVA, ISLR and IGTF
+* Accounting books: Mayor, Diario, Inventario y Balances
+* States for Venezuela
+* Consulting of RIF
+* New fields in invoices and contacts
+* Multiple exchange rates by day
+* Communication with fiscal printers
+    """,
+
+    'author': "PLUSTEAM",
+    'website': "https://plusteam.tech",
 
     # Categories can be used to filter modules in modules listing
     # Check https://github.com/odoo/odoo/blob/14.0/odoo/addons/base/data/ir_module_category_data.xml
     # for the full list
-    'category': 'Uncategorized',
+    'category': 'Accounting/Localizations/Account Charts',
     'version': '0.1',
 
     # any module necessary for this one to work correctly
@@ -33,11 +47,13 @@
         'data/res_country_state_data.xml',
         'data/account_chart_template_data.xml',
         'data/account_account_data.xml',
+        'data/account_tax_data.xml',
+        'data/account_chart_template_try_loading_data.xml',
         'data/resource_calendar_leaves_data.xml',
         'data/resource_calendar_attendance_data.xml',
         'data/resource_calendar_data.xml',
-        'data/account_tax_data.xml',
         'data/res_config_settings_data.xml',
+        'data/res_country_data.xml',
         'data/sequence_retention_data.xml',
         'data/account_journal_data.xml',
         'views/res_partner_views.xml',

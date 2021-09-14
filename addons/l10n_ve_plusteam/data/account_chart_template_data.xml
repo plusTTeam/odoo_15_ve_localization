@@ -5,12 +5,9 @@
             <field name="name">Venezuela - Contabilidad</field>
             <field name="bank_account_code_prefix">1113</field>
             <field name="cash_account_code_prefix">1111</field>
-            <field name="transfer_account_code_prefix">1129003</field>
+            <field name="transfer_account_code_prefix">1129</field>
             <field name="code_digits">7</field>
             <field name="currency_id" ref="base.VEF"/>
         </record>
-        <function model="account.chart.template" name="try_loading">
-            <value eval="[ref('l10n_ve_plusteam.ve_chart_template_amd')]"/>
-        </function>
     </data>
 </odoo>
