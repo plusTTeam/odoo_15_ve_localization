@@ -2,7 +2,7 @@
 <odoo>
     <data noupdate="1">
         <record id="journal_withholding" model="account.journal">
-            <field name="name">Retenciones</field>
+            <field name="name">Retenciones de IVA</field>
             <field name="type">general</field>
             <field name="code">RETEN</field>
         </record>
