@@ -1,8 +1,6 @@
 # -*- coding: utf-8 -*-
-import logging
 from odoo import models, fields, api, _
 from odoo.exceptions import ValidationError
-_logger = logging.getLogger(__name__)
 
 
 class Retention(models.Model):
@@ -21,7 +19,6 @@ class Retention(models.Model):
             journal = self.env["account.journal"].browse(self._context["default_journal_id"])
         else:
             journal = self._search_default_journal()
-
         return journal
 
     @api.model
@@ -62,7 +59,6 @@ class Retention(models.Model):
         comodel_name="account.account",
         string="Destination Account",
         store=True, readonly=False,
-        compute="_compute_destination_account_id",
         check_company=True)
     state = fields.Selection(selection=[
         ("draft", "Draft"),
@@ -144,18 +140,18 @@ class Retention(models.Model):
         for partner in self:
             partner.is_iva = partner.retention_type == "iva"
 
-    @api.model
     def _get_destination_account_id(self):
-        get_param = self.env["ir.config_parameter"].sudo().get_param
-        for retention in self:
-            account = "l10n_ve_plusteam.iva_account_sale_id"
-            if retention.partner_type == "customer":
-                account = "l10n_ve_plusteam.iva_account_sale_id" if retention.is_iva else \
-                    "l10n_ve_plusteam.islr_account_sale_id"
-            elif retention.partner_type == "supplier":
-                account = "l10n_ve_plusteam.iva_account_purchase_id" if retention.is_iva else \
-                    "l10n_ve_plusteam.islr_account_purchase_id"
-            retention.destination_account_id = int(get_param(account))
+        self.ensure_one()
+        account = self.company_id.iva_account_sale_id or self.env.company.iva_account_sale_id
+        if self.partner_type == "customer":
+            if self.is_iva is False:
+                account = self.company_id.islr_account_sale_id or self.env.company.islr_account_sale_id
+        elif self.partner_type == "supplier":
+            if self.is_iva:
+                account = self.company_id.iva_account_purchase_id or self.env.company.iva_account_purchase_id
+            else:
+                account = self.company_id.islr_account_purchase_id or self.env.company.islr_account_purchase_id
+        return account.id
 
     @api.depends("partner_id")
     def _compute_company_id(self):
@@ -180,10 +176,12 @@ class Retention(models.Model):
             invoice.write({
                 "retention_state": "with_retention_Both"
             })
-
         retention = super(Retention, self).create(values)
+        retention.write({
+            "destination_account_id": retention._get_destination_account_id()
+        })
         retention.move_id.write(retention._update_move_id())
-        to_write['line_ids'] = [(0, 0, line_values) for line_values in retention._prepare_move_line_default_values()]
+        to_write = {'line_ids': [(0, 0, line_values) for line_values in retention._prepare_move_lines()]}
         retention.move_id.write(to_write)
         return retention
 
@@ -191,32 +189,28 @@ class Retention(models.Model):
         self.ensure_one()
         return {
             "journal_id": self._get_default_journal().id,
-            "ref": _("%s withholding", self.retention_type),
+            "ref": _("%s withholding from %s invoice", self.retention_type, self.invoice_number.name),
             "date": self.date,
             "move_type": "entry",
             "partner_id": self.partner_id.id,
+            "state": "posted"
         }
 
-    def _prepare_move_line_default_values(self):
+    def _prepare_move_lines(self):
         self.ensure_one()
         default_line_name = self.code
-        if self.move_type in ('in_invoice', "in_refund"):
+        if self.move_type in ('in_invoice', "out_refund"):
             # Receive money.
             counterpart_amount = self.amount_retention
-        elif self.move_type in ('out_invoice', "out_refund"):
+        elif self.move_type in ('out_invoice', "in_refund"):
             # Send money.
             counterpart_amount = -self.amount_retention
         else:
             counterpart_amount = 0.0
-        _logger.info(counterpart_amount)
-
         balance = self.currency_id._convert(
             counterpart_amount, self.company_id.currency_id, self.company_id, self.date)
-        _logger.info(balance)
-
         counterpart_amount_currency = counterpart_amount
         counterpart_account = self._get_counterpart_account()
-        _logger.info(self.destination_account_id)
         line_ids = [{
             'name': default_line_name,
             'date_maturity': self.date,
@@ -234,10 +228,8 @@ class Retention(models.Model):
             'debit': balance > 0.0 and balance or 0.0,
             'credit': balance < 0.0 and -balance or 0.0,
             'partner_id': self.partner_id.id,
-            'account_id': counterpart_account.id
+            'account_id': counterpart_account.account_id.id
         }]
-        _logger.info(line_ids)
-
         return line_ids
 
     def _get_counterpart_account(self):
