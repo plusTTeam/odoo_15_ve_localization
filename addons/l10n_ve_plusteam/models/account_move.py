@@ -22,4 +22,4 @@ class AccountMove(models.Model):
     def _check_control_number(self):
         for record in self:
             if record.control_number and re.match(r"^[0-9]{6,9}$", record.control_number) is None:
-                raise ValidationError(_("Invalid control number format. Must have at least 6 numbers"))
+                raise ValidationError(_("Invalid control number format. Must have at least 6 numbers and a maximum of 9 numbers"))

@@ -27211,8 +27211,8 @@ msgstr "Número de expediente"
 #. module: l10n_ve_plusteam
 #: code:addons/l10n_ve_plusteam/models/account_move.py:0
 #, python-format
-msgid "Invalid control number format. Must have at least 6 numbers"
-msgstr "Formato de Numero de control Inválido. Debe tener minimo 6 números"
+msgid "Invalid control number format. Must have at least 6 numbers and a maximum of 9 numbers"
+msgstr "Formato de Numero de control Inválido. Debe tener minimo 6 números y un maximo de 9 números"
 
 #. module: l10n_ve_plusteam
 #: model:ir.model.fields,field_description:l10n_ve_plusteam.field_account_bank_statement_line__import_doc
