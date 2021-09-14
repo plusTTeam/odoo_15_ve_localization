@@ -184,9 +184,9 @@ class Retention(models.Model):
             invoice.write({
                 "retention_state": "with_retention_Both"
             })
-        # journal_entry = self.env["account.move"].create({
-        #
-        # })
+        journal_entry = self.env["account.move"].create({
+            "journal_id": self._get_default_journal()
+        })
         return super(Retention, self).create(values)
 
     @api.depends("ref", "code")

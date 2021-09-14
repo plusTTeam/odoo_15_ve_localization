@@ -39,6 +39,7 @@
         'data/account_tax_data.xml',
         'data/res_config_settings_data.xml',
         'data/sequence_retention_data.xml',
+        'data/account_journal_data.xml',
         'views/res_partner_views.xml',
         'views/islr_concepts_views.xml',
         'views/person_type_views.xml',
