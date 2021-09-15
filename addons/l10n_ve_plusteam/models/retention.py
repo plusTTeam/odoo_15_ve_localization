@@ -32,7 +32,7 @@ class Retention(models.Model):
     def _create_withholding_journal(self):
         return self.env["account.journal"].create({
             "name": _("Withholding"),
-            "type": general,
+            "type": "general",
             "code": "RETEN"
         })
 

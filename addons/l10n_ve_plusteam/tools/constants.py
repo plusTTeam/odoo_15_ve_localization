@@ -105,3 +105,5 @@ WEEK_DAYS = {
         }
     }
 }
+RETENTION_TYPE_IVA = "iva"
+RETENTION_TYPE_ISLR = "islr"
