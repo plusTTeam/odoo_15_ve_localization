@@ -27,9 +27,9 @@
                                 establecido en esta Ley.)
                             </small>
                         </p>
-                        <h3 align="center">
+                        <h4 align="center">
                             <u>COMPROBANTE DE RETENCIÓN DEL IMPUESTO AL VALOR AGREGADO</u>
-                        </h3>
+                        </h4>
                         <div class="container-fluid" >
                             <div class="row">
                                 <div class="col-6 text-left">
@@ -40,9 +40,9 @@
                                 </div>
                             </div>
                         </div>
-                        <h4>
+                        <h5>
                             <u>DATOS DEL AGENTE DE RETENCION</u>
-                        </h4>
+                        </h5>
                         <div class="container-fluid" >
                             <div class="row">
                                 <div class="col-6 text-left">
@@ -53,23 +53,18 @@
                                     <span t-field="retention.year_fiscal_period"/></p>
                                 </div>
                             </div>
-                            <div class="row">
-                                <div class="col text-left">
-                                     <p> <br/></p>
-                                     <p>Numero RIF: <span t-field="retention.company_id.vat"/></p>
-                                     <p>Direccion Fiscal:
-                                        <span t-field="retention.company_id.street"/>
-                                        <span t-field="retention.company_id.city"/>
-                                        <span t-field="retention.company_id.state_id.country_id"/>
-                                        <br/>
-                                      </p>
-                                </div>
-                                
-                            </div>
                         </div>
-                        <h4>
+                        <div class="container-fluid" >
+                            <p>Numero RIF: <span t-field="retention.company_id.vat"/></p>
+                            <p>Direccion Fiscal:
+                                <span t-field="retention.company_id.street"/>
+                                <span t-field="retention.company_id.city"/>
+                                <span t-field="retention.company_id.state_id.country_id"/>
+                            </p>
+                        </div>
+                        <h5>
                             <u>DATOS DEL PROVEEDOR</u>
-                        </h4>
+                        </h5>
                         <div class="container-fluid" >
                             <p>Nombre/Razon Social:
                                 <span t-field="retention.partner_id.name"/>
@@ -78,9 +73,9 @@
                                 <span t-field="retention.partner_id.vat"/>
                             </p>
                         </div>
-                        <h4>
+                        <h5>
                             <u>DATOS DE LA COMPRA</u>
-                        </h4>
+                        </h5>
                         <div class="container-fluid" >
                          <div class="row">
                                 <div class="col-6 text-left">
@@ -139,9 +134,9 @@
                                 </div>
                          </div>
                         </div>
-                        <h4>
+                        <h5>
                             <u>DETALLES DEL CALCULO DE LA RETENCION</u>
-                        </h4>
+                        </h5>
                         <p>Porcentaje de la Retención:
                             <span t-field="retention.vat_withholding_percentage"/>
                             %
