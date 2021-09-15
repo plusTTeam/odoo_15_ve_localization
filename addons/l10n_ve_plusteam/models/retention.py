@@ -180,21 +180,8 @@ class Retention(models.Model):
                 retention.type_document = 'Otro'
 
     @api.model
-    def _update_amount_residual(self, values):
-        for line in self.invoice_number.line_ids:
-            _logger.info(line.account_id.user_type_id.type)
-            _logger.info(line.line_ids.amount_residual)
-
-        for line in self.invoice_number.line_ids.filtered(
-            lambda lines: lines.account_id.user_type_id.type in ('receivable', 'payable')):
-            _logger.info(line.account_id.user_type_id.type)
-            _logger.info(line.amount_residual)
-            line.write({'amount_residual': line.amount_residual - values.get("amount_retention", 0.0)})
-
-    @api.model
     def create(self, values):
-        
-        if values.get("code", "").strip() in [_("New"), ""]:
+        if values.get("code", "").strip() in [_("New"), "", "Nuevo"]:
             values["code"] = self.env["ir.sequence"].next_by_code("retention.sequence")
         values["state"] = "posted"
         if values.get("retention_type", False) == "iva":
@@ -213,7 +200,6 @@ class Retention(models.Model):
             invoice.write({
                 "retention_state": "with_retention_Both"
             })
-        self._update_amount_residual(values)
 
         return super(Retention, self).create(values)
 

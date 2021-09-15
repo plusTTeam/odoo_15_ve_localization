@@ -7,11 +7,17 @@
             <field name="model">account.retention.register</field>
             <field name="arch" type="xml">
                 <form string="Register Payment">
-                        
-                    <field name="retention_type" options="{'horizontal': true}" class="oe_edit_only" widget="radio" />
+                    <group >
+                        <group name="groupcode" invisible="context.get('default_move_type') not in ('in_invoice', 'in_refund','in_receipt')">
+                          <field name="code" placeholder="receipt number" />    
+                        </group>  
+                        <group name="grouptype">
+                          <field name="retention_type" options="{'horizontal': true}" class="oe_edit_only" widget="radio" nolabel="1"/>
+                        </group>
+                    </group>
                     <group>
                         <group name="group1">
-                            <field name="code" placeholder="receipt number"  invisible="context.get('default_move_type') not in ('in_invoice', 'in_refund','in_receipt')"/>
+                            
                             <label for="year_fiscal_period" string="Fiscal Period" />
                             <div class="d-flex" >
 					           <label for="month_fiscal_period" string="Month" style="font-weight:bold;"/>

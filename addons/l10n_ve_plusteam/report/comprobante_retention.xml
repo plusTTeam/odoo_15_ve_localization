@@ -3,7 +3,7 @@
     <record id="action_comprobante_retention" model="ir.actions.report">
         <field name="name">Comprobante IVA</field>
         <field name="model">retention</field>
-        <field name="report_type">qweb-html</field>
+        <field name="report_type">qweb-pdf</field>
         <field name="report_name">l10n_ve_plusteam.report_comprobante_retention</field>
         <field name="report_file">report_comprobante_retention</field>
         <field name="print_report_name">'Comprobante - %s' % (object.code)</field>
@@ -43,39 +43,45 @@
                         <h4>
                             <u>DATOS DEL AGENTE DE RETENCION</u>
                         </h4>
-                        <div class="container-fluid">
+                        <div class="container-fluid" >
                             <div class="row">
                                 <div class="col text-left">
                                     Nombre/Razon Social: <span t-field="retention.company_id.name"/>
                                 </div>
                                 <div class="col align-self-end justify-content-end text-right">
-                                    Periodo Fiscal: Mes <span t-field="retention.month_fiscal_period"/>  Año
-                                    <span t-field="retention.year_fiscal_period"/>
+                                    <p>Periodo Fiscal: Mes <span t-field="retention.month_fiscal_period"/>  Año
+                                    <span t-field="retention.year_fiscal_period"/></p>
                                 </div>
                             </div>
+                            <div class="row">
+                                <div class="col text-left">
+                                     <p>Numero RIF: <span t-field="retention.company_id.vat"/></p>
+                                     <p>Direccion Fiscal:
+                                        <span t-field="retention.company_id.street"/>
+                                        <span t-field="retention.company_id.city"/>
+                                        <span t-field="retention.company_id.state_id.country_id"/>
+                                      </p>
+                                </div>
+                                
+                            </div>
                         </div>
-                        <p>Numero RIF:
-                            <span t-field="retention.company_id.vat"/>
-                        </p>
-                        <p>Direccion Fiscal:
-                            <span t-field="retention.company_id.street"/>
-                            <span t-field="retention.company_id.city"/>
-                            <span t-field="retention.company_id.state_id.country_id"/>
-                        </p>
                         <h4>
                             <u>DATOS DEL PROVEEDOR</u>
                         </h4>
-                        <p>Nombre/Razon Social:
-                            <span t-field="retention.partner_id.name"/>
-                        </p>
-                        <p>Numero RIF:
-                            <span t-field="retention.partner_id.vat"/>
-                        </p>
+                        <div class="container-fluid">
+                            <p>Nombre/Razon Social:
+                                <span t-field="retention.partner_id.name"/>
+                            </p>
+                            <p>Numero RIF:
+                                <span t-field="retention.partner_id.vat"/>
+                            </p>
+                        </div>
                         <h4>
                             <u>DATOS DE LA COMPRA</u>
                         </h4>
+                        <div class="container-fluid">
                          <div class="row">
-                                <div class="col text-left">
+                                <div class="col-6 text-left">
                                     <t t-if="retention.invoice_number.debit_origin_id ">
                                         <p>Numero de la Factura:
                                             <span/>
@@ -123,11 +129,13 @@
                                         <span t-field="retention.invoice_number.date"/>
                                     </p>
                                 </div>
-                                <div class="col align-self-end justify-content-end text-right">
-                                    Fecha de Entrega <span t-field="retention.month_fiscal_period"/>
+                                <div class="col-4  text-center">
+                                    <p>_________________________</p>
+                                    <p>  Fecha de Entrega </p>
+                                    <p><span t-field="retention.date"/></p>
                                 </div>
                          </div>
-
+                        </div>
                         <h4>
                             <u>DETALLES DEL CALCULO DE LA RETENCION</u>
                         </h4>
