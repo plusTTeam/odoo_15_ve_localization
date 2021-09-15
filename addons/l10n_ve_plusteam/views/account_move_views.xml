@@ -80,6 +80,9 @@
                  <field name="document_number" optional="show"/>
             </xpath>
             <xpath expr="//field[@name='payment_state']" position="after">
+                <field name="retention_id" optional="hide"/>
+            </xpath>
+            <xpath expr="//field[@name='payment_state']" position="after">
                 <field name="form_number" optional="hide"/>
                 <field name="file_number" optional="hide"/>
             </xpath>

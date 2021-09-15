@@ -27617,3 +27617,9 @@ msgstr "Con Retención de ISLR"
 #: model:ir.model.fields.selection,name:l10n_ve_plusteam.selection__account_move__retention_state__with_retention_iva
 msgid "With Retention IVA"
 msgstr "Con Retención de IVA"
+
+#. module: l10n_ve_plusteam
+#: code:addons/l10n_ve_plusteam/models/retention.py:0
+#, python-format
+msgid "This type was already generated"
+msgstr "Este tipo de retención ya fue generado"
