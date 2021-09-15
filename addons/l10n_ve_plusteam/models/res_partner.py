@@ -44,6 +44,6 @@ class ResPartner(models.Model):
         for record in self:
             if record.vat_withholding_percentage < 0 or record.vat_withholding_percentage > 100:
                 raise ValidationError(
-                    _("The retention percentage must be between the the values 0 and 100, "
+                    _("The retention percentage must be between the values 0 and 100, "
                       "please verify that the value is in this range")
                 )
