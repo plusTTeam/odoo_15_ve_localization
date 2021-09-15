@@ -17335,7 +17335,7 @@ msgstr "Número de ejecuciones"
 #. module: base
 #: model:ir.model.fields,field_description:base.field_res_users__companies_count
 msgid "Number of Companies"
-msgstr "Numero de compañías"
+msgstr "Número de compañías"
 
 #. module: base
 #: model:ir.model.fields,help:base.field_res_users__accesses_count
@@ -27180,6 +27180,7 @@ msgstr "Islas Åland"
 #: model:ir.model.fields,field_description:l10n_ve_plusteam.field_account_bank_statement_line__control_number
 #: model:ir.model.fields,field_description:l10n_ve_plusteam.field_account_move__control_number
 #: model:ir.model.fields,field_description:l10n_ve_plusteam.field_account_payment__control_number
+#: model:ir.model.fields,field_description:l10n_ve_plusteam.field_retention__control_number
 msgid "Control Number"
 msgstr "Número de Control"
 
@@ -27215,7 +27216,7 @@ msgstr "Número de expediente"
 #: code:addons/l10n_ve_plusteam/models/account_move.py:0
 #, python-format
 msgid "Invalid control number format. Must have at least 6 numbers and a maximum of 9 numbers"
-msgstr "Formato de Numero de control Inválido. Debe tener minimo 6 números y un maximo de 9 números"
+msgstr "Formato de Número de control Inválido. Debe tener minimo 6 números y un maximo de 9 números"
 
 #. module: l10n_ve_plusteam
 #: model:ir.model.fields,field_description:l10n_ve_plusteam.field_account_bank_statement_line__import_doc
@@ -27439,7 +27440,7 @@ msgstr "Fecha Comprobante"
 #: model:ir.model.fields,field_description:l10n_ve_plusteam.field_account_retention_register__code
 #: model:ir.model.fields,field_description:l10n_ve_plusteam.field_retention__code
 msgid "Retention Number"
-msgstr "Numero de Comprobante"
+msgstr "Número de Comprobante"
 
 #. module: l10n_ve_plusteam
 #: model:ir.model.fields,field_description:l10n_ve_plusteam.field_account_bank_statement_line__retention_state
@@ -27480,17 +27481,17 @@ msgstr "Porcentaje retención IVA"
 #: model:ir.model.fields,field_description:l10n_ve_plusteam.field_account_retention_register__invoice_number
 #: model:ir.model.fields,field_description:l10n_ve_plusteam.field_retention__invoice_number
 msgid "Invoice Number"
-msgstr "Numero de Factura"
+msgstr "Número de Factura"
 
 #. module: l10n_ve_plusteam
 #: model:ir.model.fields,field_description:l10n_ve_plusteam.field_retention__original_document_number
 msgid "Original Document Number"
-msgstr "Numero de Documento"
+msgstr "Número de Documento"
 
 #. module: l10n_ve_plusteam
 #: model_terms:ir.ui.view,arch_db:l10n_ve_plusteam.retention_view_form
 msgid "Receipt Number"
-msgstr "Numero Comprobante"
+msgstr "Número de Comprobante"
 
 #. module: l10n_ve_plusteam
 #: model:ir.model.fields,field_description:l10n_ve_plusteam.field_retention__ref
@@ -27555,7 +27556,7 @@ msgstr "Retención"
 #: model:ir.model.fields,field_description:l10n_ve_plusteam.field_account_payment__document_number
 #: model:ir.model.fields,field_description:l10n_ve_plusteam.field_account_retention_register__document
 msgid "Document Number"
-msgstr "Numero Documento"
+msgstr "Número de Documento"
 
 #. module: l10n_ve_plusteam
 #: model_terms:ir.ui.view,arch_db:l10n_ve_plusteam.retention_view_form
@@ -27623,3 +27624,10 @@ msgstr "Con Retención de IVA"
 #, python-format
 msgid "This type was already generated"
 msgstr "Este tipo de retención ya fue generado"
+
+#. modules: l10n_ve_plusteam
+#: model:ir.model.fields,field_description:l10n_ve_plusteam.field_account_retention_register__destination_account_id
+#: model:ir.model.fields,field_description:l10n_ve_plusteam.field_retention__destination_account_id
+#, python-format
+msgid "Destination Account"
+msgstr "Cuenta Destino"
