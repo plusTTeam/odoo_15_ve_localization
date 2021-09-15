@@ -1,8 +1,7 @@
 # -*- coding: utf-8 -*-
 from odoo import models, fields, api, _
 from odoo.exceptions import ValidationError
-import logging
-_logger = logging.getLogger(__name__)
+
 
 class Retention(models.Model):
     _name = "retention"
@@ -55,7 +54,6 @@ class Retention(models.Model):
     move_id = fields.Many2one(
         comodel_name="account.move", string="Journal Entry", required=True, readonly=True, ondelete="cascade",
         check_company=True)
-    # == Business fields ==
     code = fields.Char(string="Retention Number", default=_("New"), store=True)
     date = fields.Date(string="Date", required=True, default=fields.Date.context_today)
     receipt_date = fields.Date(string="Receipt Date", required=True, default=fields.Date.context_today)
@@ -77,25 +75,23 @@ class Retention(models.Model):
         ("cancel", "Cancelled"),
     ], string="Status", required=True, readonly=True, copy=False, tracking=True,
         default="draft")
-    # === partner fields ===
     company_id = fields.Many2one(comodel_name="res.company", string="Company",
                                  store=True, readonly=True,
                                  compute="_compute_company_id")
     partner_type = fields.Selection([
         ("customer", "Customer"),
         ("supplier", "Vendor"),
-    ],string="partner type", default="supplier", tracking=True)
+    ], string="partner type", default="supplier", tracking=True)
     partner_id = fields.Many2one("res.partner", string="Customer/Vendor", domain="[('parent_id','=', False)]",
                                  check_company=True)
     rif = fields.Char(string="RIF", related="partner_id.vat")
     vat_withholding_percentage = fields.Float(string="vat withholding percentage", store=True, readonly=False,
                                               related="partner_id.vat_withholding_percentage", required=True)
-    # === invoice fields ===
     invoice_number = fields.Many2one("account.move", string="Invoice Number", required=True,
                                      domain="[('move_type', 'in', ('out_invoice', 'in_invoice', 'in_refund', "
                                             "'out_refund')), ('retention_state', '!=', 'with_retention_Both'),"
                                             "('state', '=', 'posted'),('partner_id', '=', partner_id )]")
-    original_document_number = fields.Char(string="Original Document Number", related="invoice_number.document_number")                                        
+    original_document_number = fields.Char(string="Original Document Number", related="invoice_number.document_number")
     invoice_date = fields.Date(string="Invoice Date", required=True, related="invoice_number.date")
     type_document = fields.Char(string="Type Document", compute="_compute_type_document")
     control_number = fields.Char(string="Control Number", related="invoice_number.control_number")
@@ -113,9 +109,9 @@ class Retention(models.Model):
     amount_base_taxed = fields.Monetary(string="Amount base taxed", related="invoice_number.amount_base_taxed",
                                         currency_field="company_currency_id")
     amount_retention = fields.Monetary(string="Amount Retention", compute="_compute_amount_retention",
-                                    currency_field="company_currency_id")
-    amount_base_untaxed = fields.Monetary(string="Amount base untaxed", compute="_compute_amount_base_untaxed",
                                        currency_field="company_currency_id")
+    amount_base_untaxed = fields.Monetary(string="Amount base untaxed", compute="_compute_amount_base_untaxed",
+                                          currency_field="company_currency_id")
 
     @api.depends(
         "vat_withholding_percentage",
@@ -185,7 +181,7 @@ class Retention(models.Model):
 
     @api.model
     def create(self, values):
-        if values.get("code", "").strip() in [_("New"), "", "Nuevo","New"]:
+        if values.get("code", "").strip() in [_("New"), "", "Nuevo", "New"]:
             values["code"] = self.env["ir.sequence"].next_by_code("retention.sequence")
         values["state"] = "posted"
         if values.get("retention_type", False) == "iva":
@@ -199,7 +195,7 @@ class Retention(models.Model):
             })
         else:
             if invoice.retention_state == retention_state:
-               raise ValidationError(_("This type was already generated"))
+                raise ValidationError(_("This type was already generated"))
 
             invoice.write({
                 "retention_state": "with_retention_Both"
