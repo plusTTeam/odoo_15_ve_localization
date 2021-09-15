@@ -181,7 +181,7 @@ class Retention(models.Model):
 
     @api.model
     def create(self, values):
-        if values.get("code", "").strip() in [_("New"), "", "Nuevo"]:
+        if values.get("code", "").strip() in [_("New"), "", "Nuevo","New"]:
             values["code"] = self.env["ir.sequence"].next_by_code("retention.sequence")
         values["state"] = "posted"
         if values.get("retention_type", False) == "iva":
@@ -204,7 +204,7 @@ class Retention(models.Model):
         return super(Retention, self).create(values)
 
 
-    @api.depends("ref", "code")
+    @api.depends("original_document_number", "code")
     def _compute_complete_name_with_code(self):
         for retention in self:
-            retention.complete_name_with_code = f"[{retention.code}] {retention.ref}"
+            retention.complete_name_with_code = f"[{retention.code}] {retention.original_document_number}"

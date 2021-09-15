@@ -17,7 +17,7 @@
             <t t-foreach="docs" t-as="retention">
                 <t t-call="web.basic_layout">
 
-                    <div class="page" >
+                    <div class="page" style="line-height:0.8 ">
                         <p>
                             <small>(Ley IVA_Artículo 11: La Administración Tributaria podrá designar como responsables
                                 del pago
@@ -30,7 +30,7 @@
                         <h3 align="center">
                             <u>COMPROBANTE DE RETENCIÓN DEL IMPUESTO AL VALOR AGREGADO</u>
                         </h3>
-                        <div class="container-fluid" style="line-height:0.8 ">
+                        <div class="container-fluid" >
                             <div class="row">
                                 <div class="col-6 text-left">
                                     Nro Comprobante <span t-field="retention.code"/>
@@ -43,7 +43,7 @@
                         <h4>
                             <u>DATOS DEL AGENTE DE RETENCION</u>
                         </h4>
-                        <div class="container-fluid" style="line-height:0.8 ">
+                        <div class="container-fluid" >
                             <div class="row">
                                 <div class="col-6 text-left">
                                     Nombre/Razon Social: <span t-field="retention.company_id.name"/>
@@ -55,12 +55,13 @@
                             </div>
                             <div class="row">
                                 <div class="col text-left">
-                                     <p> <span/> </p>
+                                     <p> <br/></p>
                                      <p>Numero RIF: <span t-field="retention.company_id.vat"/></p>
                                      <p>Direccion Fiscal:
                                         <span t-field="retention.company_id.street"/>
                                         <span t-field="retention.company_id.city"/>
                                         <span t-field="retention.company_id.state_id.country_id"/>
+                                        <br/>
                                       </p>
                                 </div>
                                 
@@ -69,7 +70,7 @@
                         <h4>
                             <u>DATOS DEL PROVEEDOR</u>
                         </h4>
-                        <div class="container-fluid" style="line-height:0.8 ">
+                        <div class="container-fluid" >
                             <p>Nombre/Razon Social:
                                 <span t-field="retention.partner_id.name"/>
                             </p>
@@ -80,7 +81,7 @@
                         <h4>
                             <u>DATOS DE LA COMPRA</u>
                         </h4>
-                        <div class="container-fluid" style="line-height:0.8 ">
+                        <div class="container-fluid" >
                          <div class="row">
                                 <div class="col-6 text-left">
                                     <t t-if="retention.invoice_number.debit_origin_id ">
@@ -128,6 +129,7 @@
                                     </t>
                                     <p>Fecha de Emisión:
                                         <span t-field="retention.invoice_number.date"/>
+                                        <br/>
                                     </p>
                                 </div>
                                 <div class="col-4  text-center">
