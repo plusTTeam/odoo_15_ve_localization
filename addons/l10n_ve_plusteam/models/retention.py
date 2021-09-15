@@ -26,7 +26,15 @@ class Retention(models.Model):
         journal = self.env.ref("l10n_ve_plusteam.journal_withholding", raise_if_not_found=False)
         if journal:
             return journal
-        return self.env["account.journal"].search(["type", "=", "general"], limit=1)
+        return self.env.company.withholding_journal_id or self._create_withholding_journal()
+
+    @api.model
+    def _create_withholding_journal(self):
+        return self.env["account.journal"].create({
+            "name": _("Withholding"),
+            "type": general,
+            "code": "RETEN"
+        })
 
     today = fields.Date.today()
     complete_name_with_code = fields.Char(
