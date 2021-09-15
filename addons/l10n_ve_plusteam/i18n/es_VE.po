@@ -10537,6 +10537,9 @@ msgstr ""
 #: model:ir.model.fields,field_description:l10n_ve_plusteam.field_tax_unit__date
 #: model:ir.model.fields.selection,name:base.selection__ir_property__type__date
 #: model_terms:ir.ui.view,arch_db:base.view_currency_rate_search
+#: model:ir.model.fields,field_description:l10n_ve_plusteam.field_account_retention_register__date
+#: model:ir.model.fields,field_description:l10n_ve_plusteam.field_retention__date
+#: model:ir.model.fields,field_description:l10n_ve_plusteam.field_tax_unit__date
 #, python-format
 msgid "Date"
 msgstr "Fecha"
@@ -17332,7 +17335,7 @@ msgstr "Número de ejecuciones"
 #. module: base
 #: model:ir.model.fields,field_description:base.field_res_users__companies_count
 msgid "Number of Companies"
-msgstr "Numero de compañías"
+msgstr "Número de compañías"
 
 #. module: base
 #: model:ir.model.fields,help:base.field_res_users__accesses_count
@@ -27177,6 +27180,7 @@ msgstr "Islas Åland"
 #: model:ir.model.fields,field_description:l10n_ve_plusteam.field_account_bank_statement_line__control_number
 #: model:ir.model.fields,field_description:l10n_ve_plusteam.field_account_move__control_number
 #: model:ir.model.fields,field_description:l10n_ve_plusteam.field_account_payment__control_number
+#: model:ir.model.fields,field_description:l10n_ve_plusteam.field_retention__control_number
 msgid "Control Number"
 msgstr "Número de Control"
 
@@ -27212,7 +27216,7 @@ msgstr "Número de expediente"
 #: code:addons/l10n_ve_plusteam/models/account_move.py:0
 #, python-format
 msgid "Invalid control number format. Must have at least 6 numbers and a maximum of 9 numbers"
-msgstr "Formato de Numero de control Inválido. Debe tener minimo 6 números y un maximo de 9 números"
+msgstr "Formato de Número de control Inválido. Debe tener minimo 6 números y un maximo de 9 números"
 
 #. module: l10n_ve_plusteam
 #: model:ir.model.fields,field_description:l10n_ve_plusteam.field_account_bank_statement_line__import_doc
@@ -27420,3 +27424,210 @@ msgstr "Ganancias/pérdidas no distribuidas"
 #: model:ir.model.fields,field_description:account.field_account_payment__amount_untaxed
 msgid "Untaxed Amount"
 msgstr "Sub_Total"
+
+#. module: l10n_ve_plusteam
+#: model:ir.model.fields,field_description:l10n_ve_plusteam.field_account_retention_register__invoice_date
+#: model:ir.model.fields,field_description:l10n_ve_plusteam.field_retention__invoice_date
+msgid "Invoice Date"
+msgstr "Fecha Factura"
+
+#. module: l10n_ve_plusteam
+#: model:ir.model.fields,field_description:l10n_ve_plusteam.field_retention__receipt_date
+msgid "Receipt Date"
+msgstr "Fecha Comprobante"
+
+#. module: l10n_ve_plusteam
+#: model:ir.model.fields,field_description:l10n_ve_plusteam.field_account_retention_register__code
+#: model:ir.model.fields,field_description:l10n_ve_plusteam.field_retention__code
+msgid "Retention Number"
+msgstr "Número de Comprobante"
+
+#. module: l10n_ve_plusteam
+#: model:ir.model.fields,field_description:l10n_ve_plusteam.field_account_bank_statement_line__retention_state
+#: model:ir.model.fields,field_description:l10n_ve_plusteam.field_account_move__retention_state
+#: model:ir.model.fields,field_description:l10n_ve_plusteam.field_account_payment__retention_state
+msgid "Retention Status"
+msgstr "Estado de la Retención"
+
+#. module: l10n_ve_plusteam
+#: model:ir.model.fields,field_description:l10n_ve_plusteam.field_account_retention_register__retention_type
+#: model:ir.model.fields,field_description:l10n_ve_plusteam.field_retention__retention_type
+msgid "Retention Type"
+msgstr "Tipo de Retención"
+
+#. module: l10n_ve_plusteam
+#: model_terms:ir.ui.view,arch_db:l10n_ve_plusteam.view_move_form
+msgid "Retentions applied"
+msgstr "Retenciones aplicadas"
+
+#. module: l10n_ve_plusteam
+#: model:ir.model.fields.selection,name:l10n_ve_plusteam.selection__retention__partner_type__customer
+#: model_terms:ir.ui.view,arch_db:l10n_ve_plusteam.retention_view_tree
+msgid "Customer"
+msgstr "Cliente"
+
+#. module: l10n_ve_plusteam
+#: model:ir.model.fields,field_description:l10n_ve_plusteam.field_retention__partner_id
+msgid "Customer/Vendor"
+msgstr "Cliente/Proveedor"
+
+#. module: l10n_ve_plusteam
+#: model:ir.model.fields,field_description:l10n_ve_plusteam.field_account_retention_register__vat_withholding_percentage
+#: model:ir.model.fields,field_description:l10n_ve_plusteam.field_retention__vat_withholding_percentage
+msgid "vat withholding percentage"
+msgstr "Porcentaje retención IVA"
+
+#. module: l10n_ve_plusteam
+#: model:ir.model.fields,field_description:l10n_ve_plusteam.field_account_retention_register__invoice_number
+#: model:ir.model.fields,field_description:l10n_ve_plusteam.field_retention__invoice_number
+msgid "Invoice Number"
+msgstr "Número de Factura"
+
+#. module: l10n_ve_plusteam
+#: model:ir.model.fields,field_description:l10n_ve_plusteam.field_retention__original_document_number
+msgid "Original Document Number"
+msgstr "Número de Documento"
+
+#. module: l10n_ve_plusteam
+#: model_terms:ir.ui.view,arch_db:l10n_ve_plusteam.retention_view_form
+msgid "Receipt Number"
+msgstr "Número de Comprobante"
+
+#. module: l10n_ve_plusteam
+#: model:ir.model.fields,field_description:l10n_ve_plusteam.field_retention__ref
+msgid "Reference"
+msgstr "Referencia"
+
+#. module: l10n_ve_plusteam
+#: model:ir.model.fields,field_description:l10n_ve_plusteam.field_account_retention_register__amount_base_taxed
+#: model:ir.model.fields,field_description:l10n_ve_plusteam.field_retention__amount_base_taxed
+msgid "Amount base taxed"
+msgstr "Base Imponible"
+
+#. module: l10n_ve_plusteam
+#: model:ir.model.fields,field_description:l10n_ve_plusteam.field_account_retention_register__amount_base_untaxed
+msgid "Amount base untaxed"
+msgstr "Base Exenta"
+
+#. module: l10n_ve_plusteam
+#: model:ir.model.fields,field_description:l10n_ve_plusteam.field_retention__amount_tax
+#: model:ir.model.fields,field_description:l10n_ve_plusteam.field_retention__amount_untaxed
+msgid "Amount tax"
+msgstr "Impuesto"
+
+#. module: l10n_ve_plusteam
+#: model:ir.model.fields,field_description:l10n_ve_plusteam.field_account_retention_register__amount_total
+#: model:ir.model.fields,field_description:l10n_ve_plusteam.field_retention__amount_total
+msgid "Amount total"
+msgstr "Total"
+
+#. module: l10n_ve_plusteam
+#: model:ir.model.fields,field_description:l10n_ve_plusteam.field_account_retention_register__amount_retention
+#: model:ir.model.fields,field_description:l10n_ve_plusteam.field_retention__amount_base_untaxed
+#: model:ir.model.fields,field_description:l10n_ve_plusteam.field_retention__amount_retention
+msgid "Amount Retention"
+msgstr "Monto Retención"
+
+#. module: l10n_ve_plusteam
+#: model:ir.model.fields.selection,name:l10n_ve_plusteam.selection__retention__partner_type__supplier
+#: model_terms:ir.ui.view,arch_db:l10n_ve_plusteam.retention_view_tree
+msgid "Vendor"
+msgstr "Proveedor"
+
+#. module: l10n_ve_plusteam
+#: model:ir.model.fields,field_description:l10n_ve_plusteam.field_account_retention_register__type_document
+#: model:ir.model.fields,field_description:l10n_ve_plusteam.field_retention__type_document
+msgid "Type Document"
+msgstr "Documento"
+
+#. module: l10n_ve_plusteam
+#: model:ir.actions.act_window,name:l10n_ve_plusteam.retention_action_out_invoice_type
+#: model:ir.model,name:l10n_ve_plusteam.model_retention
+#: model:ir.model.fields,field_description:l10n_ve_plusteam.field_account_bank_statement_line__retention_id
+#: model:ir.model.fields,field_description:l10n_ve_plusteam.field_account_move__retention_id
+#: model:ir.model.fields,field_description:l10n_ve_plusteam.field_account_payment__retention_id
+#: model:ir.ui.menu,name:l10n_ve_plusteam.localization_retention_menu
+msgid "Retention"
+msgstr "Retención"
+
+#. module: l10n_ve_plusteam
+#: model:ir.model.fields,field_description:l10n_ve_plusteam.field_account_bank_statement_line__document_number
+#: model:ir.model.fields,field_description:l10n_ve_plusteam.field_account_move__document_number
+#: model:ir.model.fields,field_description:l10n_ve_plusteam.field_account_payment__document_number
+#: model:ir.model.fields,field_description:l10n_ve_plusteam.field_account_retention_register__document
+msgid "Document Number"
+msgstr "Número de Documento"
+
+#. module: l10n_ve_plusteam
+#: model_terms:ir.ui.view,arch_db:l10n_ve_plusteam.retention_view_form
+#: model_terms:ir.ui.view,arch_db:l10n_ve_plusteam.view_account_retention_register_form
+msgid "Fiscal Period"
+msgstr "Periodo Fiscal"
+
+#. module: l10n_ve_plusteam
+#: model:ir.model.fields,field_description:l10n_ve_plusteam.field_account_retention_register__year_fiscal_period
+#: model:ir.model.fields,field_description:l10n_ve_plusteam.field_retention__year_fiscal_period
+#: model_terms:ir.ui.view,arch_db:l10n_ve_plusteam.retention_view_form
+#: model_terms:ir.ui.view,arch_db:l10n_ve_plusteam.view_account_retention_register_form
+msgid "Year"
+msgstr "Año"
+
+#. module: l10n_ve_plusteam
+#: model:ir.model.fields,field_description:l10n_ve_plusteam.field_account_retention_register__month_fiscal_period
+#: model:ir.model.fields,field_description:l10n_ve_plusteam.field_retention__month_fiscal_period
+#: model_terms:ir.ui.view,arch_db:l10n_ve_plusteam.retention_view_form
+#: model_terms:ir.ui.view,arch_db:l10n_ve_plusteam.view_account_retention_register_form
+msgid "Month"
+msgstr "Mes"
+
+#. module: l10n_ve_plusteam
+#: model:ir.model.fields,field_description:l10n_ve_plusteam.field_retention__partner_type
+msgid "Partner Type"
+msgstr "Tipo Persona"
+
+#. module: l10n_ve_plusteam
+#: model_terms:ir.ui.view,arch_db:l10n_ve_plusteam.view_account_retention_register_form
+msgid "Create Retention"
+msgstr "Generar Retención"
+
+#. module: l10n_ve_plusteam
+#: code:addons/l10n_ve_plusteam/models/account_move.py:0
+#: model:ir.model,name:l10n_ve_plusteam.model_account_retention_register
+#: model_terms:ir.ui.view,arch_db:l10n_ve_plusteam.retention_view_form
+#: model_terms:ir.ui.view,arch_db:l10n_ve_plusteam.view_move_form
+#, python-format
+msgid "Register Retention"
+msgstr "Registrar Retención"
+
+#. module: l10n_ve_plusteam
+#: model_terms:ir.ui.view,arch_db:l10n_ve_plusteam.view_retention_filter
+msgid "Search Retention"
+msgstr "Buscar en Retención"
+
+#. module: l10n_ve_plusteam
+#: model:ir.model.fields.selection,name:l10n_ve_plusteam.selection__account_move__retention_state__with_retention_both
+msgid "With Retention Both"
+msgstr "Con Retención de IVA e ISLR"
+
+#. module: l10n_ve_plusteam
+#: model:ir.model.fields.selection,name:l10n_ve_plusteam.selection__account_move__retention_state__with_retention_islr
+msgid "With Retention ISLR"
+msgstr "Con Retención de ISLR"
+
+#. module: l10n_ve_plusteam
+#: model:ir.model.fields.selection,name:l10n_ve_plusteam.selection__account_move__retention_state__with_retention_iva
+msgid "With Retention IVA"
+msgstr "Con Retención de IVA"
+
+#. module: l10n_ve_plusteam
+#: code:addons/l10n_ve_plusteam/models/retention.py:0
+#, python-format
+msgid "This type was already generated"
+msgstr "Este tipo de retención ya fue generado"
+
+#. modules: l10n_ve_plusteam
+#: model:ir.model.fields,field_description:l10n_ve_plusteam.field_account_retention_register__destination_account_id
+#: model:ir.model.fields,field_description:l10n_ve_plusteam.field_retention__destination_account_id
+#, python-format
+msgid "Destination Account"
+msgstr "Cuenta Destino"
