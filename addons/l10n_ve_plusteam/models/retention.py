@@ -1,4 +1,6 @@
 # -*- coding: utf-8 -*-
+
+import re
 from odoo import models, fields, api, _
 from odoo.exceptions import ValidationError
 
@@ -80,8 +82,8 @@ class Retention(models.Model):
     invoice_number = fields.Many2one("account.move", string="Invoice Number", required=True,
                                      domain="[('move_type', 'in', ('out_invoice', 'in_invoice', 'in_refund', "
                                             "'out_refund')), ('retention_state', '!=', 'with_retention_Both'),"
-                                            "('state', '=', 'posted'),('partner_id', '=', partner_id )]")
-    original_document_number = fields.Char(string="Original Document Number", related="invoice_number.document_number")
+                                            "('state', '=', 'posted'),('partner_id', '=', partner_id )]")                                     
+    original_document_number = fields.Char(string="Original Document Number", related="invoice_number.document_number")                                        
     invoice_date = fields.Date(string="Invoice Date", required=True, related="invoice_number.date")
     type_document = fields.Char(string="Type Document", compute="_compute_type_document")
     control_number = fields.Char(string="Control Number", related="invoice_number.control_number")

@@ -55,6 +55,9 @@
                             </div>
                         </div>
                         <div class="container-fluid" >
+                            <p> </p>
+                        </div>
+                        <div class="container-fluid" >
                             <p>Numero RIF: <span t-field="retention.company_id.vat"/></p>
                             <p>Direccion Fiscal:
                                 <span t-field="retention.company_id.street"/>
