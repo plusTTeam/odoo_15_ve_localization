@@ -26,6 +26,7 @@ class TestResPartner(TransactionCase):
         })
         self.contact = self.env["res.partner"].create({
             "name": "New User",
+            "vat": "J123456789",
             "taxpayer": True,
             "special_taxpayer": True,
             "property_account_receivable_id": self.account_receivable.id,

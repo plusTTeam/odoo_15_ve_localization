@@ -45,7 +45,13 @@ class TestRetention(TransactionCase):
         """Test  when create retention for retention_type
         """
         with self.assertRaises(ValidationError) as raise_exception:
-            self.invoice.retention_state = 'with_retention_iva'
+            new_retention = self.env["retention"].create({
+                "invoice_number": self.invoice.id,
+                "partner_id": self.partner.id,
+                "move_type": self.invoice.move_type,
+                "retention_type": RETENTION_TYPE_IVA,
+                "vat_withholding_percentage": 75.0
+            })
         self.assertEqual(
             str(raise_exception.exception),
             _("This type was already generated"),

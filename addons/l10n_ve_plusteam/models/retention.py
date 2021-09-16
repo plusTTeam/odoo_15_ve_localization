@@ -81,7 +81,7 @@ class Retention(models.Model):
                                               related="partner_id.vat_withholding_percentage", required=True)
     invoice_number = fields.Many2one("account.move", string="Invoice Number", required=True,
                                      domain="[('move_type', 'in', ('out_invoice', 'in_invoice', 'in_refund', "
-                                            "'out_refund')), ('retention_state', '!=', 'with_retention_Both'),"
+                                            "'out_refund')), ('retention_state', '!=', 'with_retention_both'),"
                                             "('state', '=', 'posted'),('partner_id', '=', partner_id )]")                                     
     original_document_number = fields.Char(string="Original Document Number", related="invoice_number.document_number")                                        
     invoice_date = fields.Date(string="Invoice Date", required=True, related="invoice_number.date")
@@ -122,11 +122,18 @@ class Retention(models.Model):
                 )
 
     @api.constrains("retention_type")
-    def _check_vat_withholding_percentage(self):
+    def _check_retention_type(self):
+        created = False
         retentions = self.read_group([("retention_type", "=", "iva")], ["invoice_number"], ["invoice_number"])
         for retention in retentions:
             if retention.get('invoice_number_count', 0) > 1:
-                raise ValidationError(_("There can only be one VAT withholding per invoice"))
+                created = True
+        retentions = self.read_group([("retention_type", "=", "islr")], ["invoice_number"], ["invoice_number"])
+        for retention in retentions:
+            if retention.get('invoice_number_count', 0) > 1:
+                created = True
+        if created:
+            raise ValidationError(_("This type was already generated"))
 
     @api.depends(
         "vat_withholding_percentage",
@@ -207,6 +214,10 @@ class Retention(models.Model):
         if invoice.retention_state == "without_retention":
             invoice.write({
                 "retention_state": retention_state
+            })
+        elif invoice.retention_state != retention_state and invoice.retention_state != "with_retention_both":
+            invoice.write({
+                "retention_state": "with_retention_both"
             })
         return super(Retention, self).create(values)
 

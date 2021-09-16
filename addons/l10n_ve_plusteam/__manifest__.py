@@ -65,7 +65,7 @@ Features:
         'views/res_company_views.xml',
         'views/retention_views.xml',
         'wizard/retention_register_views.xml',
-        'report/comprobante_retention.xml',
+        'report/retention_vaucher.xml',
         'views/menu_views.xml'
     ],
     # only loaded in demonstration mode

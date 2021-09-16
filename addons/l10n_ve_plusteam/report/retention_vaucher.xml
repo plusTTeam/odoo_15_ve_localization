@@ -149,8 +149,8 @@
                                 <tr>
                                     <th scope="col"></th>
                                     <th scope="col">Total Compra con IVA</th>
-                                    <th scope="col">Compras Exactas y/o sin derecho a Credito</th>
-                                    <th scope="col">Base Imponible</th>
+                                    <th scope="col">Exentas y/o sin derecho a Credito</th>
+                                    <th scope="col">Base  Imponible</th>
                                     <th scope="col">% Alicuota</th>
                                     <th scope="col">Impuesto Iva</th>
                                     <th scope="col">Iva Retenido</th>

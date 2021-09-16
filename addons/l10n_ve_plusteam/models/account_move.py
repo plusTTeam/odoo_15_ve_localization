@@ -25,7 +25,7 @@ class AccountMove(models.Model):
     retention_state = fields.Selection(selection=[
         ('with_retention_iva', 'With Retention IVA'),
         ('with_retention_islr', 'With Retention ISLR'),
-        ('with_retention_Both', 'With Retention Both'),
+        ('with_retention_both', 'With Retention Both'),
         ('without_retention', 'Without Retention')],
         string="Retention Status", store=True, readonly=True, copy=False, tracking=True, default="without_retention")
 
