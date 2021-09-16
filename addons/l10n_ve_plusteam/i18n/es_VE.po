@@ -27541,6 +27541,7 @@ msgstr "Base Imponible"
 
 #. module: l10n_ve_plusteam
 #: model:ir.model.fields,field_description:l10n_ve_plusteam.field_account_retention_register__amount_base_untaxed
+#: model:ir.model.fields,field_description:l10n_ve_plusteam.field_retention__amount_base_untaxed
 msgid "Amount base untaxed"
 msgstr "Base Exenta"
 
@@ -27558,7 +27559,6 @@ msgstr "Total"
 
 #. module: l10n_ve_plusteam
 #: model:ir.model.fields,field_description:l10n_ve_plusteam.field_account_retention_register__amount_retention
-#: model:ir.model.fields,field_description:l10n_ve_plusteam.field_retention__amount_base_untaxed
 #: model:ir.model.fields,field_description:l10n_ve_plusteam.field_retention__amount_retention
 msgid "Amount Retention"
 msgstr "Monto Retención"
