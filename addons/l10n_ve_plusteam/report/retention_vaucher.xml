@@ -144,13 +144,13 @@
                             <span t-field="retention.vat_withholding_percentage"/>
                             %
                         </p>
+                        <div class="table-responsive-sm">
                         <table class="table">
                             <thead>
                                 <tr>
                                     <th scope="col"></th>
                                     <th scope="col">Total Compra con IVA</th>
-                                    <th scope="col">Exentas y/o <span>&amp;nbsp;</span>
-                                        sin derecho a Credito</th>
+                                    <th scope="col"><p>Exentas y/o sin derecho a Credito</th>
                                     <th scope="col">Base  Imponible</th>
                                     <th scope="col">% Alicuota</th>
                                     <th scope="col">Impuesto Iva</th>
@@ -233,6 +233,7 @@
                                 </tr>
                             </tbody>
                         </table>
+                        </div>
                     </div>
                 </t>
             </t>
