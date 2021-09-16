@@ -8779,7 +8779,7 @@ msgstr "Canadá"
 msgid "Canada - Accounting"
 msgstr "Canadá - Contabilidad"
 
-#. module: base
+#. module: base, l10n_ve_plusteam
 #: model_terms:ir.ui.view,arch_db:base.base_onboarding_company_form
 #: model_terms:ir.ui.view,arch_db:base.base_partner_merge_automatic_wizard_form
 #: model_terms:ir.ui.view,arch_db:base.change_password_wizard_view
@@ -8797,6 +8797,7 @@ msgstr "Canadá - Contabilidad"
 #: model_terms:ir.ui.view,arch_db:base.view_users_form_simple_modif
 #: model_terms:ir.ui.view,arch_db:base.wizard_lang_export
 #: model_terms:ir.ui.view,arch_db:base.wizard_update_translations
+#: model_terms:ir.ui.view,arch_db:l10n_ve_plusteam.view_account_retention_register_form
 msgid "Cancel"
 msgstr "Cancelar"
 
@@ -9313,7 +9314,7 @@ msgstr "Compañías"
 msgid "Companies count"
 msgstr "Contador de compañías"
 
-#. module: base
+#. module: base, l10n_ve_plusteam
 #: code:addons/base/models/ir_qweb_fields.py:0
 #: model:ir.model.fields,field_description:base.field_ir_attachment__company_id
 #: model:ir.model.fields,field_description:base.field_ir_default__company_id
@@ -9323,6 +9324,8 @@ msgstr "Contador de compañías"
 #: model:ir.model.fields,field_description:base.field_res_partner__company_id
 #: model:ir.model.fields,field_description:base.field_res_partner_bank__company_id
 #: model:ir.model.fields,field_description:base.field_res_users__company_id
+#: model:ir.model.fields,field_description:l10n_ve_plusteam.field_account_retention_register__company_id
+#: model:ir.model.fields,field_description:l10n_ve_plusteam.field_retention__company_id
 #: model:ir.model.fields.selection,name:base.selection__res_partner__company_type__company
 #: model_terms:ir.ui.view,arch_db:base.ir_default_search_view
 #: model_terms:ir.ui.view,arch_db:base.view_attachment_search
@@ -10086,6 +10089,7 @@ msgstr "Vistas creadas"
 #: model:ir.model.fields,field_description:l10n_ve_plusteam.field_islr_tab__create_uid
 #: model:ir.model.fields,field_description:l10n_ve_plusteam.field_person_type__create_uid
 #: model:ir.model.fields,field_description:l10n_ve_plusteam.field_tax_unit__create_uid
+#: model:ir.model.fields,field_description:l10n_ve_plusteam.field_retention__create_uid
 #: model_terms:ir.ui.view,arch_db:base.view_attachment_search
 msgid "Created by"
 msgstr "Creado por"
@@ -10170,6 +10174,7 @@ msgstr "Creado por"
 #: model:ir.model.fields,field_description:l10n_ve_plusteam.field_islr_tab__create_date
 #: model:ir.model.fields,field_description:l10n_ve_plusteam.field_person_type__create_date
 #: model:ir.model.fields,field_description:l10n_ve_plusteam.field_tax_unit__create_date
+#: model:ir.model.fields,field_description:l10n_ve_plusteam.field_retention__create_date
 msgid "Created on"
 msgstr "Creado en"
 
@@ -10242,6 +10247,7 @@ msgstr "Monedas"
 #: model:ir.model.fields,field_description:base.field_res_currency_rate__currency_id
 #: model:ir.model.fields,field_description:base.field_res_partner_bank__currency_id
 #: model:ir.model.fields,field_description:l10n_ve_plusteam.field_tax_unit__currency_id
+#: model:ir.model.fields,field_description:l10n_ve_plusteam.field_account_retention_register__currency_id
 #: model_terms:ir.ui.view,arch_db:base.view_currency_form
 #: model_terms:ir.ui.view,arch_db:base.view_currency_search
 msgid "Currency"
@@ -11046,6 +11052,8 @@ msgstr "Mostrar en pantalla"
 #: model:ir.model.fields,field_description:l10n_ve_plusteam.field_islr_tab__display_name
 #: model:ir.model.fields,field_description:l10n_ve_plusteam.field_person_type__display_name
 #: model:ir.model.fields,field_description:l10n_ve_plusteam.field_tax_unit__display_name
+#: model:ir.model.fields,field_description:l10n_ve_plusteam.field_account_retention_register__display_name
+#: model:ir.model.fields,field_description:l10n_ve_plusteam.field_retention__display_name
 msgid "Display Name"
 msgstr "Mostrar nombre"
 
@@ -13722,6 +13730,8 @@ msgstr "Cuentas bancarias IBAN"
 #: model:ir.model.fields,field_description:l10n_ve_plusteam.field_islr_tab__id
 #: model:ir.model.fields,field_description:l10n_ve_plusteam.field_person_type__id
 #: model:ir.model.fields,field_description:l10n_ve_plusteam.field_tax_unit__id
+#: model:ir.model.fields,field_description:l10n_ve_plusteam.field_account_retention_register__id
+#: model:ir.model.fields,field_description:l10n_ve_plusteam.field_retention__id
 msgid "ID"
 msgstr "Identificación"
 
@@ -14698,8 +14708,10 @@ msgstr "Inventario"
 msgid "Inventory, Logistic, Valuation, Accounting"
 msgstr "Inventario, logística, valoración, contabilidad"
 
-#. module: base
+#. module: base, l10n_ve_plusteam
 #: model_terms:ir.ui.view,arch_db:base.view_partner_form
+#: code:addons/l10n_ve_plusteam/models/retention.py:0
+#: code:addons/l10n_ve_plusteam/wizard/account_retention_register.py:0
 msgid "Invoice"
 msgstr "Factura"
 
@@ -15233,6 +15245,8 @@ msgstr "Última fecha de ejecución"
 #: model:ir.model.fields,field_description:l10n_ve_plusteam.field_islr_tab____last_update
 #: model:ir.model.fields,field_description:l10n_ve_plusteam.field_person_type____last_update
 #: model:ir.model.fields,field_description:l10n_ve_plusteam.field_tax_unit____last_update
+#: model:ir.model.fields,field_description:l10n_ve_plusteam.field_account_retention_register____last_update
+#: model:ir.model.fields,field_description:l10n_ve_plusteam.field_retention____last_update
 msgid "Last Modified on"
 msgstr "Modificada por última vez"
 
@@ -15318,6 +15332,8 @@ msgstr "Modificada por última vez"
 #: model:ir.model.fields,field_description:l10n_ve_plusteam.field_islr_tab__write_uid
 #: model:ir.model.fields,field_description:l10n_ve_plusteam.field_person_type__write_uid
 #: model:ir.model.fields,field_description:l10n_ve_plusteam.field_tax_unit__write_uid
+#: model:ir.model.fields,field_description:l10n_ve_plusteam.field_account_retention_register__write_uid
+#: model:ir.model.fields,field_description:l10n_ve_plusteam.field_retention__write_uid
 msgid "Last Updated by"
 msgstr "Última actualización realizada por"
 
@@ -15401,6 +15417,8 @@ msgstr "Última actualización realizada por"
 #: model:ir.model.fields,field_description:l10n_ve_plusteam.field_islr_tab__write_date
 #: model:ir.model.fields,field_description:l10n_ve_plusteam.field_person_type__write_date
 #: model:ir.model.fields,field_description:l10n_ve_plusteam.field_tax_unit__write_date
+#: model:ir.model.fields,field_description:l10n_ve_plusteam.field_account_retention_register__write_date
+#: model:ir.model.fields,field_description:l10n_ve_plusteam.field_retention__write_date
 msgid "Last Updated on"
 msgstr "Ultima actualizacion en"
 
@@ -16925,7 +16943,7 @@ msgstr ""
 msgid "NPWP"
 msgstr ""
 
-#. module: base
+#. modules: base, l10n_ve_plusteam
 #: code:addons/base/models/ir_qweb_fields.py:0
 #: model:ir.model.fields,field_description:base.field_base_partner_merge_automatic_wizard__group_by_name
 #: model:ir.model.fields,field_description:base.field_ir_actions_act_window_close__name
@@ -16953,6 +16971,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:base.field_res_partner_bank__bank_name
 #: model:ir.model.fields,field_description:base.field_res_partner_industry__name
 #: model:ir.model.fields,field_description:base.field_res_users__name
+#: model:ir.model.fields,field_description:l10n_ve_plusteam.field_account_retention_register__partner_id
 #: model_terms:ir.ui.view,arch_db:base.ir_property_view_search
 #: model_terms:ir.ui.view,arch_db:base.view_partner_form
 #: model_terms:ir.ui.view,arch_db:base.view_partner_simple_form
@@ -19730,11 +19749,13 @@ msgstr "Moneda original"
 msgid "Oswald"
 msgstr ""
 
-#. module: base
+#. module: base, l10n_ve_plusteam
 #: code:addons/base/models/res_users.py:0
+#: code:addons/l10n_ve_plusteam/models/retention.py:0
+#: code:addons/l10n_ve_plusteam/wizard/account_retention_register.py:0
 #, python-format
 msgid "Other"
-msgstr ""
+msgstr "Otro"
 
 #. module: base
 #: model:ir.model.fields.selection,name:base.selection__res_partner__type__other
@@ -21532,11 +21553,12 @@ msgstr "¡Error de recurrencia entre dependencias de módulos!"
 msgid "Recursion found in child server actions"
 msgstr "Recurrencia encontrada en las acciones de servidor derivadas"
 
-#. module: base
+#. modules: base, l10n_ve_plusteam
 #: model:ir.model.fields,field_description:base.field_ir_model_data__reference
 #: model:ir.model.fields,field_description:base.field_res_partner__ref
 #: model:ir.model.fields,field_description:base.field_res_users__ref
 #: model:ir.model.fields.selection,name:base.selection__ir_server_object_lines__evaluation_type__reference
+#: model:ir.model.fields,field_description:l10n_ve_plusteam.field_retention__ref
 #: model_terms:ir.ui.view,arch_db:base.view_partner_form
 msgid "Reference"
 msgstr "Referencia"
@@ -23082,7 +23104,7 @@ msgstr "Estado del paso de integración de la compalía"
 msgid "States"
 msgstr "Estados"
 
-#. module: base
+#. modules: base, l10n_ve_plusteam
 #: model:ir.model.fields,field_description:base.field_base_language_install__state
 #: model:ir.model.fields,field_description:base.field_base_module_update__state
 #: model:ir.model.fields,field_description:base.field_ir_actions_todo__state
@@ -23090,6 +23112,7 @@ msgstr "Estados"
 #: model:ir.model.fields,field_description:base.field_ir_module_module_dependency__state
 #: model:ir.model.fields,field_description:base.field_ir_module_module_exclusion__state
 #: model:ir.model.fields,field_description:base.field_ir_translation__state
+#: model:ir.model.fields,field_description:l10n_ve_plusteam.field_retention__state
 #: model_terms:ir.ui.view,arch_db:base.view_users_form_simple_modif
 msgid "Status"
 msgstr "Estado"
@@ -23451,10 +23474,11 @@ msgstr "Gneración de tareas a partir de una orden de venta"
 msgid "Task Logs"
 msgstr "Registros de tareas"
 
-#. module: base
+#. modules: base, account
 #: model:ir.model.fields,field_description:base.field_res_company__vat
 #: model:ir.model.fields,field_description:base.field_res_partner__vat
 #: model:ir.model.fields,field_description:base.field_res_users__vat
+#: model_terms:ir.ui.view,arch_db:account.report_invoice_document
 msgid "Tax ID"
 msgstr "RIF"
 
@@ -24084,10 +24108,20 @@ msgstr ""
 #: code:addons/l10n_ve_plusteam/models/res_partner.py:0
 #, python-format
 msgid ""
-"The retention percentage must be between the the values 0 and 100, please "
+"The retention percentage must be between the values 0 and 100, please "
 "verify that the value is in this range"
 msgstr ""
 "El Porcentaje de retención debe estar entre los valores 0 y 100, por favor "
+"verifica que el valor se encuentra en este intervalo"
+
+#. module: l10n_ve_plusteam
+#: code:addons/l10n_ve_plusteam/models/retention.py:0
+#, python-format
+msgid ""
+"The retention percentage must be between the values 1 and 100, please "
+"verify that the value is in this range"
+msgstr ""
+"El Porcentaje de retención debe estar entre los valores 1 y 100, por favor "
 "verifica que el valor se encuentra en este intervalo"
 
 #. module: base
@@ -24967,7 +25001,7 @@ msgstr "Fragmento de código para panel de Twitter en sitio web"
 msgid "Two-Factor Authentication (TOTP)"
 msgstr "Autenticación de dos pasos (TOTP)"
 
-#. module: base
+#. modules: base, l10n_ve_plusteam
 #: model:ir.model.fields,field_description:base.field_ir_attachment__type
 #: model:ir.model.fields,field_description:base.field_ir_logging__type
 #: model:ir.model.fields,field_description:base.field_ir_model__state
@@ -24975,6 +25009,7 @@ msgstr "Autenticación de dos pasos (TOTP)"
 #: model:ir.model.fields,field_description:base.field_ir_property__type
 #: model:ir.model.fields,field_description:base.field_ir_translation__type
 #: model:ir.model.fields,field_description:base.field_res_partner_bank__acc_type
+#: model:ir.model.fields,field_description:l10n_ve_plusteam.field_retention__move_type
 #: model_terms:ir.ui.view,arch_db:base.ir_logging_search_view
 #: model_terms:ir.ui.view,arch_db:base.view_attachment_search
 #: model_terms:ir.ui.view,arch_db:base.view_view_search
@@ -27631,3 +27666,124 @@ msgstr "Este tipo de retención ya fue generado"
 #, python-format
 msgid "Destination Account"
 msgstr "Cuenta Destino"
+
+#. module: l10n_ve_plusteam
+#: code:addons/l10n_ve_plusteam/models/retention.py:0
+#, python-format
+msgid "There can only be one VAT withholding per invoice"
+msgstr "Solo puede haber una retención de IVA por factura"
+
+#. module: l10n_ve_plusteam
+#: code:addons/l10n_ve_plusteam/models/retention.py:0
+#, python-format
+msgid ""
+"The selected contact is different from the invoice contact, they must be the"
+" same, please correct it"
+msgstr "El contacto seleccionado es diferente al contacto de la factura, "
+"deben ser los mismos, por favor corrigelo"
+
+#. module: l10n_ve_plusteam
+#: code:addons/l10n_ve_plusteam/models/retention.py:0
+#: code:addons/l10n_ve_plusteam/wizard/account_retention_register.py:0
+#, python-format
+msgid "D/N"
+msgstr "N/D"
+
+#. module: l10n_ve_plusteam
+#: code:addons/l10n_ve_plusteam/models/retention.py:0
+#: code:addons/l10n_ve_plusteam/wizard/account_retention_register.py:0
+#, python-format
+msgid "C/N"
+msgstr "N/C"
+
+#. module: l10n_ve_plusteam
+#: code:addons/l10n_ve_plusteam/wizard/account_retention_register.py:0
+#, python-format
+msgid "Without relationship"
+msgstr "Sin relación"
+
+#. module: l10n_ve_plusteam
+#: model:ir.model.fields.selection,name:l10n_ve_plusteam.selection__account_move__retention_state__without_retention
+msgid "Without Retention"
+msgstr "Sin Retención"
+
+#. modules: l10n_ve_plusteam
+#: model:ir.model.fields.selection,name:l10n_ve_plusteam.selection__retention__state__cancel
+msgid "Cancelled"
+msgstr "Cancelada"
+
+#. module: l10n_ve_plusteam
+#: model:ir.model.fields,help:l10n_ve_plusteam.field_account_retention_register__is_iva
+#: model:ir.model.fields,help:l10n_ve_plusteam.field_retention__is_iva
+msgid "Check if the retention is a iva, otherwise it is islr"
+msgstr "Verifica si la retencion es de typo IVA, en caso contrario es ISLR"
+
+#. modules: l10n_ve_plusteam, account
+#: model:ir.model.fields,field_description:account.field_account_bank_statement_line__company_currency_id
+#: model:ir.model.fields,field_description:account.field_account_invoice_report__company_currency_id
+#: model:ir.model.fields,field_description:account.field_account_move__company_currency_id
+#: model:ir.model.fields,field_description:account.field_account_move_line__company_currency_id
+#: model:ir.model.fields,field_description:account.field_account_partial_reconcile__company_currency_id
+#: model:ir.model.fields,field_description:account.field_account_payment__company_currency_id
+#: model:ir.model.fields,field_description:account.field_account_payment_register__company_currency_id
+#: model:ir.model.fields,field_description:account.field_tax_adjustments_wizard__company_currency_id
+#: model:ir.model.fields,field_description:l10n_ve_plusteam.field_retention__company_currency_id
+msgid "Company Currency"
+msgstr "Moneda de la Compañía"
+
+#. module: l10n_ve_plusteam
+#: model_terms:ir.actions.act_window,help:l10n_ve_plusteam.retention_action_out_invoice_type
+msgid "Create a retention invoice"
+msgstr "Crea una retención de factura"
+
+#. module: l10n_ve_plusteam
+#: model_terms:ir.actions.act_window,help:l10n_ve_plusteam.retention_action_out_invoice_type
+msgid "Create retention, register retention supplier."
+msgstr "Crea una retención, registra una retencion de proveedor"
+
+#. modules: l10n_ve_plusteam, account
+#: model:ir.model.fields.selection,name:account.selection__account_invoice_report__state__draft
+#: model:ir.model.fields.selection,name:account.selection__account_move__state__draft
+#: model:ir.model.fields.selection,name:l10n_ve_plusteam.selection__retention__state__draft
+#: model_terms:ir.ui.view,arch_db:account.view_account_invoice_filter
+#: model_terms:ir.ui.view,arch_db:account.view_account_payment_search
+msgid "Draft"
+msgstr "Borrador"
+
+#. module: l10n_ve_plusteam
+#: model:ir.model.fields,field_description:l10n_ve_plusteam.field_account_retention_register__is_iva
+#: model:ir.model.fields,field_description:l10n_ve_plusteam.field_retention__is_iva
+msgid "Is IVA"
+msgstr "Es IVA"
+
+#. module: l10n_ve_plusteam
+#: model:ir.model.fields,help:l10n_ve_plusteam.field_account_bank_statement_line__document_number
+#: model:ir.model.fields,help:l10n_ve_plusteam.field_account_move__document_number
+#: model:ir.model.fields,help:l10n_ve_plusteam.field_account_payment__document_number
+#: model:ir.model.fields,help:l10n_ve_plusteam.field_retention__original_document_number
+msgid "Is defined when it is a supplier invoice"
+msgstr "Es definido cuando es una factura de proveedor"
+
+#. module: l10n_ve_plusteam
+#: model:ir.model.fields,field_description:l10n_ve_plusteam.field_account_retention_register__original_document_number
+msgid "Original Invoice Number"
+msgstr "Número de factura original"
+
+#. module: l10n_ve_plusteam
+#: code:addons/l10n_ve_plusteam/tests/test_res_company.py:0
+#: code:addons/l10n_ve_plusteam/tests/test_res_company.py:0
+#: code:addons/l10n_ve_plusteam/tests/test_res_partner.py:0
+#: code:addons/l10n_ve_plusteam/tests/test_res_partner.py:0
+#, python-format
+msgid ""
+"The retention percentage must be between the the values 0 and 100, please "
+"verify that the value is in this range"
+msgstr ""
+"El Porcentaje de retención debe estar entre los valores 0 y 100, por favor "
+"verifica que el valor se encuentra en este intervalo"
+
+#. module: l10n_ve_plusteam
+#: code:addons/l10n_ve_plusteam/tests/test_retention.py:0
+#, python-format
+msgid "This type was already generated"
+msgstr "Este tipo de retención ya fue generado"
