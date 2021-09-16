@@ -1,4 +1,6 @@
 # -*- coding: utf-8 -*-
+
+import re
 from odoo import models, fields, api, _
 from odoo.exceptions import ValidationError
 
@@ -37,11 +39,8 @@ class Retention(models.Model):
         })
 
     today = fields.Date.today()
-    complete_name_with_code = fields.Char(
-        string="Complete Name with Code",
-        compute="_compute_complete_name_with_code",
-        store=True
-    )
+    complete_name_with_code = fields.Char(string="Complete Name with Code", compute="_compute_complete_name_with_code",
+                                          store=True)
     move_type = fields.Selection(selection=[
         ("entry", "Journal Entry"),
         ("out_invoice", "Customer Invoice"),
@@ -89,9 +88,9 @@ class Retention(models.Model):
                                               related="partner_id.vat_withholding_percentage", required=True)
     invoice_number = fields.Many2one("account.move", string="Invoice Number", required=True,
                                      domain="[('move_type', 'in', ('out_invoice', 'in_invoice', 'in_refund', "
-                                            "'out_refund')), ('retention_state', '!=', 'with_retention_Both'),"
-                                            "('state', '=', 'posted'),('partner_id', '=', partner_id )]")
-    original_document_number = fields.Char(string="Original Document Number", related="invoice_number.document_number")
+                                            "'out_refund')), ('retention_state', '!=', 'with_retention_both'),"
+                                            "('state', '=', 'posted'),('partner_id', '=', partner_id )]")                                     
+    original_document_number = fields.Char(string="Original Document Number", related="invoice_number.document_number")                                        
     invoice_date = fields.Date(string="Invoice Date", required=True, related="invoice_number.date")
     type_document = fields.Char(string="Type Document", compute="_compute_type_document")
     control_number = fields.Char(string="Control Number", related="invoice_number.control_number")
@@ -112,6 +111,38 @@ class Retention(models.Model):
                                        currency_field="company_currency_id")
     amount_base_untaxed = fields.Monetary(string="Amount base untaxed", compute="_compute_amount_base_untaxed",
                                           currency_field="company_currency_id")
+
+    @api.constrains("partner_id")
+    def _check_partner_id(self):
+        for record in self:
+            if record.partner_id != record.invoice_number.partner_id:
+                raise ValidationError(
+                    _("The selected contact is different from the invoice contact, "
+                      "they must be the same, please correct it")
+                )
+
+    @api.constrains("vat_withholding_percentage")
+    def _check_vat_withholding_percentage(self):
+        for record in self:
+            if record.vat_withholding_percentage <= 0 or record.vat_withholding_percentage > 100:
+                raise ValidationError(
+                    _("The retention percentage must be between the values 1 and 100, "
+                      "please verify that the value is in this range")
+                )
+
+    @api.constrains("retention_type")
+    def _check_retention_type(self):
+        created = False
+        retentions = self.read_group([("retention_type", "=", "iva")], ["invoice_number"], ["invoice_number"])
+        for retention in retentions:
+            if retention.get('invoice_number_count', 0) > 1:
+                created = True
+        retentions = self.read_group([("retention_type", "=", "islr")], ["invoice_number"], ["invoice_number"])
+        for retention in retentions:
+            if retention.get('invoice_number_count', 0) > 1:
+                created = True
+        if created:
+            raise ValidationError(_("This type was already generated"))
 
     @api.depends(
         "vat_withholding_percentage",
@@ -171,17 +202,17 @@ class Retention(models.Model):
         for retention in self:
             if retention.invoice_number.move_type in ('out_invoice', 'in_invoice'):
                 if retention.invoice_number.debit_origin_id:
-                    retention.type_document = 'N/D'
+                    retention.type_document = _('D/N')
                 else:
-                    retention.type_document = 'Factura'
+                    retention.type_document = _('Invoice')
             elif retention.invoice_number.move_type in ('in_refund', 'out_refund'):
-                retention.type_document = 'N/C'
+                retention.type_document = _('C/N')
             else:
-                retention.type_document = 'Otro'
+                retention.type_document = _('Other')
 
     @api.model
     def create(self, values):
-        if values.get("code", "").strip() in [_("New"), "", "Nuevo", "New"]:
+        if values.get("code", "").strip().lower() in ["", "nuevo", "new"]:
             values["code"] = self.env["ir.sequence"].next_by_code("retention.sequence")
         values["state"] = "posted"
         if values.get("retention_type", False) == "iva":
@@ -193,12 +224,9 @@ class Retention(models.Model):
             invoice.write({
                 "retention_state": retention_state
             })
-        else:
-            if invoice.retention_state == retention_state:
-                raise ValidationError(_("This type was already generated"))
-
+        elif invoice.retention_state != retention_state and invoice.retention_state != "with_retention_both":
             invoice.write({
-                "retention_state": "with_retention_Both"
+                "retention_state": "with_retention_both"
             })
         retention = super(Retention, self).create(values)
         retention.write({
