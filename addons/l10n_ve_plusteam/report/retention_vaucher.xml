@@ -165,7 +165,7 @@
                                             <td>
                                                 <span/>
                                             </td>
-                                            <td class="text-left " t-if="contador==1">
+                                            <td class="text-right " t-if="contador==1">
                                                 <span t-esc="'{:,.2f}'.format(retention.amount_total)"/>
                                             </td>
                                             <td class="text-right " t-if="contador==1">
@@ -205,17 +205,17 @@
                                 </t>
                                 <tr>
                                     <td>Totales</td>
-                                    <td>
+                                    <td class="text-right">
                                         <span t-esc="'{:,.2f}'.format(retention.amount_total)"/>
                                     </td>
                                     <td class="text-right">
                                         <span t-esc="'{:,.2f}'.format(retention.amount_base_untaxed)"/>
                                     </td>
-                                    <td>
+                                    <td class="text-right">
                                         <span t-esc="'{:,.2f}'.format(retention.amount_base_taxed)"/>
                                     </td>
                                     <t t-if="contador==1">
-                                        <td>
+                                        <td class="text-right">
                                             <span t-esc="retention.invoice_number.line_ids.tax_ids.amount"/>
                                         </td>
                                     </t>
@@ -224,10 +224,10 @@
                                             <span/>
                                         </td>
                                     </t>
-                                    <td>
+                                    <td class="text-right">
                                         <span t-esc="'{:,.2f}'.format(retention.amount_tax)"/>
                                     </td>
-                                    <td>
+                                    <td class="text-right">
                                         <span t-esc="'{:,.2f}'.format(retention.amount_retention)"/>
                                     </td>
                                 </tr>
