@@ -149,12 +149,12 @@
                             <thead>
                                 <tr>
                                     <th scope="col"></th>
-                                    <th scope="col">Total Compra con IVA</th>
-                                    <th scope="col">Exentas y/o sin derecho a Credito</th>
-                                    <th scope="col">Base  Imponible</th>
-                                    <th scope="col">% Alicuota</th>
-                                    <th scope="col">Impuesto Iva</th>
-                                    <th scope="col">Iva Retenido</th>
+                                    <th scope="col" class="text-right">Total Compra con IVA</th>
+                                    <th scope="col" class="text-right">Exentas y/o sin derecho a Credito</th>
+                                    <th scope="col" class="text-right">Base  Imponible</th>
+                                    <th scope="col" class="text-right">% Alicuota</th>
+                                    <th scope="col" class="text-right">Impuesto Iva</th>
+                                    <th scope="col" class="text-right">Iva Retenido</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -186,7 +186,7 @@
                                             </td>
                                             <t t-set="amount_porcentage"
                                                t-value="amount_by_group[1]*100/amount_by_group[2]"/>
-                                            <td name="td_amount_by_group_label">
+                                            <td name="td_amount_by_group_label" class="text-right">
                                                 <span t-esc="amount_porcentage"/>
                                             </td>
                                             <td name="td_amount_by_group" class="text-right o_price_total">
