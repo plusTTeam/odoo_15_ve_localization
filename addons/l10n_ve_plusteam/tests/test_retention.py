@@ -213,3 +213,28 @@ class TestRetention(TransactionCase):
                          _("The company does not have a journal configured for withholding, "
                            "please go to the configuration section to add one"),
                          msg="There is a journal configured")
+
+    def test_get_original_journal(self):
+        self.env.company.write({"withholding_journal_id": False})
+        new_invoice = self.env["account.move"].create({
+            'move_type': "in_invoice",
+            'partner_id': self.partner.id,
+            'invoice_date': self.date,
+            'date': self.date,
+            'retention_state': "with_retention_iva",
+            'amount_tax': self.invoice_tax,
+            'invoice_line_ids': [(0, 0, {
+                'name': 'product that cost %s' % self.invoice_amount,
+                'quantity': 1,
+                'price_unit': self.invoice_amount
+            })]
+        })
+        new_retention = self.env["retention"].create({
+            "invoice_id": new_invoice.id,
+            "partner_id": self.partner.id,
+            "move_type": new_invoice.move_type,
+            "retention_type": RETENTION_TYPE_IVA,
+            "vat_withholding_percentage": 75.0
+        })
+        self.assertEqual(new_retention.move_id.journal_id.id, self.default_withholding_journal.id,
+                         msg="The journal was not the original journal")
