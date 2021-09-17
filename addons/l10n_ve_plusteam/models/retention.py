@@ -58,11 +58,8 @@ class Retention(models.Model):
     retention_type = fields.Selection(string="Retention Type",
                                       selection=[("iva", "IVA"), ("islr", "ISLR")],
                                       compute="_compute_retention_type", inverse="_write_retention_type", default="iva")
-    destination_account_id = fields.Many2one(
-        comodel_name="account.account",
-        string="Destination Account",
-        store=True, readonly=False,
-        check_company=True)
+    destination_account_id = fields.Many2one(comodel_name="account.account", string="Destination Account", store=True,
+                                             readonly=False, check_company=True)
     state = fields.Selection(selection=[
         ("draft", "Draft"),
         ("posted", "Posted"),
