@@ -27,9 +27,9 @@
                                 establecido en esta Ley.)
                             </small>
                         </p>
-                        <h4 align="center">
+                        <h5 align="center">
                             <u>COMPROBANTE DE RETENCIÓN DEL IMPUESTO AL VALOR AGREGADO</u>
-                        </h4>
+                        </h5>
                         <div class="container-fluid" >
                             <div class="row">
                                 <div class="col-6 text-left">
@@ -40,9 +40,9 @@
                                 </div>
                             </div>
                         </div>
-                        <h5>
+                        <h6>
                             <u>DATOS DEL AGENTE DE RETENCIÓN</u>
-                        </h5>
+                        </h6>
                         <div class="container-fluid" >
                             <div class="row">
                                 <div class="col-6 text-left">
@@ -65,9 +65,9 @@
                                 <span t-field="retention.company_id.state_id.country_id"/>
                             </p>
                         </div>
-                        <h5>
+                        <h6>
                             <u>DATOS DEL PROVEEDOR</u>
-                        </h5>
+                        </h6>
                         <div class="container-fluid" >
                             <p>Nombre/Razon Social:
                                 <span t-field="retention.partner_id.name"/>
@@ -76,9 +76,9 @@
                                 <span t-field="retention.partner_id.vat"/>
                             </p>
                         </div>
-                        <h5>
+                        <h6>
                             <u>DATOS DE LA COMPRA</u>
-                        </h5>
+                        </h6>
                         <div class="container-fluid" >
                          <div class="row">
                                 <div class="col-6 text-left">
@@ -130,16 +130,16 @@
                                         <br/>
                                     </p>
                                 </div>
-                                <div class="col-4  text-center">
+                                <div class="col-6  text-center">
                                     <p>_________________________</p>
                                     <p>  Fecha de Entrega </p>
                                     <p><span t-field="retention.date"/></p>
                                 </div>
                          </div>
                         </div>
-                        <h5>
+                        <h6>
                             <u>DETALLES DEL CALCULO DE LA RETENCIÓN</u>
-                        </h5>
+                        </h6>
                         <p>Porcentaje de la Retención:
                             <span t-field="retention.vat_withholding_percentage"/>
                             %
@@ -149,12 +149,12 @@
                             <thead>
                                 <tr>
                                     <th scope="col"></th>
-                                    <th scope="col" class="text-right">Total Compra con IVA</th>
-                                    <th scope="col" class="text-right">Exentas y/o sin derecho a Credito</th>
-                                    <th scope="col" class="text-right">Base  Imponible</th>
-                                    <th scope="col" class="text-right">% Alicuota</th>
-                                    <th scope="col" class="text-right">Impuesto Iva</th>
-                                    <th scope="col" class="text-right">Iva Retenido</th>
+                                    <th scope="col" class="text-center">Total Compra con IVA</th>
+                                    <th scope="col" class="text-center">Exentas y/o sin derecho a Credito</th>
+                                    <th scope="col" class="text-center">Base  Imponible</th>
+                                    <th scope="col" class="text-center">% Alicuota</th>
+                                    <th scope="col" class="text-center">Impuesto Iva</th>
+                                    <th scope="col" class="text-center">Iva Retenido</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -205,17 +205,17 @@
                                 </t>
                                 <tr>
                                     <td>Totales</td>
-                                    <td class="text-right">
+                                    <td class="text-center">
                                         <span t-esc="'{:,.2f}'.format(retention.amount_total)"/>
                                     </td>
-                                    <td class="text-right">
+                                    <td class="text-center">
                                         <span t-esc="'{:,.2f}'.format(retention.amount_base_untaxed)"/>
                                     </td>
-                                    <td class="text-right">
+                                    <td class="text-center">
                                         <span t-esc="'{:,.2f}'.format(retention.amount_base_taxed)"/>
                                     </td>
                                     <t t-if="contador==1">
-                                        <td class="text-right">
+                                        <td class="text-center">
                                             <span t-esc="retention.invoice_number.line_ids.tax_ids.amount"/>
                                         </td>
                                     </t>
@@ -224,10 +224,10 @@
                                             <span/>
                                         </td>
                                     </t>
-                                    <td class="text-right">
+                                    <td class="text-center">
                                         <span t-esc="'{:,.2f}'.format(retention.amount_tax)"/>
                                     </td>
-                                    <td class="text-right">
+                                    <td class="text-center">
                                         <span t-esc="'{:,.2f}'.format(retention.amount_retention)"/>
                                     </td>
                                 </tr>
