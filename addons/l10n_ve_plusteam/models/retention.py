@@ -183,14 +183,9 @@ class Retention(models.Model):
     def _get_destination_account_id(self):
         self.ensure_one()
         account = self.company_id.iva_account_sale_id or self.env.company.iva_account_sale_id
-        if self.partner_type == "customer":
-            if self.is_iva is False:
-                account = self.company_id.islr_account_sale_id or self.env.company.islr_account_sale_id
-        elif self.partner_type == "supplier":
+        if self.partner_type == "supplier":
             if self.is_iva:
                 account = self.company_id.iva_account_purchase_id or self.env.company.iva_account_purchase_id
-            else:
-                account = self.company_id.islr_account_purchase_id or self.env.company.islr_account_purchase_id
         return account.id
 
     @api.depends("partner_id")

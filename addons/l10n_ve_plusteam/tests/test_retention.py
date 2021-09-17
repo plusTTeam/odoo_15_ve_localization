@@ -84,6 +84,10 @@ class TestRetention(TransactionCase):
                          msg="The destination account was not configured correctly")
 
     def test_move_lines_creations(self):
+        receivable_payable_account = self.retention.move_id.line_ids.search(
+            [("account_id.internal_type", "in", ('receivable', 'payable'))])
+        self.assertTrue(receivable_payable_account,
+                        msg="There are no accounting entries for account payable or receivable")
         self.assertTrue(len(self.retention.move_id.line_ids), msg="the account movements were not created")
 
     def test_month_fiscal_char(self):
@@ -142,3 +146,32 @@ class TestRetention(TransactionCase):
             f"[{self.retention.code}] {self.retention.original_document_number}",
             msg="Field complete_name_with_code is wrong"
         )
+
+    def test_get_default_journal(self):
+        new_invoice = self.env["account.move"].create({
+            'move_type': "in_invoice",
+            'partner_id': self.partner.id,
+            'invoice_date': self.date,
+            'date': self.date,
+            'retention_state': "with_retention_iva",
+            'amount_tax': self.invoice_tax,
+            'invoice_line_ids': [(0, 0, {
+                'name': 'product that cost %s' % self.invoice_amount,
+                'quantity': 1,
+                'price_unit': self.invoice_amount
+            })]
+        })
+        default_journal = self.env["account.journal"].create({
+            "name": "New Journal",
+            "type": "general",
+            "code": "RT"
+        })
+        new_retention = self.env["retention"].with_context(default_journal_id=default_journal.id).create({
+            "invoice_id": new_invoice.id,
+            "partner_id": self.partner.id,
+            "move_type": new_invoice.move_type,
+            "retention_type": RETENTION_TYPE_IVA,
+            "vat_withholding_percentage": 75.0
+        })
+        self.assertEqual(new_retention.move_id.journal_id.id, default_journal.id,
+                         msg="The journal selected was not the default_journal_id")
