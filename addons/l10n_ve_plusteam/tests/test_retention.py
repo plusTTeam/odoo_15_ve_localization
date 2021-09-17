@@ -104,6 +104,30 @@ class TestRetention(TransactionCase):
             msg="Field retention_state is wrong"
             )    
 
+    def test_partner_id(self):
+        """Test  partner id equal invoice
+        """
+        with self.assertRaises(ValidationError) as raise_exception:
+            self.retention.partner_id = " "
+        self.assertEqual(
+            str(raise_exception.exception),
+            _("The selected contact is different from the invoice contact, "
+                      "they must be the same, please correct it"),
+            msg="Field partner id is wrong"
+            )    
+
+    def test_vat_withholding_percentage(self):
+        """Test  withholding percentage > 0
+        """
+        with self.assertRaises(ValidationError) as raise_exception:
+            self.retention.vat_withholding_percentage = 0
+        self.assertEqual(
+            str(raise_exception.exception),
+            _("The retention percentage must be between the values 1 and 100, "
+                      "please verify that the value is in this range"),
+            msg="Field withholding percentage is wrong"
+            )    
+
     def test_complete_name(self):
         self.assertEqual(
             self.retention.complete_name_with_code,
