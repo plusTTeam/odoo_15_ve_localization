@@ -27802,3 +27802,14 @@ msgstr "Retención %s de la factura %s"
 #: model:ir.model.fields,field_description:l10n_ve_plusteam.field_retention__amount_retention_company_currency
 msgid "Withholding Amount in Company Currency"
 msgstr "Monto de Retención en Moneda de la Compañía"
+
+#. module: l10n_ve_plusteam
+#: code:addons/l10n_ve_plusteam/models/retention.py:0
+#: code:addons/l10n_ve_plusteam/tests/test_retention.py:0
+#, python-format
+msgid ""
+"The company does not have a journal configured for withholding, please go to"
+" the configuration section to add one"
+msgstr ""
+"La compañía no tiene configurado un diario contable para retención, "
+"por favor ve a la sección de configuración para agregar uno"

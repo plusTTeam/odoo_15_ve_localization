@@ -20,23 +20,19 @@ class Retention(models.Model):
         if self._context.get("default_journal_id"):
             journal = self.env["account.journal"].browse(self._context["default_journal_id"])
         else:
-            journal = self._search_default_journal()
+            journal = self._search_company_journal()
         return journal
 
     @api.model
-    def _search_default_journal(self):
+    def _search_company_journal(self):
+        company_journal = self.env.company.withholding_journal_id
+        if company_journal:
+            return company_journal
         journal = self.env.ref("l10n_ve_plusteam.journal_withholding", raise_if_not_found=False)
-        if journal:
+        if journal and journal.active:
             return journal
-        return self.env.company.withholding_journal_id or self._create_withholding_journal()
-
-    @api.model
-    def _create_withholding_journal(self):
-        return self.env["account.journal"].create({
-            "name": _("Withholding"),
-            "type": "general",
-            "code": "RETEN"
-        })
+        raise ValidationError(_("The company does not have a journal configured for withholding, please go to"
+                                " the configuration section to add one"))
 
     today = fields.Date.today()
     complete_name_with_code = fields.Char(string="Complete Name with Code", compute="_compute_complete_name_with_code",
@@ -108,7 +104,8 @@ class Retention(models.Model):
                                         currency_field="currency_id")
     amount_retention = fields.Monetary(string="Withholding Amount", compute="_compute_amount_retention",
                                        currency_field="currency_id")
-    amount_retention_company_currency = fields.Monetary(string="Withholding Amount in Company Currency", compute="_compute_amount_retention",
+    amount_retention_company_currency = fields.Monetary(string="Withholding Amount in Company Currency",
+                                                        compute="_compute_amount_retention",
                                                         currency_field="company_currency_id")
     amount_base_untaxed = fields.Monetary(string="Amount base untaxed", compute="_compute_amount_base_untaxed",
                                           currency_field="currency_id")
@@ -183,9 +180,8 @@ class Retention(models.Model):
     def _get_destination_account_id(self):
         self.ensure_one()
         account = self.company_id.iva_account_sale_id or self.env.company.iva_account_sale_id
-        if self.partner_type == "supplier":
-            if self.is_iva:
-                account = self.company_id.iva_account_purchase_id or self.env.company.iva_account_purchase_id
+        if self.partner_type == "supplier" and self.is_iva:
+            account = self.company_id.iva_account_purchase_id or self.env.company.iva_account_purchase_id
         return account.id
 
     @api.depends("partner_id")

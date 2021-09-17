@@ -1,7 +1,7 @@
 from odoo import fields, _
 from odoo.exceptions import ValidationError
 from odoo.tests.common import TransactionCase, Form
-from ..tools.constants import RETENTION_TYPE_ISLR, RETENTION_TYPE_IVA
+from ..tools.constants import RETENTION_TYPE_ISLR, RETENTION_TYPE_IVA, REF_MAIN_COMPANY
 
 
 class TestRetention(TransactionCase):
@@ -9,6 +9,12 @@ class TestRetention(TransactionCase):
     def setUp(self):
         super(TestRetention, self).setUp()
 
+        self.company = self.env.ref(REF_MAIN_COMPANY)
+        self.default_withholding_journal = self.env.ref("l10n_ve_plusteam.journal_withholding", raise_if_not_found=False)
+        if self.default_withholding_journal:
+            self.company.write({
+                "withholding_journal_id": self.default_withholding_journal.id
+            })
         self.partner = self.env.ref("base.partner_admin")
         self.date = fields.Date.today()
         self.invoice_amount = 1000000
@@ -175,3 +181,35 @@ class TestRetention(TransactionCase):
         })
         self.assertEqual(new_retention.move_id.journal_id.id, default_journal.id,
                          msg="The journal selected was not the default_journal_id")
+
+    def test_raise_when_journal_is_not_found(self):
+        self.env.company.write({"withholding_journal_id": False})
+        if self.default_withholding_journal:
+            self.default_withholding_journal.write({
+                "active": False
+            })
+        new_invoice = self.env["account.move"].create({
+            'move_type': "in_invoice",
+            'partner_id': self.partner.id,
+            'invoice_date': self.date,
+            'date': self.date,
+            'retention_state': "with_retention_iva",
+            'amount_tax': self.invoice_tax,
+            'invoice_line_ids': [(0, 0, {
+                'name': 'product that cost %s' % self.invoice_amount,
+                'quantity': 1,
+                'price_unit': self.invoice_amount
+            })]
+        })
+        with self.assertRaises(ValidationError) as raise_exception:
+            self.env["retention"].create({
+                "invoice_id": new_invoice.id,
+                "partner_id": self.partner.id,
+                "move_type": new_invoice.move_type,
+                "retention_type": RETENTION_TYPE_IVA,
+                "vat_withholding_percentage": 75.0
+            })
+        self.assertEqual(str(raise_exception.exception),
+                         _("The company does not have a journal configured for withholding, "
+                           "please go to the configuration section to add one"),
+                         msg="There is a journal configured")
