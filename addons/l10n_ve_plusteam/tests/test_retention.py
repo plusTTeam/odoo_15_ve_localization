@@ -115,7 +115,7 @@ class TestRetention(TransactionCase):
         """
         with Form(self.retention) as retention:
             retention.retention_type = RETENTION_TYPE_ISLR
-            retention.invoice_number.write({"retention_state": "with_retention_both"})
+            retention.invoice_id.write({"retention_state": "with_retention_both"})
         self.assertEqual(
             self.invoice.retention_state,
             "with_retention_both",
