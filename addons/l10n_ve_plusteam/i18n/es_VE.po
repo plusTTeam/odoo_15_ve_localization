@@ -27684,6 +27684,7 @@ msgstr "El contacto seleccionado es diferente al contacto de la factura, "
 
 #. module: l10n_ve_plusteam
 #: code:addons/l10n_ve_plusteam/models/retention.py:0
+#: code:addons/l10n_ve_plusteam/tests/test_retention.py:0
 #: code:addons/l10n_ve_plusteam/wizard/account_retention_register.py:0
 #, python-format
 msgid "D/N"

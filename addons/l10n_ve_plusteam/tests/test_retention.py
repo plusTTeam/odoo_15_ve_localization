@@ -1,7 +1,7 @@
 from odoo import fields, _
 from odoo.exceptions import ValidationError
-from odoo.tests.common import TransactionCase
-from ..tools.constants import RETENTION_TYPE_IVA
+from odoo.tests.common import TransactionCase, Form
+from ..tools.constants import RETENTION_TYPE_ISLR, RETENTION_TYPE_IVA
 
 
 class TestRetention(TransactionCase):
@@ -45,7 +45,7 @@ class TestRetention(TransactionCase):
         """Test  when create retention for retention_type
         """
         with self.assertRaises(ValidationError) as raise_exception:
-            new_retention = self.env["retention"].create({
+            self.env["retention"].create({
                 "invoice_number": self.invoice.id,
                 "partner_id": self.partner.id,
                 "move_type": self.invoice.move_type,
@@ -57,7 +57,7 @@ class TestRetention(TransactionCase):
             _("This type was already generated"),
             msg="Field retention_state is wrong"
             )    
-            
+
     def test_compute_amount_retention(self):
         """Test when create retention calculation of the amount
         """
@@ -67,10 +67,78 @@ class TestRetention(TransactionCase):
             msg="calculation of the retention amount is wrong"
         )
 
+    def test_onchange_value_withholding(self):
+        """Test  when onchange_value_withholding porcentage
+        """
+        with Form(self.retention) as retention:
+            retention.vat_withholding_percentage = 100
+        self.assertEqual(
+            self.retention.amount_tax*self.retention.vat_withholding_percentage/100,
+            self.retention.amount_retention,
+            msg="calculation of the retention amount is wrong"
+        )           
     def test_create_retention(self):
         self.assertTrue(self.retention.destination_account_id is not False,
                         msg="The destination account was not configured correctly")
         self.assertTrue(len(self.retention.move_id.line_ids), msg="the account movements were not created")
+
+    def test_month_fiscal_char(self):
+        self.assertEqual(
+            self.retention.month_fiscal_period,
+            "0" + str(self.retention.date.month),
+            msg="Field month fiscal period is wrong"
+        )    
+
+    def test_type_document(self):
+         self.assertEqual(
+            self.retention.type_document,
+            _('Invoice'),
+            msg="Field type document is wrong"
+        )    
+    
+    def test_retention_type_other(self):
+        """Test  when create retention for retention_type
+        """
+        with Form(self.retention) as retention:
+            retention.retention_type = RETENTION_TYPE_ISLR
+            retention.invoice_number.write({"retention_state": "with_retention_both"})
+        self.assertEqual(
+            self.invoice.retention_state,
+            "with_retention_both",
+            msg="Field retention_state is wrong"
+            )    
+
+    def test_partner_id(self):
+        """Test  partner id equal invoice
+        """
+        with self.assertRaises(ValidationError) as raise_exception:
+            self.retention.partner_id = " "
+        self.assertEqual(
+            str(raise_exception.exception),
+            _("The selected contact is different from the invoice contact, "
+                      "they must be the same, please correct it"),
+            msg="Field partner id is wrong"
+            )    
+
+    def test_vat_withholding_percentage(self):
+        """Test  withholding percentage > 0
+        """
+        with self.assertRaises(ValidationError) as raise_exception:
+            self.retention.vat_withholding_percentage = 0
+        self.assertEqual(
+            str(raise_exception.exception),
+            _("The retention percentage must be between the values 1 and 100, "
+                      "please verify that the value is in this range"),
+            msg="Field withholding percentage is wrong"
+            )    
+
+    def test_complete_name(self):
+        self.assertEqual(
+            self.retention.complete_name_with_code,
+            f"[{self.retention.code}] {self.retention.original_document_number}",
+            msg="Field complete_name_with_code is wrong"
+        )    
+
 
     def test_cancel_withholding(self):
         self.retention.button_cancel()
