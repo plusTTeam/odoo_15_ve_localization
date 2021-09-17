@@ -114,8 +114,8 @@ class TestRetention(TransactionCase):
         """Test  when create retention for retention_type
         """
         with Form(self.retention) as retention:
-            self.retention.retention_type = RETENTION_TYPE_ISLR
-            self.invoice.write({"retention_state": "with_retention_both"})
+            retention.retention_type = RETENTION_TYPE_ISLR
+            retention.invoice_number.write({"retention_state": "with_retention_both"})
         self.assertEqual(
             self.invoice.retention_state,
             "with_retention_both",
