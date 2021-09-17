@@ -10,34 +10,6 @@ class Retention(models.Model):
     _description = "Retention"
     _rec_name = "complete_name_with_code"
 
-    @api.model
-    def _get_default_journal(self):
-        """ Get the default journal.
-        It could either be passed through the context using the 'default_journal_id' key containing its id,
-        either be determined by the default type.
-        """
-        move_type = self._context.get("default_move_type", "entry")
-        if move_type in self.get_sale_types(include_receipts=True):
-            journal_types = ["sale"]
-        elif move_type in self.get_purchase_types(include_receipts=True):
-            journal_types = ["purchase"]
-        else:
-            journal_types = self._context.get("default_move_journal_types", ["general"])
-
-        if self._context.get("default_journal_id"):
-            journal = self.env["account.journal"].browse(self._context["default_journal_id"])
-
-            if move_type != "entry" and journal.type not in journal_types:
-                raise ValidationError(_(
-                    "Cannot create an invoice of type %(move_type)s with a journal having %(journal_type)s as type.",
-                    move_type=move_type,
-                    journal_type=journal.type,
-                ))
-        else:
-            journal = self._search_default_journal(journal_types)
-
-        return journal
-
     today = fields.Date.today()
     complete_name_with_code = fields.Char(string="Complete Name with Code", compute="_compute_complete_name_with_code",
                                           store=True)
@@ -60,7 +32,7 @@ class Retention(models.Model):
                                       selection=[("iva", "IVA"), ("islr", "ISLR")],
                                       compute="_compute_retention_type", inverse="_write_retention_type", default="iva")
     destination_account_id = fields.Many2one(comodel_name="account.account", string="Destination Account", store=True,
-                                             readonly=False, compute="_get_destination_account_id", check_company=True)
+                                             readonly=False, check_company=True)
     state = fields.Selection(selection=[
         ("draft", "Draft"),
         ("posted", "Posted"),
@@ -169,19 +141,6 @@ class Retention(models.Model):
     def _write_retention_type(self):
         for partner in self:
             partner.is_iva = partner.retention_type == "iva"
-
-    @api.model
-    def _get_destination_account_id(self):
-        get_param = self.env["ir.config_parameter"].sudo().get_param
-        for retention in self:
-            account = "l10n_ve_plusteam.iva_account_sale_id"
-            if retention.partner_type == "customer":
-                account = "l10n_ve_plusteam.iva_account_sale_id" if retention.is_iva else \
-                    "l10n_ve_plusteam.islr_account_sale_id"
-            elif retention.partner_type == "supplier":
-                account = "l10n_ve_plusteam.iva_account_purchase_id" if retention.is_iva else \
-                    "l10n_ve_plusteam.islr_account_purchase_id"
-            retention.destination_account_id = int(get_param(account))
 
     @api.depends("partner_id")
     def _compute_company_id(self):
