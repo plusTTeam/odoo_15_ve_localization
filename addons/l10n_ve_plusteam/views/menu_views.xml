@@ -30,7 +30,12 @@
     <menuitem sequence="3" name="Retention" 
               id="localization_retention_menu"
               parent="account.menu_finance_payables"
-              action="l10n_ve_plusteam.retention_action_out_invoice_type"/>
+              action="l10n_ve_plusteam.retention_action_in_invoice_type"/>
+
+    <menuitem sequence="3" name="Retention" 
+              id="localization_retention_menu"
+              parent="account.menu_finance_Receivables"
+              action="l10n_ve_plusteam.retention_action_out_invoice_type"/>          
 
 
 </odoo>

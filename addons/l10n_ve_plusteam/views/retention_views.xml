@@ -86,6 +86,7 @@
                 <field name="code"/>
                 <field name="retention_type"/>
                 <field name="date"/>
+                <field name="receipt_date" optional="hide"/>         
                 <field name="invoice_number" optional="hide"/>
                 <field name="type_document"/>
                 <field name="original_document_number" optional="hide"/>
@@ -108,8 +109,8 @@
             </field>
     </record>
 
-    <record id="retention_out_invoice_tree" model="ir.ui.view">
-        <field name="name">retention.out.invoice.tree</field>
+    <record id="retention_in_invoice_tree" model="ir.ui.view">
+        <field name="name">retention.in.invoice.tree</field>
         <field name="model">retention</field>
         <field name="inherit_id" ref="retention_view_tree"/>
         <field name="mode">primary</field>
@@ -120,7 +121,19 @@
         </field>
     </record>
 
-    <record id="retention_action_out_invoice_type" model="ir.actions.act_window">
+    <record id="retention_out_invoice_tree" model="ir.ui.view">
+        <field name="name">retention.out.invoice.tree</field>
+        <field name="model">retention</field>
+        <field name="inherit_id" ref="retention_view_tree"/>
+        <field name="mode">primary</field>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='receipt_date']" position="attributes">
+                <attribute name="optional">show</attribute>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="retention_action_in_invoice_type" model="ir.actions.act_window">
         <field name="name">Retention</field>
         <field name="res_model">retention</field>
         <field name="view_mode">tree,form</field>
@@ -133,6 +146,23 @@
             </p>
             <p>
                 Create retention, register retention supplier.
+            </p>
+        </field>
+    </record>
+
+    <record id="retention_action_out_invoice_type" model="ir.actions.act_window">
+        <field name="name">Retention</field>
+        <field name="res_model">retention</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="retention_out_invoice_tree"/>
+        <field name="domain">[('move_type', 'in', ('out_invoice','out_refund'))]</field>
+        <field name="context">{'default_move_type': 'out_invoice'}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create a retention invoice
+            </p>
+            <p>
+                Create retention, register retention customer.
             </p>
         </field>
     </record>
