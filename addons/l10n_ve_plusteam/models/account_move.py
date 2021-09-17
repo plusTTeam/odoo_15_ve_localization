@@ -21,7 +21,7 @@ class AccountMove(models.Model):
     amount_base_taxed = fields.Monetary(string='Amount Base taxed', store=True, readonly=True, tracking=True,
                                         compute='_compute_amount_base_tax')
     # === Retention fields ===
-    retention_id = fields.One2many("retention", "invoice_number", string="Retention", copy=False, check_company=True)
+    retention_id = fields.One2many("retention", "invoice_id", string="Retention", copy=False, check_company=True)
     retention_state = fields.Selection(selection=[
         ('with_retention_iva', 'With Retention IVA'),
         ('with_retention_islr', 'With Retention ISLR'),

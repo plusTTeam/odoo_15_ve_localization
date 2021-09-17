@@ -25,10 +25,10 @@ class AccountRetentionRegister(models.TransientModel):
                                               related="partner_id.vat_withholding_percentage", required=True)
     destination_account_id = fields.Many2one(comodel_name="account.account", string="Destination Account", store=True,
                                              readonly=False, check_company=True)
-    invoice_number = fields.Many2one("account.move", string="Invoice Number", compute="_get_data_invoice",
-                                     domain="[('partner_id', '=', partner_id )]")
-    currency_id = fields.Many2one("res.currency", string="Currency", store=True, readonly=False,
-                                  help="The payment's currency.", related="invoice_number.currency_id")
+    invoice_id = fields.Many2one("account.move", string="Invoice", compute="_get_data_invoice",
+                                 domain="[('partner_id', '=', partner_id )]")
+    currency_id = fields.Many2one("res.currency", string="Currency", store=True, readonly=True,
+                                  help="The payment's currency.", related="invoice_id.currency_id")
     company_id = fields.Char(string="Company", compute="_get_data_invoice")
     move_type = fields.Char(string="Move Type", compute="_get_data_invoice")
     original_document_number = fields.Char(string="Original Invoice Number", compute="_get_data_invoice")
@@ -41,7 +41,7 @@ class AccountRetentionRegister(models.TransientModel):
                                         currency_field="currency_id")
     amount_base_untaxed = fields.Monetary(string="Amount base untaxed", compute="_get_data_invoice",
                                           currency_field="currency_id")
-    amount_retention = fields.Float(string="Amount Retention", compute="_compute_amount_retention")
+    amount_retention = fields.Float(string="Withholding Amount", compute="_compute_amount_retention")
     can_edit_wizard = fields.Boolean(store=True, copy=False, default=True,
                                      help="Technical field used to indicate the user can edit the wizard content such "
                                           "as the amount.")
@@ -52,7 +52,7 @@ class AccountRetentionRegister(models.TransientModel):
         for wizard in self:
             if invoice:
                 wizard.document = invoice.document_number
-                wizard.invoice_number = invoice.id
+                wizard.invoice_id = invoice.id
                 wizard.amount_tax = invoice.amount_tax
                 wizard.amount_base_taxed = invoice.amount_base_taxed
                 wizard.amount_total = invoice.amount_total
@@ -93,11 +93,11 @@ class AccountRetentionRegister(models.TransientModel):
                 month_char = "0" + str(retention.date.month)
             retention.month_fiscal_period = month_char
 
-    @api.depends("invoice_number")
+    @api.depends("invoice_id")
     def _compute_type_document(self):
         for retention in self:
             if retention.move_type in ("out_invoice", "in_invoice"):
-                if retention.invoice_number.debit_origin_id:
+                if retention.invoice_id.debit_origin_id:
                     retention.type_document = _("D/N")
                 else:
                     retention.type_document = _("Invoice")
@@ -133,7 +133,7 @@ class AccountRetentionRegister(models.TransientModel):
             "company_id": self.company_id,
             "partner_id": self.partner_id.id,
             "vat_withholding_percentage": self.vat_withholding_percentage,
-            "invoice_number": self.invoice_number.id,
+            "invoice_id": self.invoice_id.id,
             "invoice_date": self.invoice_date.strftime("%Y-%m-%d"),
             "amount_retention": self.amount_retention,
             "amount_base_untaxed": self.amount_base_untaxed,

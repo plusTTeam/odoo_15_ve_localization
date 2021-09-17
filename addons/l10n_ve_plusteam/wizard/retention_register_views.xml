@@ -5,11 +5,12 @@
             <field name="name">account.retention.register.form</field>
             <field name="model">account.retention.register</field>
             <field name="arch" type="xml">
-                <form string="Register Payment">
+                <form string="Register Retention">
                     <group>
                         <group name="groupcode"
                                invisible="context.get('default_move_type') not in ('in_invoice', 'in_refund','in_receipt')">
                             <field name="code" placeholder="receipt number"/>
+                            <field name="company_id" groups="base.group_multi_company"/>
                         </group>
                         <group name="grouptype">
                             <field name="retention_type" options="{'horizontal': true}" class="oe_edit_only"
@@ -29,21 +30,23 @@
                             <field name="invoice_date"/>
                             <field name="document"/>
                             <field name="rif"/>
+                            <field name="currency_id" options="{'no_create': True, 'no_open': True}"
+                                   groups="base.group_multi_currency"/>
                         </group>
                         <group name="group2">
-                            <field name="amount_base_untaxed" widget="monetary" options="{'currency_field': 'currency_id'}"/>
-                            <field name="amount_base_taxed" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                            <field name="amount_base_untaxed" widget="monetary"
+                                   options="{'currency_field': 'currency_id'}"/>
+                            <field name="amount_base_taxed" widget="monetary"
+                                   options="{'currency_field': 'currency_id'}"/>
                             <field name="amount_tax" widget="monetary" options="{'currency_field': 'currency_id'}"/>
                             <field name="amount_total" widget="monetary" options="{'currency_field': 'currency_id'}"/>
                             <label for="vat_withholding_percentage"/>
                             <div name="amount_div" class="o_row">
                                 <field name="vat_withholding_percentage" class="oe_inline"/>
-                                <field name="currency_id"
-                                       options="{'no_create': True, 'no_open': True}"
-                                       groups="base.group_multi_currency"/>
                                 <span class="o_form_label oe_inline">%</span>
                             </div>
-                            <field name="amount_retention" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                            <field name="amount_retention" widget="monetary"
+                                   options="{'currency_field': 'currency_id'}"/>
                         </group>
                     </group>
                     <footer>
