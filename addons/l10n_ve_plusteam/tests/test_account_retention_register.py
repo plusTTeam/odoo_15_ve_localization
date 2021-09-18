@@ -18,6 +18,7 @@ class TestAccountRetentionRegister(TransactionCase):
         self.vat_withholding_percentage= 75.0
         self.month_fiscal_period = "0" + str(self.date.month)
         self.year_fiscal_period = str(self.date.year)
+        self.datestr = self.date.strftime("%Y-%m-%d")
         
         self.tax= self.env["account.tax"].create({
             "name": "Dummy Tax",
@@ -43,7 +44,7 @@ class TestAccountRetentionRegister(TransactionCase):
         self.active_ids = (self.invoice).ids
 
         self.retention_register = self.env['account.retention.register'].with_context(active_model='account.move', active_ids=self.active_ids).create({
-            "date": self.date.strftime("%Y-%m-%d"),
+            "date": self.datestr,
             "retention_type": self.retention_type,
             "move_type": self.invoice.move_type,
             "original_document_number": self.invoice.document_number,
@@ -52,7 +53,7 @@ class TestAccountRetentionRegister(TransactionCase):
             "partner_id": self.partner.id,
             "vat_withholding_percentage": self.vat_withholding_percentage,
             "invoice_number": self.invoice.id,
-            "invoice_date": self.date.strftime("%Y-%m-%d"),
+            "invoice_date": self.datestr,
             "month_fiscal_period": self.month_fiscal_period,
             "year_fiscal_period": self.year_fiscal_period
         })._create_retentions()
@@ -65,7 +66,7 @@ class TestAccountRetentionRegister(TransactionCase):
         with self.assertRaises(ValidationError) as raise_exception:
             
             self.env['account.retention.register'].with_context(active_model='account.move', active_ids=self.active_ids).create({
-                "date": self.date.strftime("%Y-%m-%d"),
+                "date": self.datestr,
                 "retention_type": self.retention_type,
                 "move_type": self.invoice.move_type,
                 "original_document_number": self.invoice.document_number,
@@ -75,7 +76,7 @@ class TestAccountRetentionRegister(TransactionCase):
                 "partner_id": self.partner.id,
                 "vat_withholding_percentage": self.vat_withholding_percentage,
                 "invoice_number": self.invoice.id,
-                "invoice_date": self.date.strftime("%Y-%m-%d"),
+                "invoice_date": self.datestr,
                 "month_fiscal_period": self.month_fiscal_period,
                 "year_fiscal_period": self.year_fiscal_period
         })._create_retentions()
