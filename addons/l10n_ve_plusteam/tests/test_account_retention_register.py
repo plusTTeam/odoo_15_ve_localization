@@ -35,13 +35,9 @@ class TestAccountRetentionRegister(TransactionCase):
         self.retention_register = self.env['account.retention.register'].with_context(active_model='account.move', active_ids=self.active_ids).create({
             "date": self.datestr,
             "retention_type": self.retention_type,
-            "move_type": self.invoice.move_type,
-            "original_document_number": self.invoice.document_number,
             "code": self.code,
-            "company_id": self.invoice.company_id,
             "partner_id": self.partner.id,
             "vat_withholding_percentage": self.vat_withholding_percentage,
-            "invoice_number": self.invoice.id,
             "invoice_date": self.datestr,
             "month_fiscal_period": self.month_fiscal_period,
             "year_fiscal_period": self.year_fiscal_period
@@ -57,14 +53,9 @@ class TestAccountRetentionRegister(TransactionCase):
             self.env['account.retention.register'].with_context(active_model='account.move', active_ids=self.active_ids).create({
                 "date": self.datestr,
                 "retention_type": self.retention_type,
-                "move_type": self.invoice.move_type,
-                "original_document_number": self.invoice.document_number,
-                'amount_tax':self.invoice.amount_tax,
                 "code": self.code,
-                "company_id": self.invoice.company_id,
                 "partner_id": self.partner.id,
                 "vat_withholding_percentage": self.vat_withholding_percentage,
-                "invoice_number": self.invoice.id,
                 "invoice_date": self.datestr,
                 "month_fiscal_period": self.month_fiscal_period,
                 "year_fiscal_period": self.year_fiscal_period
