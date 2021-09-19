@@ -11,8 +11,8 @@ class TestAccountRetentionRegister(TransactionCase):
 
         self.partner = self.env.ref("base.partner_admin")
         self.date = fields.Date.today()
-        self.invoice_amount = 1000000
-        self.invoice_tax = 160000
+        self.invoice_amount = 100000
+        self.invoice_tax = 16000
         self.code=  "New"
         self.retention_type= RETENTION_TYPE_IVA
         self.vat_withholding_percentage= 75.0
@@ -20,24 +20,13 @@ class TestAccountRetentionRegister(TransactionCase):
         self.year_fiscal_period = str(self.date.year)
         self.datestr = self.date.strftime("%Y-%m-%d")
         
-        self.tax= self.env["account.tax"].create({
-            "name": "Dummy Tax",
-            "amount": "16.00",
-            "type_tax_use": "purchase",
-        })
         self.invoice = self.env["account.move"].create({
             'move_type': "out_invoice",
             'partner_id': self.partner.id,
             'invoice_date': self.date,
             'date': self.date,
             'retention_state': "with_retention_iva",
-            'amount_tax':self.invoice_tax,
-            'invoice_line_ids': [(0, 0, {
-                'name': 'product that cost %s' % self.invoice_amount,
-                'quantity': 1,
-                'price_unit': self.invoice_amount,
-
-            })]
+            'amount_tax':self.invoice_tax
         })
         self.invoice.write({"state": "posted"})
           
