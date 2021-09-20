@@ -10248,6 +10248,7 @@ msgstr "Monedas"
 #: model:ir.model.fields,field_description:base.field_res_partner_bank__currency_id
 #: model:ir.model.fields,field_description:l10n_ve_plusteam.field_tax_unit__currency_id
 #: model:ir.model.fields,field_description:l10n_ve_plusteam.field_account_retention_register__currency_id
+#: model:ir.model.fields,field_description:l10n_ve_plusteam.field_retention__currency_id
 #: model_terms:ir.ui.view,arch_db:base.view_currency_form
 #: model_terms:ir.ui.view,arch_db:base.view_currency_search
 msgid "Currency"
@@ -14712,6 +14713,8 @@ msgstr "Inventario, logística, valoración, contabilidad"
 #: model_terms:ir.ui.view,arch_db:base.view_partner_form
 #: code:addons/l10n_ve_plusteam/models/retention.py:0
 #: code:addons/l10n_ve_plusteam/wizard/account_retention_register.py:0
+#: model:ir.model.fields,field_description:l10n_ve_plusteam.field_account_retention_register__invoice_id
+#: model:ir.model.fields,field_description:l10n_ve_plusteam.field_retention__invoice_id
 msgid "Invoice"
 msgstr "Factura"
 
@@ -27515,8 +27518,8 @@ msgstr "Porcentaje retención IVA"
 #. module: l10n_ve_plusteam
 #: model:ir.model.fields,field_description:l10n_ve_plusteam.field_account_retention_register__invoice_number
 #: model:ir.model.fields,field_description:l10n_ve_plusteam.field_retention__invoice_number
-msgid "Invoice Number"
-msgstr "Número de Factura"
+msgid "Invoice"
+msgstr "Factura"
 
 #. module: l10n_ve_plusteam
 #: model:ir.model.fields,field_description:l10n_ve_plusteam.field_retention__original_document_number
@@ -27560,8 +27563,8 @@ msgstr "Total"
 #. module: l10n_ve_plusteam
 #: model:ir.model.fields,field_description:l10n_ve_plusteam.field_account_retention_register__amount_retention
 #: model:ir.model.fields,field_description:l10n_ve_plusteam.field_retention__amount_retention
-msgid "Amount Retention"
-msgstr "Monto Retención"
+msgid "Withholding Amount"
+msgstr "Monto de Retención"
 
 #. module: l10n_ve_plusteam
 #: model:ir.model.fields.selection,name:l10n_ve_plusteam.selection__retention__partner_type__supplier
@@ -27684,6 +27687,7 @@ msgstr "El contacto seleccionado es diferente al contacto de la factura, "
 
 #. module: l10n_ve_plusteam
 #: code:addons/l10n_ve_plusteam/models/retention.py:0
+#: code:addons/l10n_ve_plusteam/tests/test_retention.py:0
 #: code:addons/l10n_ve_plusteam/wizard/account_retention_register.py:0
 #, python-format
 msgid "D/N"
@@ -27787,3 +27791,25 @@ msgstr ""
 #, python-format
 msgid "This type was already generated"
 msgstr "Este tipo de retención ya fue generado"
+
+#. module: l10n_ve_plusteam
+#: code:addons/l10n_ve_plusteam/models/retention.py:0
+#, python-format
+msgid "%s withholding from %s invoice"
+msgstr "Retención %s de la factura %s"
+
+#. module: l10n_ve_plusteam
+#: model:ir.model.fields,field_description:l10n_ve_plusteam.field_retention__amount_retention_company_currency
+msgid "Withholding Amount in Company Currency"
+msgstr "Monto de Retención en Moneda de la Compañía"
+
+#. module: l10n_ve_plusteam
+#: code:addons/l10n_ve_plusteam/models/retention.py:0
+#: code:addons/l10n_ve_plusteam/tests/test_retention.py:0
+#, python-format
+msgid ""
+"The company does not have a journal configured for withholding, please go to"
+" the configuration section to add one"
+msgstr ""
+"La compañía no tiene configurado un diario contable para retención, "
+"por favor ve a la sección de configuración para agregar uno"

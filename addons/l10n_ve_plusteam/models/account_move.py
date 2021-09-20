@@ -21,7 +21,7 @@ class AccountMove(models.Model):
     amount_base_taxed = fields.Monetary(string='Amount Base taxed', store=True, readonly=True, tracking=True,
                                         compute='_compute_amount_base_tax')
     # === Retention fields ===
-    retention_id = fields.One2many("retention", "invoice_number", string="Retention", copy=False, check_company=True)
+    retention_id = fields.One2many("retention", "invoice_id", string="Retention", copy=False, check_company=True)
     retention_state = fields.Selection(selection=[
         ('with_retention_iva', 'With Retention IVA'),
         ('with_retention_islr', 'With Retention ISLR'),
@@ -45,10 +45,8 @@ class AccountMove(models.Model):
             currencies = move._get_lines_onchange_currency().currency_id
 
             for line in move.line_ids:
-                if move.is_invoice(include_receipts=True):
-                    # === Invoices ===
-
-                    if not line.exclude_from_invoice_tab and line.tax_ids.amount > 0:
+                 # === Invoices ===
+                if move.is_invoice(include_receipts=True) and not line.exclude_from_invoice_tab and line.tax_ids.amount > 0:
                         # base taxed amount.
                         total_base_taxed += line.balance
                         total_base_taxed_currency += line.amount_currency
