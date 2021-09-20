@@ -27813,3 +27813,14 @@ msgid ""
 msgstr ""
 "La compañía no tiene configurado un diario contable para retención, "
 "por favor ve a la sección de configuración para agregar uno"
+
+#. module: l10n_ve_plusteam
+#: code:addons/l10n_ve_plusteam/models/account_move.py:0
+#: code:addons/l10n_ve_plusteam/tests/test_account_move.py:0
+#, python-format
+msgid ""
+"You cannot cancel an invoice when it has withholding associated with a "
+"different status of cancel, please cancel all withholding first"
+msgstr ""
+"No puedes cancelar una factura cuando tiene retenciones asociadas con "
+"estado diferente de 'Cancelado', por favor cancela antes todas las retenciones"
