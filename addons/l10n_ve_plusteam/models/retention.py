@@ -10,7 +10,6 @@ class Retention(models.Model):
     _description = "Retention"
     _rec_name = "complete_name_with_code"
 
-    today = fields.Date.today()
     complete_name_with_code = fields.Char(string="Complete Name with Code", compute="_compute_complete_name_with_code",
                                           store=True)
     move_type = fields.Selection(selection=[
@@ -22,10 +21,10 @@ class Retention(models.Model):
     ], string="Type", required=True, store=True, index=True, readonly=True, tracking=True,
         default="entry", change_default=True, related="invoice_number.move_type")
     code = fields.Char(string="Retention Number", default=_("New"), store=True)
-    date = fields.Date(string="Date", required=True, default=fields.Date.context_today)
+    retention_date = fields.Date(string="Date", required=True, default=fields.Date.context_today)
     receipt_date = fields.Date(string="Receipt Date", required=True, default=fields.Date.context_today)
     month_fiscal_period = fields.Char(string="Month", compute="_compute_month_fiscal_char", store=True, readonly=False)
-    year_fiscal_period = fields.Char(string="Year", default=str(today.year))
+    year_fiscal_period = fields.Char(string="Year", default=str(fields.Date.today().year))
     is_iva = fields.Boolean(string="Is IVA", default=False,
                             help="Check if the retention is a iva, otherwise it is islr")
     retention_type = fields.Selection(string="Retention Type",
@@ -53,11 +52,11 @@ class Retention(models.Model):
                                               related="partner_id.vat_withholding_percentage", required=True)
     invoice_number = fields.Many2one("account.move", string="Invoice Number", required=True,
                                      domain="[('move_type', 'in', ('out_invoice', 'in_invoice', 'in_refund', "
-                                            "'out_refund')), ('retention_state', '!=', 'with_retention_both'),"
+                                            "'out_refund')), ('retention_state', '!=', 'with_both_retentions'),"
                                             "('state', '=', 'posted'),('partner_id', '=', partner_id )]")                                     
     original_document_number = fields.Char(string="Original Document Number", related="invoice_number.document_number")                                        
     invoice_date = fields.Date(string="Invoice Date", required=True, related="invoice_number.date")
-    type_document = fields.Char(string="Type Document", compute="_compute_type_document")
+    document_type = fields.Char(string="Type Document", compute="_compute_type_document")
     control_number = fields.Char(string="Control Number", related="invoice_number.control_number")
     ref = fields.Char(string="Reference", related="invoice_number.ref")
     company_currency_id = fields.Many2one(related="invoice_number.company_currency_id", string="Company Currency",
@@ -89,22 +88,22 @@ class Retention(models.Model):
         for record in self:
             if record.vat_withholding_percentage <= 0 or record.vat_withholding_percentage > 100:
                 raise ValidationError(
-                    _("The retention percentage must be between the values 1 and 100, "
+                    _("The retention percentage must be between 1 and 100, "
                       "please verify that the value is in this range")
                 )
 
     @api.constrains("retention_type")
     def _check_retention_type(self):
-        created = False
+        retention_already_created = False
         retentions = self.read_group([("retention_type", "=", "iva")], ["invoice_number"], ["invoice_number"])
         for retention in retentions:
             if retention.get('invoice_number_count', 0) > 1:
-                created = True
+                retention_already_created = True
         retentions = self.read_group([("retention_type", "=", "islr")], ["invoice_number"], ["invoice_number"])
         for retention in retentions:
             if retention.get('invoice_number_count', 0) > 1:
-                created = True
-        if created:
+                retention_already_created = True
+        if retention_already_created:
             raise ValidationError(_("This type was already generated"))
 
     @api.depends(
@@ -112,8 +111,7 @@ class Retention(models.Model):
         "amount_tax")
     def _compute_amount_retention(self):
         for retention in self:
-            amount_retention = retention.amount_tax * retention.vat_withholding_percentage / 100
-            retention.amount_retention = amount_retention
+            retention.amount_retention = retention.amount_tax * retention.vat_withholding_percentage / 100
 
     @api.depends("amount_untaxed")
     def _compute_amount_base_untaxed(self):
@@ -125,12 +123,12 @@ class Retention(models.Model):
         for retention in self:
             retention.amount_retention = retention.amount_tax * retention.vat_withholding_percentage / 100
 
-    @api.depends("date")
+    @api.depends("retention_date")
     def _compute_month_fiscal_char(self):
         for retention in self:
-            month_char = str(retention.date.month)
+            month_char = str(retention.retention_date.month)
             if len(month_char) == 1:
-                month_char = "0" + str(retention.date.month)
+                month_char = "0" + str(retention.retention_date.month)
             retention.month_fiscal_period = month_char
 
     @api.depends("is_iva")
@@ -152,13 +150,13 @@ class Retention(models.Model):
         for retention in self:
             if retention.invoice_number.move_type in ('out_invoice', 'in_invoice'):
                 if retention.invoice_number.debit_origin_id:
-                    retention.type_document = _('D/N')
+                    retention.document_type = _('D/N')
                 else:
-                    retention.type_document = _('Invoice')
+                    retention.document_type = _('Invoice')
             elif retention.invoice_number.move_type in ('in_refund', 'out_refund'):
-                retention.type_document = _('C/N')
+                retention.document_type = _('C/N')
             else:
-                retention.type_document = _('Other')
+                retention.document_type = _('Other')
 
     @api.model
     def create(self, values):
@@ -174,9 +172,9 @@ class Retention(models.Model):
             invoice.write({
                 "retention_state": retention_state
             })
-        elif invoice.retention_state != retention_state and invoice.retention_state != "with_retention_both":
+        elif invoice.retention_state != retention_state and invoice.retention_state != "with_both_retentions":
             invoice.write({
-                "retention_state": "with_retention_both"
+                "retention_state": "with_both_retentions"
             })
         return super(Retention, self).create(values)
 

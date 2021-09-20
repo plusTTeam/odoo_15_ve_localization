@@ -33,7 +33,7 @@
                     </group>
                     <group>
                         <group>
-                            <field name="date"/>
+                            <field name="retention_date"/>
                             <field name="receipt_date" 
                                    invisible="context.get('default_move_type') in ('in_invoice', 'in_refund','in_receipt')"/>
                             <field name="partner_type"/>
@@ -76,9 +76,9 @@
                 <field name="rif"/>
                 <field name="code"/>
                 <field name="retention_type"/>
-                <field name="date"/>
+                <field name="retention_date"/>
                 <field name="invoice_number" optional="hide"/>
-                <field name="type_document"/>
+                <field name="document_type"/>
                 <field name="original_document_number" optional="hide"/>
                 <field name="control_number" optional="hide"/>
                 <field name="amount_retention"/>

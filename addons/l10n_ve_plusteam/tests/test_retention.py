@@ -81,7 +81,7 @@ class TestRetention(TransactionCase):
     def test_month_fiscal_char(self):
         self.assertEqual(
             self.retention.month_fiscal_period,
-            "0" + str(self.retention.date.month),
+            "0" + str(self.retention.retention_date.month),
             msg="Field month fiscal period is wrong"
         )
 
@@ -97,10 +97,10 @@ class TestRetention(TransactionCase):
         """
         with Form(self.retention) as retention:
             retention.retention_type = RETENTION_TYPE_ISLR
-            retention.invoice_number.write({"retention_state": "with_retention_both"})
+            retention.invoice_number.write({"retention_state": "with_both_retentions"})
         self.assertEqual(
             self.invoice.retention_state,
-            "with_retention_both",
+            "with_both_retentions",
             msg="Field retention_state is wrong"
         )
 
@@ -123,7 +123,7 @@ class TestRetention(TransactionCase):
             self.retention.vat_withholding_percentage = 0
         self.assertEqual(
             str(raise_exception.exception),
-            _("The retention percentage must be between the values 1 and 100, "
+            _("The retention percentage must be between 1 and 100, "
               "please verify that the value is in this range"),
             msg="Field withholding percentage is wrong"
         )
