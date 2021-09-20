@@ -73,7 +73,7 @@ class TestRetention(TransactionCase):
         with Form(self.retention) as retention:
             retention.vat_withholding_percentage = 100
         self.assertEqual(
-            self.retention.amount_tax*self.retention.vat_withholding_percentage/100,
+            self.retention.amount_tax*retention.vat_withholding_percentage/100,
             self.retention.amount_retention,
             msg="calculation of the retention amount is wrong"
         )           
