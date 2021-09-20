@@ -106,7 +106,7 @@ class AccountRetentionRegister(models.TransientModel):
             else:
                 retention.type_document = _("Other")
 
-   def _create_retention_values_from_wizard(self):
+    def _create_retention_values_from_wizard(self):
         return {
             "date": self.date.strftime("%Y-%m-%d"),
             "month_fiscal_period": self.month_fiscal_period,
