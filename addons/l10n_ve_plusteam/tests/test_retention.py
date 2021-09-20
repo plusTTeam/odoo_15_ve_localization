@@ -25,16 +25,16 @@ class TestRetention(TransactionCase):
             "type_tax_use": "purchase",
         })
         self.invoice = self.env["account.move"].create({
-            'move_type': "out_invoice",
-            'partner_id': self.partner.id,
-            'invoice_date': self.date,
-            'date': self.date,
-            'retention_state': "with_retention_iva",
-            'amount_tax': self.invoice_tax,
-            'invoice_line_ids': [(0, 0, {
-                'name': 'product that cost %s' % self.invoice_amount,
-                'quantity': 1,
-                'price_unit': self.invoice_amount,
+            "move_type": "out_invoice",
+            "partner_id": self.partner.id,
+            "invoice_date": self.date,
+            "date": self.date,
+            "retention_state": "with_retention_iva",
+            "amount_tax": self.invoice_tax,
+            "invoice_line_ids": [(0, 0, {
+                "name": "product that cost %s" % self.invoice_amount,
+                "quantity": 1,
+                "price_unit": self.invoice_amount,
 
             })]
         })
@@ -79,7 +79,7 @@ class TestRetention(TransactionCase):
         with Form(self.retention) as retention:
             retention.vat_withholding_percentage = 100
         self.assertEqual(
-            self.retention.amount_tax * self.retention.vat_withholding_percentage / 100,
+            self.retention.amount_tax * retention.vat_withholding_percentage / 100,
             self.retention.amount_retention,
             msg="calculation of the retention amount is wrong"
         )
@@ -106,7 +106,7 @@ class TestRetention(TransactionCase):
     def test_type_document(self):
         self.assertEqual(
             self.retention.type_document,
-            _('Invoice'),
+            _("Invoice"),
             msg="Field type document is wrong"
         )
 
