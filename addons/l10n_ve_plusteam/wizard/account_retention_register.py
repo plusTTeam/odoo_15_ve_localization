@@ -22,7 +22,7 @@ class AccountRetentionRegister(models.TransientModel):
                                  check_company=True, compute="_get_data_invoice", required=True)
     rif = fields.Char(string="RIF", related="partner_id.vat")
     vat_withholding_percentage = fields.Float(string="vat withholding percentage", store=True, readonly=False,
-                                              related="partner_id.vat_withholding_percentage", required=True)
+                                              compute="_compute_vat_percentage", required=True)
     destination_account_id = fields.Many2one(comodel_name="account.account", string="Destination Account", store=True,
                                              readonly=False, check_company=True)
     invoice_number = fields.Many2one("account.move", string="Invoice Number", compute="_get_data_invoice",
@@ -30,6 +30,7 @@ class AccountRetentionRegister(models.TransientModel):
     currency_id = fields.Many2one("res.currency", string="Currency", store=True, readonly=False,
                                   help="The payment's currency.", related="invoice_number.currency_id")
     company_id = fields.Char(string="Company", compute="_get_data_invoice")
+    vat_company_percentage = fields.Float(string="Vat company")
     move_type = fields.Char(string="Move Type", compute="_get_data_invoice")
     original_document_number = fields.Char(string="Original Invoice Number", compute="_get_data_invoice")
     type_document = fields.Char(string="Type Document", compute="_compute_type_document")
@@ -60,10 +61,19 @@ class AccountRetentionRegister(models.TransientModel):
                 wizard.amount_base_untaxed = invoice.amount_untaxed - invoice.amount_base_taxed
                 wizard.invoice_date = invoice.date
                 wizard.company_id = invoice.company_id.id
+                wizard.vat_company_percentage = invoice.company_id.vat_withholding_percentage
                 wizard.move_type = invoice.move_type
                 wizard.original_document_number = invoice.document_number
             else:
                 wizard.document = _("Without relationship")
+
+    @api.depends("move_type")
+    def _compute_vat_percentage(self):
+        for retention in self:
+            if retention.move_type in ("in_invoice", "in_refund"):
+                retention.vat_withholding_percentage = retention.partner_id.vat_withholding_percentage
+            else:
+                retention.vat_withholding_percentage = retention.vat_company_percentage
 
     @api.depends("vat_withholding_percentage", "amount_tax")
     def _compute_amount_retention(self):
@@ -99,8 +109,10 @@ class AccountRetentionRegister(models.TransientModel):
             if retention.move_type in ("out_invoice", "in_invoice"):
                 if retention.invoice_number.debit_origin_id:
                     retention.type_document = _("D/N")
+                elif retention.invoice_number.move_type == 'out_invoice':
+                    retention.type_document = _('Invoice')
                 else:
-                    retention.type_document = _("Invoice")
+                    retention.type_document = _('Bills')
             elif retention.move_type in ("in_refund", "out_refund"):
                 retention.type_document = _("C/N")
             else:

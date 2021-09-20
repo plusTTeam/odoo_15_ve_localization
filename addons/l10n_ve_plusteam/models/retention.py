@@ -47,15 +47,12 @@ class Retention(models.Model):
     company_id = fields.Many2one(comodel_name="res.company", string="Company",
                                  store=True, readonly=True,
                                  compute="_compute_company_id")
-    partner_type = fields.Selection([
-        ("customer", "Customer"),
-        ("supplier", "Vendor"),
-    ], string="partner type", default="supplier", tracking=True)
+
     partner_id = fields.Many2one("res.partner", string="Customer/Vendor", domain="[('parent_id','=', False)]",
                                  check_company=True)
     rif = fields.Char(string="RIF", related="partner_id.vat")
     vat_withholding_percentage = fields.Float(string="vat withholding percentage", store=True, readonly=False,
-                                              related="partner_id.vat_withholding_percentage", required=True)
+                                              compute="_compute_vat_percentage", required=True)
     invoice_number = fields.Many2one("account.move", string="Invoice Number", required=True,
                                      domain="[('move_type', 'in', ('out_invoice', 'in_invoice', 'in_refund', "
                                             "'out_refund')), ('retention_state', '!=', 'with_retention_both'),"
@@ -114,6 +111,26 @@ class Retention(models.Model):
         if created:
             raise ValidationError(_("This type was already generated"))
 
+    @api.constrains('code','move_type')
+    def _check_receipt_number(self):
+        for record in self:
+            if record.code and re.match(r"^[0-9]{14,14}$", record.code) is None and record.move_type in ("out_invoice","out_refund"):
+                raise ValidationError(
+                    _("Invalid receipt number format. Must have at least 14 numbers"))
+
+    @api.depends("partner_id")
+    def _compute_company_id(self):
+        for retention in self:
+            retention.company_id = retention.partner_id.company_id or retention.company_id or self.env.company
+
+    @api.depends("move_type")
+    def _compute_vat_percentage(self):
+        for retention in self:
+            if retention.move_type in ("in_invoice","in_refund"):
+                retention.vat_withholding_percentage = retention.partner_id.vat_withholding_percentage
+            else:
+                retention.vat_withholding_percentage = retention.company_id.vat_withholding_percentage
+
     @api.depends(
         "vat_withholding_percentage",
         "amount_tax")
@@ -149,19 +166,16 @@ class Retention(models.Model):
         for partner in self:
             partner.is_iva = partner.retention_type == "iva"
 
-    @api.depends("partner_id")
-    def _compute_company_id(self):
-        for retention in self:
-            retention.company_id = retention.partner_id.company_id or retention.company_id or self.env.company
-
     @api.depends("invoice_number")
     def _compute_type_document(self):
         for retention in self:
             if retention.invoice_number.move_type in ('out_invoice', 'in_invoice'):
                 if retention.invoice_number.debit_origin_id:
                     retention.type_document = _('D/N')
-                else:
+                elif retention.invoice_number.move_type == 'out_invoice':
                     retention.type_document = _('Invoice')
+                else:
+                    retention.type_document = _('Bills')
             elif retention.invoice_number.move_type in ('in_refund', 'out_refund'):
                 retention.type_document = _('C/N')
             else:
@@ -169,7 +183,7 @@ class Retention(models.Model):
 
     @api.model
     def create(self, values):
-        if values.get("code", "").strip().lower() in ["", "nuevo", "new"]:
+        if values.get("code", "").strip().lower() in ["", "nuevo", "new"] and values.get("move_type", "") not in ['out_invoice', 'out_refund', ""]:
             values["code"] = self.env["ir.sequence"].next_by_code("retention.sequence")
         values["state"] = "posted"
         if values.get("retention_type", False) == "iva":
@@ -186,12 +200,7 @@ class Retention(models.Model):
                 "retention_state": "with_retention_both"
             })
         retention = super(Retention, self).create(values)
-        retention.write({
-            "destination_account_id": retention._get_destination_account_id()
-        })
-        retention.move_id.write(retention._update_move_id())
-        to_write = {'line_ids': [(0, 0, line_values) for line_values in retention._prepare_move_lines()]}
-        retention.move_id.write(to_write)
+
         return retention
 
     def _update_move_id(self):
