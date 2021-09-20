@@ -118,19 +118,6 @@ class AccountRetentionRegister(models.TransientModel):
             else:
                 retention.type_document = _("Other")
 
-    @api.model
-    def _get_destination_account_id(self):
-        get_param = self.env["ir.config_parameter"].sudo().get_param
-        for retention in self:
-            account = "l10n_ve_plusteam.iva_account_sale_id"
-            if retention.move_type in ("out_invoice", "out_refund", "out_receipt"):
-                account = "l10n_ve_plusteam.iva_account_sale_id" if retention.is_iva else \
-                    "l10n_ve_plusteam.islr_account_sale_id"
-            elif retention.move_type in ("in_invoice", "in_refund", "in_receipt"):
-                account = "l10n_ve_plusteam.iva_account_purchase_id" if retention.is_iva else \
-                    "l10n_ve_plusteam.islr_account_purchase_id"
-            retention.destination_account_id = int(get_param(account))
-
     def _create_retention_values_from_wizard(self):
         return {
             "date": self.date.strftime("%Y-%m-%d"),
