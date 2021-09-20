@@ -25,8 +25,13 @@ class TestAccountRetentionRegister(TransactionCase):
             "partner_id": self.partner.id,
             "invoice_date": self.date,
             "date": self.date,
-            "retention_state": "with_retention_iva",
-            "amount_tax": self.invoice_tax
+            "amount_tax": self.invoice_tax,
+            "invoice_line_ids": [(0, 0, {
+                "name": "product that cost %s" % self.invoice_amount,
+                "quantity": 1,
+                "price_unit": self.invoice_amount,
+
+            })]
         })
         self.invoice.write({"state": "posted"})
 
@@ -72,7 +77,7 @@ class TestAccountRetentionRegister(TransactionCase):
         """Test when create retention calculation of the amount
         """
         self.assertEqual(
-            self.invoice.amount_tax * self.vat_withholding_percentage / 100,
+            self.retention.amount_tax * self.vat_withholding_percentage / 100,
             self.retention.amount_retention,
             msg="calculation of the retention amount is wrong"
         )
