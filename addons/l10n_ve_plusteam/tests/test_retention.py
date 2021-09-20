@@ -1,7 +1,7 @@
 from odoo import fields, _
 from odoo.exceptions import ValidationError
 from odoo.tests.common import TransactionCase, Form
-from ..tools.constants import RETENTION_TYPE_ISLR, RETENTION_TYPE_IVA, REF_MAIN_COMPANY
+from ..tools.constants import RETENTION_TYPE_ISLR, RETENTION_TYPE_IVA, REF_MAIN_COMPANY, NAME_PRODUCT
 
 
 class TestRetention(TransactionCase):
@@ -10,7 +10,8 @@ class TestRetention(TransactionCase):
         super(TestRetention, self).setUp()
 
         self.company = self.env.ref(REF_MAIN_COMPANY)
-        self.default_withholding_journal = self.env.ref("l10n_ve_plusteam.journal_withholding", raise_if_not_found=False)
+        self.default_withholding_journal = self.env.ref("l10n_ve_plusteam.journal_withholding",
+                                                        raise_if_not_found=False)
         if self.default_withholding_journal:
             self.company.write({
                 "withholding_journal_id": self.default_withholding_journal.id
@@ -32,7 +33,7 @@ class TestRetention(TransactionCase):
             "retention_state": "with_retention_iva",
             "amount_tax": self.invoice_tax,
             "invoice_line_ids": [(0, 0, {
-                "name": "product that cost %s" % self.invoice_amount,
+                "name": NAME_PRODUCT % self.invoice_amount,
                 "quantity": 1,
                 "price_unit": self.invoice_amount,
 
@@ -51,7 +52,7 @@ class TestRetention(TransactionCase):
         """Test  when create retention for retention_type
         """
         with self.assertRaises(ValidationError) as raise_exception:
-            new_retention = self.env["retention"].create({
+            self.env["retention"].create({
                 "invoice_id": self.invoice.id,
                 "partner_id": self.partner.id,
                 "move_type": self.invoice.move_type,
@@ -162,7 +163,7 @@ class TestRetention(TransactionCase):
             'retention_state': "with_retention_iva",
             'amount_tax': self.invoice_tax,
             'invoice_line_ids': [(0, 0, {
-                'name': 'product that cost %s' % self.invoice_amount,
+                'name': NAME_PRODUCT % self.invoice_amount,
                 'quantity': 1,
                 'price_unit': self.invoice_amount
             })]
@@ -196,7 +197,7 @@ class TestRetention(TransactionCase):
             'retention_state': "with_retention_iva",
             'amount_tax': self.invoice_tax,
             'invoice_line_ids': [(0, 0, {
-                'name': 'product that cost %s' % self.invoice_amount,
+                'name': NAME_PRODUCT % self.invoice_amount,
                 'quantity': 1,
                 'price_unit': self.invoice_amount
             })]
@@ -224,7 +225,7 @@ class TestRetention(TransactionCase):
             'retention_state': "with_retention_iva",
             'amount_tax': self.invoice_tax,
             'invoice_line_ids': [(0, 0, {
-                'name': 'product that cost %s' % self.invoice_amount,
+                'name': NAME_PRODUCT % self.invoice_amount,
                 'quantity': 1,
                 'price_unit': self.invoice_amount
             })]
