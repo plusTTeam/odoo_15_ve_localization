@@ -27799,3 +27799,14 @@ msgid ""
 msgstr ""
 "La compañía no tiene configurado un diario contable para retención, "
 "por favor ve a la sección de configuración para agregar uno"
+
+#. module: l10n_ve_plusteam
+#: code:addons/l10n_ve_plusteam/models/retention.py:0
+#: code:addons/l10n_ve_plusteam/tests/test_retention.py:0
+#, python-format
+msgid ""
+"You are trying to create a withholding from an illegal journal entry type "
+"(%s)"
+msgstr ""
+"Estás intentando crear una retención a partir de un tipo de asiento contable no permitido "
+"(%s)"
