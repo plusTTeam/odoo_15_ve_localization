@@ -13,22 +13,22 @@ class TestRetention(TransactionCase):
         self.date = fields.Date.today()
         self.invoice_amount = 1000000
         self.invoice_tax = 160000
-        self.tax= self.env["account.tax"].create({
+        self.tax = self.env["account.tax"].create({
             "name": "Dummy Tax",
             "amount": "16.00",
             "type_tax_use": "purchase",
         })
         self.invoice = self.env["account.move"].create({
-            'move_type': "out_invoice",
-            'partner_id': self.partner.id,
-            'invoice_date': self.date,
-            'date': self.date,
-            'retention_state': "with_retention_iva",
-            'amount_tax':self.invoice_tax,
-            'invoice_line_ids': [(0, 0, {
-                'name': 'product that cost %s' % self.invoice_amount,
-                'quantity': 1,
-                'price_unit': self.invoice_amount,
+            "move_type": "out_invoice",
+            "partner_id": self.partner.id,
+            "invoice_date": self.date,
+            "date": self.date,
+            "retention_state": "with_retention_iva",
+            "amount_tax": self.invoice_tax,
+            "invoice_line_ids": [(0, 0, {
+                "name": "product that cost %s" % self.invoice_amount,
+                "quantity": 1,
+                "price_unit": self.invoice_amount,
 
             })]
         })
@@ -56,13 +56,13 @@ class TestRetention(TransactionCase):
             str(raise_exception.exception),
             _("This type was already generated"),
             msg="Field retention_state is wrong"
-            )    
+        )
 
     def test_compute_amount_retention(self):
         """Test when create retention calculation of the amount
         """
         self.assertEqual(
-            self.retention.amount_tax*self.retention.vat_withholding_percentage/100,
+            self.retention.amount_tax * self.retention.vat_withholding_percentage / 100,
             self.retention.amount_retention,
             msg="calculation of the retention amount is wrong"
         )
@@ -73,40 +73,36 @@ class TestRetention(TransactionCase):
         with Form(self.retention) as retention:
             retention.vat_withholding_percentage = 100
         self.assertEqual(
-            self.retention.amount_tax*retention.vat_withholding_percentage/100,
+            self.retention.amount_tax * retention.vat_withholding_percentage / 100,
             self.retention.amount_retention,
             msg="calculation of the retention amount is wrong"
-        )           
-    def test_create_retention(self):
-        self.assertTrue(self.retention.destination_account_id is not False,
-                        msg="The destination account was not configured correctly")
-        self.assertTrue(len(self.retention.move_id.line_ids), msg="the account movements were not created")
+        )
 
     def test_month_fiscal_char(self):
         self.assertEqual(
             self.retention.month_fiscal_period,
-            "0" + str(self.retention.date.month),
+            "0" + str(self.retention.retention_date.month),
             msg="Field month fiscal period is wrong"
-        )    
+        )
 
     def test_type_document(self):
          self.assertEqual(
             self.retention.type_document,
             _('Bills'),
             msg="Field type document is wrong"
-        )    
-    
+        )
+
     def test_retention_type_other(self):
         """Test  when create retention for retention_type
         """
         with Form(self.retention) as retention:
             retention.retention_type = RETENTION_TYPE_ISLR
-            retention.invoice_number.write({"retention_state": "with_retention_both"})
+            retention.invoice_number.write({"retention_state": "with_both_retentions"})
         self.assertEqual(
             self.invoice.retention_state,
-            "with_retention_both",
+            "with_both_retentions",
             msg="Field retention_state is wrong"
-            )    
+        )
 
     def test_partner_id(self):
         """Test  partner id equal invoice
@@ -116,9 +112,9 @@ class TestRetention(TransactionCase):
         self.assertEqual(
             str(raise_exception.exception),
             _("The selected contact is different from the invoice contact, "
-                      "they must be the same, please correct it"),
+              "they must be the same, please correct it"),
             msg="Field partner id is wrong"
-            )    
+        )
 
     def test_vat_withholding_percentage(self):
         """Test  withholding percentage > 0
@@ -127,32 +123,14 @@ class TestRetention(TransactionCase):
             self.retention.vat_withholding_percentage = 0
         self.assertEqual(
             str(raise_exception.exception),
-            _("The retention percentage must be between the values 1 and 100, "
-                      "please verify that the value is in this range"),
+            _("The retention percentage must be between 1 and 100, "
+              "please verify that the value is in this range"),
             msg="Field withholding percentage is wrong"
-            )    
+        )
 
     def test_complete_name(self):
         self.assertEqual(
             self.retention.complete_name_with_code,
-            f"[{self.retention.code}] {self.retention.original_document_number}",
+            f"[{self.retention.retention_code}] {self.retention.original_document_number}",
             msg="Field complete_name_with_code is wrong"
-        )    
-
-
-    def test_cancel_withholding(self):
-        self.retention.button_cancel()
-
-        self.assertEqual(self.retention.state, "cancel", msg="Withholding status was unchanged")
-        self.assertEqual(self.retention.move_id.state, "cancel", msg="Withholding status was unchanged")
-
-    def test_raise_when_receipt_number_is_invalid(self):
-        """Test raise when save invalid retention number
-        """
-        with self.assertRaises(ValidationError) as raise_exception:
-            self.code = "1234589765"
-        self.assertEqual(
-            str(raise_exception.exception),
-            _("Invalid receipt number format. Must have at least 14 numbers"),
-            msg=MESSAGE_EXCEPTION_NOT_EXECUTE
         )
