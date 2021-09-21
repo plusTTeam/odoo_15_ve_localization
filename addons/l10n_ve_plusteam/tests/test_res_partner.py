@@ -60,7 +60,7 @@ class TestResPartner(TransactionCase):
             self.contact.vat_withholding_percentage = 150.00
         self.assertEqual(
             str(raise_exception.exception),
-            _("The retention percentage must be between the values 0 and 100, "
+            _("The retention percentage must be between 0 and 100, "
               "please verify that the value is in this range"),
             msg=MESSAGE_EXCEPTION_NOT_EXECUTE
         )
@@ -68,7 +68,7 @@ class TestResPartner(TransactionCase):
             self.contact.vat_withholding_percentage = -150.00
         self.assertEqual(
             str(raise_exception.exception),
-            _("The retention percentage must be between the values 0 and 100, "
+            _("The retention percentage must be between 0 and 100, "
               "please verify that the value is in this range"),
             msg=MESSAGE_EXCEPTION_NOT_EXECUTE
         )
