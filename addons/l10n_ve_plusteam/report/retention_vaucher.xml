@@ -33,10 +33,10 @@
                         <div class="container-fluid" >
                             <div class="row">
                                 <div class="col-6 text-left">
-                                    Nro Comprobante <strong><span t-field="retention.code"/></strong>
+                                    Nro Comprobante <strong><span t-field="retention.retention_code"/></strong>
                                 </div>
                                 <div class="col-5 align-self-end justify-content-end text-right">
-                                    Fecha Emisión: <span t-field="retention.date"/>
+                                    Fecha Emisión: <span t-field="retention.retention_date"/>
                                 </div>
                             </div>
                         </div>
