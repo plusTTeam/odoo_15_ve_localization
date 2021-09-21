@@ -20,11 +20,6 @@ class TestRetention(TransactionCase):
         self.date = fields.Date.today()
         self.invoice_amount = 1000000
         self.invoice_tax = 160000
-        self.tax = self.env["account.tax"].create({
-            "name": "Dummy Tax",
-            "amount": "16.00",
-            "type_tax_use": "purchase",
-        })
         self.invoice = self.env["account.move"].create({
             "move_type": "out_invoice",
             "partner_id": self.partner.id,
