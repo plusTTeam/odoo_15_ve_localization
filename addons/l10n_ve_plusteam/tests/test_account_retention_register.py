@@ -18,7 +18,6 @@ class TestAccountRetentionRegister(TransactionCase):
         self.vat_withholding_percentage = 75.0
         self.month_fiscal_period = "0" + str(self.date.month)
         self.year_fiscal_period = str(self.date.year)
-        self.date_str = self.date.strftime("%Y-%m-%d")
 
         self.invoice = self.env["account.move"].create({
             "move_type": "out_invoice",
@@ -35,14 +34,13 @@ class TestAccountRetentionRegister(TransactionCase):
         self.retention_register = self.env["account.retention.register"].with_context(
             active_model="account.move", active_ids=self.active_ids
         ).create({
-            "date": self.date_str,
+            "retention_date": self.date,
             "retention_type": self.retention_type,
             "code": self.code,
             "partner_id": self.partner.id,
             "vat_withholding_percentage": self.vat_withholding_percentage,
-            "invoice_date": self.date_str,
-            "month_fiscal_period": self.month_fiscal_period,
-            "year_fiscal_period": self.year_fiscal_period
+            "invoice_date": self.date,
+            "month_fiscal_period": self.month_fiscal_period
         })._create_retentions()
         self.retention = self.env["retention"].browse([self.retention_register])
 
@@ -53,14 +51,13 @@ class TestAccountRetentionRegister(TransactionCase):
             self.env["account.retention.register"].with_context(
                 active_model="account.move", active_ids=self.active_ids
             ).create({
-                "date": self.date_str,
+                "retention_date": self.date,
                 "retention_type": self.retention_type,
                 "code": self.code,
                 "partner_id": self.partner.id,
                 "vat_withholding_percentage": self.vat_withholding_percentage,
-                "invoice_date": self.date_str,
-                "month_fiscal_period": self.month_fiscal_period,
-                "year_fiscal_period": self.year_fiscal_period
+                "invoice_date": self.date,
+                "month_fiscal_period": self.month_fiscal_period
             })._create_retentions()
         self.assertEqual(
             str(raise_exception.exception),

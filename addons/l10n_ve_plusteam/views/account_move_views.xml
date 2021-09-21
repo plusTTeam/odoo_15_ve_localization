@@ -43,8 +43,8 @@
                       ('move_type', 'not in', ('out_invoice', 'out_refund', 'in_invoice', 'in_refund',
                         'out_receipt', 'in_receipt'))]}">
                     <field name="retention_id" widget="section_and_note_one2many" mode="tree" readonly="True">
-                        <tree string="Retention Items" default_order="date desc, id">
-                            <field name="date"/>
+                        <tree string="Retention Items" default_order="retention_date desc, id">
+                            <field name="retention_date"/>
                             <field name="receipt_date"/>
                             <field name="code"/>
                             <field name="retention_type"/>

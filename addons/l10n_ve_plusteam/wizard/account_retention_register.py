@@ -31,7 +31,7 @@ class AccountRetentionRegister(models.TransientModel):
     company_id = fields.Char(string="Company", compute="_get_data_invoice")
     move_type = fields.Char(string="Move Type", compute="_get_data_invoice")
     original_document_number = fields.Char(string="Original Invoice Number", compute="_get_data_invoice")
-    type_document = fields.Char(string="Type Document", compute="_compute_type_document")
+    document_type = fields.Char(string="Type Document", compute="_compute_type_document")
     # == Fields given through the context ==
     document = fields.Char(string="Document Number", compute="_get_data_invoice")
     amount_tax = fields.Monetary(string="Amount tax", currency_field="currency_id", compute="_get_data_invoice")
@@ -96,13 +96,13 @@ class AccountRetentionRegister(models.TransientModel):
         for retention in self:
             if retention.move_type in ("out_invoice", "in_invoice"):
                 if retention.invoice_number.debit_origin_id:
-                    retention.type_document = _("D/N")
+                    retention.document_type = _("D/N")
                 else:
-                    retention.type_document = _("Invoice")
+                    retention.document_type = _("Invoice")
             elif retention.move_type in ("in_refund", "out_refund"):
-                retention.type_document = _("C/N")
+                retention.document_type = _("C/N")
             else:
-                retention.type_document = _("Other")
+                retention.document_type = _("Other")
 
     def _create_retention_values_from_wizard(self):
         return {
@@ -112,7 +112,7 @@ class AccountRetentionRegister(models.TransientModel):
             "retention_type": self.retention_type,
             "is_iva": self.is_iva,
             "move_type": self.move_type,
-            "type_document": self.type_document,
+            "document_type": self.document_type,
             "original_document_number": self.original_document_number,
             "code": self.code,
             "company_id": self.company_id,

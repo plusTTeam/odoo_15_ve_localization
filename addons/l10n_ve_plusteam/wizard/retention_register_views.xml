@@ -25,7 +25,7 @@
                                 <label for="year_fiscal_period" string="Year" style="font-weight:bold;"/>
                                 <field name="year_fiscal_period"/>
                             </div>
-                            <field name="date"/>
+                            <field name="retention_date"/>
                             <field name="invoice_date"/>
                             <field name="document"/>
                             <field name="rif"/>
