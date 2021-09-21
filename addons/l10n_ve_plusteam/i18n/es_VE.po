@@ -27788,3 +27788,10 @@ msgstr ""
 #, python-format
 msgid "This type was already generated"
 msgstr "Este tipo de retención ya fue generado"
+
+#. module: l10n_ve_plusteam
+#: code:addons/l10n_ve_plusteam/models/retention.py:0
+#: code:addons/l10n_ve_plusteam/tests/test_retention.py:0
+#, python-format
+msgid "Invalid receipt number format. Must have at least 14 numbers"
+msgstr "Número de comprobante invalido. Debe tener minimo 14 números"

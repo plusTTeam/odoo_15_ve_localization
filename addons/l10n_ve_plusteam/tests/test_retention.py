@@ -150,7 +150,7 @@ class TestRetention(TransactionCase):
         """Test raise when save invalid retention number
         """
         with self.assertRaises(ValidationError) as raise_exception:
-            self.invoice.code = "1234589765"
+            self.code = "1234589765"
         self.assertEqual(
             str(raise_exception.exception),
             _("Invalid receipt number format. Must have at least 14 numbers"),
