@@ -1,7 +1,7 @@
 from odoo import fields, _
 from odoo.exceptions import ValidationError
 from odoo.tests.common import TransactionCase, Form
-from ..tools.constants import RETENTION_TYPE_ISLR, RETENTION_TYPE_IVA,MESSAGE_EXCEPTION_NOT_EXECUTE
+from ..tools.constants import RETENTION_TYPE_ISLR, RETENTION_TYPE_IVA, MESSAGE_EXCEPTION_NOT_EXECUTE
 
 
 class TestRetention(TransactionCase):
@@ -87,9 +87,9 @@ class TestRetention(TransactionCase):
         )
 
     def test_type_document(self):
-         self.assertEqual(
+        self.assertEqual(
             self.retention.document_type,
-            _('Bills'),
+            _('Invoice'),
             msg="Field type document is wrong"
         )
 
@@ -140,7 +140,7 @@ class TestRetention(TransactionCase):
         """Test raise when save invalid retention number
         """
         with self.assertRaises(ValidationError) as raise_exception:
-            self.retention.retention_code  = "123456789"
+            self.retention.retention_code = "123456789"
         self.assertEqual(
             str(raise_exception.exception),
             _("Invalid receipt number format. Must have at least 14 numbers"),
