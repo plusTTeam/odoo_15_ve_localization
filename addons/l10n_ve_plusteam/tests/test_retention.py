@@ -150,7 +150,7 @@ class TestRetention(TransactionCase):
     def test_complete_name(self):
         self.assertEqual(
             self.retention.complete_name_with_code,
-            f"[{self.retention.code}] {self.retention.original_document_number}",
+            f"[{self.retention.retention_code}] {self.retention.original_document_number}",
             msg="Field complete_name_with_code is wrong"
         )
 

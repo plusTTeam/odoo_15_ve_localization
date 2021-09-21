@@ -42,11 +42,10 @@ class Retention(models.Model):
         ("in_refund", "Vendor Credit Note"),
     ], string="Type", required=True, store=True, index=True, readonly=True, tracking=True,
         related="invoice_id.move_type")
-
     move_id = fields.Many2one(
         comodel_name="account.move", string="Journal Entry", required=True, readonly=True, ondelete="cascade",
         check_company=True)
-    code = fields.Char(string="Retention Number", default=_("New"), store=True)
+    retention_code = fields.Char(string="Retention Number", default=_("New"), store=True)
     retention_date = fields.Date(string="Date", required=True, default=fields.Date.context_today)
     receipt_date = fields.Date(string="Receipt Date", required=True, default=fields.Date.context_today)
     month_fiscal_period = fields.Char(string="Month", compute="_compute_month_fiscal_char", store=True, readonly=False)
@@ -196,8 +195,8 @@ class Retention(models.Model):
 
     @api.model
     def create(self, values):
-        if values.get("code", "").strip().lower() in ["", "nuevo", "new"]:
-            values["code"] = self.env["ir.sequence"].next_by_code("retention.sequence")
+        if values.get("retention_code", "").strip().lower() in ["", "nuevo", "new"]:
+            values["retention_code"] = self.env["ir.sequence"].next_by_code("retention.sequence")
         values["state"] = "posted"
         if values.get("retention_type", False) == "iva":
             retention_state = "with_retention_iva"
@@ -234,7 +233,7 @@ class Retention(models.Model):
 
     def _prepare_move_lines(self):
         self.ensure_one()
-        default_line_name = self.code
+        default_line_name = self.retention_code
         if self.move_type in ("in_invoice", "out_refund"):
             counterpart_amount = self.amount_retention
         elif self.move_type in ("out_invoice", "in_refund"):
@@ -273,7 +272,7 @@ class Retention(models.Model):
                 lines.append(line)
         return lines[0]
 
-    @api.depends("original_document_number", "code")
+    @api.depends("original_document_number", "retention_code")
     def _compute_complete_name_with_code(self):
         for retention in self:
-            retention.complete_name_with_code = f"[{retention.code}] {retention.original_document_number}"
+            retention.complete_name_with_code = f"[{retention.retention_code}] {retention.original_document_number}"
