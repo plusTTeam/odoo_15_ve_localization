@@ -9,6 +9,7 @@ class AccountRetentionRegister(models.TransientModel):
     today = fields.Date.today()
     code = fields.Char(string="Retention Number", default=_("New"))
     date = fields.Date(string="Date", required=True, default=fields.Date.context_today)
+    receipt_date = fields.Date(string="Receipt Date", required=True, default=fields.Date.context_today)
     invoice_date = fields.Date(string="Invoice Date", required=True, compute="_get_data_invoice")
     month_fiscal_period = fields.Char(string="Month", compute="_compute_month_fiscal_char", store=True, readonly=False,
                                       required=True)

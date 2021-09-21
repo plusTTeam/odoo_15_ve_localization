@@ -26,6 +26,8 @@
                                 <field name="year_fiscal_period"/>
                             </div>
                             <field name="date"/>
+                            <field name="receipt_date"
+                                   invisible="context.get('default_move_type') in ('in_invoice', 'in_refund','in_receipt')"/>
                             <field name="invoice_date"/>
                             <field name="document"/>
                             <field name="rif"/>
