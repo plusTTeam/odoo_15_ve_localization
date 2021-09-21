@@ -95,7 +95,7 @@ class AccountRetentionRegister(models.TransientModel):
     def _compute_type_document(self):
         for retention in self:
             if retention.move_type in ("out_invoice", "in_invoice"):
-                if retention.invoice_number.debit_origin_id:
+                if retention.invoice_id.debit_origin_id:
                     retention.document_type = _("D/N")
                 else:
                     retention.document_type = _("Invoice")
