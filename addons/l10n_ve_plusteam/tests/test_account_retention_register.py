@@ -14,11 +14,11 @@ class TestAccountRetentionRegister(TransactionCase):
         self.invoice_amount = 100000
         self.invoice_tax = 16000
         self.retention_code = "New"
-        self.retention_type = RETENTION_TYPE_IVA
         self.vat_withholding_percentage = 75.0
-        self.month_fiscal_period = "0" + str(self.date.month)
+        self.month_fiscal_period =  str(self.date.month)
+        if len(self.month_fiscal_period) == 1:
+            self.month_fiscal_period = f"0{self.month_fiscal_period}"
         self.year_fiscal_period = str(self.date.year)
-
         self.invoice = self.env["account.move"].create({
             "move_type": "out_invoice",
             "partner_id": self.partner.id,
@@ -28,14 +28,12 @@ class TestAccountRetentionRegister(TransactionCase):
             "amount_tax": self.invoice_tax
         })
         self.invoice.write({"state": "posted"})
-
         self.active_ids = self.invoice.ids
-
         self.retention_register = self.env["account.retention.register"].with_context(
             active_model="account.move", active_ids=self.active_ids
         ).create({
             "retention_date": self.date,
-            "retention_type": self.retention_type,
+            "retention_type": RETENTION_TYPE_IVA,
             "retention_code": self.retention_code,
             "partner_id": self.partner.id,
             "vat_withholding_percentage": self.vat_withholding_percentage,
@@ -52,13 +50,13 @@ class TestAccountRetentionRegister(TransactionCase):
                 active_model="account.move", active_ids=self.active_ids
             ).create({
                 "retention_date": self.date,
-                "retention_type": self.retention_type,
+                "retention_type": RETENTION_TYPE_IVA,
                 "retention_code": self.retention_code,
                 "partner_id": self.partner.id,
                 "vat_withholding_percentage": self.vat_withholding_percentage,
                 "invoice_date": self.date,
                 "month_fiscal_period": self.month_fiscal_period
-            })._create_retentions()
+            }).action_create_retention()
         self.assertEqual(
             str(raise_exception.exception),
             _("This type was already generated"),
@@ -81,7 +79,13 @@ class TestAccountRetentionRegister(TransactionCase):
             "invoice_date": self.date,
             "date": self.date,
             "retention_state": "with_retention_iva",
-            "amount_tax": self.invoice_tax
+            "amount_tax": self.invoice_tax,
+            "invoice_line_ids": [(0, 0, {
+                "name": "product that cost %s" % self.invoice_amount,
+                "quantity": 1,
+                "price_unit": self.invoice_amount,
+
+            })]
         })
         invoice.write({"state": "posted"})
 
@@ -91,14 +95,15 @@ class TestAccountRetentionRegister(TransactionCase):
         ))
         new_vat_withholding_percentage = 100
         retention_register.retention_date = self.date
-        retention_register.retention_type = self.retention_type
+        retention_register.retention_type = RETENTION_TYPE_IVA
         retention_register.retention_code = self.retention_code
+        retention_register.is_iva = True
         retention_register.vat_withholding_percentage = new_vat_withholding_percentage
         self.assertEqual(
             retention_register.month_fiscal_period,
             "0" + str(self.date.month),
             msg="Field month fiscal period is wrong"
         )
-        compute_amount_retention = retention_register.amount_tax * retention_register.vat_withholding_percentage / 100
+        compute_amount_retention = retention_register.amount_tax * new_vat_withholding_percentage / 100
         self.assertEqual(retention_register.amount_retention, compute_amount_retention,
                          msg="The retention amount was not calculated")
