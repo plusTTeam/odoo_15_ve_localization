@@ -27787,3 +27787,15 @@ msgstr "Este tipo de retención ya fue generado"
 #, python-format
 msgid "Invalid receipt number format. Must have at least 14 numbers"
 msgstr "Número de comprobante invalido. Debe tener minimo 14 números"
+
+#. modules: account, l10n_ve_plusteam
+#: code:addons/account/controllers/portal.py:0
+#: code:addons/l10n_ve_plusteam/models/retention.py:0
+#: code:addons/l10n_ve_plusteam/wizard/account_retention_register.py:0
+#: model:ir.actions.act_window,name:account.action_move_in_invoice_type
+#: model:ir.ui.menu,name:account.menu_action_move_in_invoice_type
+#: model_terms:ir.ui.view,arch_db:account.account_journal_dashboard_kanban_view
+#: code:addons/l10n_ve_plusteam/tests/test_retention.py:0
+#, python-format
+msgid "Bills"
+msgstr "Facturas"

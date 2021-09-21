@@ -9,7 +9,7 @@
                     <group>
                         <field name="move_type" invisible="1"/>
                         <group name="groupcode" attrs="{'invisible': [('move_type', 'not in', ('out_invoice', 'out_refund'))]}" >
-                            <field name="code" placeholder="receipt number"/>
+                            <field name="retention_code" placeholder="receipt number"/>
                         </group>
                         <group name="grouptype">
                             <field name="retention_type" options="{'horizontal': true}" class="oe_edit_only"

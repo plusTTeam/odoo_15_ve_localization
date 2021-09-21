@@ -109,7 +109,7 @@ class Retention(models.Model):
     @api.constrains('code','move_type')
     def _check_receipt_number(self):
         for record in self:
-            if record.code and re.match(r"^[0-9]{14,14}$", record.code) is None and record.move_type in ("out_invoice","out_refund"):
+            if record.retention_code and re.match(r"^[0-9]{14,14}$", record.retention_code) is None and record.move_type in ("out_invoice","out_refund"):
                 raise ValidationError(
                     _("Invalid receipt number format. Must have at least 14 numbers"))
 
@@ -165,11 +165,11 @@ class Retention(models.Model):
         for retention in self:
             if retention.invoice_number.move_type in ('out_invoice', 'in_invoice'):
                 if retention.invoice_number.debit_origin_id:
-                    retention.type_document = _('D/N')
+                    retention.document_type = _('D/N')
                 elif retention.invoice_number.move_type == 'out_invoice':
-                    retention.type_document = _('Invoice')
+                    retention.document_type = _('Invoice')
                 else:
-                    retention.type_document = _('Bills')
+                    retention.document_type = _('Bills')
             elif retention.invoice_number.move_type in ('in_refund', 'out_refund'):
                 retention.document_type = _('C/N')
             else:

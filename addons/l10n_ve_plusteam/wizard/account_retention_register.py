@@ -8,6 +8,7 @@ class AccountRetentionRegister(models.TransientModel):
 
     retention_code = fields.Char(string="Retention Number", default=_("New"))
     retention_date = fields.Date(string="Date", required=True, default=fields.Date.context_today)
+    receipt_date = fields.Date(string="Receipt Date", required=True, default=fields.Date.context_today)
     invoice_date = fields.Date(string="Invoice Date", required=True, compute="_get_data_invoice")
     month_fiscal_period = fields.Char(string="Month", compute="_compute_month_fiscal_char", store=True, readonly=False,
                                       required=True)
@@ -106,11 +107,11 @@ class AccountRetentionRegister(models.TransientModel):
         for retention in self:
             if retention.move_type in ("out_invoice", "in_invoice"):
                 if retention.invoice_number.debit_origin_id:
-                    retention.type_document = _("D/N")
+                    retention.document_type = _("D/N")
                 elif retention.invoice_number.move_type == 'out_invoice':
-                    retention.type_document = _('Invoice')
+                    retention.document_type = _('Invoice')
                 else:
-                    retention.type_document = _('Bills')
+                    retention.document_type = _('Bills')
             elif retention.move_type in ("in_refund", "out_refund"):
                 retention.document_type = _("C/N")
             else:

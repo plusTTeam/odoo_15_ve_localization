@@ -35,6 +35,7 @@ class TestRetention(TransactionCase):
         self.invoice.write({"state": "posted"})
         self.retention = self.env["retention"].create({
             "invoice_number": self.invoice.id,
+            "retention_date": self.date,
             "partner_id": self.partner.id,
             "move_type": self.invoice.move_type,
             "retention_type": RETENTION_TYPE_IVA,
@@ -87,7 +88,7 @@ class TestRetention(TransactionCase):
 
     def test_type_document(self):
          self.assertEqual(
-            self.retention.type_document,
+            self.retention.document_type,
             _('Bills'),
             msg="Field type document is wrong"
         )
@@ -133,4 +134,15 @@ class TestRetention(TransactionCase):
             self.retention.complete_name_with_code,
             f"[{self.retention.retention_code}] {self.retention.original_document_number}",
             msg="Field complete_name_with_code is wrong"
+        )
+
+    def test_raise_when_retention_code_is_invalid(self):
+        """Test raise when save invalid retention number
+        """
+        with self.assertRaises(ValidationError) as raise_exception:
+            self.retention.retention_code  = "123456789"
+        self.assertEqual(
+            str(raise_exception.exception),
+            _("Invalid receipt number format. Must have at least 14 numbers"),
+            msg=MESSAGE_EXCEPTION_NOT_EXECUTE
         )

@@ -85,6 +85,7 @@
                 <field name="retention_code"/>
                 <field name="retention_type"/>
                 <field name="retention_date"/>
+                <field name="receipt_date" optional="hide"/>
                 <field name="invoice_number" optional="hide"/>
                 <field name="document_type"/>
                 <field name="original_document_number" />
