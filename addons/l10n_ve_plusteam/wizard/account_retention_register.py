@@ -6,13 +6,12 @@ class AccountRetentionRegister(models.TransientModel):
     _name = "account.retention.register"
     _description = "Register Retention"
 
-    today = fields.Date.today()
     code = fields.Char(string="Retention Number", default=_("New"))
-    date = fields.Date(string="Date", required=True, default=fields.Date.context_today)
+    retention_date = fields.Date(string="Date", required=True, default=fields.Date.context_today)
     invoice_date = fields.Date(string="Invoice Date", required=True, compute="_get_data_invoice")
     month_fiscal_period = fields.Char(string="Month", compute="_compute_month_fiscal_char", store=True, readonly=False,
                                       required=True)
-    year_fiscal_period = fields.Char(string="Year", default=str(today.year), required=True)
+    year_fiscal_period = fields.Char(string="Year", default=str(fields.Date.today().year), required=True)
     is_iva = fields.Boolean(string="Is IVA", default=False,
                             help="Check if the retention is a iva, otherwise it is islr")
     retention_type = fields.Selection(string="Retention Type",
@@ -46,7 +45,7 @@ class AccountRetentionRegister(models.TransientModel):
                                      help="Technical field used to indicate the user can edit the wizard content such "
                                           "as the amount.")
 
-    @api.depends("date")
+    @api.depends("retention_date")
     def _get_data_invoice(self):
         invoice = self.env["account.move"].browse(self._context.get("active_ids", []))
         for wizard in self:
@@ -68,8 +67,7 @@ class AccountRetentionRegister(models.TransientModel):
     @api.depends("vat_withholding_percentage", "amount_tax")
     def _compute_amount_retention(self):
         for retention in self:
-            amount_retention = retention.amount_tax * retention.vat_withholding_percentage / 100
-            retention.amount_retention = amount_retention
+            retention.amount_retention = retention.amount_tax * retention.vat_withholding_percentage / 100
 
     @api.depends("is_iva")
     def _compute_retention_type(self):
@@ -85,12 +83,12 @@ class AccountRetentionRegister(models.TransientModel):
         for retention in self:
             retention.amount_retention = retention.amount_tax * retention.vat_withholding_percentage / 100
 
-    @api.depends("date")
+    @api.depends("retention_date")
     def _compute_month_fiscal_char(self):
         for retention in self:
-            month_char = str(retention.date.month)
+            month_char = str(retention.retention_date.month)
             if len(month_char) == 1:
-                month_char = "0" + str(retention.date.month)
+                month_char = "0" + str(retention.retention_date.month)
             retention.month_fiscal_period = month_char
 
     @api.depends("invoice_id")
@@ -108,7 +106,7 @@ class AccountRetentionRegister(models.TransientModel):
 
     def _create_retention_values_from_wizard(self):
         return {
-            "date": self.date.strftime("%Y-%m-%d"),
+            "retention_date": self.retention_date.strftime("%Y-%m-%d"),
             "month_fiscal_period": self.month_fiscal_period,
             "year_fiscal_period": self.year_fiscal_period,
             "retention_type": self.retention_type,
