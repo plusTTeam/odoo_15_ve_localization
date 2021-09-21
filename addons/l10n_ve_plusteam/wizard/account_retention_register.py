@@ -6,7 +6,7 @@ class AccountRetentionRegister(models.TransientModel):
     _name = "account.retention.register"
     _description = "Register Retention"
 
-    code = fields.Char(string="Retention Number", default=_("New"))
+    retention_code = fields.Char(string="Retention Number", default=_("New"))
     retention_date = fields.Date(string="Date", required=True, default=fields.Date.context_today)
     invoice_date = fields.Date(string="Invoice Date", required=True, compute="_get_data_invoice")
     month_fiscal_period = fields.Char(string="Month", compute="_compute_month_fiscal_char", store=True, readonly=False,
@@ -114,7 +114,7 @@ class AccountRetentionRegister(models.TransientModel):
             "move_type": self.move_type,
             "document_type": self.document_type,
             "original_document_number": self.original_document_number,
-            "code": self.code,
+            "retention_code": self.retention_code,
             "company_id": self.company_id,
             "partner_id": self.partner_id.id,
             "vat_withholding_percentage": self.vat_withholding_percentage,

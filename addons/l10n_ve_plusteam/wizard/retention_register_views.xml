@@ -9,7 +9,7 @@
                     <group>
                         <group name="groupcode"
                                invisible="context.get('default_move_type') not in ('in_invoice', 'in_refund','in_receipt')">
-                            <field name="code" placeholder="receipt number"/>
+                            <field name="retention_code" placeholder="receipt number"/>
                         </group>
                         <group name="grouptype">
                             <field name="retention_type" options="{'horizontal': true}" class="oe_edit_only"

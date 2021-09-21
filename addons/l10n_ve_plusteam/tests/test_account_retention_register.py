@@ -13,7 +13,7 @@ class TestAccountRetentionRegister(TransactionCase):
         self.date = fields.Date.today()
         self.invoice_amount = 100000
         self.invoice_tax = 16000
-        self.code = "New"
+        self.retention_code = "New"
         self.retention_type = RETENTION_TYPE_IVA
         self.vat_withholding_percentage = 75.0
         self.month_fiscal_period = "0" + str(self.date.month)
@@ -36,7 +36,7 @@ class TestAccountRetentionRegister(TransactionCase):
         ).create({
             "retention_date": self.date,
             "retention_type": self.retention_type,
-            "code": self.code,
+            "retention_code": self.retention_code,
             "partner_id": self.partner.id,
             "vat_withholding_percentage": self.vat_withholding_percentage,
             "invoice_date": self.date,
@@ -53,7 +53,7 @@ class TestAccountRetentionRegister(TransactionCase):
             ).create({
                 "retention_date": self.date,
                 "retention_type": self.retention_type,
-                "code": self.code,
+                "retention_code": self.retention_code,
                 "partner_id": self.partner.id,
                 "vat_withholding_percentage": self.vat_withholding_percentage,
                 "invoice_date": self.date,
