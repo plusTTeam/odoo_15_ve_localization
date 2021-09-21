@@ -24109,6 +24109,10 @@ msgstr ""
 #. module: l10n_ve_plusteam
 #: code:addons/l10n_ve_plusteam/models/res_company.py:0
 #: code:addons/l10n_ve_plusteam/models/res_partner.py:0
+#: code:addons/l10n_ve_plusteam/tests/test_res_company.py:0
+#: code:addons/l10n_ve_plusteam/tests/test_res_company.py:0
+#: code:addons/l10n_ve_plusteam/tests/test_res_partner.py:0
+#: code:addons/l10n_ve_plusteam/tests/test_res_partner.py:0
 #, python-format
 msgid ""
 "The retention percentage must be between the values 0 and 100, please "
@@ -24119,6 +24123,7 @@ msgstr ""
 
 #. module: l10n_ve_plusteam
 #: code:addons/l10n_ve_plusteam/models/retention.py:0
+#: code:addons/l10n_ve_plusteam/tests/test_retention.py:0
 #, python-format
 msgid ""
 "The retention percentage must be between the values 1 and 100, please "
@@ -27772,19 +27777,6 @@ msgstr "Es definido cuando es una factura de proveedor"
 #: model:ir.model.fields,field_description:l10n_ve_plusteam.field_account_retention_register__original_document_number
 msgid "Original Invoice Number"
 msgstr "Número de factura original"
-
-#. module: l10n_ve_plusteam
-#: code:addons/l10n_ve_plusteam/tests/test_res_company.py:0
-#: code:addons/l10n_ve_plusteam/tests/test_res_company.py:0
-#: code:addons/l10n_ve_plusteam/tests/test_res_partner.py:0
-#: code:addons/l10n_ve_plusteam/tests/test_res_partner.py:0
-#, python-format
-msgid ""
-"The retention percentage must be between the the values 0 and 100, please "
-"verify that the value is in this range"
-msgstr ""
-"El Porcentaje de retención debe estar entre los valores 0 y 100, por favor "
-"verifica que el valor se encuentra en este intervalo"
 
 #. module: l10n_ve_plusteam
 #: code:addons/l10n_ve_plusteam/tests/test_retention.py:0

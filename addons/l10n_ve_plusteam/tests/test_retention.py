@@ -106,7 +106,7 @@ class TestRetention(TransactionCase):
 
     def test_type_document(self):
         self.assertEqual(
-            self.retention.type_document,
+            self.retention.document_type,
             _("Invoice"),
             msg="Field type document is wrong"
         )

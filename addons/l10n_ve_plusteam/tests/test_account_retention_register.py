@@ -30,7 +30,6 @@ class TestAccountRetentionRegister(TransactionCase):
                 "name": "product that cost %s" % self.invoice_amount,
                 "quantity": 1,
                 "price_unit": self.invoice_amount,
-
             })]
         })
         self.invoice.write({"state": "posted"})
@@ -40,7 +39,7 @@ class TestAccountRetentionRegister(TransactionCase):
         self.retention_register = self.env["account.retention.register"].with_context(
             active_model="account.move", active_ids=self.active_ids
         ).create({
-            "date": self.date_str,
+            "retention_date": self.date_str,
             "retention_type": self.retention_type,
             "code": self.code,
             "partner_id": self.partner.id,
@@ -58,7 +57,7 @@ class TestAccountRetentionRegister(TransactionCase):
             self.env["account.retention.register"].with_context(
                 active_model="account.move", active_ids=self.active_ids
             ).create({
-                "date": self.date_str,
+                "retention_date": self.date_str,
                 "retention_type": self.retention_type,
                 "code": self.code,
                 "partner_id": self.partner.id,
