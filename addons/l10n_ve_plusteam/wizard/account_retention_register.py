@@ -22,8 +22,6 @@ class AccountRetentionRegister(models.TransientModel):
     rif = fields.Char(string="RIF", related="partner_id.vat")
     vat_withholding_percentage = fields.Float(string="vat withholding percentage", store=True, readonly=False,
                                               related="partner_id.vat_withholding_percentage", required=True)
-    destination_account_id = fields.Many2one(comodel_name="account.account", string="Destination Account", store=True,
-                                             readonly=False, check_company=True)
     invoice_id = fields.Many2one("account.move", string="Invoice", compute="_compute_data_invoice",
                                  domain="[('partner_id', '=', partner_id )]")
     currency_id = fields.Many2one("res.currency", string="Currency", store=True, readonly=True,
@@ -120,8 +118,7 @@ class AccountRetentionRegister(models.TransientModel):
             "invoice_id": self.invoice_id.id,
             "invoice_date": self.invoice_date.strftime("%Y-%m-%d"),
             "amount_retention": self.amount_retention,
-            "amount_base_untaxed": self.amount_base_untaxed,
-            "destination_account_id": self.destination_account_id.id
+            "amount_base_untaxed": self.amount_base_untaxed
         }
 
     def _create_retentions(self):
