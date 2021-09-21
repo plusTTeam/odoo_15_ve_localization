@@ -182,7 +182,7 @@ class Retention(models.Model):
             retention.company_id = retention.partner_id.company_id or retention.company_id or self.env.company
 
     @api.depends("invoice_id")
-    def _compute_type_document(self):
+    def _compute_document_type(self):
         for retention in self:
             if retention.invoice_id.move_type in ("out_invoice", "in_invoice"):
                 if retention.invoice_id.debit_origin_id:
