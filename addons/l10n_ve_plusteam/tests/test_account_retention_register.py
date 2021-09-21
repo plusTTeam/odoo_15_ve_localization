@@ -15,7 +15,7 @@ class TestAccountRetentionRegister(TransactionCase):
         self.invoice_tax = 16000
         self.retention_code = "New"
         self.vat_withholding_percentage = 75.0
-        self.month_fiscal_period =  str(self.date.month)
+        self.month_fiscal_period = str(self.date.month)
         if len(self.month_fiscal_period) == 1:
             self.month_fiscal_period = f"0{self.month_fiscal_period}"
         self.year_fiscal_period = str(self.date.year)
@@ -101,7 +101,7 @@ class TestAccountRetentionRegister(TransactionCase):
         retention_register.vat_withholding_percentage = new_vat_withholding_percentage
         self.assertEqual(
             retention_register.month_fiscal_period,
-            "0" + str(self.date.month),
+            self.month_fiscal_period,
             msg="Field month fiscal period is wrong"
         )
         compute_amount_retention = retention_register.amount_tax * new_vat_withholding_percentage / 100
