@@ -1,8 +1,8 @@
 from odoo import fields, _
 from odoo.exceptions import ValidationError
 from odoo.tests.common import TransactionCase, Form
-from .common import AccountMoveModelRetentionTestingCommon
-from ..tools.constants import RETENTION_TYPE_ISLR, RETENTION_TYPE_IVA, REF_MAIN_COMPANY, NAME_PRODUCT
+from ..tools.constants import (RETENTION_TYPE_ISLR, RETENTION_TYPE_IVA, REF_MAIN_COMPANY, NAME_PRODUCT,
+                               MESSAGE_EXCEPTION_NOT_EXECUTE)
 
 
 class TestRetention(AccountMoveModelRetentionTestingCommon):
@@ -109,7 +109,7 @@ class TestRetention(AccountMoveModelRetentionTestingCommon):
     def test_complete_name(self):
         self.assertEqual(
             self.retention.complete_name_with_code,
-            f"[{self.retention.code}] {self.retention.original_document_number}",
+            f"[{self.retention.retention_code}] {self.retention.original_document_number}",
             msg="Field complete_name_with_code is wrong"
         )
 
@@ -173,6 +173,26 @@ class TestRetention(AccountMoveModelRetentionTestingCommon):
                          _("The company does not have a journal configured for withholding, "
                            "please go to the configuration section to add one"),
                          msg="There is a journal configured")
+
+    def test_check_move_type(self):
+        entry = self.env["account.move"].create({
+            'move_type': "entry",
+            'partner_id': self.partner.id,
+            'date': self.date,
+            'retention_state': "with_both_retentions"
+        })
+        with self.assertRaises(ValidationError) as raise_exception:
+            self.env["retention"].create({
+                "invoice_id": entry.id,
+                "partner_id": self.partner.id,
+                "move_type": entry.move_type,
+                "retention_type": RETENTION_TYPE_IVA,
+                "vat_withholding_percentage": 75.0
+            })
+        self.assertEqual(str(raise_exception.exception),
+                         _("You are trying to create a withholding from an illegal journal entry type (%s)",
+                           entry.move_type),
+                         msg=MESSAGE_EXCEPTION_NOT_EXECUTE)
 
     def test_get_original_journal(self):
         self.env.company.write({"withholding_journal_id": False})
