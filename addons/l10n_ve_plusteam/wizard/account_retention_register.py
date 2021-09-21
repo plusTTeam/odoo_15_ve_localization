@@ -32,7 +32,6 @@ class AccountRetentionRegister(models.TransientModel):
     move_type = fields.Char(string="Move Type", compute="_compute_data_invoice")
     original_document_number = fields.Char(string="Original Invoice Number", compute="_compute_data_invoice")
     document_type = fields.Char(string="Type Document", compute="_compute_type_document")
-    # == Fields given through the context ==
     document = fields.Char(string="Document Number", compute="_compute_data_invoice")
     amount_tax = fields.Monetary(string="Amount tax", currency_field="currency_id", compute="_compute_data_invoice")
     amount_total = fields.Monetary(string="Amount total", compute="_compute_data_invoice", currency_field="currency_id")

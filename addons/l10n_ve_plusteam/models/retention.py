@@ -11,28 +11,6 @@ class Retention(models.Model):
     _inherits = {"account.move": "move_id"}
     _rec_name = "complete_name_with_code"
 
-    @api.model
-    def _get_default_journal(self):
-        """ Get the default journal.
-        It could either be passed through the context using the 'default_journal_id' key containing its id,
-        either be determined by the default type.
-        """
-        if self._context.get("default_journal_id"):
-            journal = self.env["account.journal"].browse(self._context["default_journal_id"])
-        else:
-            journal = self._search_company_journal()
-        return journal
-
-    @api.model
-    def _search_company_journal(self):
-        company_journal = self.env.company.withholding_journal_id
-        if company_journal:
-            return company_journal
-        journal = self.env.ref("l10n_ve_plusteam.journal_withholding", raise_if_not_found=False)
-        if journal and journal.active:
-            return journal
-        raise ValidationError(_("The company does not have a journal configured for withholding, please go to"
-                                " the configuration section to add one"))
     complete_name_with_code = fields.Char(string="Complete Name with Code", compute="_compute_complete_name_with_code",
                                           store=True)
     move_type = fields.Selection(selection=[
@@ -136,6 +114,14 @@ class Retention(models.Model):
         if retention_already_created:
             raise ValidationError(_("This type was already generated"))
 
+    @api.constrains("move_type")
+    def _check_move_type(self):
+        for retention in self:
+            if retention.move_type not in ("out_invoice", "in_invoice", "in_refund", "out_refund"):
+                raise ValidationError(
+                    _("You are trying to create a withholding from an illegal journal entry type (%s)",
+                      retention.invoice_id.move_type))
+
     @api.depends("vat_withholding_percentage", "amount_tax", "company_id", "currency_id", "date")
     def _compute_amount_retention(self):
         for retention in self:
@@ -234,12 +220,11 @@ class Retention(models.Model):
     def _prepare_move_lines(self):
         self.ensure_one()
         default_line_name = self.retention_code
-        if self.move_type in ("in_invoice", "out_refund"):
-            counterpart_amount = self.amount_retention
-        elif self.move_type in ("out_invoice", "in_refund"):
-            counterpart_amount = -self.amount_retention
-        else:
-            counterpart_amount = 0.0
+        # signed equals to 1 when self.move_type in ("in_invoice", "out_refund")
+        signed = 1
+        if self.move_type in ("out_invoice", "in_refund"):
+            signed = -1
+        counterpart_amount = signed * self.amount_retention
         balance = self.currency_id._convert(
             counterpart_amount, self.company_id.currency_id, self.company_id, self.date)
         counterpart_account = self._get_counterpart_account()
@@ -271,6 +256,29 @@ class Retention(models.Model):
             if line.account_id.internal_type in ("receivable", "payable"):
                 lines.append(line)
         return lines[0]
+
+    @api.model
+    def _get_default_journal(self):
+        """ Get the default journal.
+        It could either be passed through the context using the 'default_journal_id' key containing its id,
+        either be determined by the default type.
+        """
+        if self._context.get("default_journal_id"):
+            journal = self.env["account.journal"].browse(self._context["default_journal_id"])
+        else:
+            journal = self._search_company_journal()
+        return journal
+
+    @api.model
+    def _search_company_journal(self):
+        company_journal = self.env.company.withholding_journal_id
+        if company_journal:
+            return company_journal
+        journal = self.env.ref("l10n_ve_plusteam.journal_withholding", raise_if_not_found=False)
+        if journal and journal.active:
+            return journal
+        raise ValidationError(_("The company does not have a journal configured for withholding, please go to"
+                                " the configuration section to add one"))
 
     @api.depends("original_document_number", "retention_code")
     def _compute_complete_name_with_code(self):
