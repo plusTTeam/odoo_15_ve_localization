@@ -27525,8 +27525,8 @@ msgid "vat withholding percentage"
 msgstr "Porcentaje retención IVA"
 
 #. module: l10n_ve_plusteam
-#: model:ir.model.fields,field_description:l10n_ve_plusteam.field_account_retention_register__invoice_number
-#: model:ir.model.fields,field_description:l10n_ve_plusteam.field_retention__invoice_number
+#: model:ir.model.fields,field_description:l10n_ve_plusteam.field_account_retention_register__invoice_id
+#: model:ir.model.fields,field_description:l10n_ve_plusteam.field_retention__invoice_id
 msgid "Invoice"
 msgstr "Factura"
 

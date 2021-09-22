@@ -1,8 +1,9 @@
 # -*- coding: utf-8 -*-
-
+import logging
 import re
 from odoo import models, fields, api, _
 from odoo.exceptions import ValidationError
+_logger = logging.getLogger(__name__)
 
 
 class Retention(models.Model):
@@ -28,7 +29,7 @@ class Retention(models.Model):
     receipt_date = fields.Date(string="Receipt Date", required=True, default=fields.Date.context_today)
     month_fiscal_period = fields.Char(string="Month", compute="_compute_month_fiscal_char", store=True, readonly=False)
     year_fiscal_period = fields.Char(string="Year", default=str(fields.Date.today().year))
-    is_iva = fields.Boolean(string="Is IVA", default=False,
+    is_iva = fields.Boolean(string="Is IVA", default=True,
                             help="Check if the retention is a iva, otherwise it is islr")
     retention_type = fields.Selection(string="Retention Type",
                                       selection=[("iva", "IVA"), ("islr", "ISLR")],
@@ -52,7 +53,7 @@ class Retention(models.Model):
                                               compute="_compute_vat_withholding_percentage", required=True)
     invoice_id = fields.Many2one("account.move", string="Invoice", required=True,
                                  domain="[('move_type', 'in', ('out_invoice', 'in_invoice', 'in_refund', "
-                                            "'out_refund')), ('retention_state', '!=', 'with_both_retentions'),"
+                                        "'out_refund')), ('retention_state', '!=', 'with_both_retentions'),"
                                         "('state', '=', 'posted'),('partner_id', '=', partner_id )]")
     original_document_number = fields.Char(string="Original Document Number", related="invoice_id.document_number")
     invoice_date = fields.Date(string="Invoice Date", required=True, related="invoice_id.date")
@@ -111,10 +112,12 @@ class Retention(models.Model):
         if retention_already_created:
             raise ValidationError(_("This type was already generated"))
 
-    @api.constrains('retention_code', 'move_type')
+    @api.constrains("retention_code", "move_type")
     def _check_receipt_number(self):
         for record in self:
-            if record.retention_code and re.match(r"^[0-9]{14,14}$", record.retention_code) is None and record.move_type in ("out_invoice","out_refund"):
+            if record.retention_code and re.match(r"^[0-9]{14,14}$",
+                                                  record.retention_code) is None and record.move_type in (
+                    "out_invoice", "out_refund"):
                 raise ValidationError(
                     _("Invalid receipt number format. Must have at least 14 numbers"))
 
@@ -134,7 +137,7 @@ class Retention(models.Model):
     @api.depends("move_type")
     def _compute_vat_withholding_percentage(self):
         for retention in self:
-            if retention.move_type in ("in_invoice","in_refund"):
+            if retention.move_type in ("in_invoice", "in_refund"):
                 retention.vat_withholding_percentage = retention.partner_id.vat_withholding_percentage
             else:
                 retention.vat_withholding_percentage = retention.company_id.vat_withholding_percentage
@@ -143,6 +146,8 @@ class Retention(models.Model):
     def _compute_amount_retention(self):
         for retention in self:
             retention.amount_retention = retention.amount_tax * retention.vat_withholding_percentage / 100
+            retention.amount_retention_company_currency = self.currency_id._convert(
+                retention.amount_retention, self.company_id.currency_id, self.company_id, self.date)
 
     @api.depends("amount_untaxed")
     def _compute_amount_base_untaxed(self):
@@ -174,24 +179,24 @@ class Retention(models.Model):
     def _get_destination_account_id(self):
         self.ensure_one()
         account = self.company_id.iva_account_sale_id or self.env.company.iva_account_sale_id
-        if self.partner_type == "supplier" and self.is_iva:
+        if self.move_type in ("in_invoice", "in_refund") and self.is_iva:
             account = self.company_id.iva_account_purchase_id or self.env.company.iva_account_purchase_id
         return account.id
 
-    @api.depends("invoice_id")
+    @api.depends("invoice_id", "move_type")
     def _compute_document_type(self):
         for retention in self:
-            if retention.invoice_id.move_type in ("out_invoice", "in_invoice"):
+            if retention.move_type in ("out_invoice", "in_invoice"):
                 if retention.invoice_id.debit_origin_id:
-                    retention.document_type = _('D/N')
-                elif retention.invoice_number.move_type == 'out_invoice':
-                    retention.document_type = _('Invoice')
+                    retention.document_type = _("D/N")
+                elif retention.move_type == "out_invoice":
+                    retention.document_type = _("Invoice")
                 else:
-                    retention.document_type = _('Bills')
-            elif retention.invoice_id.move_type in ("in_refund", "out_refund"):
-                retention.document_type = _('C/N')
+                    retention.document_type = _("Bills")
+            elif retention.move_type in ("in_refund", "out_refund"):
+                retention.document_type = _("C/N")
             else:
-                retention.document_type = _('Other')
+                retention.document_type = _("Other")
 
     @api.model
     def create(self, values):
@@ -211,6 +216,7 @@ class Retention(models.Model):
             invoice.write({
                 "retention_state": "with_both_retentions"
             })
+        _logger(values)
         retention = super(Retention, self).create(values)
         retention.write({
             "destination_account_id": retention._get_destination_account_id()
