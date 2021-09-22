@@ -25,9 +25,9 @@ class Retention(models.Model):
     retention_code = fields.Char(string="Retention Number", default=_("New"), store=True)
     retention_date = fields.Date(string="Date", required=True, default=fields.Date.context_today)
     receipt_date = fields.Date(string="Receipt Date", required=True, default=fields.Date.context_today)
-    month_fiscal_period = fields.Char(string="Month", compute="_compute_month_fiscal_char", store=True, readonly=False)
-    year_fiscal_period = fields.Char(string="Year", default=str(fields.Date.today().year))
-    is_iva = fields.Boolean(string="Is IVA", default=True,
+    month_fiscal_period = fields.Char(string="Month", compute="_compute_month_fiscal_char", store=True, readonly=True)
+    year_fiscal_period = fields.Char(string="Year", default=str(fields.Date.today().year), readonly=True)
+    is_iva = fields.Boolean(string="Is IVA", default=False,
                             help="Check if the retention is a iva, otherwise it is islr")
     retention_type = fields.Selection(string="Retention Type",
                                       selection=[("iva", "IVA"), ("islr", "ISLR")],
@@ -198,7 +198,7 @@ class Retention(models.Model):
 
     @api.model
     def create(self, values):
-        if values.get("retention_code", "").strip().lower() in ["", "nuevo", "new"]:
+        if values.get("retention_code", "").strip().lower() in ["", "nuevo", "new"] and values.get("move_type", "") in ('in_invoice', 'in_refund'):
             values["retention_code"] = self.env["ir.sequence"].next_by_code("retention.sequence")
         values["state"] = "posted"
         if values.get("retention_type", False) == "iva":
