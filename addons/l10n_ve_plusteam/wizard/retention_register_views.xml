@@ -27,7 +27,7 @@
                             </div>
                             <field name="retention_date"/>
                             <field name="receipt_date"
-                                   attrs="{'invisible': [('move_type', 'not in', ('out_invoice', 'out_refund'))]}" >
+                                   attrs="{'invisible': [('move_type', 'not in', ('out_invoice', 'out_refund'))]}" />
                             <field name="invoice_date"/>
                             <field name="document"/>
                             <field name="rif"/>
