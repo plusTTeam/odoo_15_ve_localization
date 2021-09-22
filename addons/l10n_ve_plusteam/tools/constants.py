@@ -107,3 +107,4 @@ WEEK_DAYS = {
 }
 RETENTION_TYPE_IVA = "iva"
 RETENTION_TYPE_ISLR = "islr"
+NAME_PRODUCT = "Product that cost %s"
