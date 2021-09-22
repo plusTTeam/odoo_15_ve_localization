@@ -27585,6 +27585,7 @@ msgid "Type Document"
 msgstr "Documento"
 
 #. module: l10n_ve_plusteam
+#: model:ir.actions.act_window,name:l10n_ve_plusteam.retention_action_in_invoice_type
 #: model:ir.actions.act_window,name:l10n_ve_plusteam.retention_action_out_invoice_type
 #: model:ir.model,name:l10n_ve_plusteam.model_retention
 #: model:ir.model.fields,field_description:l10n_ve_plusteam.field_account_bank_statement_line__retention_id
@@ -27807,7 +27808,6 @@ msgstr "Facturas"
 
 #. modules: web, account, account_accountant, l10n_ve_plusteam
 #. openerp-web
-#: code:addons/account_accountant/static/src/xml/account_reconciliation.xml:0
 #: code:addons/account_accountant/static/src/xml/account_reconciliation.xml:0
 #: code:addons/l10n_ve_plusteam/models/retention.py:0
 #: code:addons/l10n_ve_plusteam/wizard/account_retention_register.py:0
