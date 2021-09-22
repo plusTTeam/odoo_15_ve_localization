@@ -1,9 +1,7 @@
 # -*- coding: utf-8 -*-
-import logging
 import re
 from odoo import models, fields, api, _
 from odoo.exceptions import ValidationError
-_logger = logging.getLogger(__name__)
 
 
 class Retention(models.Model):
@@ -216,7 +214,6 @@ class Retention(models.Model):
             invoice.write({
                 "retention_state": "with_both_retentions"
             })
-        _logger(values)
         retention = super(Retention, self).create(values)
         retention.write({
             "destination_account_id": retention._get_destination_account_id()

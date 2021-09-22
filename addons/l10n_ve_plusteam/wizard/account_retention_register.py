@@ -1,8 +1,5 @@
 # -*- coding: utf-8 -*-
-import logging
 from odoo import models, fields, api, _
-
-_logger = logging.getLogger(__name__)
 
 
 class AccountRetentionRegister(models.TransientModel):
@@ -27,10 +24,10 @@ class AccountRetentionRegister(models.TransientModel):
     vat_withholding_percentage = fields.Float(string="vat withholding percentage", store=True, readonly=False,
                                               compute="_compute_vat_percentage", required=True)
     invoice_id = fields.Many2one("account.move", string="Invoice", compute="_compute_data_invoice",
-                                 domain="[('partner_id', '=', partner_id )]")
+                                 domain="[('partner_id', '=', partner_id )]", store=True)
     currency_id = fields.Many2one("res.currency", string="Currency", store=True, readonly=True,
                                   help="The invoice's currency.", related="invoice_id.currency_id")
-    company_id = fields.Char(string="Company", compute="_compute_data_invoice")
+    company_id = fields.Many2one("res.company", string="Company", compute="_compute_data_invoice")
     vat_company_percentage = fields.Float(string="Vat company", compute="_compute_data_invoice")
     move_type = fields.Char(string="Move Type", compute="_compute_data_invoice")
     original_document_number = fields.Char(string="Original Invoice Number", compute="_compute_data_invoice")
@@ -53,18 +50,17 @@ class AccountRetentionRegister(models.TransientModel):
         for wizard in self:
             if invoice:
                 wizard.document = invoice.document_number
-                wizard.invoice_id = invoice.id
+                wizard.invoice_id = invoice
                 wizard.amount_tax = invoice.amount_tax
                 wizard.amount_base_taxed = invoice.amount_base_taxed
                 wizard.amount_total = invoice.amount_total
                 wizard.partner_id = invoice.partner_id
                 wizard.amount_base_untaxed = invoice.amount_untaxed - invoice.amount_base_taxed
                 wizard.invoice_date = invoice.date
-                wizard.company_id = invoice.company_id.id
+                wizard.company_id = invoice.company_id
                 wizard.vat_company_percentage = invoice.company_id.vat_withholding_percentage
                 wizard.move_type = invoice.move_type
                 wizard.original_document_number = invoice.document_number
-                _logger.info("..... > Done. _compute_data_invoice")
             else:
                 wizard.document = _("Without relationship")
 
@@ -102,7 +98,6 @@ class AccountRetentionRegister(models.TransientModel):
             if len(month_char) == 1:
                 month_char = f"0{month_char}"
             retention.month_fiscal_period = month_char
-            _logger.info("..... > Done. _compute_month_fiscal_char")
 
     @api.depends("invoice_id", "move_type")
     def _compute_type_document(self):
@@ -118,7 +113,6 @@ class AccountRetentionRegister(models.TransientModel):
                 retention.document_type = _("C/N")
             else:
                 retention.document_type = _("Other")
-            _logger.info("..... > Done. _compute_type_document")
 
     def _create_retention_values_from_wizard(self):
         result = {
@@ -131,7 +125,7 @@ class AccountRetentionRegister(models.TransientModel):
             "document_type": self.document_type,
             "original_document_number": self.original_document_number,
             "retention_code": self.retention_code,
-            "company_id": self.company_id,
+            "company_id": self.company_id.id,
             "partner_id": self.partner_id.id,
             "vat_withholding_percentage": self.vat_withholding_percentage,
             "invoice_id": self.invoice_id.id,
@@ -139,22 +133,16 @@ class AccountRetentionRegister(models.TransientModel):
             "amount_retention": self.amount_retention,
             "amount_retention_company_currency": self.currency_id._convert(self.amount_retention,
                                                                            self.company_id.currency_id, self.company_id,
-                                                                           self.date),
+                                                                           fields.Date.today()),
             "amount_base_untaxed": self.amount_base_untaxed
         }
-        _logger.info(result)
         return result
 
     def _create_retentions(self):
-        _logger.info("..... > Done. 2")
         self.ensure_one()
-        _logger.info("..... > Done. 3")
         retention_values = self._create_retention_values_from_wizard()
-        _logger.info("..... > Done. 4")
         self.env["retention"].create(retention_values)
-        _logger.info("..... > Done. 5")
 
     def action_create_retention(self):
-        _logger.info("..... > Done. 1")
         self._create_retentions()
         return True
