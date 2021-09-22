@@ -38,4 +38,7 @@ class TestResCurrency(TransactionCase):
         ) as datetime_mock:
             datetime_mock.datetime.now = mock.Mock(return_value=now_datetime)
             currency_rates = vef_currency._get_rates(self.company, now_datetime)
-        self.assertEqual(currency_rates.get(vef_currency.id), 2.123)
+        self.assertEqual(
+            currency_rates.get(vef_currency.id), 2.123,
+            msg="Rate value must be the latest applicable according to now"
+        )
