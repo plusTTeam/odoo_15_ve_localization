@@ -99,13 +99,13 @@ class AccountRetentionRegister(models.TransientModel):
                 month_char = f"0{month_char}"
             retention.month_fiscal_period = month_char
 
-    @api.depends("invoice_id")
+    @api.depends("invoice_id", "move_type")
     def _compute_type_document(self):
         for retention in self:
             if retention.move_type in ("out_invoice", "in_invoice"):
                 if retention.invoice_id.debit_origin_id:
                     retention.document_type = _("D/N")
-                elif retention.invoice_number.move_type == 'out_invoice':
+                elif retention.invoice_id.move_type == 'out_invoice':
                     retention.document_type = _('Invoice')
                 else:
                     retention.document_type = _('Bills')
