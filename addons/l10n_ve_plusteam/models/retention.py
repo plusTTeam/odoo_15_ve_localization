@@ -23,8 +23,8 @@ class Retention(models.Model):
     retention_code = fields.Char(string="Retention Number", default=_("New"), store=True)
     retention_date = fields.Date(string="Date", required=True, default=fields.Date.context_today)
     receipt_date = fields.Date(string="Receipt Date", required=True, default=fields.Date.context_today)
-    month_fiscal_period = fields.Char(string="Month", compute="_compute_month_fiscal_char", store=True, readonly=False)
-    year_fiscal_period = fields.Char(string="Year", default=str(fields.Date.today().year))
+    month_fiscal_period = fields.Char(string="Month", compute="_compute_month_fiscal_char", store=True, readonly=True)
+    year_fiscal_period = fields.Char(string="Year", default=str(fields.Date.today().year), readonly=True)
     is_iva = fields.Boolean(string="Is IVA", default=False,
                             help="Check if the retention is a iva, otherwise it is islr")
     retention_type = fields.Selection(string="Retention Type",
