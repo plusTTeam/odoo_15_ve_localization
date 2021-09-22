@@ -32,7 +32,6 @@
                             <field name="receipt_date"
                                    invisible="context.get('default_move_type') in ('in_invoice', 'in_refund','in_receipt')"/>
                             <field name="invoice_date"/>
-                            <field name="invoice_id"/>
                             <field name="document"/>
                             <field name="rif"/>
                             <field name="currency_id" options="{'no_create': True, 'no_open': True}"
