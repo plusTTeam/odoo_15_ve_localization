@@ -9,9 +9,9 @@ class AccountRetentionRegister(models.TransientModel):
     retention_code = fields.Char(string="Retention Number", default=_("New"))
     retention_date = fields.Date(string="Date", required=True, default=fields.Date.context_today)
     invoice_date = fields.Date(string="Invoice Date", required=True, compute="_compute_data_invoice")
-    month_fiscal_period = fields.Char(string="Month", compute="_compute_month_fiscal_char", store=True, readonly=False,
-                                      required=True)
-    year_fiscal_period = fields.Char(string="Year", default=str(fields.Date.today().year), required=True)
+    month_fiscal_period = fields.Char(string="Month", store=True, readonly=False, required=True,
+                                      default=fields.Date.today().strftime('%m'))
+    year_fiscal_period = fields.Char(string="Year", default=fields.Date.today().year, required=True)
     is_iva = fields.Boolean(string="Is IVA", default=False,
                             help="Check if the retention is a iva, otherwise it is islr")
     retention_type = fields.Selection(string="Retention Type",
@@ -83,14 +83,6 @@ class AccountRetentionRegister(models.TransientModel):
         for retention in self:
             retention.amount_retention = retention.amount_tax * retention.vat_withholding_percentage / 100
 
-    @api.depends("retention_date")
-    def _compute_month_fiscal_char(self):
-        for retention in self:
-            month_char = str(retention.retention_date.month)
-            if len(month_char) == 1:
-                month_char = f"0{month_char}"
-            retention.month_fiscal_period = month_char
-
     @api.depends("invoice_number")
     def _compute_type_document(self):
         for retention in self:
@@ -106,7 +98,7 @@ class AccountRetentionRegister(models.TransientModel):
 
     def _create_retention_values_from_wizard(self):
         return {
-            "retention_date": self.retention_date.strftime("%Y-%m-%d"),
+            "retention_date": self.retention_date,
             "month_fiscal_period": self.month_fiscal_period,
             "year_fiscal_period": self.year_fiscal_period,
             "retention_type": self.retention_type,
@@ -119,7 +111,7 @@ class AccountRetentionRegister(models.TransientModel):
             "partner_id": self.partner_id.id,
             "vat_withholding_percentage": self.vat_withholding_percentage,
             "invoice_number": self.invoice_number.id,
-            "invoice_date": self.invoice_date.strftime("%Y-%m-%d"),
+            "invoice_date": self.invoice_date,
             "amount_retention": self.amount_retention,
             "amount_base_untaxed": self.amount_base_untaxed,
             "destination_account_id": self.destination_account_id.id
