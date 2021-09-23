@@ -21,6 +21,8 @@ class ResConfigSettings(models.TransientModel):
                                            related="company_id.islr_account_sale_id",
                                            domain=DOMAIN_COMPANY, readonly=False)
     igtf = fields.Float(string="IGTF", digits="2", related="company_id.igtf", domain=DOMAIN_COMPANY, readonly=False)
+    igtf_account_id = fields.Many2one("account.account", string="ISLR accounting account",
+                                      related="company_id.islr_account_sale_id", domain=DOMAIN_COMPANY, readonly=False)
 
     @api.constrains("igtf")
     def _check_igtf(self):
@@ -38,11 +40,12 @@ class ResConfigSettings(models.TransientModel):
             "iva_account_sale_id",
             "islr_account_purchase_id",
             "islr_account_sale_id",
-            "igtf"
+            "igtf",
+            "igtf_account_id"
         ]
         for key in keys:
             if self.env.company == self.company_id and self[key] and \
                     self[key] != self.company_id[key]:
-                self.company.write({
+                self.company_id.write({
                     key: self[key]
                 })

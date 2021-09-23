@@ -17,6 +17,7 @@ class ResCompany(models.Model):
     islr_account_purchase_id = fields.Many2one("account.account", string="ISLR accounting account for suppliers")
     islr_account_sale_id = fields.Many2one("account.account", string="ISLR accounting account for customer")
     igtf = fields.Float(string="IGTF", digits="2")
+    igtf_account_id = fields.Many2one("account.account", string="IGTF accounting account")
 
     @api.constrains("vat_withholding_percentage")
     def _check_vat_withholding_percentage(self):
