@@ -8,6 +8,7 @@ from odoo.exceptions import ValidationError
 class ResPartner(models.Model):
     _inherit = 'res.partner'
 
+    vat = fields.Char(required=True)
     person_type = fields.Many2one('person.type', string="Person Type")
     taxpayer = fields.Boolean(
         string="Taxpayer",
@@ -43,6 +44,6 @@ class ResPartner(models.Model):
         for record in self:
             if record.vat_withholding_percentage < 0 or record.vat_withholding_percentage > 100:
                 raise ValidationError(
-                    _("The retention percentage must be between the the values 0 and 100, "
+                    _("The retention percentage must be between 0 and 100, "
                       "please verify that the value is in this range")
                 )
