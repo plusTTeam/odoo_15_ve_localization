@@ -41,10 +41,14 @@ class AccountMove(models.Model):
             total_base_taxed_currency = 0.0
             currencies = move._get_lines_onchange_currency().currency_id
             for line in move.line_ids:
-                if move.is_invoice(
-                        include_receipts=True) and not line.exclude_from_invoice_tab and line.tax_ids.amount > 0:
-                    total_base_taxed += line.balance
-                    total_base_taxed_currency += line.amount_currency
+                sumobase = False
+                if move.is_invoice(include_receipts=True) and not line.exclude_from_invoice_tab:
+                        for tax in line.tax_ids:
+                            if tax.amount > 0 and not sumobase:
+                                sumobase=True
+                                total_base_taxed += line.balance
+                                total_base_taxed_currency += line.amount_currency
+
             if move.move_type == "entry" or move.is_outbound():
                 sign = 1
             else:
