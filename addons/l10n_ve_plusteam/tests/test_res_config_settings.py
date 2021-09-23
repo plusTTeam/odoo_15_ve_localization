@@ -20,14 +20,23 @@ class TestResConfigSettings(TransactionCase):
         self.settings = self.env["res.config.settings"].with_company(self.company).search([], limit=1)
 
     def test_set_values(self):
+        igtf_account = self.env["account.account"].create({
+            "code": "6546546",
+            "name": "New account",
+            "user_type_id": self.env.ref("account.data_account_type_expenses").id,
+            "reconcile": True
+        })
         self.settings.iva_account_purchase_id = self.new_account.id
         igtf = 2.0
         self.settings.igtf = igtf
+        self.settings.igtf_account_id = igtf_account.id
         self.settings.flush()
         self.settings.execute()
         self.assertEqual(self.company.iva_account_purchase_id.id, self.new_account.id,
                          msg="The account was not changed in the company instance")
         self.assertEqual(self.company.igtf, igtf, msg="The IGTF field was not changed in the company instance")
+        self.assertEqual(self.company.igtf_account_id.id, igtf_account.id,
+                         msg="The IGTF account was not changed in the company instance")
 
     def test_raise_when_check_igtf(self):
         with self.assertRaises(ValidationError) as raise_exception:
