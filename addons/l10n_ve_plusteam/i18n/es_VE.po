@@ -23659,6 +23659,8 @@ msgid ""
 "The RIF/Identification Card format is invalid. Must start with a letter (V, "
 "J, E, P) followed by 7 or 9 numbers"
 msgstr ""
+"El formato de RIF/Identificación es invalido. Debe comenzar con una letra (V, "
+"J, E, P) seguido por 7 o 9 números"
 
 #. module: base
 #: model:ir.model.fields,help:base.field_res_lang__grouping
