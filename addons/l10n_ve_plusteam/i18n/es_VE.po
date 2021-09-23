@@ -27470,3 +27470,9 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:l10n_ve_plusteam.res_config_settings_view_form
 msgid "Accounting accounts for IGTF"
 msgstr "Cuenta contable para IGTF"
+
+#. module: l10n_ve_plusteam
+#: model:ir.model.fields,field_description:l10n_ve_plusteam.field_account_payment__igtf_amount
+#: model:ir.model.fields,field_description:l10n_ve_plusteam.field_account_payment_register__igtf_amount
+msgid "IGTF Amount"
+msgstr "Monto de IGTF"

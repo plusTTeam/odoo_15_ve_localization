@@ -61,6 +61,8 @@ Features:
         'views/account_move_views.xml',
         'views/res_config_settings_views.xml',
         'views/res_company_views.xml',
+        'views/account_payment_views.xml',
+        'wizard/account_payment_register_views.xml',
         'views/menu_views.xml'
     ],
     # only loaded in demonstration mode
