@@ -26,8 +26,9 @@ class Retention(models.Model):
     retention_code = fields.Char(string="Retention Number", default=_("New"), store=True)
     retention_date = fields.Date(string="Date", required=True, default=fields.Date.context_today)
     receipt_date = fields.Date(string="Receipt Date", required=True, default=fields.Date.context_today)
-    month_fiscal_period = fields.Char(string="Month", compute="_compute_month_fiscal_char", store=True, readonly=False)
-    year_fiscal_period = fields.Char(string="Year", default=str(fields.Date.today().year))
+    month_fiscal_period = fields.Char(string="Month", store=True, readonly=False,
+                                      default=fields.Date.today().strftime('%m'))
+    year_fiscal_period = fields.Char(string="Year", default=fields.Date.today().year)
     is_iva = fields.Boolean(string="Is IVA", default=False,
                             help="Check if the retention is a iva, otherwise it is islr")
     retention_type = fields.Selection(string="Retention Type",
@@ -55,7 +56,7 @@ class Retention(models.Model):
                                               related="partner_id.vat_withholding_percentage", required=True)
     invoice_id = fields.Many2one("account.move", string="Invoice", required=True,
                                  domain="[('move_type', 'in', ('out_invoice', 'in_invoice', 'in_refund', "
-                                        "'out_refund')), ('retention_state', '!=', 'with_retention_both'),"
+                                            "'out_refund')), ('retention_state', '!=', 'with_both_retentions'),"
                                         "('state', '=', 'posted'),('partner_id', '=', partner_id )]")
     original_document_number = fields.Char(string="Original Document Number", related="invoice_id.document_number")
     invoice_date = fields.Date(string="Invoice Date", required=True, related="invoice_id.date")
@@ -136,14 +137,6 @@ class Retention(models.Model):
     def _onchange_value_withholding_percentage(self):
         for retention in self:
             retention.amount_retention = retention.amount_tax * retention.vat_withholding_percentage / 100
-
-    @api.depends("retention_date")
-    def _compute_month_fiscal_char(self):
-        for retention in self:
-            month_char = str(retention.retention_date.month)
-            if len(month_char) == 1:
-                month_char = "0" + str(retention.retention_date.month)
-            retention.month_fiscal_period = month_char
 
     @api.depends("is_iva")
     def _compute_retention_type(self):
