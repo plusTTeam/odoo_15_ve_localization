@@ -32,20 +32,3 @@ class ResConfigSettings(models.TransientModel):
                     _("The value of the tax on large financial transactions (IGTF) must be between 0 and 100, "
                       "please verify the information")
                 )
-
-    def set_values(self):
-        super(ResConfigSettings, self).set_values()
-        keys = [
-            "iva_account_purchase_id",
-            "iva_account_sale_id",
-            "islr_account_purchase_id",
-            "islr_account_sale_id",
-            "igtf",
-            "igtf_account_id"
-        ]
-        for key in keys:
-            if self.env.company == self.company_id and self[key] and \
-                    self[key] != self.company_id[key]:
-                self.company_id.write({
-                    key: self[key]
-                })

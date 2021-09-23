@@ -27,7 +27,7 @@ class TestResConfigSettings(TransactionCase):
             "reconcile": True
         })
         self.settings.iva_account_purchase_id = self.new_account.id
-        igtf = 2.0
+        igtf = 10.0
         self.settings.igtf = igtf
         self.settings.igtf_account_id = igtf_account.id
         self.settings.flush()
