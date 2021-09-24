@@ -10,7 +10,7 @@ class ResCurrencyRate(models.Model):
     exchange_rate = fields.Float(
         digits=0, default=1.0,
         string="Rate",
-        help="The rate of the currency multiplied by the currency of rate 1"
+        help="The rate of the currency to the currency of rate 1"
     )
     rate = fields.Float(compute="_compute_rate", store=True)
 
