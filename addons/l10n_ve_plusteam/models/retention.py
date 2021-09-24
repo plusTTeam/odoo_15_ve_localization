@@ -1,9 +1,7 @@
 # -*- coding: utf-8 -*-
-import logging
 import re
 from odoo import models, fields, api, _
 from odoo.exceptions import ValidationError
-_logger = logging.getLogger(__name__)
 
 
 class Retention(models.Model):
@@ -154,9 +152,8 @@ class Retention(models.Model):
     def _get_destination_account_id(self):
         self.ensure_one()
         account = self.company_id.iva_account_sale_id
-        if self.partner_type == "supplier" and self.is_iva:
+        if self.move_type in ("in_invoice", "in_refund") and self.is_iva:
             account = self.company_id.iva_account_purchase_id
-        _logger.info(account)
         if not account:
             raise ValidationError(
                 _("There is no configuration of withholding accounting accounts for this company, please go to "
