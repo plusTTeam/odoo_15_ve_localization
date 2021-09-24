@@ -12,12 +12,12 @@ class TestResCurrencyRate(TransactionCase):
         second_datetime = first_datetime + datetime.timedelta(seconds=1)
         first_rate = self.env["res.currency.rate"].create({
             "name": first_datetime,
-            "rate": 2.123,
+            "exchange_rate": 1 / 2.123,
             "currency_id": vef_currency.id
         })
         second_rate = self.env["res.currency.rate"].create({
             "name": second_datetime,
-            "rate": 3.123,
+            "exchange_rate": 1 / 3.123,
             "currency_id": vef_currency.id
         })
         self.assertEqual(

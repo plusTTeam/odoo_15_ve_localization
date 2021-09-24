@@ -15,19 +15,19 @@ class TestResCurrency(TransactionCase):
         vef_currency = self.env.ref("base.VEF")
         self.env["res.currency.rate"].create({
             "name": datetime.datetime(year=2021, month=9, day=15, hour=11, minute=30, second=0),
-            "rate": 1.555,
+            "exchange_rate": 1 / 1.555,
             "currency_id": vef_currency.id,
             "company_id": self.company.id
         })
         self.env["res.currency.rate"].create({
             "name": datetime.datetime(year=2021, month=9, day=19, hour=11, minute=30, second=0),
-            "rate": 2.123,
+            "exchange_rate": 1 / 2.123,
             "currency_id": vef_currency.id,
             "company_id": self.company.id
         })
         self.env["res.currency.rate"].create({
             "name": datetime.datetime(year=2021, month=9, day=21, hour=15, minute=30, second=0),
-            "rate": 3.123,
+            "exchange_rate": 1 / 3.123,
             "currency_id": vef_currency.id,
             "company_id": self.company.id
         })
