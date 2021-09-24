@@ -42,3 +42,17 @@ class TestResCurrency(TransactionCase):
             currency_rates.get(vef_currency.id), 2.123,
             msg="Rate value must be the latest applicable according to now"
         )
+
+    def test_compute_exchange_rate(self):
+        vef_currency = self.env.ref("base.VEF")
+        yesterday = datetime.datetime.now() - datetime.timedelta(days=1)
+        self.env["res.currency.rate"].create({
+            "name": yesterday,
+            "rate": 1.555,
+            "currency_id": vef_currency.id,
+            "company_id": self.company.id
+        })
+        self.assertEqual(
+            vef_currency.exchange_rate, 1 / vef_currency.rate,
+            msg="Exchange rate must be 1 / rate"
+        )
