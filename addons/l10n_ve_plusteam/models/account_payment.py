@@ -24,7 +24,9 @@ class AccountPayment(models.Model):
     def create(self, values):
         payments = super(AccountPayment, self).create(values)
         for payment in payments:
-            if payment.igtf is not False and payment.payment_type == "outbound":
+            create_igtf_move = payment.igtf is not False and payment.igtf_amount != 0.0 and \
+                               payment.payment_type == "outbound"
+            if create_igtf_move:
                 igtf_account = payment.company_id.igtf_account_id
                 if not igtf_account:
                     raise ValidationError(
