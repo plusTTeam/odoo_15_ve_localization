@@ -16,7 +16,7 @@ class AccountPayment(models.Model):
     def _compute_igtf_amount(self):
         for record in self:
             igtf_amount = 0
-            if record.igtf is not False:
+            if record.igtf is not False and record.payment_type == "outbound":
                 igtf_amount = record.amount * (record.company_id.igtf / 100)
             record.igtf_amount = igtf_amount
 

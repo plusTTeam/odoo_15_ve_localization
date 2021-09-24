@@ -2,15 +2,19 @@ from odoo.tests.common import TransactionCase
 from ..tools.constants import REF_MAIN_COMPANY
 
 
-class TestAccountPayment(TransactionCase):
+class TestAccountPaymentRegister(TransactionCase):
 
     def setUp(self):
-        super(TestAccountPayment, self).setUp()
+        super(TestAccountPaymentRegister, self).setUp()
 
         self.company = self.env.ref(REF_MAIN_COMPANY)
         self.partner = self.env.ref("base.user_admin")
         self.amount = 10000
         self.igtf = 10
+        self.invoice = self.env["account.move"].create({
+            "move_type": "in_invoice",
+
+        })
         self.company.write({
             "igtf": self.igtf
         })
