@@ -27502,6 +27502,7 @@ msgstr "IGTF para pago %s"
 
 #. module: l10n_ve_plusteam
 #: code:addons/l10n_ve_plusteam/models/account_payment.py:0
+#: code:addons/l10n_ve_plusteam/tests/test_account_payment.py:0
 #, python-format
 msgid ""
 "There is not accounting account for the Tax on Big Financial Transactions "
@@ -27512,6 +27513,7 @@ msgstr ""
 
 #. module: l10n_ve_plusteam
 #: code:addons/l10n_ve_plusteam/models/account_payment.py:0
+#: code:addons/l10n_ve_plusteam/tests/test_account_payment.py:0
 #, python-format
 msgid ""
 "There is not journal for the Tax on Big Financial Transactions (IGTF), "
