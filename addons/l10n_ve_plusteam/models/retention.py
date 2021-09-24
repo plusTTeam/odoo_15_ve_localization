@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-
 import re
 from odoo import models, fields, api, _
 from odoo.exceptions import ValidationError
@@ -8,18 +7,21 @@ from odoo.exceptions import ValidationError
 class Retention(models.Model):
     _name = "retention"
     _description = "Retention"
+    _inherits = {"account.move": "move_id"}
     _rec_name = "complete_name_with_code"
 
     complete_name_with_code = fields.Char(string="Complete Name with Code", compute="_compute_complete_name_with_code",
                                           store=True)
     move_type = fields.Selection(selection=[
-        ("entry", "Journal Entry"),
         ("out_invoice", "Customer Invoice"),
         ("out_refund", "Customer Credit Note"),
         ("in_invoice", "Vendor Bill"),
         ("in_refund", "Vendor Credit Note"),
     ], string="Type", required=True, store=True, index=True, readonly=True, tracking=True,
-        default="entry", change_default=True, related="invoice_number.move_type")
+        related="invoice_id.move_type")
+    move_id = fields.Many2one(
+        comodel_name="account.move", string="Journal Entry", required=True, readonly=True, ondelete="cascade",
+        check_company=True)
     retention_code = fields.Char(string="Retention Number", default=_("New"), store=True)
     retention_date = fields.Date(string="Date", required=True, default=fields.Date.context_today)
     receipt_date = fields.Date(string="Receipt Date", required=True, default=fields.Date.context_today)
@@ -51,34 +53,39 @@ class Retention(models.Model):
     rif = fields.Char(string="RIF", related="partner_id.vat")
     vat_withholding_percentage = fields.Float(string="vat withholding percentage", store=True, readonly=False,
                                               related="partner_id.vat_withholding_percentage", required=True)
-    invoice_number = fields.Many2one("account.move", string="Invoice Number", required=True,
-                                     domain="[('move_type', 'in', ('out_invoice', 'in_invoice', 'in_refund', "
+    invoice_id = fields.Many2one("account.move", string="Invoice", required=True,
+                                 domain="[('move_type', 'in', ('out_invoice', 'in_invoice', 'in_refund', "
                                             "'out_refund')), ('retention_state', '!=', 'with_both_retentions'),"
-                                            "('state', '=', 'posted'),('partner_id', '=', partner_id )]")
-    original_document_number = fields.Char(string="Original Document Number", related="invoice_number.document_number")
-    invoice_date = fields.Date(string="Invoice Date", required=True, related="invoice_number.date")
-    document_type = fields.Char(string="Type Document", compute="_compute_type_document")
-    control_number = fields.Char(string="Control Number", related="invoice_number.control_number")
-    ref = fields.Char(string="Reference", related="invoice_number.ref")
-    company_currency_id = fields.Many2one(related="invoice_number.company_currency_id", string="Company Currency",
+                                        "('state', '=', 'posted'),('partner_id', '=', partner_id )]")
+    original_document_number = fields.Char(string="Original Document Number", related="invoice_id.document_number")
+    invoice_date = fields.Date(string="Invoice Date", required=True, related="invoice_id.date")
+    document_type = fields.Char(string="Document Type", compute="_compute_document_type")
+    control_number = fields.Char(string="Control Number", related="invoice_id.control_number")
+    ref = fields.Char(string="Reference", related="invoice_id.ref")
+    company_currency_id = fields.Many2one(related="invoice_id.company_currency_id", string="Company Currency",
                                           readonly=True, help="Utility field to express amount currency")
-    amount_tax = fields.Monetary(string="Amount tax", related="invoice_number.amount_tax",
-                                 currency_field="company_currency_id")
-    amount_untaxed = fields.Monetary(string="Amount untaxed", related="invoice_number.amount_untaxed",
-                                     currency_field="company_currency_id")
-    amount_total = fields.Monetary(string="Amount total", related="invoice_number.amount_total",
-                                   currency_field="company_currency_id")
-    amount_base_taxed = fields.Monetary(string="Amount base taxed", related="invoice_number.amount_base_taxed",
-                                        currency_field="company_currency_id")
-    amount_retention = fields.Monetary(string="Amount Retention", compute="_compute_amount_retention",
-                                       currency_field="company_currency_id")
+    currency_id = fields.Many2one(related="invoice_id.currency_id", string="Currency", readonly=True,
+                                  help="Invoice currency")
+    amount_tax = fields.Monetary(string="Amount tax", related="invoice_id.amount_tax",
+                                 currency_field="currency_id")
+    amount_untaxed = fields.Monetary(string="Amount untaxed", related="invoice_id.amount_untaxed",
+                                     currency_field="currency_id")
+    amount_total = fields.Monetary(string="Amount total", related="invoice_id.amount_total",
+                                   currency_field="currency_id")
+    amount_base_taxed = fields.Monetary(string="Amount base taxed", related="invoice_id.amount_base_taxed",
+                                        currency_field="currency_id")
+    amount_retention = fields.Monetary(string="Withholding Amount", compute="_compute_amount_retention",
+                                       currency_field="currency_id")
+    amount_retention_company_currency = fields.Monetary(string="Withholding Amount in Company Currency",
+                                                        compute="_compute_amount_retention",
+                                                        currency_field="company_currency_id")
     amount_base_untaxed = fields.Monetary(string="Amount base untaxed", compute="_compute_amount_base_untaxed",
-                                          currency_field="company_currency_id")
+                                          currency_field="currency_id")
 
     @api.constrains("partner_id")
     def _check_partner_id(self):
         for record in self:
-            if record.partner_id != record.invoice_number.partner_id:
+            if record.partner_id != record.invoice_id.partner_id:
                 raise ValidationError(
                     _("The selected contact is different from the invoice contact, "
                       "they must be the same, please correct it")
@@ -96,23 +103,32 @@ class Retention(models.Model):
     @api.constrains("retention_type")
     def _check_retention_type(self):
         retention_already_created = False
-        retentions = self.read_group([("retention_type", "=", "iva")], ["invoice_number"], ["invoice_number"])
+        retentions = self.read_group([("retention_type", "=", "iva")], ["invoice_id"], ["invoice_id"])
         for retention in retentions:
-            if retention.get('invoice_number_count', 0) > 1:
+            if retention.get("invoice_id_count", 0) > 1:
                 retention_already_created = True
-        retentions = self.read_group([("retention_type", "=", "islr")], ["invoice_number"], ["invoice_number"])
+        retentions = self.read_group([("retention_type", "=", "islr")], ["invoice_id"], ["invoice_id"])
         for retention in retentions:
-            if retention.get('invoice_number_count', 0) > 1:
+            if retention.get("invoice_id_count", 0) > 1:
                 retention_already_created = True
         if retention_already_created:
             raise ValidationError(_("This type was already generated"))
 
-    @api.depends(
-        "vat_withholding_percentage",
-        "amount_tax")
+    @api.constrains("move_type")
+    def _check_move_type(self):
+        for retention in self:
+            if retention.move_type not in ("out_invoice", "in_invoice", "in_refund", "out_refund"):
+                raise ValidationError(
+                    _("You are trying to create a withholding from an illegal journal entry type (%s)",
+                      retention.invoice_id.move_type))
+
+    @api.depends("vat_withholding_percentage", "amount_tax", "company_id", "currency_id", "retention_date")
     def _compute_amount_retention(self):
         for retention in self:
             retention.amount_retention = retention.amount_tax * retention.vat_withholding_percentage / 100
+            retention.amount_retention_company_currency = retention.currency_id._convert(
+                retention.amount_retention, retention.company_id.currency_id, retention.company_id,
+                retention.retention_date)
 
     @api.depends("amount_untaxed")
     def _compute_amount_base_untaxed(self):
@@ -133,20 +149,31 @@ class Retention(models.Model):
         for partner in self:
             partner.is_iva = partner.retention_type == "iva"
 
+    def _get_destination_account_id(self):
+        self.ensure_one()
+        account = self.company_id.iva_account_sale_id
+        if self.move_type in ("in_invoice", "in_refund") and self.is_iva:
+            account = self.company_id.iva_account_purchase_id
+        if not account:
+            raise ValidationError(
+                _("There is no configuration of withholding accounting accounts for this company, please go to "
+                  "configurations and define the accounts to continue with the process."))
+        return account.id
+
     @api.depends("partner_id")
     def _compute_company_id(self):
         for retention in self:
             retention.company_id = retention.partner_id.company_id or retention.company_id or self.env.company
 
-    @api.depends("invoice_number")
-    def _compute_type_document(self):
+    @api.depends("invoice_id")
+    def _compute_document_type(self):
         for retention in self:
-            if retention.invoice_number.move_type in ('out_invoice', 'in_invoice'):
-                if retention.invoice_number.debit_origin_id:
+            if retention.invoice_id.move_type in ("out_invoice", "in_invoice"):
+                if retention.invoice_id.debit_origin_id:
                     retention.document_type = _('D/N')
                 else:
                     retention.document_type = _('Invoice')
-            elif retention.invoice_number.move_type in ('in_refund', 'out_refund'):
+            elif retention.invoice_id.move_type in ("in_refund", "out_refund"):
                 retention.document_type = _('C/N')
             else:
                 retention.document_type = _('Other')
@@ -160,7 +187,7 @@ class Retention(models.Model):
             retention_state = "with_retention_iva"
         else:
             retention_state = "with_retention_islr"
-        invoice = self.env["account.move"].browse([values["invoice_number"]])
+        invoice = self.env["account.move"].browse([values["invoice_id"]])
         if invoice.retention_state == "without_retention":
             invoice.write({
                 "retention_state": retention_state
@@ -169,7 +196,88 @@ class Retention(models.Model):
             invoice.write({
                 "retention_state": "with_both_retentions"
             })
-        return super(Retention, self).create(values)
+        retention = super(Retention, self).create(values)
+        retention.write({
+            "destination_account_id": retention._get_destination_account_id()
+        })
+        retention.move_id.write(retention._update_move_id())
+        to_write = {"line_ids": [(0, 0, line_values) for line_values in retention._prepare_move_lines()]}
+        retention.move_id.write(to_write)
+        return retention
+
+    def _update_move_id(self):
+        self.ensure_one()
+        return {
+            "journal_id": self._get_default_journal().id,
+            "ref": _("%s withholding from %s invoice", self.retention_type, self.invoice_id.name),
+            "date": self.retention_date,
+            "move_type": "entry",
+            "partner_id": self.partner_id.id,
+            "state": "posted"
+        }
+
+    def _prepare_move_lines(self):
+        self.ensure_one()
+        default_line_name = self.retention_code
+        # signed equals to 1 when self.move_type in ("in_invoice", "out_refund")
+        signed = 1
+        if self.move_type in ("out_invoice", "in_refund"):
+            signed = -1
+        counterpart_amount = signed * self.amount_retention
+        balance = self.currency_id._convert(
+            counterpart_amount, self.company_id.currency_id, self.company_id, self.retention_date)
+        counterpart_account = self._get_counterpart_account()
+        line_ids = [{
+            "name": default_line_name,
+            "date_maturity": self.retention_date,
+            "amount_currency": -counterpart_amount,
+            "currency_id": self.currency_id.id,
+            "debit": balance < 0.0 and -balance or 0.0,
+            "credit": balance > 0.0 and balance or 0.0,
+            "partner_id": self.partner_id.id,
+            "account_id": self.destination_account_id.id
+        }, {
+            "name": default_line_name,
+            "date_maturity": self.retention_date,
+            "amount_currency": counterpart_amount,
+            "currency_id": self.currency_id.id,
+            "debit": balance > 0.0 and balance or 0.0,
+            "credit": balance < 0.0 and -balance or 0.0,
+            "partner_id": self.partner_id.id,
+            "account_id": counterpart_account.account_id.id
+        }]
+        return line_ids
+
+    def _get_counterpart_account(self):
+        self.ensure_one()
+        lines = []
+        for line in self.invoice_id.line_ids:
+            if line.account_id.internal_type in ("receivable", "payable"):
+                lines.append(line)
+        return lines[0]
+
+    @api.model
+    def _get_default_journal(self):
+        """ Get the default journal.
+        It could either be passed through the context using the 'default_journal_id' key containing its id,
+        either be determined by the default type.
+        """
+        if self._context.get("default_journal_id"):
+            journal = self.env["account.journal"].browse(self._context["default_journal_id"])
+        else:
+            journal = self._search_company_journal()
+        return journal
+
+    @api.model
+    def _search_company_journal(self):
+        company_journal = self.env.company.withholding_journal_id
+        if company_journal:
+            return company_journal
+        journal = self.env.ref("l10n_ve_plusteam.journal_withholding", raise_if_not_found=False)
+        if journal and journal.active:
+            return journal
+        raise ValidationError(_("The company does not have a journal configured for withholding, please go to"
+                                " the configuration section to add one"))
 
     @api.depends("original_document_number", "retention_code")
     def _compute_complete_name_with_code(self):

@@ -82,19 +82,19 @@
                         <div class="container-fluid" >
                          <div class="row">
                                 <div class="col-6 text-left">
-                                    <t t-if="retention.invoice_number.debit_origin_id ">
+                                    <t t-if="retention.invoice_id.debit_origin_id ">
                                         <p>Número de la Factura:
                                             <span/>
                                         </p>
                                     </t>
-                                    <t t-if="retention.move_type in ('in_invoice', 'out_invoice') and not retention.invoice_number.debit_origin_id ">
+                                    <t t-if="retention.move_type in ('in_invoice', 'out_invoice') and not retention.invoice_id.debit_origin_id ">
                                         <p>Número de la Factura:
-                                            <span t-field="retention.invoice_number.document_number"/>
+                                            <span t-field="retention.invoice_id.document_number"/>
                                         </p>
                                     </t>
                                     <t t-if="retention.move_type in ('in_refund', 'out_refund')">
                                         <p>Número de la Nota de Credito:
-                                            <span t-field="retention.invoice_number.document_number"/>
+                                            <span t-field="retention.invoice_id.document_number"/>
                                         </p>
                                     </t>
                                     <t t-else=" ">
@@ -102,9 +102,9 @@
                                             <span/>
                                         </p>
                                     </t>
-                                    <t t-if="retention.invoice_number.debit_origin_id ">
+                                    <t t-if="retention.invoice_id.debit_origin_id ">
                                         <p>Número de la Nota de Debito:
-                                            <span t-field="retention.invoice_number.document_number"/>
+                                            <span t-field="retention.invoice_id.document_number"/>
                                         </p>
                                     </t>
                                     <t t-else="">
@@ -115,18 +115,18 @@
                                     <p>Número de Control:
                                         <span t-field="retention.control_number"/>
                                     </p>
-                                    <t t-if="retention.invoice_number.debit_origin_id ">
+                                    <t t-if="retention.invoice_id.debit_origin_id ">
                                         <p>Número de la Factura Afectada:
-                                            <span t-field="retention.invoice_number.debit_origin_id.document_number"/>
+                                            <span t-field="retention.invoice_id.debit_origin_id.document_number"/>
                                         </p>
                                     </t>
                                     <t t-if="retention.move_type in ('in_refund', 'out_refund') ">
                                         <p>Número de la Factura Afectada:
-                                            <span t-field="retention.invoice_number.ref"/>
+                                            <span t-field="retention.invoice_id.ref"/>
                                         </p>
                                     </t>
                                     <p>Fecha de Emisión:
-                                        <span t-field="retention.invoice_number.date"/>
+                                        <span t-field="retention.invoice_id.date"/>
                                         <br/>
                                     </p>
                                 </div>
@@ -159,7 +159,7 @@
                             </thead>
                             <tbody>
                                 <t t-set="contador" t-value="1"/>
-                                <t t-foreach="retention.invoice_number.amount_by_group" t-as="amount_by_group">
+                                <t t-foreach="retention.invoice_id.amount_by_group" t-as="amount_by_group">
                                     <tr>
                                         <t t-if="amount_by_group[5]>1 and amount_by_group[1]>0">
                                             <td>
@@ -216,7 +216,7 @@
                                     </td>
                                     <t t-if="contador==1">
                                         <td class="text-center">
-                                            <span t-esc="retention.invoice_number.line_ids.tax_ids.amount"/>
+                                            <span t-esc="retention.invoice_id.line_ids.tax_ids.amount"/>
                                         </td>
                                     </t>
                                     <t t-else=" ">
