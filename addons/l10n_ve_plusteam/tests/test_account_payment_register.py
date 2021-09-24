@@ -1,6 +1,6 @@
 from odoo import fields
 from odoo.tests.common import TransactionCase
-from ..tools.constants import REF_MAIN_COMPANY
+from ..tools.constants import REF_MAIN_COMPANY, MESSAGE_IGTF_AMOUNT_NOT_CALCULATED
 
 
 class TestAccountPaymentRegister(TransactionCase):
@@ -41,7 +41,7 @@ class TestAccountPaymentRegister(TransactionCase):
             "igtf": True
         })._create_payments()
         igtf_amount = self.invoice_amount * (self.igtf / 100)
-        self.assertEqual(payment.igtf_amount, igtf_amount, msg="The igtf_amount was not calculated correctly")
+        self.assertEqual(payment.igtf_amount, igtf_amount, msg=MESSAGE_IGTF_AMOUNT_NOT_CALCULATED)
 
     def test_igtf_amount_equals_zero(self):
         invoice = self.create_invoice()
@@ -49,7 +49,7 @@ class TestAccountPaymentRegister(TransactionCase):
             active_model='account.move', active_ids=invoice.ids
         ).create({})._create_payments()
         igtf_amount = 0
-        self.assertEqual(payment.igtf_amount, igtf_amount, msg="The igtf_amount was not calculated correctly")
+        self.assertEqual(payment.igtf_amount, igtf_amount, msg=MESSAGE_IGTF_AMOUNT_NOT_CALCULATED)
 
     def test_compute_igtf_amount_with_invoices(self):
         invoices = (self.create_invoice() + self.create_invoice())
@@ -60,4 +60,4 @@ class TestAccountPaymentRegister(TransactionCase):
         })._create_payments()
         for payment in payments:
             igtf_amount = self.invoice_amount * (self.igtf / 100)
-            self.assertEqual(payment.igtf_amount, igtf_amount, msg="The igtf_amount was not calculated correctly")
+            self.assertEqual(payment.igtf_amount, igtf_amount, msg=MESSAGE_IGTF_AMOUNT_NOT_CALCULATED)

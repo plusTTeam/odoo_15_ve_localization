@@ -1,7 +1,7 @@
 from odoo import _
 from odoo.exceptions import ValidationError
 from odoo.tests.common import TransactionCase
-from ..tools.constants import REF_MAIN_COMPANY, MESSAGE_EXCEPTION_NOT_EXECUTE
+from ..tools.constants import REF_MAIN_COMPANY, MESSAGE_EXCEPTION_NOT_EXECUTE, MESSAGE_IGTF_AMOUNT_NOT_CALCULATED
 
 
 class TestAccountPayment(TransactionCase):
@@ -29,12 +29,12 @@ class TestAccountPayment(TransactionCase):
     def test_compute_igtf_amount(self):
         payment = self.create_payment(igtf=True)
         igtf_amount = self.amount * (self.igtf / 100)
-        self.assertEqual(payment.igtf_amount, igtf_amount, msg="The igtf_amount was not calculated correctly")
+        self.assertEqual(payment.igtf_amount, igtf_amount, msg=MESSAGE_IGTF_AMOUNT_NOT_CALCULATED)
 
     def test_igtf_amount_equals_zero(self):
         payment = self.create_payment(igtf=False)
         igtf_amount = 0
-        self.assertEqual(payment.igtf_amount, igtf_amount, msg="The igtf_amount was not calculated correctly")
+        self.assertEqual(payment.igtf_amount, igtf_amount, msg=MESSAGE_IGTF_AMOUNT_NOT_CALCULATED)
 
     def test_post_iftg_move(self):
         payment = self.create_payment(igtf=True)
