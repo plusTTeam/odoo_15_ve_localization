@@ -52,6 +52,7 @@ Features:
         'data/resource_calendar_leaves_data.xml',
         'data/resource_calendar_attendance_data.xml',
         'data/resource_calendar_data.xml',
+        'data/account_journal_data.xml',
         'data/res_config_settings_data.xml',
         'data/res_country_data.xml',
         'views/res_partner_views.xml',

@@ -6,6 +6,7 @@
             <field name="account_tax_fiscal_country_id" ref="base.ve"/>
             <field name="currency_id" ref="base.VEF"/>
             <field name="igtf" eval="2.0"/>
+            <field name="igtf_journal_id" ref="igtf_journal"/>
         </record>
         <function model="res.config.settings" name="execute">
             <value model="res.config.settings" search="[('id', '=', ref('settings_tax_sale'))]"/>
