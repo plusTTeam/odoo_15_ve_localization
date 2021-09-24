@@ -27521,12 +27521,6 @@ msgid "vat withholding percentage"
 msgstr "Porcentaje retención IVA"
 
 #. module: l10n_ve_plusteam
-#: model:ir.model.fields,field_description:l10n_ve_plusteam.field_account_retention_register__invoice_number
-#: model:ir.model.fields,field_description:l10n_ve_plusteam.field_retention__invoice_number
-msgid "Invoice"
-msgstr "Factura"
-
-#. module: l10n_ve_plusteam
 #: model:ir.model.fields,field_description:l10n_ve_plusteam.field_retention__original_document_number
 msgid "Original Document Number"
 msgstr "Número de Documento"
@@ -27664,6 +27658,8 @@ msgstr "Con Retención de IVA"
 
 #. module: l10n_ve_plusteam
 #: code:addons/l10n_ve_plusteam/models/retention.py:0
+#: code:addons/l10n_ve_plusteam/tests/test_account_retention_register.py:0
+#: code:addons/l10n_ve_plusteam/tests/test_retention.py:0
 #, python-format
 msgid "This type was already generated"
 msgstr "Este tipo de retención ya fue generado"
