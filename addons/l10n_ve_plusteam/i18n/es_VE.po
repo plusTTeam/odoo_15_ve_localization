@@ -27521,12 +27521,6 @@ msgid "vat withholding percentage"
 msgstr "Porcentaje retención IVA"
 
 #. module: l10n_ve_plusteam
-#: model:ir.model.fields,field_description:l10n_ve_plusteam.field_account_retention_register__invoice_number
-#: model:ir.model.fields,field_description:l10n_ve_plusteam.field_retention__invoice_number
-msgid "Invoice"
-msgstr "Factura"
-
-#. module: l10n_ve_plusteam
 #: model:ir.model.fields,field_description:l10n_ve_plusteam.field_retention__original_document_number
 msgid "Original Document Number"
 msgstr "Número de Documento"
@@ -27664,6 +27658,8 @@ msgstr "Con Retención de IVA"
 
 #. module: l10n_ve_plusteam
 #: code:addons/l10n_ve_plusteam/models/retention.py:0
+#: code:addons/l10n_ve_plusteam/tests/test_account_retention_register.py:0
+#: code:addons/l10n_ve_plusteam/tests/test_retention.py:0
 #, python-format
 msgid "This type was already generated"
 msgstr "Este tipo de retención ya fue generado"
@@ -27810,6 +27806,37 @@ msgid ""
 msgstr ""
 "Estás intentando crear una retención a partir de un tipo de asiento contable no permitido "
 "(%s)"
+
+#. module: l10n_ve_plusteam
+#: model_terms:ir.ui.view,arch_db:l10n_ve_plusteam.res_config_settings_view_form
+msgid ""
+"<span class=\"o_form_label\">Withholding Journal</span>\n"
+"                            <span class=\"fa fa-lg fa-building-o\" title=\"Values set here are company-specific.\" aria-label=\"Values set here are company-specific.\" role=\"img\"/>"
+msgstr ""
+"<span class=\"o_form_label\">Diario Contable de Retenciones</span>\n"
+"                            <span class=\"fa fa-lg fa-building-o\" title=\"Los valores configurados aquí son específicos de la compañía.\" aria-label=\"Los valores configurados aquí son específicos de la compañía.\" role=\"img\"/>"
+
+#. module: l10n_ve_plusteam
+#: model_terms:ir.ui.view,arch_db:l10n_ve_plusteam.res_config_settings_view_form
+msgid "Withholding Journal"
+msgstr "Diario Contable de Retenciones"
+
+#. module: l10n_ve_plusteam
+#: model_terms:ir.ui.view,arch_db:l10n_ve_plusteam.res_config_settings_view_form
+#, python-format
+msgid "Journal"
+msgstr "Diario"
+
+#. module: l10n_ve_plusteam
+#: code:addons/l10n_ve_plusteam/models/retention.py:0
+#, python-format
+msgid ""
+"There is no configuration of withholding accounting accounts for this "
+"company, please go to configurations and define the accounts to continue "
+"with the process."
+msgstr ""
+"No hay configuración de cuentas de retención para esta empresa, vaya a configuraciones y "
+"defina las cuentas para continuar con el proceso"
 
 #. module: l10n_ve_plusteam
 #: code:addons/l10n_ve_plusteam/models/account_move.py:0

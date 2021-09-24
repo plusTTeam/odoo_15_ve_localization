@@ -26,7 +26,7 @@ class AccountRetentionRegister(models.TransientModel):
                                  domain="[('partner_id', '=', partner_id )]")
     currency_id = fields.Many2one("res.currency", string="Currency", store=True, readonly=True,
                                   help="The invoice's currency.", related="invoice_id.currency_id")
-    company_id = fields.Char(string="Company", compute="_compute_data_invoice")
+    company_id = fields.Many2one("res.company", string="Company", compute="_compute_data_invoice")
     move_type = fields.Char(string="Move Type", compute="_compute_data_invoice")
     original_document_number = fields.Char(string="Original Invoice Number", compute="_compute_data_invoice")
     document_type = fields.Char(string="Type Document", compute="_compute_type_document")
@@ -48,14 +48,14 @@ class AccountRetentionRegister(models.TransientModel):
         for wizard in self:
             if invoice:
                 wizard.document = invoice.document_number
-                wizard.invoice_id = invoice.id
+                wizard.invoice_id = invoice
                 wizard.amount_tax = invoice.amount_tax
                 wizard.amount_base_taxed = invoice.amount_base_taxed
                 wizard.amount_total = invoice.amount_total
                 wizard.partner_id = invoice.partner_id
                 wizard.amount_base_untaxed = invoice.amount_untaxed - invoice.amount_base_taxed
                 wizard.invoice_date = invoice.date
-                wizard.company_id = invoice.company_id.id
+                wizard.company_id = invoice.company_id
                 wizard.move_type = invoice.move_type
                 wizard.original_document_number = invoice.document_number
             else:
@@ -104,7 +104,7 @@ class AccountRetentionRegister(models.TransientModel):
             "document_type": self.document_type,
             "original_document_number": self.original_document_number,
             "retention_code": self.retention_code,
-            "company_id": self.company_id,
+            "company_id": self.company_id.id,
             "partner_id": self.partner_id.id,
             "vat_withholding_percentage": self.vat_withholding_percentage,
             "invoice_id": self.invoice_id.id,
