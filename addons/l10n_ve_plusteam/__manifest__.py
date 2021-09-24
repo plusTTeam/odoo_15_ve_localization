@@ -39,6 +39,7 @@ Features:
     # always loaded
     'data': [
         'security/ir.model.access.csv',
+        'data/res_currency_data.xml',
         'data/res_lang_data.xml',
         'data/ir_translation_data.xml',
         'data/res_users_data.xml',
