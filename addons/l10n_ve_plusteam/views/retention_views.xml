@@ -36,6 +36,7 @@
                     <group>
                         <group>
                             <field name="retention_date"/>
+                            <field name="move_type" invisible="1"/>
                             <field name="receipt_date" 
                                    attrs="{'invisible': [('move_type', 'not in', ('out_invoice', 'out_refund','out_receipt'))]}"/>
                             <field name="partner_type"/>
