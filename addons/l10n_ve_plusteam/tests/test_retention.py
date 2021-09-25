@@ -1,6 +1,7 @@
 from odoo import fields, _
 from odoo.exceptions import ValidationError
 from odoo.tests.common import TransactionCase, Form
+from .common import AccountMoveModelRetentionTestingCommon
 from ..tools.constants import (RETENTION_TYPE_ISLR, RETENTION_TYPE_IVA, REF_MAIN_COMPANY, NAME_PRODUCT,
                                MESSAGE_EXCEPTION_NOT_EXECUTE)
 

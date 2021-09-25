@@ -141,12 +141,13 @@ class Retention(models.Model):
             else:
                 retention.vat_withholding_percentage = retention.company_id.vat_withholding_percentage
 
-    @api.depends("vat_withholding_percentage", "amount_tax")
+    @api.depends("vat_withholding_percentage", "amount_tax", "company_id", "currency_id", "retention_date")
     def _compute_amount_retention(self):
         for retention in self:
             retention.amount_retention = retention.amount_tax * retention.vat_withholding_percentage / 100
-            retention.amount_retention_company_currency = self.currency_id._convert(
-                retention.amount_retention, self.company_id.currency_id, self.company_id, self.date)
+            retention.amount_retention_company_currency = retention.currency_id._convert(
+                retention.amount_retention, retention.company_id.currency_id, retention.company_id,
+                retention.retention_date)
 
     @api.depends("amount_untaxed")
     def _compute_amount_base_untaxed(self):
@@ -169,9 +170,13 @@ class Retention(models.Model):
 
     def _get_destination_account_id(self):
         self.ensure_one()
-        account = self.company_id.iva_account_sale_id or self.env.company.iva_account_sale_id
+        account = self.company_id.iva_account_sale_id
         if self.move_type in ("in_invoice", "in_refund") and self.is_iva:
-            account = self.company_id.iva_account_purchase_id or self.env.company.iva_account_purchase_id
+            account = self.company_id.iva_account_purchase_id
+        if not account:
+            raise ValidationError(
+                _("There is no configuration of withholding accounting accounts for this company, please go to "
+                  "configurations and define the accounts to continue with the process."))
         return account.id
 
     @api.depends("invoice_id", "move_type")
@@ -221,7 +226,7 @@ class Retention(models.Model):
         return {
             "journal_id": self._get_default_journal().id,
             "ref": _("%s withholding from %s invoice", self.retention_type, self.invoice_id.name),
-            "date": self.date,
+            "date": self.retention_date,
             "move_type": "entry",
             "partner_id": self.partner_id.id,
             "state": "posted"
@@ -236,11 +241,11 @@ class Retention(models.Model):
             signed = -1
         counterpart_amount = signed * self.amount_retention
         balance = self.currency_id._convert(
-            counterpart_amount, self.company_id.currency_id, self.company_id, self.date)
+            counterpart_amount, self.company_id.currency_id, self.company_id, self.retention_date)
         counterpart_account = self._get_counterpart_account()
         line_ids = [{
             "name": default_line_name,
-            "date_maturity": self.date,
+            "date_maturity": self.retention_date,
             "amount_currency": -counterpart_amount,
             "currency_id": self.currency_id.id,
             "debit": balance < 0.0 and -balance or 0.0,
@@ -249,7 +254,7 @@ class Retention(models.Model):
             "account_id": self.destination_account_id.id
         }, {
             "name": default_line_name,
-            "date_maturity": self.date,
+            "date_maturity": self.retention_date,
             "amount_currency": counterpart_amount,
             "currency_id": self.currency_id.id,
             "debit": balance > 0.0 and balance or 0.0,
