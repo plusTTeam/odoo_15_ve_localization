@@ -283,3 +283,8 @@ class Retention(models.Model):
     def _compute_complete_name_with_code(self):
         for retention in self:
             retention.complete_name_with_code = f"[{retention.retention_code}] {retention.original_document_number}"
+
+    def button_cancel(self):
+        self.write({"state": "cancel"})
+        self.move_id.button_draft()
+        self.move_id.button_cancel()

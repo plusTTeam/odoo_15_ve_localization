@@ -6,7 +6,16 @@
         <field name="type">form</field>
         <field name="arch" type="xml">
             <form string="Register Retention">
+                <header>
+                    <button name="button_cancel" id="button_cancel"
+                        type="object" class="oe_highlight"
+                        attrs="{'invisible': ['|', ('id', '=', False), ('state', '!=', 'posted')]}"
+                        string="Cancel Retention"
+                        groups="account.group_account_invoice"/>
+                </header>
                 <sheet>
+                    <field name="id" invisible="1"/>
+                    <field name="state" invisible="1"/>
                     <group>
                         <group>
                             <field name="retention_type" options="{'horizontal': true}" widget="radio"/>

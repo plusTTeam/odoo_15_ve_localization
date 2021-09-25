@@ -27837,3 +27837,19 @@ msgid ""
 msgstr ""
 "No hay configuración de cuentas de retención para esta empresa, vaya a configuraciones y "
 "defina las cuentas para continuar con el proceso"
+
+#. module: l10n_ve_plusteam
+#: code:addons/l10n_ve_plusteam/models/account_move.py:0
+#: code:addons/l10n_ve_plusteam/tests/test_account_move.py:0
+#, python-format
+msgid ""
+"You cannot cancel an invoice when it has withholding associated with a "
+"different status of cancel, please cancel all withholding first"
+msgstr ""
+"No puedes cancelar una factura cuando tiene retenciones asociadas con "
+"estado diferente de 'Cancelado', por favor cancela antes todas las retenciones"
+
+#. module: l10n_ve_plusteam
+#: model_terms:ir.ui.view,arch_db:l10n_ve_plusteam.retention_view_form
+msgid "Cancel Retention"
+msgstr "Cancelar Retención"
