@@ -37,7 +37,7 @@
                         <group>
                             <field name="retention_date"/>
                             <field name="receipt_date" 
-                                   invisible="context.get('default_move_type') in ('in_invoice', 'in_refund')"/>
+                                   attrs="{'invisible': [('move_type', 'not in', ('out_invoice', 'out_refund','out_receipt'))]}"/>
                             <field name="partner_type"/>
                             <field name="partner_id"/>
                             <field name="rif"/>
