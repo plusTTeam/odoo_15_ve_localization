@@ -27848,3 +27848,8 @@ msgid ""
 msgstr ""
 "No puedes cancelar una factura cuando tiene retenciones asociadas con "
 "estado diferente de 'Cancelado', por favor cancela antes todas las retenciones"
+
+#. module: l10n_ve_plusteam
+#: model_terms:ir.ui.view,arch_db:l10n_ve_plusteam.retention_view_form
+msgid "Cancel Retention"
+msgstr "Cancelar Retención"
