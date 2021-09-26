@@ -27415,3 +27415,58 @@ msgstr "Transferencia de liquidez"
 #, python-format
 msgid "Undistributed Profits/Losses"
 msgstr "Ganancias/pérdidas no distribuidas"
+
+#. module: l10n_ve_plusteam
+#: code:addons/l10n_ve_plusteam/models/res_config_settings.py:0
+#: code:addons/l10n_ve_plusteam/tests/test_res_config_settings.py:0
+#: code:addons/l10n_ve_plusteam/tests/test_res_config_settings.py:0
+#, python-format
+msgid ""
+"The value of the tax on large financial transactions (IGTF) must be between "
+"0 and 100, please verify the information"
+msgstr ""
+"El valor del Impuesto a las Grandes Transacciones Financieras (IGTF) debe estar entre 0 y 100, "
+"por favor verifica la información"
+
+#. module: l10n_ve_plusteam
+#: model_terms:ir.ui.view,arch_db:l10n_ve_plusteam.res_config_settings_view_form
+msgid "IGTF Account"
+msgstr "Cuenta para IGTF"
+
+#. module: l10n_ve_plusteam
+#: model:ir.model.fields,field_description:l10n_ve_plusteam.field_res_company__igtf_account_id
+msgid "IGTF accounting account"
+msgstr "Cuenta Contable para el IGTF"
+
+#. module: l10n_ve_plusteam
+#: model_terms:ir.ui.view,arch_db:l10n_ve_plusteam.res_config_settings_view_form
+msgid "This is the value of the tax to apply to transactions"
+msgstr "Este es el valor del impuesto para aplicar a las transacciones"
+
+#. module: l10n_ve_plusteam
+#: model_terms:ir.ui.view,arch_db:l10n_ve_plusteam.res_config_settings_view_form
+msgid "This is the account that will be used for the IGTF accounting entry"
+msgstr "Este es la cuenta que será usada para los apuntes contables de IGTF"
+
+#. module: l10n_ve_plusteam
+#: model_terms:ir.ui.view,arch_db:l10n_ve_plusteam.res_config_settings_view_form
+msgid ""
+"<span class=\"o_form_label\">IGTF Account</span>\n"
+"                            <span class=\"fa fa-lg fa-building-o\" title=\"Values set here are company-specific.\" aria-label=\"Values set here are company-specific.\" role=\"img\"/>"
+msgstr ""
+"<span class=\"o_form_label\">Cuenta para IGTF</span>\n"
+"                            <span class=\"fa fa-lg fa-building-o\" title=\"Los valores configurados aquí son específicos de la compañía.\" aria-label=\"Los valores configurados aquí son específicos de la compañía.\" role=\"img\"/>"
+
+#. module: l10n_ve_plusteam
+#: model_terms:ir.ui.view,arch_db:l10n_ve_plusteam.res_config_settings_view_form
+msgid ""
+"<span class=\"o_form_label\">IGTF</span>\n"
+"                            <span class=\"fa fa-lg fa-building-o\" title=\"Values set here are company-specific.\" aria-label=\"Values set here are company-specific.\" role=\"img\"/>"
+msgstr ""
+"<span class=\"o_form_label\">IGTF</span>\n"
+"                            <span class=\"fa fa-lg fa-building-o\" title=\"Los valores configurados aquí son específicos de la compañía.\" aria-label=\"Los valores configurados aquí son específicos de la compañía.\" role=\"img\"/>"
+
+#. module: l10n_ve_plusteam
+#: model_terms:ir.ui.view,arch_db:l10n_ve_plusteam.res_config_settings_view_form
+msgid "Accounting accounts for IGTF"
+msgstr "Cuenta contable para IGTF"
