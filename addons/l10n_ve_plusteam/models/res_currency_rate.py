@@ -8,7 +8,7 @@ class ResCurrencyRate(models.Model):
 
     name = fields.Datetime(index=True, string="Date", default=fields.Datetime.now)
     exchange_rate = fields.Float(
-        digits=0, default=1.0,
+        digits=[12, 4], default=1.0,
         string="Rate",
         help="The rate of the currency to the currency of rate 1"
     )

@@ -6,7 +6,7 @@
         <field name="inherit_id" ref="base.view_currency_rate_tree"/>
         <field name="arch" type="xml">
             <xpath expr="//field[@name='rate']" position="replace">
-                <field name="exchange_rate" digits="[12,12]"/>
+                <field name="exchange_rate" digits="[12,4]"/>
             </xpath>
         </field>
     </record>
@@ -17,7 +17,7 @@
         <field name="inherit_id" ref="base.view_currency_rate_form"/>
         <field name="arch" type="xml">
             <xpath expr="//field[@name='rate']" position="replace">
-                <field name="exchange_rate" digits="[12,12]"/>
+                <field name="exchange_rate" digits="[12,4]"/>
             </xpath>
         </field>
     </record>
@@ -28,7 +28,7 @@
         <field name="inherit_id" ref="base.view_currency_tree"/>
         <field name="arch" type="xml">
             <xpath expr="//field[@name='rate']" position="replace">
-                <field name="exchange_rate" digits="[12,3]"/>
+                <field name="exchange_rate" digits="[12,4]"/>
             </xpath>
         </field>
     </record>
@@ -39,7 +39,7 @@
         <field name="inherit_id" ref="base.view_currency_kanban"/>
         <field name="arch" type="xml">
             <xpath expr="//field[@name='rate']" position="replace">
-                <field name="exchange_rate" digits="[12,3]"/>
+                <field name="exchange_rate" digits="[12,4]"/>
             </xpath>
         </field>
     </record>
@@ -50,7 +50,7 @@
         <field name="inherit_id" ref="base.view_currency_form"/>
         <field name="arch" type="xml">
             <xpath expr="//field[@name='rate']" position="replace">
-                <field name="exchange_rate" digits="[12,12]"/>
+                <field name="exchange_rate" digits="[12,4]"/>
             </xpath>
         </field>
     </record>
