@@ -59,7 +59,7 @@ class TestRetention(AccountMoveModelRetentionTestingCommon):
     def test_type_document(self):
         self.assertEqual(
             self.retention.document_type,
-            _('Invoice'),
+            _("Bills"),
             msg="Field type document is wrong"
         )
 
@@ -110,7 +110,14 @@ class TestRetention(AccountMoveModelRetentionTestingCommon):
         """Test raise when save invalid retention number
         """
         with self.assertRaises(ValidationError) as raise_exception:
-            self.retention.retention_code = "123456789"
+            self.env["retention"].create({
+                "invoice_id": self.invoice_customer.id,
+                "partner_id": self.partner.id,
+                "retention_code": "123564789",
+                "move_type": self.invoice_customer.move_type,
+                "retention_type": RETENTION_TYPE_IVA,
+                "vat_withholding_percentage": 75.0
+            })
         self.assertEqual(
             str(raise_exception.exception),
             _("Invalid receipt number format. Must have at least 14 numbers"),

@@ -16,7 +16,7 @@ class TestAccountRetentionRegister(TransactionCase):
         self.retention_code = "New"
         self.vat_withholding_percentage = 75.0
         self.invoice = self.env["account.move"].create({
-            "move_type": "out_invoice",
+            "move_type": "in_invoice",
             "partner_id": self.partner.id,
             "invoice_date": self.date,
             "date": self.date,

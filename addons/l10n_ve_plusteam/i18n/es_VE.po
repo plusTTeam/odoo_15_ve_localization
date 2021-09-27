@@ -14715,6 +14715,7 @@ msgstr "Inventario, logística, valoración, contabilidad"
 #: code:addons/l10n_ve_plusteam/wizard/account_retention_register.py:0
 #: model:ir.model.fields,field_description:l10n_ve_plusteam.field_account_retention_register__invoice_id
 #: model:ir.model.fields,field_description:l10n_ve_plusteam.field_retention__invoice_id
+#: code:addons/l10n_ve_plusteam/tests/test_retention.py:0
 msgid "Invoice"
 msgstr "Factura"
 
@@ -27523,12 +27524,6 @@ msgstr "Cliente/Proveedor"
 #: model:ir.model.fields,field_description:l10n_ve_plusteam.field_retention__vat_withholding_percentage
 msgid "vat withholding percentage"
 msgstr "Porcentaje retención IVA"
-
-#. module: l10n_ve_plusteam
-#: model:ir.model.fields,field_description:l10n_ve_plusteam.field_account_retention_register__invoice_id
-#: model:ir.model.fields,field_description:l10n_ve_plusteam.field_retention__invoice_id
-msgid "Invoice"
-msgstr "Factura"
 
 #. module: l10n_ve_plusteam
 #: model:ir.model.fields,field_description:l10n_ve_plusteam.field_retention__original_document_number
