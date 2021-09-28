@@ -27572,7 +27572,7 @@ msgid "Vendor"
 msgstr "Proveedor"
 
 #. module: l10n_ve_plusteam
-#: model:ir.model.fields,field_description:l10n_ve_plusteam.field_account_retention_register__type_document
+#: model:ir.model.fields,field_description:l10n_ve_plusteam.field_account_retention_register__document_type
 #: model:ir.model.fields,field_description:l10n_ve_plusteam.field_retention__document_type
 msgid "Document Type"
 msgstr "Tipo de Documento"
