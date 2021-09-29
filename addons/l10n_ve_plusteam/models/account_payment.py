@@ -1,7 +1,5 @@
-import logging
 from odoo import models, fields, api, _
 from odoo.exceptions import ValidationError
-_logger = logging.getLogger(__name__)
 
 
 class AccountPayment(models.Model):
