@@ -30,6 +30,5 @@ class ResCurrencyRate(models.Model):
     def create(self, values):
         return super().create(self._calculate_exchange_rate_from_rate(values))
 
-    @api.model
     def write(self, values):
         return super().write(self._calculate_exchange_rate_from_rate(values))
