@@ -122,13 +122,14 @@ class Retention(models.Model):
                     _("You are trying to create a withholding from an illegal journal entry type (%s)",
                       retention.invoice_id.move_type))
 
-    @api.depends("vat_withholding_percentage", "amount_tax", "company_id", "currency_id", "retention_date")
+    @api.depends("vat_withholding_percentage", "amount_tax", "company_id", "currency_id", "retention_date",
+                 "invoice_date")
     def _compute_amount_retention(self):
         for retention in self:
             retention.amount_retention = retention.amount_tax * retention.vat_withholding_percentage / 100
             retention.amount_retention_company_currency = retention.currency_id._convert(
                 retention.amount_retention, retention.company_id.currency_id, retention.company_id,
-                retention.retention_date)
+                retention.invoice_date or retention.retention_date)
 
     @api.depends("amount_untaxed")
     def _compute_amount_base_untaxed(self):
@@ -225,7 +226,7 @@ class Retention(models.Model):
             signed = -1
         counterpart_amount = signed * self.amount_retention
         balance = self.currency_id._convert(
-            counterpart_amount, self.company_id.currency_id, self.company_id, self.retention_date)
+            counterpart_amount, self.company_id.currency_id, self.company_id, self.invoice_date)
         counterpart_account = self._get_counterpart_account()
         line_ids = [{
             "name": default_line_name,
