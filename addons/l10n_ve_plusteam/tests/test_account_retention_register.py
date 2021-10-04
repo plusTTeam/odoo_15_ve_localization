@@ -1,6 +1,7 @@
 from odoo import fields, _
 from odoo.exceptions import ValidationError
 from odoo.tests.common import TransactionCase, Form
+from .common import AccountMoveModelRetentionTestingCommon
 from ..tools.constants import RETENTION_TYPE_ISLR, RETENTION_TYPE_IVA, REF_MAIN_COMPANY
 
 
@@ -16,19 +17,7 @@ class TestAccountRetentionRegister(TransactionCase):
         self.invoice_tax = 16000
         self.retention_code = "New"
         self.vat_withholding_percentage = 75.0
-        self.invoice = self.env["account.move"].create({
-            "move_type": "in_invoice",
-            "partner_id": self.partner.id,
-            "invoice_date": self.date,
-            "date": self.date,
-            "amount_tax": self.invoice_tax,
-            "invoice_line_ids": [(0, 0, {
-                "name": "product that cost %s" % self.invoice_amount,
-                "quantity": 1,
-                "price_unit": self.invoice_amount,
-            })]
-        })
-        self.invoice.write({"state": "posted"})
+        
         self.active_ids = self.invoice.ids
         self.retention_register = self.env[self.modelo].with_context(
             active_model="account.move", active_ids=self.active_ids
