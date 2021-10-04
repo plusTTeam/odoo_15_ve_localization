@@ -9,14 +9,22 @@ class AccountPayment(models.Model):
     igtf_amount = fields.Monetary(string="IGTF Amount", currency_field="currency_id",
                                   compute="_compute_igtf_amount", store=True)
     igtf_move_id = fields.Many2one("account.move", string="IGTF Account Move")
+    hide_igtf = fields.Boolean(string="Hide IGTF", compute="_compute_hide_igtf")
 
-    @api.depends("amount", "company_id", "igtf")
+    @api.depends("amount", "hide_igtf", "igtf")
     def _compute_igtf_amount(self):
         for record in self:
             igtf_amount = 0
-            if record.igtf is not False and record.payment_type == "outbound":
+            if record.igtf and record.hide_igtf is False and record.state == "draft":
                 igtf_amount = record.amount * (record.company_id.igtf / 100)
             record.igtf_amount = igtf_amount
+
+    @api.depends("journal_id.type", "company_id.igtf", "payment_type")
+    def _compute_hide_igtf(self):
+        for record in self:
+            hide = record.payment_type != "outbound" or record.journal_id.type != "bank" or \
+                   record.company_id.igtf <= 0.00
+            record.hide_igtf = hide
 
     @api.model_create_multi
     def create(self, values):
@@ -47,7 +55,7 @@ class AccountPayment(models.Model):
                     "amount_currency": -counterpart_amount,
                     "currency_id": payment.currency_id.id,
                     "debit": 0.0,
-                    "credit": -balance,
+                    "credit": abs(balance),
                     "partner_id": payment.partner_id.id,
                     "account_id": move_lines[0].account_id.id
                 }, {
@@ -55,7 +63,7 @@ class AccountPayment(models.Model):
                     "date_maturity": payment.date,
                     "amount_currency": counterpart_amount,
                     "currency_id": payment.currency_id.id,
-                    "debit": -balance,
+                    "debit": abs(balance),
                     "credit": 0.0,
                     "partner_id": payment.partner_id.id,
                     "account_id": igtf_account.id

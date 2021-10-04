@@ -6,7 +6,8 @@
         <field name="inherit_id" ref="account.view_account_payment_register_form"/>
         <field name="arch" type="xml">
             <xpath expr="//group[@name='group3']" position="after">
-                <group name="group4" attrs="{'invisible': [('payment_type', '!=', 'outbound')]}">
+                <field name="hide_igtf" invisible="1"/>
+                <group name="group4" attrs="{'invisible': [('hide_igtf', '=', True)]}">
                     <field name="igtf"/>
                     <field name="igtf_amount" attrs="{'invisible': [('igtf', '!=', True)]}"/>
                 </group>
