@@ -154,11 +154,6 @@ class Retention(models.Model):
         for retention in self:
             retention.amount_base_untaxed = retention.amount_untaxed - retention.amount_base_taxed
 
-    @api.onchange("vat_withholding_percentage")
-    def _onchange_value_withholding_percentage(self):
-        for retention in self:
-            retention.amount_retention = retention.amount_tax * retention.vat_withholding_percentage / 100
-
     @api.depends("is_iva")
     def _compute_retention_type(self):
         for partner in self:

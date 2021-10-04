@@ -1,7 +1,7 @@
 from odoo import fields, _
 from odoo.exceptions import ValidationError
 from odoo.tests.common import TransactionCase, Form
-from ..tools.constants import RETENTION_TYPE_ISLR, RETENTION_TYPE_IVA
+from ..tools.constants import RETENTION_TYPE_ISLR, RETENTION_TYPE_IVA, REF_MAIN_COMPANY
 
 
 class TestAccountRetentionRegister(TransactionCase):
@@ -68,4 +68,44 @@ class TestAccountRetentionRegister(TransactionCase):
             self.retention.amount_tax * self.vat_withholding_percentage / 100,
             self.retention.amount_retention,
             msg="calculation of the retention amount is wrong"
+        )
+
+    def test_vat_withholding_percentage(self):
+        """Test when create retention calculation of the amount
+        """
+        self.company = self.env.ref(REF_MAIN_COMPANY)
+        self.company.write({
+                "vat_withholding_percentage": 75.00
+            })
+        new_invoice = self.env["account.move"].create({
+            'move_type': "out_invoice",
+            'partner_id': self.partner.id,
+            'invoice_date': self.date,
+            'date': self.date,
+            'retention_state': "with_retention_iva",
+            'amount_tax': self.invoice_tax,
+            "invoice_line_ids": [(0, 0, {
+                "name": "product that cost %s" % self.invoice_amount,
+                "quantity": 1,
+                "price_unit": self.invoice_amount,
+            })]
+        })
+        new_invoice.write({"state": "posted"})
+        self.active_ids = new_invoice.ids
+        retention_new = self.env["account.retention.register"].with_context(
+            active_model="account.move", active_ids=self.active_ids
+        ).create({
+            "retention_code": "01236547895632",
+            "retention_date": self.date,
+            "retention_type": RETENTION_TYPE_ISLR,
+            "partner_id": self.partner.id,
+            "move_type": new_invoice.move_type,
+            "vat_withholding_percentage": self.vat_withholding_percentage,
+            "invoice_date": self.date
+        })._create_retentions()
+        retention = self.env["retention"].browse([retention_new])
+        self.assertEqual(
+            retention.vat_withholding_percentage,
+            self.company.vat_withholding_percentage,
+            msg="the retention vat withholding percentage is wrong"
         )

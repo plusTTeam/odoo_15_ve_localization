@@ -33,6 +33,15 @@ class TestRetention(AccountMoveModelRetentionTestingCommon):
             msg="calculation of the retention amount is wrong"
         )
 
+    def test_vat_withholding_percentage(self):
+        """Test when create retention calculation of the amount
+        """
+        self.assertEqual(
+            self.retention.partner_id.vat_withholding_percentage,
+            self.retention.vat_withholding_percentage,
+            msg="the retention vat withholding percentage is wrong"
+        )
+
     def test_onchange_value_withholding(self):
         """Test  when onchange_value_withholding porcentage
         """
