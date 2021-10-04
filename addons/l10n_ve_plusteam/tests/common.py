@@ -58,6 +58,7 @@ class AccountMoveModelRetentionTestingCommon(TransactionCase):
         self.invoice_customer.write({"state": "posted"})
         self.retention_customer = self.env["retention"].create({
             "invoice_id": self.invoice_customer.id,
+            "retention_code": '09876543211234',
             "partner_id": self.partner.id,
             "move_type": self.invoice_customer.move_type,
             "retention_type": RETENTION_TYPE_IVA,
