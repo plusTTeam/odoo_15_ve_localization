@@ -1,11 +1,10 @@
 from odoo import fields, _
 from odoo.exceptions import ValidationError
 from odoo.tests.common import TransactionCase, Form
-from .common import AccountMoveModelRetentionTestingCommon
 from ..tools.constants import RETENTION_TYPE_ISLR, RETENTION_TYPE_IVA, REF_MAIN_COMPANY
 
 
-class TestAccountRetentionRegister(AccountMoveModelRetentionTestingCommon):
+class TestAccountRetentionRegister(TransactionCase):
 
     def setUp(self):
         super(TestAccountRetentionRegister, self).setUp()
@@ -17,7 +16,19 @@ class TestAccountRetentionRegister(AccountMoveModelRetentionTestingCommon):
         self.invoice_tax = 16000
         self.retention_code = "New"
         self.vat_withholding_percentage = 75.0
-
+        self.invoice = self.env["account.move"].create({
+            "move_type": "in_invoice",
+            "partner_id": self.partner.id,
+            "invoice_date": self.date,
+            "date": self.date,
+            "amount_tax": self.invoice_tax,
+            "invoice_line_ids": [(0, 0, {
+                "name": "product that cost %s" % self.invoice_amount,
+                "quantity": 1,
+                "price_unit": self.invoice_amount,
+            })]
+        })
+        self.invoice.write({"state": "posted"})
         self.active_ids = self.invoice.ids
         self.retention_register = self.env[self.modelo].with_context(
             active_model="account.move", active_ids=self.active_ids
@@ -61,18 +72,31 @@ class TestAccountRetentionRegister(AccountMoveModelRetentionTestingCommon):
         )
 
     def test_vat_percentage(self):
-        """Test vat withholding percentage
+        """Test vat_withholding_percentage
         """
-        self.active_ids = self.invoice_customer.ids
+       
+        new_invoice = self.env["account.move"].create({
+            'move_type': "out_invoice",
+            'partner_id': self.partner.id,
+            'invoice_date': self.date,
+            'date': self.date,
+            'amount_tax': self.invoice_tax,
+            "invoice_line_ids": [(0, 0, {
+                "name": "product that cost %s" % self.invoice_amount,
+                "quantity": 1,
+                "price_unit": self.invoice_amount,
+            })]
+        })
+        new_invoice.write({"state": "posted"})
+        self.active_ids = new_invoice.ids
         retention_new = self.env[self.modelo].with_context(
             active_model="account.move", active_ids=self.active_ids
         ).create({
             "retention_code": "01236547895632",
-            "invoice_id":self.invoice_customer,
             "retention_date": self.date,
-            "retention_type": RETENTION_TYPE_ISLR,
+            "retention_type": RETENTION_TYPE_IVA,
             "partner_id": self.partner.id,
-            "move_type": self.invoice_customer.move_type,
+            "move_type": new_invoice.move_type,
             "vat_withholding_percentage": self.vat_withholding_percentage,
             "invoice_date": self.date
         })._create_retentions()
