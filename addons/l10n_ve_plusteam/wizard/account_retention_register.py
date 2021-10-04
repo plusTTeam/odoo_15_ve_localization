@@ -28,7 +28,6 @@ class AccountRetentionRegister(models.TransientModel):
     currency_id = fields.Many2one("res.currency", string="Currency", store=True, readonly=True,
                                   help="The invoice's currency.", related="invoice_id.currency_id")
     company_id = fields.Many2one("res.company", string="Company", compute="_compute_data_invoice")
-    vat_company_percentage = fields.Float(string="Vat company", compute="_compute_data_invoice")
     move_type = fields.Char(string="Move Type", compute="_compute_data_invoice")
     original_document_number = fields.Char(string="Original Invoice Number", compute="_compute_data_invoice")
     document_type = fields.Char(string="Type Document", compute="_compute_type_document")
@@ -58,7 +57,6 @@ class AccountRetentionRegister(models.TransientModel):
                 wizard.amount_base_untaxed = invoice.amount_untaxed - invoice.amount_base_taxed
                 wizard.invoice_date = invoice.date
                 wizard.company_id = invoice.company_id
-                wizard.vat_company_percentage = invoice.company_id.vat_withholding_percentage
                 wizard.move_type = invoice.move_type
                 wizard.original_document_number = invoice.document_number
             else:
@@ -70,7 +68,7 @@ class AccountRetentionRegister(models.TransientModel):
             if retention.move_type in ("in_invoice", "in_refund"):
                 retention.vat_withholding_percentage = retention.partner_id.vat_withholding_percentage
             else:
-                retention.vat_withholding_percentage = retention.vat_company_percentage
+                retention.vat_withholding_percentage = retention.invoice_id.company_id.vat_withholding_percentage
 
     @api.depends("vat_withholding_percentage", "amount_tax")
     def _compute_amount_retention(self):

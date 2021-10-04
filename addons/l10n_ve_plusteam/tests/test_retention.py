@@ -65,12 +65,27 @@ class TestRetention(AccountMoveModelRetentionTestingCommon):
                         msg="There are no accounting entries for account payable or receivable")
         self.assertTrue(len(self.retention.move_id.line_ids), msg="the account movements were not created")
 
-    def test_type_document(self):
+    def test_document_type(self):
         self.assertEqual(
             self.retention.document_type,
             _("Bills"),
             msg="Field type document is wrong"
         )
+
+    def test_document_type_customer(self):
+        self.assertEqual(
+            self.retention_customer.document_type,
+            _("Invoice"),
+            msg="Field type document is wrong"
+        )  
+
+    def test_document_type_customer_ND(self):
+        self.retention_customer.invoice_id.debit_origin_id = '009988'
+        self.assertEqual(
+            self.retention_customer.document_type,
+            _("D/N"),
+            msg="Field type document is wrong"
+        )        
 
     def test_retention_type_other(self):
         """Test  when create retention for retention_type
