@@ -85,6 +85,20 @@
                             </div>
                         </div>
                     </div>
+                    <div class="col-12 col-lg-6 o_setting_box" id="account_settings_localization_igtf_journal">
+                        <div class="o_setting_left_pane"/>
+                        <div class="o_setting_right_pane">
+                            <span class="o_form_label">IGTF Journal</span>
+                            <span class="fa fa-lg fa-building-o" title="Values set here are company-specific."
+                                  aria-label="Values set here are company-specific." role="img"/>
+                            <div class="content-group">
+                                <div class="row mt16" title="IGTF Journal">
+                                    <label string="Journal" for="igtf_journal_id" class="col-lg-3 o_light_label"/>
+                                    <field name="igtf_journal_id" domain="[('type', '=', 'general')]"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </xpath>
         </field>

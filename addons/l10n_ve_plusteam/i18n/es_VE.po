@@ -27472,5 +27472,67 @@ msgstr ""
 
 #. module: l10n_ve_plusteam
 #: model_terms:ir.ui.view,arch_db:l10n_ve_plusteam.res_config_settings_view_form
+msgid ""
+"<span class=\"o_form_label\">IGTF Journal</span>\n"
+"                            <span class=\"fa fa-lg fa-building-o\" title=\"Values set here are company-specific.\" aria-label=\"Values set here are company-specific.\" role=\"img\"/>"
+msgstr ""
+"<span class=\"o_form_label\">Diario para IGTF</span>\n"
+"                        <span class=\"fa fa-lg fa-building-o\" title=\"Los valores configurados aquí son específicos de la compañía.\" aria-label=\"Los valores configurados aquí son específicos de la compañía.\" role=\"img\"/>"
+
+#. module: l10n_ve_plusteam
+#: model_terms:ir.ui.view,arch_db:l10n_ve_plusteam.res_config_settings_view_form
 msgid "Accounting accounts for IGTF"
 msgstr "Cuenta contable para IGTF"
+
+#. module: l10n_ve_plusteam
+#: model:ir.model.fields,field_description:l10n_ve_plusteam.field_account_payment__igtf_amount
+#: model:ir.model.fields,field_description:l10n_ve_plusteam.field_account_payment_register__igtf_amount
+msgid "IGTF Amount"
+msgstr "Monto de IGTF"
+
+#. module: l10n_ve_plusteam
+#: model:ir.model.fields,field_description:l10n_ve_plusteam.field_res_company__igtf_journal_id
+#: model:ir.model.fields,field_description:l10n_ve_plusteam.field_res_config_settings__igtf_journal_id
+#: model_terms:ir.ui.view,arch_db:l10n_ve_plusteam.res_config_settings_view_form
+msgid "IGTF Journal"
+msgstr "Diario de IGTF"
+
+#. module: l10n_ve_plusteam
+#: code:addons/l10n_ve_plusteam/models/account_payment.py:0
+#: code:addons/l10n_ve_plusteam/models/account_payment.py:0
+#, python-format
+msgid "IGTF for payment %s"
+msgstr "IGTF para pago %s"
+
+#. module: l10n_ve_plusteam
+#: code:addons/l10n_ve_plusteam/models/account_payment.py:0
+#: code:addons/l10n_ve_plusteam/tests/test_account_payment.py:0
+#, python-format
+msgid ""
+"There is not accounting account for the Tax on Big Financial Transactions "
+"(IGTF), please go to Settings and select an account to apply this tax"
+msgstr ""
+"No hay una cuenta contable para el Impuesto a las Grandes Transacciones Financieras"
+"(IGTF), Por favor ve a la Configuración y selecciona una cuenta para aplicar este impuesto"
+
+#. module: l10n_ve_plusteam
+#: code:addons/l10n_ve_plusteam/models/account_payment.py:0
+#: code:addons/l10n_ve_plusteam/tests/test_account_payment.py:0
+#, python-format
+msgid ""
+"There is not journal for the Tax on Big Financial Transactions (IGTF), "
+"please go to Settings and select an journal to apply this tax"
+msgstr ""
+"No hay un diario contable para el Impuesto a las Grandes Transacciones Financieras"
+"(IGTF), Por favor ve a la Configuración y selecciona un diario para aplicar este impuesto"
+
+#. module: l10n_ve_plusteam
+#: model:ir.model.fields,field_description:l10n_ve_plusteam.field_account_payment__igtf_move_id
+msgid "IGTF Account Move"
+msgstr "Asiento Contable de IGTF"
+
+#. module: l10n_ve_plusteam
+#: model_terms:ir.ui.view,arch_db:l10n_ve_plusteam.res_config_settings_view_form
+#, python-format
+msgid "Journal"
+msgstr "Diario"

@@ -23,6 +23,8 @@ class ResConfigSettings(models.TransientModel):
     igtf = fields.Float(string="IGTF", digits="2", related="company_id.igtf", domain=DOMAIN_COMPANY, readonly=False)
     igtf_account_id = fields.Many2one("account.account", string="ISLR accounting account",
                                       related="company_id.igtf_account_id", domain=DOMAIN_COMPANY, readonly=False)
+    igtf_journal_id = fields.Many2one("account.journal", string="IGTF Journal",
+                                     related="company_id.igtf_journal_id", domain=DOMAIN_COMPANY, readonly=False)
 
     @api.constrains("igtf")
     def _check_igtf(self):
