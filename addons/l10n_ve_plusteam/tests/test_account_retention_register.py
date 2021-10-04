@@ -9,6 +9,7 @@ class TestAccountRetentionRegister(TransactionCase):
     def setUp(self):
         super(TestAccountRetentionRegister, self).setUp()
 
+        self.modelo = "account.retention.register"
         self.partner = self.env.ref("base.partner_admin")
         self.date = fields.Date.today()
         self.invoice_amount = 100000
@@ -29,7 +30,7 @@ class TestAccountRetentionRegister(TransactionCase):
         })
         self.invoice.write({"state": "posted"})
         self.active_ids = self.invoice.ids
-        self.retention_register = self.env["account.retention.register"].with_context(
+        self.retention_register = self.env[self.modelo].with_context(
             active_model="account.move", active_ids=self.active_ids
         ).create({
             "retention_date": self.date,
@@ -45,7 +46,7 @@ class TestAccountRetentionRegister(TransactionCase):
         """Test  when create retention for retention_type
         """
         with self.assertRaises(ValidationError) as raise_exception:
-            self.env["account.retention.register"].with_context(
+            self.env[self.modelo].with_context(
                 active_model="account.move", active_ids=self.active_ids
             ).create({
                 "retention_date": self.date,
@@ -71,7 +72,7 @@ class TestAccountRetentionRegister(TransactionCase):
         )
 
     def test_vat_withholding_percentage(self):
-        """Test when create retention calculation of the amount
+        """Test
         """
         self.company = self.env.ref(REF_MAIN_COMPANY)
         self.company.write({
@@ -92,7 +93,7 @@ class TestAccountRetentionRegister(TransactionCase):
         })
         new_invoice.write({"state": "posted"})
         self.active_ids = new_invoice.ids
-        retention_new = self.env["account.retention.register"].with_context(
+        retention_new = self.env[self.modelo].with_context(
             active_model="account.move", active_ids=self.active_ids
         ).create({
             "retention_code": "01236547895632",
@@ -106,6 +107,6 @@ class TestAccountRetentionRegister(TransactionCase):
         retention = self.env["retention"].browse([retention_new])
         self.assertEqual(
             retention.vat_withholding_percentage,
-            self.company.vat_withholding_percentage,
+            self.vat_company_percentage,
             msg="the retention vat withholding percentage is wrong"
         )
