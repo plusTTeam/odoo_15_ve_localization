@@ -5,7 +5,7 @@ from .common import AccountMoveModelRetentionTestingCommon
 from ..tools.constants import RETENTION_TYPE_ISLR, RETENTION_TYPE_IVA, REF_MAIN_COMPANY
 
 
-class TestAccountRetentionRegister(TransactionCase):
+class TestAccountRetentionRegister(AccountMoveModelRetentionTestingCommon):
 
     def setUp(self):
         super(TestAccountRetentionRegister, self).setUp()
@@ -17,7 +17,7 @@ class TestAccountRetentionRegister(TransactionCase):
         self.invoice_tax = 16000
         self.retention_code = "New"
         self.vat_withholding_percentage = 75.0
-        
+
         self.active_ids = self.invoice.ids
         self.retention_register = self.env[self.modelo].with_context(
             active_model="account.move", active_ids=self.active_ids
