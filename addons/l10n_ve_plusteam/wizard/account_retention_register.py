@@ -84,11 +84,6 @@ class AccountRetentionRegister(models.TransientModel):
         for retention in self:
             retention.is_iva = retention.retention_type == "iva"
 
-    @api.onchange("vat_withholding_percentage")
-    def _onchange_value_withholding_percentage(self):
-        for retention in self:
-            retention.amount_retention = retention.amount_tax * retention.vat_withholding_percentage / 100
-
     @api.depends("invoice_id", "move_type")
     def _compute_type_document(self):
         for retention in self:

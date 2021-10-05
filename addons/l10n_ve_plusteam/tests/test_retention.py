@@ -3,7 +3,7 @@ from odoo.exceptions import ValidationError
 from odoo.tests.common import TransactionCase, Form
 from .common import AccountMoveModelRetentionTestingCommon
 from ..tools.constants import (RETENTION_TYPE_ISLR, RETENTION_TYPE_IVA, REF_MAIN_COMPANY, NAME_PRODUCT,
-                               MESSAGE_EXCEPTION_NOT_EXECUTE)
+                               MESSAGE_EXCEPTION_NOT_EXECUTE,MESSAGE_DOCUMENT_WRONG)
 
 
 class TestRetention(AccountMoveModelRetentionTestingCommon):
@@ -69,14 +69,14 @@ class TestRetention(AccountMoveModelRetentionTestingCommon):
         self.assertEqual(
             self.retention.document_type,
             _("Bills"),
-            msg="Field type document is wrong"
+            msg=MESSAGE_DOCUMENT_WRONG
         )
 
     def test_document_type_customer(self):
         self.assertEqual(
             self.retention_customer.document_type,
             _("Invoice"),
-            msg="Field type document is wrong"
+            msg=MESSAGE_DOCUMENT_WRONG
         )  
 
     def test_document_type_customer_ND(self):
@@ -84,7 +84,7 @@ class TestRetention(AccountMoveModelRetentionTestingCommon):
         self.assertEqual(
             self.retention_customer.document_type,
             _("D/N"),
-            msg="Field type document is wrong"
+            msg=MESSAGE_DOCUMENT_WRONG
         )        
 
     def test_retention_type_other(self):
