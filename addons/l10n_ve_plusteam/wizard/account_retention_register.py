@@ -30,7 +30,6 @@ class AccountRetentionRegister(models.TransientModel):
     company_id = fields.Many2one("res.company", string="Company", compute="_compute_data_invoice")
     move_type = fields.Char(string="Move Type", compute="_compute_data_invoice")
     original_document_number = fields.Char(string="Original Invoice Number", compute="_compute_data_invoice")
-    document_type = fields.Char(string="Type Document", compute="_compute_type_document")
     document = fields.Char(string="Document Number", compute="_compute_data_invoice")
     amount_tax = fields.Monetary(string="Amount tax", currency_field="currency_id", compute="_compute_data_invoice")
     amount_total = fields.Monetary(string="Amount total", compute="_compute_data_invoice", currency_field="currency_id")
@@ -84,20 +83,6 @@ class AccountRetentionRegister(models.TransientModel):
         for retention in self:
             retention.is_iva = retention.retention_type == "iva"
 
-    @api.depends("invoice_id", "move_type")
-    def _compute_type_document(self):
-        for retention in self:
-            if retention.move_type in ("out_invoice", "in_invoice"):
-                if retention.invoice_id.debit_origin_id:
-                    retention.document_type = _("D/N")
-                elif retention.move_type == "out_invoice":
-                    retention.document_type = _("Invoice")
-                else:
-                    retention.document_type = _("Bills")
-            elif retention.move_type in ("in_refund", "out_refund"):
-                retention.document_type = _("C/N")
-            else:
-                retention.document_type = _("Other")
 
     def _create_retention_values_from_wizard(self):
         return {
@@ -107,7 +92,6 @@ class AccountRetentionRegister(models.TransientModel):
             "retention_type": self.retention_type,
             "is_iva": self.is_iva,
             "move_type": self.move_type,
-            "document_type": self.document_type,
             "original_document_number": self.original_document_number,
             "retention_code": self.retention_code,
             "company_id": self.company_id.id,
