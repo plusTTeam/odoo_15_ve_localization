@@ -85,7 +85,15 @@ class TestRetention(AccountMoveModelRetentionTestingCommon):
             self.retention_customer.document_type,
             _("D/N"),
             msg=MESSAGE_DOCUMENT_WRONG
-        )        
+        ) 
+
+    def test_document_type_customer_ND(self):
+        self.retention_customer.move_type = 'out_refund'
+        self.assertEqual(
+            self.retention_customer.document_type,
+            _("C/N"),
+            msg=MESSAGE_DOCUMENT_WRONG
+        ) 
 
     def test_retention_type_other(self):
         """Test  when create retention for retention_type
