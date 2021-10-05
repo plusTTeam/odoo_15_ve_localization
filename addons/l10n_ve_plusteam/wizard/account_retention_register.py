@@ -29,7 +29,7 @@ class AccountRetentionRegister(models.TransientModel):
     company_id = fields.Many2one("res.company", string="Company", compute="_compute_data_invoice")
     move_type = fields.Char(string="Move Type", compute="_compute_data_invoice")
     original_document_number = fields.Char(string="Original Invoice Number", compute="_compute_data_invoice")
-    document_type = fields.Char(string="Type Document", compute="_compute_type_document")
+    document_type = fields.Char(string="Document Type", compute="_compute_document_type")
     document = fields.Char(string="Document Number", compute="_compute_data_invoice")
     amount_tax = fields.Monetary(string="Amount tax", currency_field="currency_id", compute="_compute_data_invoice")
     amount_total = fields.Monetary(string="Amount total", compute="_compute_data_invoice", currency_field="currency_id")
@@ -81,7 +81,7 @@ class AccountRetentionRegister(models.TransientModel):
             retention.amount_retention = retention.amount_tax * retention.vat_withholding_percentage / 100
 
     @api.depends("invoice_id")
-    def _compute_type_document(self):
+    def _compute_document_type(self):
         for retention in self:
             if retention.move_type in ("out_invoice", "in_invoice"):
                 if retention.invoice_id.debit_origin_id:
