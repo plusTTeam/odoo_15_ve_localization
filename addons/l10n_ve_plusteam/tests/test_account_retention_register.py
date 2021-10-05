@@ -75,7 +75,7 @@ class TestAccountRetentionRegister(TransactionCase):
     def test_vat_percentage(self):
         """Test vat_withholding_percentage
         """
-        self.retention.move_type="out_refund"
+        self.retention.write({"move_type": "out_refund"})
         self.assertEqual(
             self.retention.vat_withholding_percentage,
             self.retention.invoice_id.company_id.vat_withholding_percentage,
