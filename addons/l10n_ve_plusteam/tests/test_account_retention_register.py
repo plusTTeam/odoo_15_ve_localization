@@ -96,9 +96,8 @@ class TestAccountRetentionRegister(TransactionCase):
             ).create({
                 "retention_date": self.date,
                 "retention_type": RETENTION_TYPE_IVA,
-                "retention_code": self.retention_code,
+                "retention_code": '20211209876543',
                 "partner_id": self.partner.id,
-                "vat_withholding_percentage": self.vat_withholding_percentage,
                 "invoice_date": self.date
             })
         self.assertEqual(
