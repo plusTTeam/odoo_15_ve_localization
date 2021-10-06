@@ -75,10 +75,35 @@ class TestAccountRetentionRegister(TransactionCase):
     def test_vat_percentage(self):
         """Test vat_withholding_percentage
         """
-        self.retention.write({"move_type": "out_refund"})
+        invoice_out_refund = self.env["account.move"].create({
+            "move_type": "out_refund",
+            "partner_id": self.partner.id,
+            "invoice_date": self.date,
+            "date": self.date,
+            "amount_tax": self.invoice_tax,
+            "invoice_line_ids": [(0, 0, {
+                "name": "product that cost %s" % self.invoice_amount,
+                "quantity": 1,
+                "price_unit": self.invoice_amount,
+            })]
+        })
+        invoice_out_refund.write({"state": "posted"})
+        self.active_ids = invoice_out_refund.ids
+
+        with Form(self.env[self.modelo]) as retention:
+            retention_wizard = retention.with_context(
+                active_model="account.move", active_ids=self.active_ids
+            ).create({
+                "retention_date": self.date,
+                "retention_type": RETENTION_TYPE_IVA,
+                "retention_code": self.retention_code,
+                "partner_id": self.partner.id,
+                "vat_withholding_percentage": self.vat_withholding_percentage,
+                "invoice_date": self.date
+            })
         self.assertEqual(
-            self.retention.vat_withholding_percentage,
-            self.retention.invoice_id.company_id.vat_withholding_percentage,
+            retention_wizard.vat_withholding_percentage,
+            retention_wizard.invoice_id.company_id.vat_withholding_percentage,
             msg="the retention vat withholding percentage is wrong"
         )
        
