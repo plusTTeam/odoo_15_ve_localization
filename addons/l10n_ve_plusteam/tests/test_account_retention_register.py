@@ -84,7 +84,7 @@ class TestAccountRetentionRegister(TransactionCase):
             "invoice_line_ids": [(0, 0, {
                 "name": "product that cost %s" % self.invoice_amount,
                 "quantity": 1,
-                "price_unit": self.invoice_amount,
+                "price_unit": self.invoice_amount
             })]
         })
         invoice_out_refund.write({"state": "posted"})
@@ -99,6 +99,7 @@ class TestAccountRetentionRegister(TransactionCase):
                 "retention_code": '20211209876543',
                 "partner_id": self.partner.id
             })
+        retention_wizard._compute_vat_percentage()    
         self.assertEqual(
             retention_wizard.vat_withholding_percentage,
             retention_wizard.invoice_id.company_id.vat_withholding_percentage,
