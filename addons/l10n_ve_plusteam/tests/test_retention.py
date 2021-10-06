@@ -1,8 +1,8 @@
-from odoo import fields, _
+from odoo import _
 from odoo.exceptions import ValidationError
-from odoo.tests.common import TransactionCase, Form
+from odoo.tests.common import Form
 from .common import AccountMoveModelRetentionTestingCommon
-from ..tools.constants import (RETENTION_TYPE_ISLR, RETENTION_TYPE_IVA, REF_MAIN_COMPANY, NAME_PRODUCT,
+from ..tools.constants import (RETENTION_TYPE_ISLR, RETENTION_TYPE_IVA, NAME_PRODUCT,
                                MESSAGE_EXCEPTION_NOT_EXECUTE)
 
 
@@ -52,15 +52,16 @@ class TestRetention(AccountMoveModelRetentionTestingCommon):
 
     def test_move_lines_creations(self):
         receivable_payable_account = self.retention.move_id.line_ids.search(
-            [("account_id.internal_type", "in", ('receivable', 'payable'))])
+            [("account_id.internal_type", "in", ("receivable", "payable"))])
         self.assertTrue(receivable_payable_account,
                         msg="There are no accounting entries for account payable or receivable")
         self.assertTrue(len(self.retention.move_id.line_ids), msg="the account movements were not created")
 
     def test_month_fiscal_char(self):
+        month = self.retention.retention_date.strftime("%m")
         self.assertEqual(
             self.retention.month_fiscal_period,
-            "0" + str(self.retention.retention_date.month),
+            month,
             msg="Field month fiscal period is wrong"
         )
 
@@ -116,16 +117,16 @@ class TestRetention(AccountMoveModelRetentionTestingCommon):
 
     def test_get_default_journal(self):
         new_invoice = self.env["account.move"].create({
-            'move_type': "in_invoice",
-            'partner_id': self.partner.id,
-            'invoice_date': self.date,
-            'date': self.date,
-            'retention_state': "with_retention_iva",
-            'amount_tax': self.invoice_tax,
-            'invoice_line_ids': [(0, 0, {
-                'name': NAME_PRODUCT % self.invoice_amount,
-                'quantity': 1,
-                'price_unit': self.invoice_amount
+            "move_type": "in_invoice",
+            "partner_id": self.partner.id,
+            "invoice_date": self.date,
+            "date": self.date,
+            "retention_state": "with_retention_iva",
+            "amount_tax": self.invoice_tax,
+            "invoice_line_ids": [(0, 0, {
+                "name": NAME_PRODUCT % self.invoice_amount,
+                "quantity": 1,
+                "price_unit": self.invoice_amount
             })]
         })
         default_journal = self.env["account.journal"].create({
@@ -150,16 +151,16 @@ class TestRetention(AccountMoveModelRetentionTestingCommon):
                 "active": False
             })
         new_invoice = self.env["account.move"].create({
-            'move_type': "in_invoice",
-            'partner_id': self.partner.id,
-            'invoice_date': self.date,
-            'date': self.date,
-            'retention_state': "with_retention_iva",
-            'amount_tax': self.invoice_tax,
-            'invoice_line_ids': [(0, 0, {
-                'name': NAME_PRODUCT % self.invoice_amount,
-                'quantity': 1,
-                'price_unit': self.invoice_amount
+            "move_type": "in_invoice",
+            "partner_id": self.partner.id,
+            "invoice_date": self.date,
+            "date": self.date,
+            "retention_state": "with_retention_iva",
+            "amount_tax": self.invoice_tax,
+            "invoice_line_ids": [(0, 0, {
+                "name": NAME_PRODUCT % self.invoice_amount,
+                "quantity": 1,
+                "price_unit": self.invoice_amount
             })]
         })
         with self.assertRaises(ValidationError) as raise_exception:
@@ -177,10 +178,10 @@ class TestRetention(AccountMoveModelRetentionTestingCommon):
 
     def test_check_move_type(self):
         entry = self.env["account.move"].create({
-            'move_type': "entry",
-            'partner_id': self.partner.id,
-            'date': self.date,
-            'retention_state': "with_both_retentions"
+            "move_type": "entry",
+            "partner_id": self.partner.id,
+            "date": self.date,
+            "retention_state": "with_both_retentions"
         })
         with self.assertRaises(ValidationError) as raise_exception:
             self.env["retention"].create({
@@ -198,16 +199,16 @@ class TestRetention(AccountMoveModelRetentionTestingCommon):
     def test_get_original_journal(self):
         self.env.company.write({"withholding_journal_id": False})
         new_invoice = self.env["account.move"].create({
-            'move_type': "in_invoice",
-            'partner_id': self.partner.id,
-            'invoice_date': self.date,
-            'date': self.date,
-            'retention_state': "with_retention_iva",
-            'amount_tax': self.invoice_tax,
-            'invoice_line_ids': [(0, 0, {
-                'name': NAME_PRODUCT % self.invoice_amount,
-                'quantity': 1,
-                'price_unit': self.invoice_amount
+            "move_type": "in_invoice",
+            "partner_id": self.partner.id,
+            "invoice_date": self.date,
+            "date": self.date,
+            "retention_state": "with_retention_iva",
+            "amount_tax": self.invoice_tax,
+            "invoice_line_ids": [(0, 0, {
+                "name": NAME_PRODUCT % self.invoice_amount,
+                "quantity": 1,
+                "price_unit": self.invoice_amount
             })]
         })
         new_retention = self.env["retention"].create({
