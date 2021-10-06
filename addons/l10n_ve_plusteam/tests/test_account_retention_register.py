@@ -97,8 +97,7 @@ class TestAccountRetentionRegister(TransactionCase):
                 "retention_date": self.date,
                 "retention_type": RETENTION_TYPE_IVA,
                 "retention_code": '20211209876543',
-                "partner_id": self.partner.id,
-                "invoice_date": self.date
+                "partner_id": self.partner.id
             })
         self.assertEqual(
             retention_wizard.vat_withholding_percentage,
