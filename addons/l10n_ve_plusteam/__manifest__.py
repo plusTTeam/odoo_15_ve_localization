@@ -39,6 +39,7 @@ Features:
     # always loaded
     'data': [
         'security/ir.model.access.csv',
+        'data/res_currency_data.xml',
         'data/res_lang_data.xml',
         'data/ir_translation_data.xml',
         'data/res_users_data.xml',
@@ -63,6 +64,7 @@ Features:
         'views/tax_unit_views.xml',
         'views/account_move_views.xml',
         'views/res_config_settings_views.xml',
+        'views/res_currency_views.xml',
         'views/res_company_views.xml',
         'views/retention_views.xml',
         'wizard/retention_register_views.xml',

@@ -21417,6 +21417,7 @@ msgid "Raleway"
 msgstr ""
 
 #. module: base
+#: model:ir.model.fields,field_description:l10n_ve_plusteam.field_res_currency_rate__exchange_rate
 #: model:ir.model.fields,field_description:base.field_res_currency_rate__rate
 msgid "Rate"
 msgstr "Tasa"
@@ -23691,8 +23692,8 @@ msgid ""
 "The RIF/Identification Card format is invalid. Must start with a letter (V, "
 "J, E, P) followed by 7 or 9 numbers"
 msgstr ""
-"El formato del RIF/Identificacion es invalido. Debe comenzar con una letra (V, "
-"J, E, P) seguido por 7 o 9 numeros"
+"El formato de RIF/Identificación es invalido. Debe comenzar con una letra (V, "
+"J, E, P) seguido por 7 o 9 números"
 
 #. module: base
 #: model:ir.model.fields,help:base.field_res_lang__grouping
@@ -24064,12 +24065,10 @@ msgstr ""
 "prioridad, 10 significa la prioridad más baja."
 
 #. module: base
-#: model:ir.model.fields,help:base.field_res_currency_rate__rate
-msgid "The rate of the currency to the currency of rate 1"
-msgstr "La tasa de cambio de la moneda respecto a la moneda de tasa 1"
-
-#. module: base
 #: model:ir.model.fields,help:base.field_res_currency__rate
+#: model:ir.model.fields,help:base.field_res_currency_rate__rate
+#: model:ir.model.fields,help:l10n_ve_plusteam.field_res_currency__exchange_rate
+#: model:ir.model.fields,help:l10n_ve_plusteam.field_res_currency_rate__exchange_rate
 msgid "The rate of the currency to the currency of rate 1."
 msgstr "La tasa de cambio de la moneda respecto a la moneda de tasa 1"
 
@@ -27464,6 +27463,11 @@ msgstr "Transferencia de liquidez"
 #, python-format
 msgid "Undistributed Profits/Losses"
 msgstr "Ganancias/pérdidas no distribuidas"
+
+#. module: l10n_ve_plusteam
+#: model:ir.model.fields,field_description:l10n_ve_plusteam.field_res_currency__exchange_rate
+msgid "Current Rate"
+msgstr "Tasa"
 
 #. module: account
 #: model:ir.model.fields,field_description:account.field_account_bank_statement_line__amount_untaxed
