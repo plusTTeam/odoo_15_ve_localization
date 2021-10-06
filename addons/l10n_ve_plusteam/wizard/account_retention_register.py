@@ -30,6 +30,7 @@ class AccountRetentionRegister(models.TransientModel):
     company_id = fields.Many2one("res.company", string="Company", compute="_compute_data_invoice")
     move_type = fields.Char(string="Move Type", compute="_compute_data_invoice")
     original_document_number = fields.Char(string="Original Invoice Number", compute="_compute_data_invoice")
+    document_type = fields.Char(string="Document Type", compute="_compute_document_type")
     document = fields.Char(string="Document Number", compute="_compute_data_invoice")
     amount_tax = fields.Monetary(string="Amount tax", currency_field="currency_id", compute="_compute_data_invoice")
     amount_total = fields.Monetary(string="Amount total", compute="_compute_data_invoice", currency_field="currency_id")
@@ -82,7 +83,6 @@ class AccountRetentionRegister(models.TransientModel):
     def _write_retention_type(self):
         for retention in self:
             retention.is_iva = retention.retention_type == "iva"
-
 
     def _create_retention_values_from_wizard(self):
         return {

@@ -27579,8 +27579,8 @@ msgstr "Proveedor"
 #. module: l10n_ve_plusteam
 #: model:ir.model.fields,field_description:l10n_ve_plusteam.field_account_retention_register__document_type
 #: model:ir.model.fields,field_description:l10n_ve_plusteam.field_retention__document_type
-msgid "Type Document"
-msgstr "Documento"
+msgid "Document Type"
+msgstr "Tipo de Documento"
 
 #. module: l10n_ve_plusteam
 #: model:ir.actions.act_window,name:l10n_ve_plusteam.retention_action_in_invoice_type
