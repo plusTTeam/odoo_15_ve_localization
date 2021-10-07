@@ -1,8 +1,5 @@
 from odoo import models, fields, api, _
 from odoo.exceptions import ValidationError
-import logging
-
-_logger = logging.getLogger(__name__)
 
 
 class AccountPayment(models.Model):
@@ -32,7 +29,6 @@ class AccountPayment(models.Model):
 
     @api.model_create_multi
     def create(self, values):
-        _logger.info(values)
         payments = super(AccountPayment, self).create(values)
         for payment in payments:
             payment.create_igtf_move()
@@ -44,7 +40,7 @@ class AccountPayment(models.Model):
             self.igtf_move_id.write({"currency_id": values["currency_id"]})
         if values.get("date", False):
             self.igtf_move_id.write({"date": values["date"]})
-        if values.get("partner_id", False):
+        if any(field_name in values.keys() for field_name in "partner_id"):
             self.igtf_move_id.write({"partner_id": values["partner_id"]})
         if values.get("ref", False):
             self.igtf_move_id.write({"ref": values["ref"]})
@@ -89,8 +85,6 @@ class AccountPayment(models.Model):
         self.ensure_one()
         igtf_account = self.company_id.igtf_account_id
         if self.igtf_move_id:
-            _logger.info(self.igtf_move_id.line_ids)
-            _logger.info(self.igtf_move_id.line_ids.mapped("id"))
             self.igtf_move_id.write({"line_ids": [(5, 0, 0)]})
             self.igtf_move_id.write({"line_ids": [(0, 0, line) for line in self.get_lines(igtf_account)]})
 

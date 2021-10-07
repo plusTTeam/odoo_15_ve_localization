@@ -1,4 +1,5 @@
-from odoo import _
+from datetime import datetime, timedelta
+from odoo import fields, _
 from odoo.exceptions import ValidationError
 from odoo.tests.common import TransactionCase
 from ..tools.constants import REF_MAIN_COMPANY, MESSAGE_EXCEPTION_NOT_EXECUTE, MESSAGE_IGTF_AMOUNT_NOT_CALCULATED
@@ -11,7 +12,7 @@ class TestAccountPayment(TransactionCase):
 
         self.company = self.env.ref(REF_MAIN_COMPANY)
         self.partner = self.env.ref("base.user_admin")
-        self.amount = 10000
+        self.amount = 10000.0
         self.igtf = 10
         self.company.write({
             "igtf": self.igtf
@@ -24,7 +25,7 @@ class TestAccountPayment(TransactionCase):
             "partner_id": self.partner.id,
             "amount": self.amount,
             "igtf": igtf,
-            "currency_id": self.env.ref("base.VEF")
+            "currency_id": self.env.ref("base.VEF").id
         })
 
     def test_compute_igtf_amount(self):
@@ -75,8 +76,28 @@ class TestAccountPayment(TransactionCase):
         payment.write({"currency_id": usd_currency.id})
         self.assertEqual(payment.igtf_move_id.currency_id, usd_currency,
                          msg="Currency field was not change in igtf move")
-        payment.write({"partner": False})
-        self.assertFalse(payment.igtf_move_id.partner_id, msg="Partner field was not change in igtf move")
-        new_datefields.Date.today() - 1
+        new_date = payment.date - timedelta(days=1)
         payment.write({"date": new_date})
         self.assertEqual(payment.igtf_move_id.date, new_date, msg="Date field was not change in igtf move")
+        payment.write({"partner_id": False})
+        self.assertNotEqual(payment.igtf_move_id.partner_id, self.partner, msg="Partner field was not change in igtf move")
+        payment.write({"ref": "Reference"})
+        self.assertEqual(payment.igtf_move_id.ref, "Reference", msg="Ref field was not change in igtf move")
+        new_amount = self.amount * 2
+        payment.write({"amount": new_amount})
+        self.assertEqual(payment.igtf_move_id.amount_total, (new_amount * self.company.igtf) / 100, msg="Partner field was not change in igtf move")
+        payment.action_post()
+        payment.action_draft()
+        self.assertEqual(payment.igtf_move_id.state, "draft", msg="State was not change to draft")
+        payment.action_cancel()
+        self.assertEqual(payment.igtf_move_id.state, "cancel", msg="State was not change to canceled")
+
+    def test_remove_igtf_move(self):
+        payment = self.create_payment(igtf=True)
+        payment.write({"payment_type": "inbound"})
+        self.assertFalse(payment.igtf_move_id, msg="IGTF was not removed")
+
+    def test_create_igtf_move(self):
+        payment = self.create_payment(igtf=False)
+        payment.write({"igtf": True})
+        self.assertTrue(payment.igtf_move_id.id, msg="IGTF was not created")
