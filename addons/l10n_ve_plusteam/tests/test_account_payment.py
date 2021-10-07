@@ -11,7 +11,7 @@ class TestAccountPayment(TransactionCase):
         super(TestAccountPayment, self).setUp()
 
         self.company = self.env.ref(REF_MAIN_COMPANY)
-        self.partner = self.env.ref("base.user_admin")
+        self.partner = self.env.ref("base.partner_admin")
         self.amount = 10000.0
         self.igtf = 10
         self.company.write({
@@ -80,12 +80,15 @@ class TestAccountPayment(TransactionCase):
         payment.write({"date": new_date})
         self.assertEqual(payment.igtf_move_id.date, new_date, msg="Date field was not change in igtf move")
         payment.write({"partner_id": False})
-        self.assertNotEqual(payment.igtf_move_id.partner_id, self.partner, msg="Partner field was not change in igtf move")
+        print(payment.igtf_move_id.partner_id, self.partner)
+        self.assertNotEqual(payment.igtf_move_id.partner_id, self.partner,
+                            msg="Partner field was not change in igtf move")
         payment.write({"ref": "Reference"})
         self.assertEqual(payment.igtf_move_id.ref, "Reference", msg="Ref field was not change in igtf move")
         new_amount = self.amount * 2
         payment.write({"amount": new_amount})
-        self.assertEqual(payment.igtf_move_id.amount_total, (new_amount * self.company.igtf) / 100, msg="Partner field was not change in igtf move")
+        self.assertEqual(payment.igtf_move_id.amount_total, (new_amount * self.company.igtf) / 100,
+                         msg="Partner field was not change in igtf move")
         payment.action_post()
         payment.action_draft()
         self.assertEqual(payment.igtf_move_id.state, "draft", msg="State was not change to draft")

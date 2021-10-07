@@ -35,12 +35,13 @@ class AccountPayment(models.Model):
         return payments
 
     def write(self, values):
+        old_partner = self.partner_id
         payment = super(AccountPayment, self).write(values)
         if values.get("currency_id", False):
             self.igtf_move_id.write({"currency_id": values["currency_id"]})
         if values.get("date", False):
             self.igtf_move_id.write({"date": values["date"]})
-        if any(field_name in values.keys() for field_name in "partner_id"):
+        if values.get("partner_id", True) is not True and values["partner_id"] != old_partner:
             self.igtf_move_id.write({"partner_id": values["partner_id"]})
         if values.get("ref", False):
             self.igtf_move_id.write({"ref": values["ref"]})
