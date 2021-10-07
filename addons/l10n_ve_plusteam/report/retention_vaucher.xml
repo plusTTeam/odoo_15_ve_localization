@@ -169,28 +169,28 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <t t-set="contador" t-value="1"/>
+                                    <t t-set="valida_amounts_bases" t-value="1"/>
                                     <t t-foreach="retention.invoice_id.amount_by_group" t-as="amount_by_group">
                                         <tr>
                                             <t t-if="amount_by_group[5]>1 and amount_by_group[1]>0">
                                                 <td>
                                                     <span/>
                                                 </td>
-                                                <td class="text-right " t-if="contador==1">
+                                                <td class="text-right " t-if="valida_amounts_bases==1">
                                                     <span t-esc="'{:,.2f}'.format(retention.amount_total)"/>
                                                 </td>
-                                                <td class="text-right " t-if="contador==1">
+                                                <td class="text-right " t-if="valida_amounts_bases==1">
                                                     <span t-esc="'{:,.2f}'.format(retention.amount_base_untaxed)"/>
                                                 </td>
-                                                <td t-if="contador==0">
+                                                <td t-if="valida_amounts_bases==0">
                                                     <span/>
                                                 </td>
-                                                <td t-if="contador==0">
+                                                <td t-if="valida_amounts_bases==0">
                                                     <p>
                                                         <span t-options='{"widget": "monetary", "display_currency": retention.company_currency_id}'/>
                                                     </p>
                                                 </td>
-                                                <t t-set="contador" t-value="0"/>
+                                                <t t-set="valida_amounts_bases" t-value="0"/>
                                                 <td name="td_amount_by_group" class="text-right o_price_total">
                                                     <span t-esc="'{:,.2f}'.format(amount_by_group[2])"/>
                                                     <span>&amp;nbsp;</span>
