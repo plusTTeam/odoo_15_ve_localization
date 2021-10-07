@@ -223,7 +223,7 @@
                                         <td class="text-center">
                                             <span t-esc="'{:,.2f}'.format(retention.amount_base_taxed)"/>
                                         </td>
-                                        <t t-if="contador==1">
+                                        <t t-if="valida_amounts_bases==1">
                                             <td class="text-center">
                                                 <span t-esc="retention.invoice_id.line_ids.tax_ids.amount"/>
                                             </td>
