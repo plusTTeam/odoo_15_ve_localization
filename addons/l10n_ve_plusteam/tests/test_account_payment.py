@@ -23,7 +23,8 @@ class TestAccountPayment(TransactionCase):
             "partner_type": "supplier",
             "partner_id": self.partner.id,
             "amount": self.amount,
-            "igtf": igtf
+            "igtf": igtf,
+            "currency_id": self.env.ref("base.VEF")
         })
 
     def test_compute_igtf_amount(self):
@@ -67,3 +68,15 @@ class TestAccountPayment(TransactionCase):
               "please go to Settings and select an journal to apply this tax"),
             msg=MESSAGE_EXCEPTION_NOT_EXECUTE
         )
+
+    def test_write(self):
+        usd_currency = self.env.ref("base.USD")
+        payment = self.create_payment(igtf=True)
+        payment.write({"currency_id": usd_currency.id})
+        self.assertEqual(payment.igtf_move_id.currency_id, usd_currency,
+                         msg="Currency field was not change in igtf move")
+        payment.write({"partner": False})
+        self.assertFalse(payment.igtf_move_id.partner_id, msg="Partner field was not change in igtf move")
+        new_datefields.Date.today() - 1
+        payment.write({"date": new_date})
+        self.assertEqual(payment.igtf_move_id.date, new_date, msg="Date field was not change in igtf move")
