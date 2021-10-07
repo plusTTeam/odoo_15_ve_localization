@@ -80,7 +80,6 @@ class TestAccountPayment(TransactionCase):
         payment.write({"date": new_date})
         self.assertEqual(payment.igtf_move_id.date, new_date, msg="Date field was not change in igtf move")
         payment.write({"partner_id": False})
-        print(payment.igtf_move_id.partner_id, self.partner)
         self.assertNotEqual(payment.igtf_move_id.partner_id, self.partner,
                             msg="Partner field was not change in igtf move")
         payment.write({"ref": "Reference"})
