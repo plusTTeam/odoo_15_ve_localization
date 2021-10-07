@@ -1,6 +1,11 @@
-<?xml version="1.0" ?>
+<?xml version="1.0"?>
 <odoo>
     <data noupdate="1">
+        <record id="journal_withholding" model="account.journal">
+            <field name="name">Retenciones</field>
+            <field name="type">general</field>
+            <field name="code">RETEN</field>
+        </record>
         <record id="igtf_journal" model="account.journal">
             <field name="name">IGTF</field>
             <field name="code">IGTF</field>

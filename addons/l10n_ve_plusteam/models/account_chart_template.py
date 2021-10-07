@@ -28,8 +28,8 @@ class AccountChartTemplate(models.Model):
         load = super(AccountChartTemplate, self)._load(sale_tax_rate, purchase_tax_rate, company)
         refs = [
             ["vat_withholding_suppliers", "iva_account_purchase_id"],
-            ["islr_withholding_suppliers", "iva_account_sale_id"],
-            ["vat_withholding_customer", "islr_account_purchase_id"],
+            ["islr_withholding_suppliers", "islr_account_purchase_id"],
+            ["vat_withholding_customer", "iva_account_sale_id"],
             ["islr_withholding_customer", "islr_account_sale_id"],
             ["account_igtf", "igtf_account_id"]
         ]

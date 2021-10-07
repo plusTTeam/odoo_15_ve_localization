@@ -20,6 +20,9 @@ class ResConfigSettings(models.TransientModel):
     islr_account_sale_id = fields.Many2one("account.account", string="ISLR accounting account for customer",
                                            related="company_id.islr_account_sale_id",
                                            domain=DOMAIN_COMPANY, readonly=False)
+    withholding_journal_id = fields.Many2one("account.journal", string="Withholding journal",
+                                             related="company_id.withholding_journal_id", domain=DOMAIN_COMPANY,
+                                             readonly=False)
     igtf = fields.Float(string="IGTF", digits="2", related="company_id.igtf", domain=DOMAIN_COMPANY, readonly=False)
     igtf_account_id = fields.Many2one("account.account", string="ISLR accounting account",
                                       related="company_id.igtf_account_id", domain=DOMAIN_COMPANY, readonly=False)

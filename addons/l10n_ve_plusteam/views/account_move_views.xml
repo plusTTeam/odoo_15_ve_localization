@@ -6,22 +6,56 @@
         <field name="inherit_id" ref="account.view_move_form"/>
         <field name="priority">20</field>
         <field name="arch" type="xml">
+            <header>
+                <field name="retention_state" invisible="1"/>
+                <button name="action_register_retention" id="account_invoice_retention_btn"
+                        type="object" class="oe_highlight"
+                        attrs="{'invisible': ['|','|', ('state', '!=', 'posted'),
+                        ('retention_state', '=', 'with_both_retentions'),
+                        ('move_type', 'not in', ('out_invoice', 'out_refund', 'in_invoice', 'in_refund'))]}"
+                        string="Register Retention"
+                        groups="account.group_account_invoice"/>
+            </header>
+            <field name="amount_untaxed" position="attributes">
+                <attribute name="string">Subtotal</attribute>
+            </field>
             <xpath expr="//field[@name='payment_reference']" position="after">
-                <field name="control_number"/>
+                <field name="control_number"
+                       attrs="{'invisible': [('move_type', 'not in', ('out_invoice', 'out_refund',
+                        'in_invoice', 'in_refund'))]}"/>
                 <field
                         name="fiscal_printing_serial"
-                        attrs="{'invisible': [('move_type', 'not in', ('out_invoice', 'out_refund', 'out_receipt'))]}"
+                        attrs="{'invisible': [('move_type', 'not in', ('out_invoice', 'out_refund'))]}"
                 />
-                <field
-                        name="invoice_number"
-                        attrs="{'invisible': [('move_type', 'not in', ('in_invoice', 'in_refund', 'in_receipt'))]}"
-                />
+                <field name="document_number"
+                       attrs="{'invisible': [('move_type', 'not in', ('out_invoice', 'out_refund',
+                        'in_invoice', 'in_refund'))]}"/>
             </xpath>
-            <xpath expr="//div[@class='d-flex']" position="after"> 
-                <field name="import_doc" attrs="{'invisible': [('move_type', 'not in', ('in_invoice', 'in_refund', 'in_receipt'))]}" />
+            <xpath expr="//field[@name='amount_residual']" position="after">
+                <field name="retention_state" attrs="{'invisible': [('retention_state', '=', 'without_retention')]}"/>
+            </xpath>
+            <xpath expr="//div[@class='d-flex']" position="after">
+                <field name="import_doc"
+                       attrs="{'invisible': [('move_type', 'not in', ('in_invoice', 'in_refund'))]}"/>
                 <field name="form_number" attrs="{'invisible':[('import_doc','=',False)]}"/>
                 <field name="file_number" attrs="{'invisible':[('import_doc','=',False)]}"/>
             </xpath>
+            <page name="other_info" position="after">
+                <page name="retentions" string="Retentions applied"
+                      attrs="{'invisible': ['|', ('retention_state', '=', 'without_retention'),
+                      ('move_type', 'not in', ('out_invoice', 'out_refund', 'in_invoice', 'in_refund'))]}">
+                    <field name="retention_id" widget="section_and_note_one2many" mode="tree" readonly="True">
+                        <tree string="Retention Items" default_order="retention_date desc, id">
+                            <field name="retention_date"/>
+                            <field name="receipt_date"/>
+                            <field name="retention_code"/>
+                            <field name="retention_type"/>
+                            <field name="amount_retention"/>
+                            <field name="destination_account_id" optional="hide"/>
+                        </tree>
+                    </field>
+                </page>
+            </page>
         </field>
     </record>
 
@@ -31,8 +65,8 @@
         <field name="inherit_id" ref="account.view_out_invoice_tree"/>
         <field name="arch" type="xml">
             <xpath expr="//field[@name='name']" position="after">
-                 <field name="control_number" optional="show"/>
-                 <field name="fiscal_printing_serial" optional="hide"/>
+                <field name="control_number" optional="show"/>
+                <field name="fiscal_printing_serial" optional="hide"/>
             </xpath>
         </field>
     </record>
@@ -42,12 +76,15 @@
         <field name="inherit_id" ref="account.view_in_invoice_tree"/>
         <field name="arch" type="xml">
             <xpath expr="//field[@name='name']" position="after">
-                 <field name="control_number" optional="show"/>
-                 <field name="invoice_number" optional="show"/>
+                <field name="control_number" optional="show"/>
+                <field name="document_number" optional="show"/>
             </xpath>
             <xpath expr="//field[@name='payment_state']" position="after">
-                 <field name="form_number" optional="hide"/>
-                 <field name="file_number" optional="hide"/>
+                <field name="retention_id" optional="hide"/>
+            </xpath>
+            <xpath expr="//field[@name='payment_state']" position="after">
+                <field name="form_number" optional="hide"/>
+                <field name="file_number" optional="hide"/>
             </xpath>
         </field>
     </record>

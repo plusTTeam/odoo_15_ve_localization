@@ -26,6 +26,7 @@ class TestResPartner(TransactionCase):
         })
         self.contact = self.env["res.partner"].create({
             "name": "New User",
+            "vat": "J123456789",
             "taxpayer": True,
             "special_taxpayer": True,
             "property_account_receivable_id": self.account_receivable.id,
@@ -59,7 +60,7 @@ class TestResPartner(TransactionCase):
             self.contact.vat_withholding_percentage = 150.00
         self.assertEqual(
             str(raise_exception.exception),
-            _("The retention percentage must be between the the values 0 and 100, "
+            _("The retention percentage must be between 0 and 100, "
               "please verify that the value is in this range"),
             msg=MESSAGE_EXCEPTION_NOT_EXECUTE
         )
@@ -67,7 +68,7 @@ class TestResPartner(TransactionCase):
             self.contact.vat_withholding_percentage = -150.00
         self.assertEqual(
             str(raise_exception.exception),
-            _("The retention percentage must be between the the values 0 and 100, "
+            _("The retention percentage must be between 0 and 100, "
               "please verify that the value is in this range"),
             msg=MESSAGE_EXCEPTION_NOT_EXECUTE
         )
