@@ -55,7 +55,7 @@ class Retention(models.Model):
                                               related="partner_id.vat_withholding_percentage", required=True)
     invoice_id = fields.Many2one("account.move", string="Invoice", required=True,
                                  domain="[('move_type', 'in', ('out_invoice', 'in_invoice', 'in_refund', "
-                                            "'out_refund')), ('retention_state', '!=', 'with_both_retentions'),"
+                                        "'out_refund')), ('retention_state', '!=', 'with_both_retentions'),"
                                         "('state', '=', 'posted'),('partner_id', '=', partner_id )]")
     original_document_number = fields.Char(string="Original Document Number", related="invoice_id.document_number")
     invoice_date = fields.Date(string="Invoice Date", required=True, related="invoice_id.date")
@@ -204,12 +204,11 @@ class Retention(models.Model):
         retention.move_id.write(retention._update_move_id())
         to_write = {"line_ids": [(0, 0, line_values) for line_values in retention._prepare_move_lines()]}
         retention.move_id.write(to_write)
-        domain = [('account_internal_type', 'in', ('receivable', 'payable')), ('reconciled', '=', False)]
-        retention_lines = retention.move_id.line_ids.filtered_domain(domain)
-        for account in retention_lines.account_id:
-            (retention_lines + invoice.line_ids) \
-                .filtered_domain([('account_id', '=', account.id), ('reconciled', '=', False)]) \
-                .reconcile()
+        domain = [("account_internal_type", "in", ("receivable", "payable")), ("reconciled", "=", False)]
+        retention_lines = retention.move_id.line_ids.search(domain)
+        for line in retention_lines:
+            (retention_lines + invoice.line_ids).filtered_domain(
+                [("account_id", "=", line.account_id.id), ("reconciled", "=", False)]).reconcile()
         return retention
 
     def _update_move_id(self):
