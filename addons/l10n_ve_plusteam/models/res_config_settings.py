@@ -19,6 +19,9 @@ class ResConfigSettings(models.TransientModel):
     islr_account_sale_id = fields.Many2one("account.account", string="ISLR accounting account for customer",
                                            related="company_id.islr_account_sale_id",
                                            domain=DOMAIN_COMPANY, readonly=False)
+    withholding_journal_id = fields.Many2one("account.journal", string="Withholding journal",
+                                             related="company_id.withholding_journal_id", domain=DOMAIN_COMPANY,
+                                             readonly=False)
 
     def set_values(self):
         super(ResConfigSettings, self).set_values()
@@ -26,7 +29,8 @@ class ResConfigSettings(models.TransientModel):
             "iva_account_purchase_id",
             "iva_account_sale_id",
             "islr_account_purchase_id",
-            "islr_account_sale_id"
+            "islr_account_sale_id",
+            "withholding_journal_id"
         ]
         for key in keys:
             if self.env.company == self.company_id and self[key] and \
