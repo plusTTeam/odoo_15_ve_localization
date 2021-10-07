@@ -10,7 +10,6 @@ class TestAccountRetentionRegister(TransactionCase):
         super(TestAccountRetentionRegister, self).setUp()
 
         self.vat_withholding_percentage = 75.0
-        self.modelo = "account.retention.register"
         self.partner = self.env.ref("base.partner_admin")
         self.partner.write({
             "vat_withholding_percentage": self.vat_withholding_percentage
@@ -34,7 +33,7 @@ class TestAccountRetentionRegister(TransactionCase):
         })
         self.invoice.write({"state": "posted"})
         self.active_ids = self.invoice.ids
-        self.retention_register = self.env[self.modelo].with_context(
+        self.retention_register = self.env["account.retention.register"].with_context(
             active_model="account.move", active_ids=self.active_ids
         ).create({
             "retention_date": self.date,
@@ -49,7 +48,7 @@ class TestAccountRetentionRegister(TransactionCase):
         """Test  when create retention for retention_type
         """
         with self.assertRaises(ValidationError) as raise_exception:
-            self.env[self.modelo].with_context(
+            self.env["account.retention.register"].with_context(
                 active_model="account.move", active_ids=self.active_ids
             ).create({
                 "retention_date": self.date,
@@ -88,7 +87,7 @@ class TestAccountRetentionRegister(TransactionCase):
             "date": self.date,
             "amount_tax": self.invoice_tax,
             "invoice_line_ids": [(0, 0, {
-                "name": "product that cost %s" % self.invoice_amount,
+                "name": "product" ,
                 "quantity": 1,
                 "price_unit": self.invoice_amount
             })]
@@ -118,7 +117,7 @@ class TestAccountRetentionRegister(TransactionCase):
             "date": self.date,
             "amount_tax": self.invoice_tax,
             "invoice_line_ids": [(0, 0, {
-                "name": "product that cost %s" % self.invoice_amount,
+                "name": "product2 that cost %s" % self.invoice_amount,
                 "quantity": 1,
                 "price_unit": self.invoice_amount
             })]
