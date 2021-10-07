@@ -42,8 +42,10 @@
         <field name="inherit_id" ref="account.view_in_invoice_tree"/>
         <field name="arch" type="xml">
             <xpath expr="//field[@name='name']" position="after">
-                 <field name="control_number" optional="show"/>
-                 <field name="invoice_number" optional="show"/>
+                 <field name="control_number" optional="show"
+                        attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                 <field name="invoice_number" optional="show"
+                        attrs="{'readonly': [('state', '!=', 'draft')]}"/>
             </xpath>
             <xpath expr="//field[@name='payment_state']" position="after">
                  <field name="form_number" optional="hide"/>
