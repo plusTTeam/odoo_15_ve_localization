@@ -6,7 +6,6 @@ from ..tools.constants import (RETENTION_TYPE_ISLR, RETENTION_TYPE_IVA, REF_MAIN
                                MESSAGE_EXCEPTION_NOT_EXECUTE,MESSAGE_DOCUMENT_WRONG)
 
 
-
 class TestRetention(AccountMoveModelRetentionTestingCommon):
     def test_retention_type(self):
         """Test  when create retention for retention_type
@@ -70,15 +69,7 @@ class TestRetention(AccountMoveModelRetentionTestingCommon):
         self.assertEqual(
             self.retention.document_type,
             _("Bills"),
-            msg=MESSAGE_DOCUMENT_WRONG
-
-    def test_month_fiscal_char(self):
-        month = self.retention.retention_date.strftime("%m")
-        self.assertEqual(
-            self.retention.month_fiscal_period,
-            month,
-            msg="Field month fiscal period is wrong"
-        )
+            msg=MESSAGE_DOCUMENT_WRONG)
 
     def test_document_type_customer(self):
         self.assertEqual(
