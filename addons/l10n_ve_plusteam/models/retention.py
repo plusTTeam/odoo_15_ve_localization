@@ -204,6 +204,12 @@ class Retention(models.Model):
         retention.move_id.write(retention._update_move_id())
         to_write = {"line_ids": [(0, 0, line_values) for line_values in retention._prepare_move_lines()]}
         retention.move_id.write(to_write)
+        domain = [('account_internal_type', 'in', ('receivable', 'payable')), ('reconciled', '=', False)]
+        retention_lines = retention.move_id.line_ids.filtered_domain(domain)
+        for account in retention_lines.account_id:
+            (retention_lines + invoice.line_ids) \
+                .filtered_domain([('account_id', '=', account.id), ('reconciled', '=', False)]) \
+                .reconcile()
         return retention
 
     def _update_move_id(self):
