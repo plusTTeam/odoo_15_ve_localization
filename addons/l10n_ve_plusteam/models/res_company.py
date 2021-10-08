@@ -16,12 +16,16 @@ class ResCompany(models.Model):
     iva_account_sale_id = fields.Many2one("account.account", string="VAT accounting account for customer")
     islr_account_purchase_id = fields.Many2one("account.account", string="ISLR accounting account for suppliers")
     islr_account_sale_id = fields.Many2one("account.account", string="ISLR accounting account for customer")
+    withholding_journal_id = fields.Many2one("account.journal", string="Withholding journal")
+    igtf = fields.Float(string="IGTF", digits="2")
+    igtf_account_id = fields.Many2one("account.account", string="IGTF accounting account")
+    igtf_journal_id = fields.Many2one("account.journal", string="IGTF Journal")
 
     @api.constrains("vat_withholding_percentage")
     def _check_vat_withholding_percentage(self):
         for record in self:
             if record.vat_withholding_percentage < 0 or record.vat_withholding_percentage > 100:
                 raise ValidationError(
-                    _("The retention percentage must be between the the values 0 and 100, "
+                    _("The retention percentage must be between 0 and 100, "
                       "please verify that the value is in this range")
                 )

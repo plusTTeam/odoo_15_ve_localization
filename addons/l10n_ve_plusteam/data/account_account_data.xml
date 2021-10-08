@@ -230,6 +230,14 @@
             <field name="currency_id" ref="base.VEF"/>
             <field name="chart_template_id" ref="ve_chart_template_amd"/>
         </record>
+        <record id="account_igtf" model="account.account.template">
+            <field name="code">7151004</field>
+            <field name="name">Impuesto a las Grandes Transacciones Financieras (IGTF)</field>
+            <field name="user_type_id" ref="account.data_account_type_expenses"/>
+            <field name="reconcile" eval="True"/>
+            <field name="currency_id" ref="base.VEF"/>
+            <field name="chart_template_id" ref="ve_chart_template_amd"/>
+        </record>
 
         <record id="l10n_ve_plusteam.ve_chart_template_amd" model="account.chart.template">
             <field name="property_account_receivable_id" ref="account_activa_account_1122001"/>

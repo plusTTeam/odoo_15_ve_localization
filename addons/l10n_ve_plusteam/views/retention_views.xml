@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="retention_view_form" model="ir.ui.view">
+        <field name="name">retention.form</field>
+        <field name="model">retention</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <form string="Register Retention">
+                <header>
+                    <button name="button_cancel" id="button_cancel"
+                        type="object" class="oe_highlight"
+                        attrs="{'invisible': ['|', ('id', '=', False), ('state', '!=', 'posted')]}"
+                        string="Cancel Retention"
+                        groups="account.group_account_invoice"/>
+                </header>
+                <sheet>
+                    <field name="id" invisible="1"/>
+                    <field name="state" invisible="1"/>
+                    <group>
+                        <group>
+                            <field name="retention_type" options="{'horizontal': true}" widget="radio"/>
+                        </group>
+                        <group>
+                            <field name="company_id" groups="base.group_multi_company"/>
+                        </group>
+                    </group>
+                    <group>
+                        <group>
+                            <label for="retention_code" string="Receipt Number"/>
+                            <h1>
+                                <field name="retention_code" placeholder="receipt number" nolabel="1"
+                                       readonly="context.get('default_move_type') in ('in_invoice', 'in_refund')"/>
+                            </h1>
+                        </group>
+                        <group>
+                            <label for="year_fiscal_period" string="Fiscal Period"/>
+                            <div class="d-flex">
+                                <label for="month_fiscal_period" string="Month" style="font-weight:bold;"/>
+                                <field name="month_fiscal_period" nolabel="1" style="width: 120px !important"/>
+                                <label for="year_fiscal_period" string="Year" style="font-weight:bold;"/>
+                                <field name="year_fiscal_period"/>
+                            </div>
+                        </group>
+                    </group>
+                    <group>
+                        <group>
+                            <field name="retention_date"/>
+                            <field name="move_type" invisible="1"/>
+                            <field name="receipt_date" 
+                                   attrs="{'invisible': [('move_type', 'not in', ('out_invoice', 'out_refund','out_receipt'))]}"/>
+                            <field name="partner_type"/>
+                            <field name="partner_id"/>
+                            <field name="rif"/>
+                            <field name="destination_account_id" invisible="1"/>
+                            <field name="currency_id" groups="base.group_multi_currency"/>
+                        </group>
+                        <group>
+                            <field name="invoice_id"/>
+                            <field name="original_document_number" invisible="1"/>
+                            <field name="invoice_date"/>
+                            <field name="amount_base_untaxed" options="{'currency_field': 'currency_id'}"/>
+                            <field name="amount_base_taxed" options="{'currency_field': 'currency_id'}"/>
+                            <field name="amount_tax" options="{'currency_field': 'currency_id'}"/>
+                            <field name="amount_total" options="{'currency_field': 'currency_id'}"/>
+                            <label for="vat_withholding_percentage"/>
+                            <div>
+                                <field name="vat_withholding_percentage" class="oe_inline"/>
+                                <span class="o_form_label oe_inline">%</span>
+                            </div>
+                            <field name="amount_retention" options="{'currency_field': 'currency_id'}"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="retention_view_tree" model="ir.ui.view">
+        <field name="name">retention.tree</field>
+        <field name="model">retention</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="partner_id"
+                       invisible="context.get('default_move_type') not in ('in_invoice', 'in_refund')"
+                       groups="base.group_user" string="Vendor"/>
+                <field name="partner_id"
+                       invisible="context.get('default_move_type') not in ('out_invoice', 'out_refund')"
+                       groups="base.group_user" string="Customer"/>
+                <field name="rif"/>
+                <field name="retention_code"/>
+                <field name="retention_type"/>
+                <field name="retention_date"/>
+                <field name="invoice_id" optional="hide"/>
+                <field name="company_id" groups="base.group_multi_company"/>
+                <field name="document_type"/>
+                <field name="original_document_number" optional="hide"/>
+                <field name="control_number" optional="hide"/>
+                <field name="amount_retention" options="{'currency_field': 'currency_id'}"/>
+                <field name="currency_id" optional="hide" groups="base.group_multi_currency"/>
+                <field name="amount_retention_company_currency" options="{'currency_field': 'currency_id'}"
+                       groups="base.group_multi_currency" optional="hide"/>
+                <field name="company_currency_id" groups="base.group_multi_currency" optional="hide"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_retention_filter" model="ir.ui.view">
+        <field name="name">retention.select</field>
+        <field name="model">retention</field>
+        <field name="arch" type="xml">
+            <search string="Search Retention">
+                <filter string="ISLR" name="type_person" domain="[('is_iva', '=', False)]"/>
+                <filter string="IVA" name="type_company" domain="[('is_iva', '=', True)]"/>
+                <separator/>
+            </search>
+        </field>
+    </record>
+
+    <record id="retention_out_invoice_tree" model="ir.ui.view">
+        <field name="name">retention.out.invoice.tree</field>
+        <field name="model">retention</field>
+        <field name="inherit_id" ref="retention_view_tree"/>
+        <field name="mode">primary</field>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='original_document_number']" position="attributes">
+                <attribute name="optional">show</attribute>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="retention_action_out_invoice_type" model="ir.actions.act_window">
+        <field name="name">Retention</field>
+        <field name="res_model">retention</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="retention_out_invoice_tree"/>
+        <field name="domain">[('move_type', 'in', ('in_invoice','in_refund'))]</field>
+        <field name="context">{'default_move_type': 'in_invoice'}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create a retention invoice
+            </p>
+            <p>
+                Create retention, register retention supplier.
+            </p>
+        </field>
+    </record>
+</odoo>

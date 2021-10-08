@@ -9,8 +9,7 @@
             <xpath expr="//div[@id='print_vendor_checks_setting_container']" position="after">
                 <h2>Retention Accounting Accounts</h2>
                 <div class="row mt16 o_settings_container">
-                    <div class="col-12 col-lg-6 o_setting_box"
-                         id="account_settings_localization_iva">
+                    <div class="col-12 col-lg-6 o_setting_box" id="account_settings_localization_iva">
                         <div class="o_setting_left_pane"/>
                         <div class="o_setting_right_pane">
                             <span class="o_form_label">Accounting accounts for VAT retention</span>
@@ -47,6 +46,72 @@
                                     <label string="Sale ISLR" for="islr_account_sale_id"
                                            class="col-lg-3 o_light_label"/>
                                     <field name="islr_account_sale_id"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mt16 o_settings_container">
+                    <div class="col-12 col-lg-6 o_setting_box" id="account_settings_localization_journal">
+                        <div class="o_setting_left_pane"/>
+                        <div class="o_setting_right_pane">
+                            <span class="o_form_label">Withholding Journal</span>
+                            <span class="fa fa-lg fa-building-o" title="Values set here are company-specific."
+                                  aria-label="Values set here are company-specific." role="img"/>
+                            <div class="content-group">
+                                <div class="row mt16"
+                                     title="Withholding Journal">
+                                    <label string="Journal" for="withholding_journal_id"
+                                           class="col-lg-3 o_light_label"/>
+                                    <field name="withholding_journal_id" domain="[('type', '=', 'general')]"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <h2>Impuesto a las Grandes Transacciones Financieras (IGTF)</h2>
+                <div class="row mt16 o_settings_container">
+                    <div class="col-12 col-lg-6 o_setting_box"
+                         id="account_settings_localization_igtf">
+                        <div class="o_setting_left_pane"/>
+                        <div class="o_setting_right_pane">
+                            <span class="o_form_label">IGTF</span>
+                            <span class="fa fa-lg fa-building-o" title="Values set here are company-specific."
+                                  aria-label="Values set here are company-specific." role="img"/>
+                            <div class="text-muted">
+                                This is the value of the tax to apply to transactions
+                            </div>
+                            <div class="text-muted">
+                                <field name="igtf" style="width: 80px;"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-6 o_setting_box" id="account_settings_localization_igtf_account">
+                        <div class="o_setting_left_pane"/>
+                        <div class="o_setting_right_pane">
+                            <span class="o_form_label">IGTF Account</span>
+                            <span class="fa fa-lg fa-building-o" title="Values set here are company-specific."
+                                  aria-label="Values set here are company-specific." role="img"/>
+                            <div class="text-muted">
+                                This is the account that will be used for the IGTF accounting entry
+                            </div>
+                            <div class="content-group">
+                                <div class="text-muted" title="Accounting accounts for IGTF">
+                                    <field name="igtf_account_id" domain="[('internal_group', '=', 'expense')]"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-6 o_setting_box" id="account_settings_localization_igtf_journal">
+                        <div class="o_setting_left_pane"/>
+                        <div class="o_setting_right_pane">
+                            <span class="o_form_label">IGTF Journal</span>
+                            <span class="fa fa-lg fa-building-o" title="Values set here are company-specific."
+                                  aria-label="Values set here are company-specific." role="img"/>
+                            <div class="content-group">
+                                <div class="row mt16" title="IGTF Journal">
+                                    <label string="Journal" for="igtf_journal_id" class="col-lg-3 o_light_label"/>
+                                    <field name="igtf_journal_id" domain="[('type', '=', 'general')]"/>
                                 </div>
                             </div>
                         </div>

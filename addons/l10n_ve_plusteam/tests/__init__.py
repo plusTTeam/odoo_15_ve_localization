@@ -8,3 +8,5 @@ from . import test_resource_calendar_attendance
 from . import test_res_lang
 from . import test_account_chart_template
 from . import test_res_config_settings
+from . import test_retention
+from . import test_account_payment

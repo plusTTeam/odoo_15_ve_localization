@@ -16,6 +16,7 @@
             </xpath>
             <field name="vat" position="attributes">
                 <attribute name="string">RIF</attribute>
+                <attribute name="placeholder">Por ejemplo, V15236987</attribute>
             </field>
             <field name="vat" position="after">
                 <field name="person_type"/>
