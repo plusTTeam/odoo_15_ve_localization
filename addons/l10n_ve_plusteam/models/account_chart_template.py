@@ -30,7 +30,8 @@ class AccountChartTemplate(models.Model):
             ["vat_withholding_suppliers", "iva_account_purchase_id"],
             ["islr_withholding_suppliers", "islr_account_purchase_id"],
             ["vat_withholding_customer", "iva_account_sale_id"],
-            ["islr_withholding_customer", "islr_account_sale_id"]
+            ["islr_withholding_customer", "islr_account_sale_id"],
+            ["account_igtf", "igtf_account_id"]
         ]
         for ref in refs:
             xml_id = "%s.%s_%s" % ("l10n_ve_plusteam", company.id, ref[0])

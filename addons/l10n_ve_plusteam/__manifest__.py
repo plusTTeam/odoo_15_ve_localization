@@ -67,7 +67,9 @@ Features:
         'views/res_currency_views.xml',
         'views/res_company_views.xml',
         'views/retention_views.xml',
+        'views/account_payment_views.xml',
         'wizard/retention_register_views.xml',
+        'wizard/account_payment_register_views.xml',
         'report/retention_vaucher.xml',
         'views/menu_views.xml'
     ],
