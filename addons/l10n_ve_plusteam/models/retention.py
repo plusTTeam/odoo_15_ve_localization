@@ -22,7 +22,7 @@ class Retention(models.Model):
     move_id = fields.Many2one(
         comodel_name="account.move", string="Journal Entry", required=True, readonly=True, ondelete="cascade",
         check_company=True)
-    retention_code = fields.Char(string="Retention Number", default=_("New"), store=True)
+    retention_code = fields.Char(string="Retention Number", store=True)
     retention_date = fields.Date(string="Date", required=True, default=fields.Date.context_today)
     receipt_date = fields.Date(string="Receipt Date", required=True, default=fields.Date.context_today)
     month_fiscal_period = fields.Char(string="Month", store=True, readonly=False,
@@ -192,7 +192,7 @@ class Retention(models.Model):
 
     @api.model
     def create(self, values):
-        if values.get("retention_code", "").strip().lower() in ["", "nuevo", "new"] and values.get("move_type", "") in ('in_invoice', 'in_refund'):
+        if values.get("move_type", "") in ('in_invoice', 'in_refund'):
             values["retention_code"] = self.env["ir.sequence"].next_by_code("retention.sequence")
         values["state"] = "posted"
         if values.get("retention_type", False) == "iva":
