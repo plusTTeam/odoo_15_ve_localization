@@ -22,14 +22,14 @@
             <xpath expr="//field[@name='payment_reference']" position="after">
                 <field name="control_number"
                        attrs="{'invisible': [('move_type', 'not in', ('out_invoice', 'out_refund',
-                        'in_invoice', 'in_refund'))]}"/>
+                        'in_invoice', 'in_refund'))], 'readonly': [('state', '!=', 'draft')]}"/>
                 <field
                         name="fiscal_printing_serial"
                         attrs="{'invisible': [('move_type', 'not in', ('out_invoice', 'out_refund'))]}"
                 />
                 <field name="document_number"
                        attrs="{'invisible': [('move_type', 'not in', ('out_invoice', 'out_refund',
-                        'in_invoice', 'in_refund'))]}"/>
+                        'in_invoice', 'in_refund'))],'readonly': [('state', '!=', 'draft')]}"/>
             </xpath>
             <xpath expr="//field[@name='amount_residual']" position="after">
                 <field name="retention_state" attrs="{'invisible': [('retention_state', '=', 'without_retention')]}"/>
