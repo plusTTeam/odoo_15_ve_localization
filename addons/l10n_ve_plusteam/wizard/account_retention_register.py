@@ -6,7 +6,7 @@ class AccountRetentionRegister(models.TransientModel):
     _name = "account.retention.register"
     _description = "Register Retention"
 
-    retention_code = fields.Char(string="Retention Number", default=_("New"))
+    retention_code = fields.Char(string="Retention Number")
     retention_date = fields.Date(string="Date", required=True, default=fields.Date.context_today)
     receipt_date = fields.Date(string="Receipt Date", required=True, default=fields.Date.context_today)
     invoice_date = fields.Date(string="Invoice Date", required=True, compute="_compute_data_invoice")
