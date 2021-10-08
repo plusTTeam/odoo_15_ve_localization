@@ -169,6 +169,7 @@ class TestRetention(AccountMoveModelRetentionTestingCommon):
                 "price_unit": self.invoice_amount
             })]
         })
+        new_invoice.action_post()
         default_journal = self.env["account.journal"].create({
             "name": "New Journal",
             "type": "general",
@@ -251,6 +252,7 @@ class TestRetention(AccountMoveModelRetentionTestingCommon):
                 "price_unit": self.invoice_amount
             })]
         })
+        new_invoice.action_post()
         new_retention = self.env["retention"].create({
             "invoice_id": new_invoice.id,
             "partner_id": self.partner.id,
@@ -266,3 +268,32 @@ class TestRetention(AccountMoveModelRetentionTestingCommon):
 
         self.assertEqual(self.retention.state, "cancel", msg="Withholding status was unchanged")
         self.assertEqual(self.retention.move_id.state, "cancel", msg="Withholding status was unchanged")
+
+    def test_reconcile_lines(self):
+        new_invoice = self.env["account.move"].create({
+            "move_type": "in_invoice",
+            "partner_id": self.partner.id,
+            "invoice_date": self.date,
+            "date": self.date,
+            "amount_tax": self.invoice_tax,
+            "invoice_line_ids": [(0, 0, {
+                "name": NAME_PRODUCT % self.invoice_amount,
+                "quantity": 1,
+                "price_unit": self.invoice_amount
+            })]
+        })
+        new_invoice.action_post()
+        new_retention = self.env["retention"].create({
+            "invoice_id": new_invoice.id,
+            "partner_id": self.partner.id,
+            "move_type": new_invoice.move_type,
+            "retention_type": RETENTION_TYPE_IVA,
+            "vat_withholding_percentage": 75.0
+        })
+        domain = [('account_internal_type', 'in', ('receivable', 'payable')), ('matching_number', '!=', False)]
+        invoice_lines = new_invoice.line_ids.search(domain)
+        retention_lines = new_retention.move_id.line_ids.search(domain)
+        for invoice_line, retention_line in zip(invoice_lines, retention_lines):
+            match = invoice_line.matching_number == retention_line.matching_number and \
+                retention_line.matching_number
+            self.assertTrue(match, msg="The moves are not reconciled")
