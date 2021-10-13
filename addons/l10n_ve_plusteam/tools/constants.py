@@ -9,6 +9,7 @@ IR_MODEL_DATA = "ir.model.data"
 REF_MAIN_COMPANY = "base.main_company"
 MESSAGE_EXCEPTION_NOT_EXECUTE = "The exception was not executed correctly"
 MESSAGE_DAY_NOT_FOUND = "Day not found"
+MESSAGE_DOCUMENT_WRONG = "Field type document is wrong"
 MESSAGE_IGTF_AMOUNT_NOT_CALCULATED = "The igtf_amount was not calculated correctly"
 DOMAIN_COMPANY = "[('company_id', '=', company_id)]"
 GLOBAL_TIME_OFF = [

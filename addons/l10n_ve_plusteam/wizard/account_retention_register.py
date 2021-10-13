@@ -6,8 +6,9 @@ class AccountRetentionRegister(models.TransientModel):
     _name = "account.retention.register"
     _description = "Register Retention"
 
-    retention_code = fields.Char(string="Retention Number", default=_("New"))
+    retention_code = fields.Char(string="Retention Number")
     retention_date = fields.Date(string="Date", required=True, default=fields.Date.context_today)
+    receipt_date = fields.Date(string="Receipt Date", required=True, default=fields.Date.context_today)
     invoice_date = fields.Date(string="Invoice Date", required=True, compute="_compute_data_invoice")
     month_fiscal_period = fields.Char(string="Month", store=True, readonly=False, required=True,
                                       default=fields.Date.today().strftime('%m'))
@@ -21,9 +22,9 @@ class AccountRetentionRegister(models.TransientModel):
                                  check_company=True, compute="_compute_data_invoice", required=True)
     rif = fields.Char(string="RIF", related="partner_id.vat")
     vat_withholding_percentage = fields.Float(string="vat withholding percentage", store=True, readonly=False,
-                                              related="partner_id.vat_withholding_percentage", required=True)
+                                              compute="_compute_vat_percentage", required=True)
     invoice_id = fields.Many2one("account.move", string="Invoice", compute="_compute_data_invoice",
-                                 domain="[('partner_id', '=', partner_id )]")
+                                 domain="[('partner_id', '=', partner_id )]", store=True)
     currency_id = fields.Many2one("res.currency", string="Currency", store=True, readonly=True,
                                   help="The invoice's currency.", related="invoice_id.currency_id")
     company_id = fields.Many2one("res.company", string="Company", compute="_compute_data_invoice")
@@ -61,6 +62,14 @@ class AccountRetentionRegister(models.TransientModel):
             else:
                 wizard.document = _("Without relationship")
 
+    @api.depends("move_type")
+    def _compute_vat_percentage(self):
+        for retention in self:
+            if retention.move_type in ("in_invoice", "in_refund"):
+                retention.vat_withholding_percentage = retention.partner_id.vat_withholding_percentage
+            else:
+                retention.vat_withholding_percentage = retention.invoice_id.company_id.vat_withholding_percentage
+
     @api.depends("vat_withholding_percentage", "amount_tax")
     def _compute_amount_retention(self):
         for retention in self:
@@ -75,24 +84,6 @@ class AccountRetentionRegister(models.TransientModel):
         for retention in self:
             retention.is_iva = retention.retention_type == "iva"
 
-    @api.onchange("vat_withholding_percentage")
-    def _onchange_value_withholding_percentage(self):
-        for retention in self:
-            retention.amount_retention = retention.amount_tax * retention.vat_withholding_percentage / 100
-
-    @api.depends("invoice_id")
-    def _compute_document_type(self):
-        for retention in self:
-            if retention.move_type in ("out_invoice", "in_invoice"):
-                if retention.invoice_id.debit_origin_id:
-                    retention.document_type = _("D/N")
-                else:
-                    retention.document_type = _("Invoice")
-            elif retention.move_type in ("in_refund", "out_refund"):
-                retention.document_type = _("C/N")
-            else:
-                retention.document_type = _("Other")
-
     def _create_retention_values_from_wizard(self):
         return {
             "retention_date": self.retention_date,
@@ -101,7 +92,6 @@ class AccountRetentionRegister(models.TransientModel):
             "retention_type": self.retention_type,
             "is_iva": self.is_iva,
             "move_type": self.move_type,
-            "document_type": self.document_type,
             "original_document_number": self.original_document_number,
             "retention_code": self.retention_code,
             "company_id": self.company_id.id,
@@ -110,6 +100,9 @@ class AccountRetentionRegister(models.TransientModel):
             "invoice_id": self.invoice_id.id,
             "invoice_date": self.invoice_date,
             "amount_retention": self.amount_retention,
+            "amount_retention_company_currency": self.currency_id._convert(self.amount_retention,
+                                                                           self.company_id.currency_id, self.company_id,
+                                                                           fields.Date.today()),
             "amount_base_untaxed": self.amount_base_untaxed
         }
 

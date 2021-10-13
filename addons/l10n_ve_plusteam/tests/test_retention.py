@@ -2,12 +2,11 @@ from odoo import _
 from odoo.exceptions import ValidationError
 from odoo.tests.common import Form
 from .common import AccountMoveModelRetentionTestingCommon
-from ..tools.constants import (RETENTION_TYPE_ISLR, RETENTION_TYPE_IVA, NAME_PRODUCT,
-                               MESSAGE_EXCEPTION_NOT_EXECUTE)
+from ..tools.constants import (RETENTION_TYPE_ISLR, RETENTION_TYPE_IVA, REF_MAIN_COMPANY, NAME_PRODUCT,
+                               MESSAGE_EXCEPTION_NOT_EXECUTE,MESSAGE_DOCUMENT_WRONG)
 
 
 class TestRetention(AccountMoveModelRetentionTestingCommon):
-
     def test_retention_type(self):
         """Test  when create retention for retention_type
         """
@@ -34,6 +33,15 @@ class TestRetention(AccountMoveModelRetentionTestingCommon):
             msg="calculation of the retention amount is wrong"
         )
 
+    def test_vat_withholding_percentage(self):
+        """Test when create retention calculation of the amount
+        """
+        self.assertEqual(
+            self.retention.partner_id.vat_withholding_percentage,
+            self.retention.vat_withholding_percentage,
+            msg="the retention vat withholding percentage is wrong"
+        )
+
     def test_onchange_value_withholding(self):
         """Test  when onchange_value_withholding porcentage
         """
@@ -57,20 +65,34 @@ class TestRetention(AccountMoveModelRetentionTestingCommon):
                         msg="There are no accounting entries for account payable or receivable")
         self.assertTrue(len(self.retention.move_id.line_ids), msg="the account movements were not created")
 
-    def test_month_fiscal_char(self):
-        month = self.retention.retention_date.strftime("%m")
-        self.assertEqual(
-            self.retention.month_fiscal_period,
-            month,
-            msg="Field month fiscal period is wrong"
-        )
-
-    def test_type_document(self):
+    def test_document_type(self):
         self.assertEqual(
             self.retention.document_type,
+            _("Bills"),
+            msg=MESSAGE_DOCUMENT_WRONG)
+
+    def test_document_type_customer(self):
+        self.assertEqual(
+            self.retention_customer.document_type,
             _("Invoice"),
-            msg="Field type document is wrong"
-        )
+            msg=MESSAGE_DOCUMENT_WRONG
+        )  
+
+    def test_document_type_customer_ND(self):
+        self.retention_customer.invoice_id.debit_origin_id = '009988'
+        self.assertEqual(
+            self.retention_customer.document_type,
+            _("D/N"),
+            msg=MESSAGE_DOCUMENT_WRONG
+        ) 
+
+    def test_document_type_customer_ND(self):
+        self.retention_customer.move_type = 'out_refund'
+        self.assertEqual(
+            self.retention_customer.document_type,
+            _("C/N"),
+            msg=MESSAGE_DOCUMENT_WRONG
+        ) 
 
     def test_retention_type_other(self):
         """Test  when create retention for retention_type
@@ -115,6 +137,24 @@ class TestRetention(AccountMoveModelRetentionTestingCommon):
             msg="Field complete_name_with_code is wrong"
         )
 
+    def test_raise_when_retention_code_is_invalid(self):
+        """Test raise when save invalid retention number
+        """
+        with self.assertRaises(ValidationError) as raise_exception:
+            self.env["retention"].create({
+                "invoice_id": self.invoice_customer.id,
+                "partner_id": self.partner.id,
+                "retention_code": "123564789",
+                "move_type": self.invoice_customer.move_type,
+                "retention_type": RETENTION_TYPE_IVA,
+                "vat_withholding_percentage": 75.0
+            })
+        self.assertEqual(
+            str(raise_exception.exception),
+            _("Invalid receipt number format. Must have at least 14 numbers"),
+            msg=MESSAGE_EXCEPTION_NOT_EXECUTE
+        )
+        
     def test_get_default_journal(self):
         new_invoice = self.env["account.move"].create({
             "move_type": "in_invoice",

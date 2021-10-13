@@ -10,7 +10,7 @@
                     <field name="is_iva" invisible="1"/>
                     <group>
                         <group name="groupcode"
-                               invisible="context.get('default_move_type') not in ('in_invoice', 'in_refund','in_receipt')">
+                               attrs="{'invisible': [('move_type', 'not in', ('out_invoice', 'out_refund'))]}">
                             <field name="retention_code" placeholder="receipt number"/>
                             <field name="company_id" groups="base.group_multi_company"/>
                         </group>
@@ -29,6 +29,8 @@
                                 <field name="year_fiscal_period"/>
                             </div>
                             <field name="retention_date"/>
+                            <field name="receipt_date"
+                                   attrs="{'invisible': [('move_type', 'not in', ('out_invoice', 'out_refund'))]}" />
                             <field name="invoice_date"/>
                             <field name="document"/>
                             <field name="rif"/>

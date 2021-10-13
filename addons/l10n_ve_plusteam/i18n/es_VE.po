@@ -14723,6 +14723,7 @@ msgstr "Inventario, logística, valoración, contabilidad"
 #: code:addons/l10n_ve_plusteam/wizard/account_retention_register.py:0
 #: model:ir.model.fields,field_description:l10n_ve_plusteam.field_account_retention_register__invoice_id
 #: model:ir.model.fields,field_description:l10n_ve_plusteam.field_retention__invoice_id
+#: code:addons/l10n_ve_plusteam/tests/test_retention.py:0
 msgid "Invoice"
 msgstr "Factura"
 
@@ -23693,6 +23694,7 @@ msgstr "El código de idioma que se muestra en el URL"
 
 #. module: l10n_ve_plusteam
 #: code:addons/l10n_ve_plusteam/models/res_partner.py:0
+#: code:addons/l10n_ve_plusteam/tests/test_res_partner.py:0
 #, python-format
 msgid ""
 "The RIF/Identification Card format is invalid. Must start with a letter (V, "
@@ -27490,6 +27492,7 @@ msgstr "Fecha Factura"
 
 #. module: l10n_ve_plusteam
 #: model:ir.model.fields,field_description:l10n_ve_plusteam.field_retention__receipt_date
+#: model:ir.model.fields,field_description:l10n_ve_plusteam.field_account_retention_register__receipt_date
 msgid "Receipt Date"
 msgstr "Fecha Comprobante"
 
@@ -27592,12 +27595,14 @@ msgid "Document Type"
 msgstr "Tipo de Documento"
 
 #. module: l10n_ve_plusteam
+#: model:ir.actions.act_window,name:l10n_ve_plusteam.retention_action_in_invoice_type
 #: model:ir.actions.act_window,name:l10n_ve_plusteam.retention_action_out_invoice_type
 #: model:ir.model,name:l10n_ve_plusteam.model_retention
 #: model:ir.model.fields,field_description:l10n_ve_plusteam.field_account_bank_statement_line__retention_id
 #: model:ir.model.fields,field_description:l10n_ve_plusteam.field_account_move__retention_id
 #: model:ir.model.fields,field_description:l10n_ve_plusteam.field_account_payment__retention_id
-#: model:ir.ui.menu,name:l10n_ve_plusteam.localization_retention_menu
+#: model:ir.ui.menu,name:l10n_ve_plusteam.localization_retention_payables
+#: model:ir.ui.menu,name:l10n_ve_plusteam.localization_retention_receivables
 msgid "Retention"
 msgstr "Retención"
 
@@ -27657,7 +27662,7 @@ msgstr "Buscar en Retención"
 
 #. module: l10n_ve_plusteam
 #: model:ir.model.fields.selection,name:l10n_ve_plusteam.selection__account_move__retention_state__with_retention_both
-msgid "With Retention Both"
+msgid "With Both Retention "
 msgstr "Con Retención de IVA e ISLR"
 
 #. module: l10n_ve_plusteam
@@ -27809,6 +27814,37 @@ msgid ""
 msgstr ""
 "La compañía no tiene configurado un diario contable para retención, "
 "por favor ve a la sección de configuración para agregar uno"
+
+#. module: l10n_ve_plusteam
+#: code:addons/l10n_ve_plusteam/models/retention.py:0
+#: code:addons/l10n_ve_plusteam/tests/test_retention.py:0
+#, python-format
+msgid "Invalid receipt number format. Must have at least 14 numbers"
+msgstr "Número de comprobante invalido. Debe tener minimo 14 números"
+
+#. modules: account, l10n_ve_plusteam
+#: code:addons/account/controllers/portal.py:0
+#: code:addons/l10n_ve_plusteam/models/retention.py:0
+#: code:addons/l10n_ve_plusteam/wizard/account_retention_register.py:0
+#: model:ir.actions.act_window,name:account.action_move_in_invoice_type
+#: model:ir.ui.menu,name:account.menu_action_move_in_invoice_type
+#: model_terms:ir.ui.view,arch_db:account.account_journal_dashboard_kanban_view
+#: code:addons/l10n_ve_plusteam/tests/test_retention.py:0
+#, python-format
+msgid "Bills"
+msgstr "Facturas"
+
+#. modules: web, account, account_accountant, l10n_ve_plusteam
+#. openerp-web
+#: code:addons/account_accountant/static/src/xml/account_reconciliation.xml:0
+#: code:addons/l10n_ve_plusteam/models/retention.py:0
+#: code:addons/l10n_ve_plusteam/wizard/account_retention_register.py:0
+#: code:addons/web/static/src/js/views/basic/basic_model.js:0
+#: model:ir.model.fields.selection,name:account.selection__account_bank_statement__state__open
+#: model_terms:ir.ui.view,arch_db:account.view_bank_statement_search
+#, python-format
+msgid "New"
+msgstr "Nuevo"
 
 #. module: l10n_ve_plusteam
 #: code:addons/l10n_ve_plusteam/models/retention.py:0

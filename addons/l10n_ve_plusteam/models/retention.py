@@ -22,7 +22,7 @@ class Retention(models.Model):
     move_id = fields.Many2one(
         comodel_name="account.move", string="Journal Entry", required=True, readonly=True, ondelete="cascade",
         check_company=True)
-    retention_code = fields.Char(string="Retention Number", default=_("New"), store=True)
+    retention_code = fields.Char(string="Retention Number", store=True)
     retention_date = fields.Date(string="Date", required=True, default=fields.Date.context_today)
     receipt_date = fields.Date(string="Receipt Date", required=True, default=fields.Date.context_today)
     month_fiscal_period = fields.Char(string="Month", store=True, readonly=False,
@@ -44,15 +44,12 @@ class Retention(models.Model):
     company_id = fields.Many2one(comodel_name="res.company", string="Company",
                                  store=True, readonly=True,
                                  compute="_compute_company_id")
-    partner_type = fields.Selection([
-        ("customer", "Customer"),
-        ("supplier", "Vendor"),
-    ], string="partner type", default="supplier", tracking=True)
+
     partner_id = fields.Many2one("res.partner", string="Customer/Vendor", domain="[('parent_id','=', False)]",
                                  check_company=True)
     rif = fields.Char(string="RIF", related="partner_id.vat")
     vat_withholding_percentage = fields.Float(string="vat withholding percentage", store=True, readonly=False,
-                                              related="partner_id.vat_withholding_percentage", required=True)
+                                              compute="_compute_vat_withholding_percentage", required=True)
     invoice_id = fields.Many2one("account.move", string="Invoice", required=True,
                                  domain="[('move_type', 'in', ('out_invoice', 'in_invoice', 'in_refund', "
                                         "'out_refund')), ('retention_state', '!=', 'with_both_retentions'),"
@@ -114,6 +111,15 @@ class Retention(models.Model):
         if retention_already_created:
             raise ValidationError(_("This type was already generated"))
 
+    @api.constrains("retention_code", "move_type")
+    def _check_receipt_number(self):
+        for record in self:
+            if record.retention_code and re.match(r"^[0-9]{14,14}$",
+                                                  record.retention_code) is None and record.move_type in (
+                    "out_invoice", "out_refund"):
+                raise ValidationError(
+                    _("Invalid receipt number format. Must have at least 14 numbers"))
+
     @api.constrains("move_type")
     def _check_move_type(self):
         for retention in self:
@@ -121,6 +127,19 @@ class Retention(models.Model):
                 raise ValidationError(
                     _("You are trying to create a withholding from an illegal journal entry type (%s)",
                       retention.invoice_id.move_type))
+
+    @api.depends("partner_id")
+    def _compute_company_id(self):
+        for retention in self:
+            retention.company_id = retention.partner_id.company_id or retention.company_id or self.env.company
+
+    @api.depends("move_type")
+    def _compute_vat_withholding_percentage(self):
+        for retention in self:
+            if retention.move_type in ("in_invoice", "in_refund"):
+                retention.vat_withholding_percentage = retention.partner_id.vat_withholding_percentage
+            else:
+                retention.vat_withholding_percentage = retention.company_id.vat_withholding_percentage
 
     @api.depends("vat_withholding_percentage", "amount_tax", "company_id", "currency_id", "retention_date",
                  "invoice_date")
@@ -135,11 +154,6 @@ class Retention(models.Model):
     def _compute_amount_base_untaxed(self):
         for retention in self:
             retention.amount_base_untaxed = retention.amount_untaxed - retention.amount_base_taxed
-
-    @api.onchange("vat_withholding_percentage")
-    def _onchange_value_withholding_percentage(self):
-        for retention in self:
-            retention.amount_retention = retention.amount_tax * retention.vat_withholding_percentage / 100
 
     @api.depends("is_iva")
     def _compute_retention_type(self):
@@ -161,27 +175,24 @@ class Retention(models.Model):
                   "configurations and define the accounts to continue with the process."))
         return account.id
 
-    @api.depends("partner_id")
-    def _compute_company_id(self):
-        for retention in self:
-            retention.company_id = retention.partner_id.company_id or retention.company_id or self.env.company
-
-    @api.depends("invoice_id")
+    @api.depends("invoice_id", "move_type")
     def _compute_document_type(self):
         for retention in self:
-            if retention.invoice_id.move_type in ("out_invoice", "in_invoice"):
+            if retention.move_type in ("out_invoice", "in_invoice"):
                 if retention.invoice_id.debit_origin_id:
-                    retention.document_type = _('D/N')
+                    retention.document_type = _("D/N")
+                elif retention.move_type == "out_invoice":
+                    retention.document_type = _("Invoice")
                 else:
-                    retention.document_type = _('Invoice')
-            elif retention.invoice_id.move_type in ("in_refund", "out_refund"):
-                retention.document_type = _('C/N')
+                    retention.document_type = _("Bills")
+            elif retention.move_type in ("in_refund", "out_refund"):
+                retention.document_type = _("C/N")
             else:
-                retention.document_type = _('Other')
+                retention.document_type = _("Other")
 
     @api.model
     def create(self, values):
-        if values.get("retention_code", "").strip().lower() in ["", "nuevo", "new"]:
+        if values.get("move_type", "") in ('in_invoice', 'in_refund'):
             values["retention_code"] = self.env["ir.sequence"].next_by_code("retention.sequence")
         values["state"] = "posted"
         if values.get("retention_type", False) == "iva":
