@@ -1,0 +1,1 @@
+# odoo_15_ve_localization
